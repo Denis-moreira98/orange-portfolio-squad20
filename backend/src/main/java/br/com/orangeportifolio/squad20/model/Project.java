@@ -35,7 +35,7 @@ public class Project {
 	@ManyToOne
 	@JoinColumn(name = "user_project")
 	@JsonIgnoreProperties("projects")
-	private Integer userProject;
+	private User userProject;
 	
 	//GET E SET
 	
@@ -69,10 +69,10 @@ public class Project {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Integer getUserProject() {
+	public User getUserProject() {
 		return userProject;
 	}
-	public void setUserProject(Integer userProject) {
+	public void setUserProject(User userProject) {
 		this.userProject = userProject;
 	}
 }
