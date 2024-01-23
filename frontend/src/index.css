@@ -67,6 +67,8 @@
    --info-130: #091862;
 
    --white: #ffff;
+  --disabledBackground: #0000001F;
+  --disable:#00000061;
 }
 
 body {
