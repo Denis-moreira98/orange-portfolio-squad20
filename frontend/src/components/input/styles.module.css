@@ -10,6 +10,9 @@
    width: 100%;
    margin-bottom: 0.8rem;
 }
+.container:hover {
+   border-color: var(--info-100);
+}
 .container input {
    background: transparent;
    height: auto;
@@ -21,8 +24,8 @@
    border: none;
 }
 
-input::placeholder {
-   text-align: center;
+.container input::placeholder {
+   text-align: left;
 }
 
 label {
