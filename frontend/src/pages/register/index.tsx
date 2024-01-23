@@ -1,13 +1,11 @@
 import { Input } from "../../components/input";
 import styles from "./styles.module.css";
-import imgLogin from "../../assets/imglogin.png";
+import ImgCadastro from "../../assets/imgcadastro.png";
 import { Button } from "../../components/button";
-import { Link } from "react-router-dom";
-
 import { FormEvent, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-export function Login() {
+export function Register() {
    const [senha, setSenha] = useState("");
    const [mostrarSenha, setMostrarSenha] = useState(false);
 
@@ -19,17 +17,31 @@ export function Login() {
    const handleToggleSenha = () => {
       setMostrarSenha(!mostrarSenha);
    };
+
    return (
       <div className={styles.container}>
          <div className={styles.div_img}>
-            <img src={imgLogin} alt="imagem login" />
+            <img src={ImgCadastro} alt="imagem cadastro" />
          </div>
          <div className={styles.content}>
-            <h3>Entre no Orange Portfólio</h3>
+            <h3>Cadastre-se</h3>
 
             <div className={styles.form}>
-               <h4>Faça Login com email</h4>
                <form>
+                  <div className={styles.name}>
+                     <Input
+                        label="Nome*"
+                        type="text"
+                        placeholder="Digite seu nome"
+                        required
+                     />
+                     <Input
+                        label="Sobrenome*"
+                        type="text"
+                        placeholder="Digite seu sobrenome"
+                        required
+                     />
+                  </div>
                   <Input
                      label="Email address"
                      type="email"
@@ -52,11 +64,8 @@ export function Login() {
                   >
                      {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
                   </button>
-                  <Button>ENTRAR</Button>
+                  <Button className={styles.btnRegister}>CADASTRAR</Button>
                </form>
-               <Link to="/register">
-                  <p>Cadastre-se</p>
-               </Link>
             </div>
          </div>
       </div>

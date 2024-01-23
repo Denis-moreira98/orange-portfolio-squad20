@@ -15,7 +15,7 @@
 }
 
 .content {
-   max-width: 517px;
+   width: 517px;
    height: 432px;
    align-items: center;
    display: flex;
@@ -33,22 +33,27 @@
    color: var(--neutral-110);
    font-size: 24px;
    font-weight: 400;
-   margin-bottom: 10px;
+   margin-bottom: 16px;
 }
 
 .form {
    width: 100%;
 }
 
-.form p {
-   text-align: left;
-   text-decoration: none;
-   font-weight: 600;
-   color: var(--neutral-110);
-   margin-top: 18px;
+.button_submit {
+   margin-bottom: 18px;
 }
+
 .form a {
    text-decoration: none;
+   font-weight: 500;
+   color: var(--neutral-110);
+}
+.name {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   gap: 1rem;
 }
 
 .button_view {
@@ -77,6 +82,10 @@
    .container {
       justify-content: center;
    }
+   .name {
+      flex-direction: column;
+      gap: 0;
+   }
    .container h3 {
       text-align: center;
       font-size: 35px;
@@ -92,14 +101,14 @@
 @media screen and (max-width: 452px) {
    .container {
       justify-content: center;
-      padding: 2;
+      padding: 2px;
    }
    .container h3 {
       text-align: center;
       font-size: 28px;
    }
    .content {
-      width: 350px;
+      max-width: 360px;
    }
    .content h4 {
       font-size: 18px;
