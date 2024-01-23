@@ -4,7 +4,21 @@ import imgLogin from "../../assets/imglogin.png";
 import { Button } from "../../components/button";
 import { Link } from "react-router-dom";
 
+import { FormEvent, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 export function Login() {
+   const [senha, setSenha] = useState("");
+   const [mostrarSenha, setMostrarSenha] = useState(false);
+
+   const handleInputChange = (e: FormEvent) => {
+      // @ts-expect-error valor do state
+      setSenha(e.target.value);
+   };
+
+   const handleToggleSenha = () => {
+      setMostrarSenha(!mostrarSenha);
+   };
    return (
       <div className={styles.container}>
          <div className={styles.div_img}>
@@ -19,15 +33,25 @@ export function Login() {
                   <Input
                      label="Email address"
                      type="email"
+                     placeholder="Digite seu email"
                      required
-                     className={styles.input}
                   />
                   <Input
                      label="Password"
-                     type="password"
+                     type={mostrarSenha ? "text" : "password"}
+                     name="senha"
+                     value={senha}
+                     placeholder="Digite sua senha"
+                     onChange={handleInputChange}
                      required
-                     className={styles.input}
                   />
+                  <button
+                     className={styles.button_view}
+                     type="button"
+                     onClick={handleToggleSenha}
+                  >
+                     {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
+                  </button>
                   <Button>ENTRAR</Button>
                </form>
                <Link to="/register">
