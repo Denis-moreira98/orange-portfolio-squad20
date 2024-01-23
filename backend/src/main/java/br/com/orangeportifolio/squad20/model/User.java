@@ -1,15 +1,20 @@
 package br.com.orangeportifolio.squad20.model;
 
-import jakarta.annotation.Generated;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
 	
 	@Id
@@ -24,7 +29,11 @@ public class User {
 	private String email;
 	
 	@Column(name = "password")
-	private Integer password;
+	private String  password;
+	
+	@OneToMany(mappedBy = "userProject", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("userProject")
+	private List<Project> projects;
 	
 	//GET AND SET
 
@@ -52,11 +61,11 @@ public class User {
 		this.email = email;
 	}
 
-	public Integer getPassword() {
+	public String  getPassword() {
 		return password;
 	}
 
-	public void setPassword(Integer password) {
+	public void setPassword(String  password) {
 		this.password = password;
 	}
 	
