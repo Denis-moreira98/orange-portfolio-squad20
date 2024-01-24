@@ -44,7 +44,7 @@ export function Dashboard() {
             />
             <div className={styles.containerproj}>
                <div className={styles.adicionar}>
-                  <button onClick={handleOpenModal}>
+                  <button className={styles.buttondashboardd} onClick={handleOpenModal}>
                      <FaImages />
                   </button>
 

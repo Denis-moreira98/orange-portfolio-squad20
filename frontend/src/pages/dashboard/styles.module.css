@@ -110,7 +110,10 @@
   margin-left: 32px;
   margin-top: 15px;
 }
-
+.buttondashboardd{
+  border: 0;
+  background: none ;
+}
 /* .complemento {
    width: 389px;
    height: 258px;
