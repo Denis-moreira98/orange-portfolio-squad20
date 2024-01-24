@@ -88,6 +88,11 @@ border-radius: 3px;
   color: var(--neutral-120);
   font-size: 16px;
 }
+.picture__image2{
+  opacity: 0.6;
+  color: var(--neutral-120);
+  font-size: 14px; 
+}
 
 
 
@@ -123,3 +128,21 @@ cursor: pointer;
 
 
 
+  @media screen and (max-width: 452px) {
+    .perfil {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .informacoes{
+      gap: var(--1, 8px);
+
+    }
+    .buttondashboard{
+      border-radius: 4px;
+      padding: 10px 22px;
+     background:  rgba(0, 0, 0, 0.12);
+     color: rgba(0, 0, 0, 0.38);
+
+    }
+
+  }

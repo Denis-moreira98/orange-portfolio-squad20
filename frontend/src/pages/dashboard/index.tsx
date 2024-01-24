@@ -2,31 +2,7 @@ import styles from "./styles.module.css";
 
 import { FaImages } from "react-icons/fa";
 
-
-
-
 export function Dashboard() {
-  /*   const [imageSrc, setImageSrc] = useState(null);
-
-  const handleFileChange = (e) => {
-    const inputTarget = e.target;
-    const file = inputTarget.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-
-      reader.addEventListener("load", function (e) {
-        const readerTarget = e.target;
-        setImageSrc(readerTarget.result);
-      });
-
-      reader.readAsDataURL(file);
-    } else {
-      setImageSrc(null);
-    }
-  }; */
-
-
   return (
     <div className={styles.containerdashboard}>
       <div className={styles.perfil}>
@@ -53,45 +29,22 @@ export function Dashboard() {
       />
       <div className={styles.containerproj}>
         <div className={styles.adicionar}>
-      
-          <FaImages style={{ color: "#323232" }}
-            className={styles.iconedashboard}/>
+          <FaImages
+            style={{ color: "#323232" }}
+            className={styles.iconedashboard}
+          />
 
           <span className={styles.picture__image}>
             Adicione seu primeiro projeto
           </span>
-          <span className={styles.picture__image}>
+          <span className={styles.picture__image2}>
             Compartilhe seu talento com milhares de pessoas
           </span>
         </div>
         <div className={styles.complemento}></div>
 
-        <div className={styles.complemento} ></div>
-     
-
+        <div className={styles.complemento}></div>
       </div>
-      {/*   <label className={styles.picture} htmlFor={styles.picture__input} tabIndex={0}>
-        {imageSrc ? (
-          <img
-            src={imageSrc}
-            alt="Imagem"
-            className={styles.picture__img}
-            style={{ width: '389px', height: '258px' }}
-          />
-        ) : (
-          <>
-            <FontAwesomeIcon icon={faImages} style={{ color: "#000000" }} className={styles.icone} />
-            <span className={styles.picture__image}>Adicione seu primeiro projeto</span>
-            <span className={styles.picture__image}>Compartilhe seu talento com milhares de pessoas</span>
-          </>
-        )}
-      </label>
-      <input
-        type="file"
-        name="picture__input"
-        id={styles.picture__input}
-        onChange={handleFileChange}
-      /> */}
     </div>
   );
 }
