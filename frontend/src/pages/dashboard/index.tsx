@@ -4,7 +4,7 @@ import { faImages } from "@fortawesome/free-solid-svg-icons";
 /* import React, { useState } from "react"; */
 
 export function Dashboard() {
-/*   const [imageSrc, setImageSrc] = useState(null);
+  /*   const [imageSrc, setImageSrc] = useState(null);
 
   const handleFileChange = (e) => {
     const inputTarget = e.target;
@@ -47,18 +47,25 @@ export function Dashboard() {
         id=""
         placeholder="Buscar tags"
       />
-      <div>
-      <div className={styles.adicionar}>
-      <FontAwesomeIcon icon={faImages} style={{ color: "#000000" }} className={styles.icone} />
-            <span className={styles.picture__image}>Adicione seu primeiro projeto</span>
-            <span className={styles.picture__image}>Compartilhe seu talento com milhares de pessoas</span>
+      <div className={styles.containerproj}>
+        <div className={styles.adicionar}>
+          <FontAwesomeIcon
+            icon={faImages}
+            style={{ color: "#000000" }}
+            className={styles.icone}
+          />
+          <span className={styles.picture__image}>
+            Adicione seu primeiro projeto
+          </span>
+          <span className={styles.picture__image}>
+            Compartilhe seu talento com milhares de pessoas
+          </span>
+        </div>
+        <div className={styles.complemento}></div>
 
+        <div className={styles.complemento}></div>
       </div>
-      <div className={styles.complemento}></div>
-
-      <div className={styles.complemento}></div>
-      </div>
-{/*   <label className={styles.picture} htmlFor={styles.picture__input} tabIndex={0}>
+      {/*   <label className={styles.picture} htmlFor={styles.picture__input} tabIndex={0}>
         {imageSrc ? (
           <img
             src={imageSrc}
