@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImages } from "@fortawesome/free-solid-svg-icons";
 /* import React, { useState } from "react"; */
 
+
+
+
 export function Dashboard() {
   /*   const [imageSrc, setImageSrc] = useState(null);
 
@@ -23,8 +26,10 @@ export function Dashboard() {
       setImageSrc(null);
     }
   }; */
+
+
   return (
-    <div className={styles.container}>
+    <div className={styles.containerdashboard}>
       <div className={styles.perfil}>
         <img
           className={styles.fotoperfil}
@@ -34,7 +39,7 @@ export function Dashboard() {
         <div className={styles.informacoes}>
           <p className={styles.nome}>Camila Soares</p>
           <p className={styles.pais}>Brasil</p>
-          <button className={styles.button} type="button">
+          <button className={styles.buttondashboard} type="button">
             ADICIONAR PROJETO
           </button>
         </div>
@@ -52,7 +57,7 @@ export function Dashboard() {
           <FontAwesomeIcon
             icon={faImages}
             style={{ color: "#000000" }}
-            className={styles.icone}
+            className={styles.iconedashboard}
           />
           <span className={styles.picture__image}>
             Adicione seu primeiro projeto
@@ -63,7 +68,9 @@ export function Dashboard() {
         </div>
         <div className={styles.complemento}></div>
 
-        <div className={styles.complemento}></div>
+        <div className={styles.complemento} ></div>
+     
+
       </div>
       {/*   <label className={styles.picture} htmlFor={styles.picture__input} tabIndex={0}>
         {imageSrc ? (
