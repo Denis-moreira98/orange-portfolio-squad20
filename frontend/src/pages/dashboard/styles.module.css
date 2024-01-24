@@ -1,4 +1,7 @@
-
+.container{
+  width: 1280px;
+height: 832px;
+}
 .perfil {
   display: flex;
   align-items: center;
@@ -77,15 +80,19 @@
 
 }
 
-.picture{
+.adicionar{
   width: 389px;
   height: 258px;
-  background: #ddd;
+  background:var( --neutral-70);
   display: flex;
   align-items: center;
   justify-content: center;
 flex-direction: column;
 cursor: pointer;
+gap: 10px;
+margin-top: 15px;
+  margin-left: 32px;
+ 
 }
 
 .icone{
@@ -96,5 +103,5 @@ height: 46px;
 .picture__image{
   opacity: 0.6;
   color: var(--neutral-120);
-
+  font-size: 16px;
 }
