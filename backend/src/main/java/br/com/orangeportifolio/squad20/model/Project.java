@@ -1,5 +1,7 @@
 package br.com.orangeportifolio.squad20.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -10,6 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "project")
@@ -20,7 +24,9 @@ public class Project {
 	@Column(name = "id_project")
 	private Integer idProject;
 	
-	
+	@NotBlank
+	@NotNull
+	@Length(min = 3, max = 45)
 	@Column(name = "title", length = 45, nullable = false)
 	private String title;
 	
@@ -30,6 +36,7 @@ public class Project {
 	@Column(name = "link_project", length = 255)
 	private String linkProject;
 	
+	@Length(max = 500)
 	@Column(name = "description", length = 500)
 	private String description;
 	
