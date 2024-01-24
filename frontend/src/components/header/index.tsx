@@ -4,7 +4,18 @@ import imagePerfil from '../../assets/image-perfil.png';
 import iconNot from '../../assets/icon-notifications.png';
 import iconMenu from '../../assets/Icon-menu.svg';
 
+import React, { useState, useEffect } from "react";
+
 export function Header() {
+   const [menuOpen, setMenuOpen] = useState <boolean>(true);
+   useEffect( () => {
+      window.addEventListener('resize', () => {
+         if(window.innerWidth >= 800) {
+            setMenuOpen(false)
+         }
+      })
+   }, [])
+
    return (
       <>
       <header className={styles.container}>
@@ -13,7 +24,7 @@ export function Header() {
             <div className={styles.container__menu}>
                <img src={iconMenu} alt="ìcone do menu" 
                     className={styles.icon__menu}
-                    onClick={()=> { alert('cliquei aqui')}}/> 
+                    onClick={()=> { setMenuOpen(!menuOpen)}}/> 
                
                <img src={orangeLogo} 
                   alt="Logo Orange Portifólio" 
@@ -40,6 +51,19 @@ export function Header() {
                </a>               
          </div>          
       </header>
+
+      {menuOpen && (
+
+         <nav className={styles.teste} >
+               <ul>
+               <li><a href="#">Meus projetos</a></li>
+               <li><a href="#">Descobrir</a></li>
+               <li><a href="#">Configurações</a></li>
+               <li></li>  
+            </ul>                
+         </nav>
+      )}
+
       </>
    );
 }

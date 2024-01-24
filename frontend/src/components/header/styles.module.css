@@ -1,6 +1,42 @@
 :root{
    font-size: 62.5%;
 }
+
+.teste{
+   background-color: red;
+   width: 14.7rem;
+   height: 15.5rem;
+   border-radius: 0.4rem;
+     
+}
+
+.teste ul {
+   padding-top: .8rem;
+   display: flex;
+   flex-direction: column;
+}
+
+.teste ul li {
+   font-size: 1.6rem;
+   padding: 0.6rem 1.6rem ;
+   
+   
+   letter-spacing: 0.15px;
+   
+
+}
+
+.teste ul li:hover {
+   background-color: var(--Neutral-110);
+}
+
+.teste ul li a {
+   color: var(--primary-100);
+   font-weight: 400;
+   line-height: 1.6rem; /* 100% */
+}
+
+
 .container {
    width: 100%;
    height: 7.3rem;
@@ -30,6 +66,8 @@ nav ul li {
    margin-right: 2.4rem;
    color: var(--neutral-60);
 }
+
+
 
 nav ul li a {
    color: var(--neutral-60);
