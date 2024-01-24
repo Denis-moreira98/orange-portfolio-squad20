@@ -1,5 +1,42 @@
+:root{
+   font-size: 62.5%;
+}
 .container {
    width: 100%;
-   height: 73px;
+   height: 7.3rem;
    background-color: var(--primary-100);
+   
+   color: var(--neutral-60);
+   font-size: 2rem;
+   padding: 1.6rem 3.2rem;
+
+   display: flex;
+   justify-content: space-between;
+   align-items:center;
+}
+
+.headerLogo {
+   max-width: 11.1rem;
+}
+
+.divLinks{
+   display: flex;
+   align-items:center;
+   gap: 10rem;
+}
+
+.divLinks a {
+   text-decoration: none;
+   color: var(--neutral-60);
+   margin-right: 2.4rem;
+}
+
+.imgPerfil {
+   max-width: 4rem;
+   border-radius: 30rem;
+   margin-right: 1.6rem;
+}
+
+imgNot{
+   max-width: 2.4rem;
 }
