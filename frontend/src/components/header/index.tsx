@@ -11,7 +11,10 @@ export function Header() {
 
          <div className={styles.divRigth}> 
             <div className={styles.container__menu}>
-               <img src={iconMenu} alt="ìcone do menu" className={styles.icon__menu}/> 
+               <img src={iconMenu} alt="ìcone do menu" 
+                    className={styles.icon__menu}
+                    onClick={()=> { alert('cliquei aqui')}}/> 
+               
                <img src={orangeLogo} 
                   alt="Logo Orange Portifólio" 
                   className={styles.headerLogo} />

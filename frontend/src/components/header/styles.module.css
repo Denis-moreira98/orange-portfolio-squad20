@@ -34,6 +34,11 @@ nav ul li {
 nav ul li a {
    color: var(--neutral-60);
    text-decoration: none;
+   transition: opacity 0.2s;
+}
+
+nav ul li a:hover{
+   opacity: 0.6;
 }
 
 .divRigth{
@@ -84,6 +89,12 @@ imgNot{
       height: 4rem; */
       margin-right: .9rem;
       align-items: center;
+      cursor: pointer;
+      transition: opacity 0.2s;
+   }
+
+   .icon__menu:hover {
+      opacity: 0.6;
    }
 
      
