@@ -1,24 +1,20 @@
 package br.com.orangeportifolio.squad20.services;
 
-import br.com.orangeportifolio.squad20.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import br.com.orangeportifolio.squad20.dao.IUsersDAO;
+import br.com.orangeportifolio.squad20.model.User;
+import jakarta.validation.Valid;
+
+@Service
 public class UserServiceImpl implements IUserService{
+	
+	@Autowired
+	private IUsersDAO dao;
 
 	@Override
-	public Boolean save(User user) {
-		if(user == null) {
-			
-		}
-		return null;
+	public User create(@Valid User user) {
+		return dao.save(user);
 	}
-	
-	public static boolean validateEmail(String email) {
-		
-		
-		return null;
-		
-	}
-
-	
-
 }
