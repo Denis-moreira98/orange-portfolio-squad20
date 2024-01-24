@@ -8,6 +8,8 @@
    
    color: var(--neutral-60);
    font-size: 2rem;
+   font-weight: 500;
+   letter-spacing: .15px;
    padding: 1.6rem 3.2rem;
 
    display: flex;
@@ -19,16 +21,25 @@
    max-width: 11.1rem;
 }
 
-.divLinks{
+nav ul {
+   display:flex;
+}
+
+nav ul li {
+   list-style: none;
+   margin-right: 2.4rem;
+   color: var(--neutral-60);
+}
+
+nav ul li a {
+   color: var(--neutral-60);
+   text-decoration: none;
+}
+
+.divRigth{
    display: flex;
    align-items:center;
    gap: 10rem;
-}
-
-.divLinks a {
-   text-decoration: none;
-   color: var(--neutral-60);
-   margin-right: 2.4rem;
 }
 
 .imgPerfil {
@@ -39,4 +50,41 @@
 
 imgNot{
    max-width: 2.4rem;
+}
+
+/* MOBILE */
+
+.icon__menu {
+   display: none;
+
+}
+
+@media screen and (max-width: 800px) {
+   header {
+      box-shadow: 
+      0px 2px 4px -1px rgba(0, 0, 0, 0.20), 
+      0px 4px 5px 0px rgba(0, 0, 0, 0.14), 
+      0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+      border-radius: .4rem;
+   }
+   .menu{
+      display: none;
+      border: 1px solid red;
+      
+   }
+
+   .container__menu {
+      display: flex;
+      align-items: center;
+   }
+
+   .icon__menu {
+      display: inline;
+      /* width: 4rem;
+      height: 4rem; */
+      margin-right: .9rem;
+      align-items: center;
+   }
+
+     
 }
