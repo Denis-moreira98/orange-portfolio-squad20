@@ -20,16 +20,17 @@ public class Project {
 	@Column(name = "id_project")
 	private Integer idProject;
 	
-	@Column(name = "title")
+	
+	@Column(name = "title", length = 45, nullable = false)
 	private String title;
 	
-	@Column(name = "tags")
+	@Column(name = "tags", length = 50)
 	private String tags;
 	
-	@Column(name = "link_project")
+	@Column(name = "link_project", length = 255)
 	private String linkProject;
 	
-	@Column(name = "description")
+	@Column(name = "description", length = 500)
 	private String description;
 	
 	@ManyToOne
