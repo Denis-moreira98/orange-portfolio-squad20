@@ -49,6 +49,10 @@
   justify-content: center;
   align-items: center;
   color: var(--disable);
+  cursor: pointer;
+background-color: #dddddd;
+border: #dddddd;
+border-radius: 3px;
 }
 
 .projetos {

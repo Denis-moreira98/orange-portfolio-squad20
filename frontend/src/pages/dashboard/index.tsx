@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImages } from "@fortawesome/free-solid-svg-icons";
 /* import React, { useState } from "react"; */
 
+
+
+
 export function Dashboard() {
   /*   const [imageSrc, setImageSrc] = useState(null);
 
@@ -23,6 +26,8 @@ export function Dashboard() {
       setImageSrc(null);
     }
   }; */
+
+
   return (
     <div className={styles.container}>
       <div className={styles.perfil}>
@@ -63,7 +68,9 @@ export function Dashboard() {
         </div>
         <div className={styles.complemento}></div>
 
-        <div className={styles.complemento}></div>
+        <div className={styles.complemento} ></div>
+     
+
       </div>
       {/*   <label className={styles.picture} htmlFor={styles.picture__input} tabIndex={0}>
         {imageSrc ? (
