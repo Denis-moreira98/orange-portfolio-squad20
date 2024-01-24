@@ -72,3 +72,29 @@
  
 
 }
+#picture__input{
+  display: none;
+
+}
+
+.picture{
+  width: 389px;
+  height: 258px;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+flex-direction: column;
+cursor: pointer;
+}
+
+.icone{
+  width: 46px;
+height: 46px;
+}
+
+.picture__image{
+  opacity: 0.6;
+  color: var(--neutral-120);
+
+}

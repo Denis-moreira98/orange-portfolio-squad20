@@ -1,6 +1,28 @@
 import styles from "./styles.module.css";
+/* import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faImages } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react"; */
 
 export function Dashboard() {
+/*   const [imageSrc, setImageSrc] = useState(null);
+
+  const handleFileChange = (e) => {
+    const inputTarget = e.target;
+    const file = inputTarget.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.addEventListener("load", function (e) {
+        const readerTarget = e.target;
+        setImageSrc(readerTarget.result);
+      });
+
+      reader.readAsDataURL(file);
+    } else {
+      setImageSrc(null);
+    }
+  }; */
   return (
     <div className={styles.container}>
       <div className={styles.perfil}>
@@ -18,7 +40,42 @@ export function Dashboard() {
         </div>
       </div>
       <p className={styles.projetos}>Meus projetos</p>
-      <input className={styles.pesquisa} type="search" name="" id="" placeholder="Buscar tags" />
+      <input
+        className={styles.pesquisa}
+        type="search"
+        name=""
+        id=""
+        placeholder="Buscar tags"
+      />
+  {/*     <label
+        className={styles.picture}
+        htmlFor={styles.picture__input}
+        tabIndex={0}
+      >
+        {imageSrc ? (
+          <img src={imageSrc} alt="Imagem" className={styles.picture__img} />
+        ) : (
+          <>
+            <FontAwesomeIcon
+              icon={faImages}
+              style={{ color: "#000000" }}
+              className={styles.icone}
+            />
+            <span className={styles.picture__image}>
+              Adicione seu primeiro projeto
+            </span>
+            <span className={styles.picture__image}>
+              Compartilhe seu talento com milhares de pessoas
+            </span>
+          </>
+        )}
+      </label>
+      <input
+        type="file"
+        name="picture__input"
+        id={styles.picture__input}
+        onChange={handleFileChange}
+      /> */}
     </div>
   );
 }
