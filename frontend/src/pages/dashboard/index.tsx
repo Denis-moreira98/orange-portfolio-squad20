@@ -47,26 +47,19 @@ export function Dashboard() {
         id=""
         placeholder="Buscar tags"
       />
-  {/*     <label
-        className={styles.picture}
-        htmlFor={styles.picture__input}
-        tabIndex={0}
-      >
+{/*   <label className={styles.picture} htmlFor={styles.picture__input} tabIndex={0}>
         {imageSrc ? (
-          <img src={imageSrc} alt="Imagem" className={styles.picture__img} />
+          <img
+            src={imageSrc}
+            alt="Imagem"
+            className={styles.picture__img}
+            style={{ width: '389px', height: '258px' }}
+          />
         ) : (
           <>
-            <FontAwesomeIcon
-              icon={faImages}
-              style={{ color: "#000000" }}
-              className={styles.icone}
-            />
-            <span className={styles.picture__image}>
-              Adicione seu primeiro projeto
-            </span>
-            <span className={styles.picture__image}>
-              Compartilhe seu talento com milhares de pessoas
-            </span>
+            <FontAwesomeIcon icon={faImages} style={{ color: "#000000" }} className={styles.icone} />
+            <span className={styles.picture__image}>Adicione seu primeiro projeto</span>
+            <span className={styles.picture__image}>Compartilhe seu talento com milhares de pessoas</span>
           </>
         )}
       </label>
