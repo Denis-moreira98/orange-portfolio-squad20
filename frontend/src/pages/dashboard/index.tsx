@@ -12,9 +12,13 @@ export function Dashboard() {
         <div className={styles.informacoes}>
           <p className={styles.nome}>Camila Soares</p>
           <p className={styles.pais}>Brasil</p>
-          <button className={styles.button} type="button">ADICIONAR PROJETO</button>
+          <button className={styles.button} type="button">
+            ADICIONAR PROJETO
+          </button>
         </div>
       </div>
+      <p className={styles.projetos}>Meus projetos</p>
+      <input className={styles.pesquisa} type="search" name="" id="" placeholder="Buscar tags" />
     </div>
   );
 }
