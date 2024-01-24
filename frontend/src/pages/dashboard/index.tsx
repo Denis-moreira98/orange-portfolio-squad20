@@ -29,7 +29,7 @@ export function Dashboard() {
 
 
   return (
-    <div className={styles.container}>
+    <div className={styles.containerdashboard}>
       <div className={styles.perfil}>
         <img
           className={styles.fotoperfil}
@@ -39,7 +39,7 @@ export function Dashboard() {
         <div className={styles.informacoes}>
           <p className={styles.nome}>Camila Soares</p>
           <p className={styles.pais}>Brasil</p>
-          <button className={styles.button} type="button">
+          <button className={styles.buttondashboard} type="button">
             ADICIONAR PROJETO
           </button>
         </div>
@@ -57,7 +57,7 @@ export function Dashboard() {
           <FontAwesomeIcon
             icon={faImages}
             style={{ color: "#000000" }}
-            className={styles.icone}
+            className={styles.iconedashboard}
           />
           <span className={styles.picture__image}>
             Adicione seu primeiro projeto

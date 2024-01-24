@@ -1,4 +1,4 @@
-.container {
+.containerdashboard {
   width: 1280px;
   height: 832px;
 }
@@ -42,7 +42,7 @@
   opacity: 0.5;
 }
 
-.button {
+.buttondashboard {
   display: flex;
   padding: 8px 22px;
   flex-direction: column;
@@ -81,7 +81,7 @@ border-radius: 3px;
 
 
 
-.icone {
+.iconedashboard {
  
   height: 30px;
 }
@@ -97,6 +97,7 @@ border-radius: 3px;
 .containerproj{
   display: flex;
 gap: 50px;
+ margin-top: 15px;
 }
 
 .adicionar {
@@ -121,10 +122,6 @@ gap: 50px;
   border-radius: var(--borderRadius, 4px);
   background: rgba(230, 233, 242, 0.20);
 cursor: pointer;
-}
-
-.containerproj {
-  margin-top: 15px;
 }
 
 
