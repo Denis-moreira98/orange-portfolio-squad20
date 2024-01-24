@@ -33,6 +33,12 @@ public class User {
 	@Column(name = "name", length = 75)
 	private String name;
 	
+	@NotBlank
+	@NotNull
+	@Length(min = 5, max = 20)
+	@Column(name = "country", length = 20)
+	private String country;
+	
 	@NotNull
 	@Email(message = "Email não é válido")
 	@Column(name = "email", length = 45, nullable = false)
@@ -65,6 +71,14 @@ public class User {
 		this.name = name;
 	}
 
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -73,11 +87,19 @@ public class User {
 		this.email = email;
 	}
 
-	public String  getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String  password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}	
 }
