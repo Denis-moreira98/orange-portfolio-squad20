@@ -1,8 +1,10 @@
 import Modal from "react-modal";
-import { FiX } from "react-icons/fi";
+import { FiUpload, FiX } from "react-icons/fi";
 import styles from "./styles.module.css";
-import { Input } from "../input";
+
 import { Button } from "../button";
+import InputModal, { TextArea } from "./input/index";
+import { ChangeEvent, useState } from "react";
 
 interface ModalProps {
    isOpen: boolean;
@@ -10,6 +12,25 @@ interface ModalProps {
 }
 
 export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
+   const [avatarUrl, setAvatarUrl] = useState("");
+   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+   const [imageAvatar, setImageAvatar] = useState(null);
+
+   function handleFile(e: ChangeEvent<HTMLInputElement>) {
+      if (!e.target.files) {
+         return;
+      }
+      const image = e.target.files[0];
+
+      if (!image) {
+         return;
+      }
+      if (image.type === "image/jpeg" || image.type === "image/png") {
+         setImageAvatar(image);
+         setAvatarUrl(URL.createObjectURL(e.target.files[0]));
+      }
+   }
+
    const customStyles = {
       content: {
          top: "50%",
@@ -28,40 +49,64 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          onRequestClose={onRequestClose}
          style={customStyles}
       >
-         <button
-            type="button"
-            onClick={onRequestClose}
-            className="react-modal-close"
-            style={{
-               backgroundColor: "transparent",
-               border: 0,
-               cursor: "pointer",
-            }}
-         >
-            <FiX size={30} color="#f34748" />
-         </button>
-         <div className={styles.container}>
+         <div className={styles.div_container}>
             <h4>Adicionar Projeto</h4>
-            <div>
-               <p>Selecione o conteúdo que você deseja fazer upload</p>
-               <div>
-                  <h2>FILE IMG</h2>
+            <button
+               type="button"
+               onClick={onRequestClose}
+               className="react-modal-close"
+               style={{
+                  backgroundColor: "transparent",
+                  border: 0,
+                  cursor: "pointer",
+               }}
+            >
+               <FiX size={30} color="#ff5522" />
+            </button>
+         </div>
+         <form>
+            <div className={styles.content}>
+               <div className={styles.div_text}>
+                  <p>Selecione o conteúdo que você deseja fazer upload</p>
+
+                  <div className={styles.div_file}>
+                     <label className={styles.labelAvatar}>
+                        <span>
+                           <FiUpload size={30} color="#FFF" />
+                        </span>
+                        <input
+                           type="file"
+                           accept="image/png, image/jpeg"
+                           onChange={handleFile}
+                        />
+
+                        {avatarUrl && (
+                           <img
+                              className={styles.preview}
+                              src={avatarUrl}
+                              alt="foto do produto"
+                              width={120}
+                              height={100}
+                           />
+                        )}
+                     </label>
+                  </div>
+               </div>
+               <div className={styles.div_input}>
+                  <InputModal placeholder="Título" />
+                  <InputModal placeholder="Tags" />
+                  <InputModal placeholder="Link" />
+                  <TextArea placeholder="Descrição" />
                </div>
             </div>
-            <div>
-               <Input />
-               <Input />
-               <Input />
-               <Input />
+            <div className={styles.div_button}>
+               <p>Visualizar publicação</p>
+               <div className={styles.div_buttons}>
+                  <Button>SALVAR</Button>
+                  <Button>CANCELAR</Button>
+               </div>
             </div>
-         </div>
-         <div>
-            <p>Visualizar publicação</p>
-            <div>
-               <Button>SALVAR</Button>
-               <Button>CANCELAR</Button>
-            </div>
-         </div>
+         </form>
       </Modal>
    );
 }
