@@ -51,13 +51,13 @@ export function Dashboard() {
                   <span className={styles.picture__image}>
                      Adicione seu primeiro projeto
                   </span>
-                  <span className={styles.picture__image}>
+                  <span className={styles.picture__image2}>
                      Compartilhe seu talento com milhares de pessoas
                   </span>
                </div>
-               <div className={styles.complemento}></div>
+             {/*   <div className={styles.complemento}></div>
 
-               <div className={styles.complemento}></div>
+               <div className={styles.complemento}></div> */}
             </div>
          </div>
          {modalVisible && (
