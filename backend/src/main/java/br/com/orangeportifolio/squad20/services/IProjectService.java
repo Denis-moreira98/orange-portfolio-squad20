@@ -6,7 +6,7 @@ import br.com.orangeportifolio.squad20.model.Project;
 
 public interface IProjectService {
 	
-	public boolean save(Project novo);
+	public Project create(Project novo);
 	public boolean update(Project Project, Integer id);
 	public List<Project> findAll();
 	public List<Project> findByTag(String nome);
