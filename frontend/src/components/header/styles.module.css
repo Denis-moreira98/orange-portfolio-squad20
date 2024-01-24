@@ -3,6 +3,8 @@
 }
 
 .teste{
+   position: absolute;
+   /* z-index: 1; */
    background-color: red;
    width: 14.7rem;
    height: 15.5rem;
