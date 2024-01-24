@@ -7,12 +7,12 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
    className?: string;
 }
 
-export function Input({ label, icon, ...props }: InputProps) {
+export function Input({ label, icon, className, ...props }: InputProps) {
    return (
       <div className={styles.container}>
          <label htmlFor="input">{label}</label>
          {icon}
-         <input {...props} id="input" />
+         <input {...props} id="input" className={className} />
       </div>
    );
 }
