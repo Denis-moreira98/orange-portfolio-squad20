@@ -1,5 +1,7 @@
 package br.com.orangeportifolio.squad20.model;
 
+import javax.swing.Spring;
+
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -33,12 +35,18 @@ public class Project {
 	@Column(name = "tags", length = 50)
 	private String tags;
 	
+	@NotBlank
+	@NotNull
 	@Column(name = "link_project", length = 255)
 	private String linkProject;
 	
 	@Length(max = 500)
 	@Column(name = "description", length = 500)
 	private String description;
+	
+	@NotNull
+	@Column(name = "midia")
+	private Spring midia;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_project")
