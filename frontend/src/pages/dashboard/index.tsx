@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
-import { FaImages } from "react-icons/fa";
 
+import { FaImages } from "react-icons/fa";
 
 
 
@@ -53,7 +53,9 @@ export function Dashboard() {
       />
       <div className={styles.containerproj}>
         <div className={styles.adicionar}>
-        <FaImages />
+      
+          <FaImages style={{ color: "#323232" }}
+            className={styles.iconedashboard}/>
 
           <span className={styles.picture__image}>
             Adicione seu primeiro projeto

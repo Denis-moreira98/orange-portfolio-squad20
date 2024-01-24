@@ -1,7 +1,4 @@
-.containerdashboard {
-  width: 1280px;
-  height: 832px;
-}
+
 .perfil {
   display: flex;
   align-items: center;
@@ -82,7 +79,7 @@ border-radius: 3px;
 
 
 .iconedashboard {
- 
+  width: 30px;
   height: 30px;
 }
 
