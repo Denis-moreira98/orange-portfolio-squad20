@@ -1,7 +1,6 @@
 import styles from "./styles.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImages } from "@fortawesome/free-solid-svg-icons";
-/* import React, { useState } from "react"; */
+import { FaImages } from "react-icons/fa";
+
 
 
 
@@ -54,11 +53,8 @@ export function Dashboard() {
       />
       <div className={styles.containerproj}>
         <div className={styles.adicionar}>
-          <FontAwesomeIcon
-            icon={faImages}
-            style={{ color: "#000000" }}
-            className={styles.iconedashboard}
-          />
+        <FaImages />
+
           <span className={styles.picture__image}>
             Adicione seu primeiro projeto
           </span>
