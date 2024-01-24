@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23/01/2024 às 21:42
+-- Tempo de geração: 24/01/2024 às 03:33
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.1.25
 
@@ -45,6 +45,7 @@ CREATE TABLE `project` (
 CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
   `name` varchar(75) NOT NULL,
+  `country` varchar(20) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
