@@ -8,14 +8,13 @@
    color: white;
    font-size: 1rem;
    font-weight: 500;
-   transition: 0.7s;
+   transition: 0.5s;
    cursor: pointer;
+   width: 100%;
+}
+.button:hover {
+   opacity: 80%;
    -webkit-box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.48);
    -moz-box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.48);
    box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.48);
-   width: 100%;
-}
-
-.button:hover {
-   background-color: var(--secondary-90);
 }

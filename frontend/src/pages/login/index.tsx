@@ -30,18 +30,12 @@ export function Login() {
             <div className={styles.form}>
                <h4>Faça Login com email</h4>
                <form>
-                  <Input
-                     label="Email address"
-                     type="email"
-                     placeholder="Digite seu email"
-                     required
-                  />
+                  <Input label="Email address" type="email" required />
                   <Input
                      label="Password"
                      type={mostrarSenha ? "text" : "password"}
                      name="senha"
                      value={senha}
-                     placeholder="Digite sua senha"
                      onChange={handleInputChange}
                      required
                   />

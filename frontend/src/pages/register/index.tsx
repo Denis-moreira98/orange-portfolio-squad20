@@ -29,31 +29,15 @@ export function Register() {
             <div className={styles.form}>
                <form>
                   <div className={styles.name}>
-                     <Input
-                        label="Nome*"
-                        type="text"
-                        placeholder="Digite seu nome"
-                        required
-                     />
-                     <Input
-                        label="Sobrenome*"
-                        type="text"
-                        placeholder="Digite seu sobrenome"
-                        required
-                     />
+                     <Input label="Nome*" type="text" required />
+                     <Input label="Sobrenome*" type="text" required />
                   </div>
-                  <Input
-                     label="Email address"
-                     type="email"
-                     placeholder="Digite seu email"
-                     required
-                  />
+                  <Input label="Email address" type="email" required />
                   <Input
                      label="Password"
                      type={mostrarSenha ? "text" : "password"}
                      name="senha"
                      value={senha}
-                     placeholder="Digite sua senha"
                      onChange={handleInputChange}
                      required
                   />
