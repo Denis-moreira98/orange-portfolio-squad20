@@ -1,8 +1,10 @@
 package br.com.orangeportifolio.squad20.services;
 
 import br.com.orangeportifolio.squad20.model.User;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 public interface IUserService {
-	public User create(User user);
-	public User findById(Integer id);
+	public User create(@Valid User user);
+	public User findById(@NotNull Integer id);
 }

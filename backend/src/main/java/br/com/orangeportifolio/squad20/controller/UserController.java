@@ -26,7 +26,7 @@ public class UserController {
     @Autowired
     private IUserService userService;
     
-	@PostMapping
+	@PostMapping("/")
 	public ResponseEntity<User> create(@RequestBody @Valid @NotNull User user) {
 		if(userService.create(user) != null) {
 			return ResponseEntity.ok(user);
