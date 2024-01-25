@@ -9,6 +9,6 @@ public interface IProjectService {
 	public Project create(Project novo);
 	public boolean update(Project Project, Integer id);
 	public List<Project> findAll();
-	public List<Project> findByTag(String nome);
+	public List<Project> findByTags(String nome);
 	public boolean delete(Integer id);
 }
