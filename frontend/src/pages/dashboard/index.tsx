@@ -53,7 +53,7 @@ export function Dashboard() {
               className={styles.buttondashboardd}
               onClick={handleOpenModal}
             >
-              <FaImages />
+              <FaImages className={styles.iconedashboard} />
             </button>
             <div className={styles.containerp}>
               <p className={styles.picture__image}>
