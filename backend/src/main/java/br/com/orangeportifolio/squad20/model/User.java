@@ -27,6 +27,11 @@ public class User {
 	@Column(name = "id_user")
 	private Integer idUser;
 	
+	@NotNull
+	@Length(max = 600)
+	@Column(name = "photo_profile")
+	private String photoProfile;
+	
 	@NotBlank
 	@NotNull
 	@Length(min = 3, max = 75)
@@ -61,6 +66,14 @@ public class User {
 
 	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
+	}
+	
+	public String getPhotoProfile() {
+		return photoProfile;
+	}
+
+	public void setPhotoProfile(String photoProfile) {
+		this.photoProfile = photoProfile;
 	}
 
 	public String getName() {

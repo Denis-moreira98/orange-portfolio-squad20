@@ -45,8 +45,9 @@ public class Project {
 	private String description;
 	
 	@NotNull
+	@Length(max = 500)
 	@Column(name = "midia")
-	private Spring midia;
+	private String midia;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_project")

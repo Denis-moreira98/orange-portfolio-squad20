@@ -2,7 +2,10 @@ package br.com.orangeportifolio.squad20.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +19,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Validated
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping("/user")
 public class UserController {
 
     //Injeção de dependência para instanciar
@@ -25,8 +28,19 @@ public class UserController {
     
 	@PostMapping
 	public ResponseEntity<User> create(@RequestBody @Valid @NotNull User user) {
-
-		return
-		
+		if(userService.create(user) != null) {
+			return ResponseEntity.ok(user);
+		}
+		return ResponseEntity.badRequest().build();
 	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<User> findById(@PathVariable @NotNull Integer id){
+		User res = userService.findById(id);
+		if (res != null) {
+			return ResponseEntity.ok(res);
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
 }
