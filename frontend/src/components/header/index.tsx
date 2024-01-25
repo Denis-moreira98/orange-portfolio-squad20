@@ -12,23 +12,10 @@ export function Header() {
    const [menuOpen, setMenuOpen] = useState<boolean>(false);
    const menuRef = useRef(null);
 
-   useEffect(() => {
-      //    window.addEventListener('resize', () => {
-      //       if(window.innerWidth >= 800) {
-      //          // fecha o menu se a largura da janela for maior ou igual a 800px
-      //          setMenuOpen(false);
-      //       }         
-      //    })
-      // }, []);  
-
-
-   }, []);
-
    const toggleMenu = () => {
       setMenuOpen(!menuOpen);
    };
-
-
+   
    return (
       <>
          <div>
