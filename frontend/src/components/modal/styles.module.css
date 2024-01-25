@@ -28,12 +28,8 @@
 }
 
 .div_file {
-   width: 389px;
+   width: 400px;
    background-color: var(--neutral-70);
-
-   display: flex;
-   align-items: center;
-   justify-content: center;
 }
 
 .div_input {
@@ -41,7 +37,8 @@
    height: 336px;
    display: flex;
    flex-direction: column;
-   gap: 1.4rem;
+
+   gap: 14px;
 }
 
 .div_input input {
@@ -69,8 +66,10 @@
 }
 
 .labelAvatar {
+   top: 8.8rem;
+
    width: 389px;
-   height: 303px;
+   height: 300px;
    background-color: var(--neutral-70);
    margin-bottom: 1rem;
    border-radius: 0.3rem;
