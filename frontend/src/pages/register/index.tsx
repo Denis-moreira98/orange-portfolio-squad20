@@ -64,7 +64,9 @@ export function Register() {
                   >
                      {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
                   </button>
-                  <Button className={styles.btnRegister}>CADASTRAR</Button>
+                  <Button variant="orange" className={styles.btnRegister}>
+                     CADASTRAR
+                  </Button>
                </form>
             </div>
          </div>

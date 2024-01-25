@@ -1,0 +1,21 @@
+.input {
+   height: 3.9rem;
+   border: 0;
+   border-radius: 4px;
+   background-color: transparent;
+   box-shadow: var(--primary-100);
+   color: var(--neutral-100);
+   padding: 1rem;
+   border: 2px solid #ccc;
+   overflow: hidden;
+}
+
+input textarea {
+   width: 100%;
+   min-height: 139px;
+   resize: none;
+   padding: 0.5rem 0.5rem;
+}
+/* .input::placeholder {
+   color: var(--neutral-130);
+} */

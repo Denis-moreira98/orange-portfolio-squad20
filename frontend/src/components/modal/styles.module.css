@@ -1,0 +1,101 @@
+.div_container {
+   width: 100%;
+   margin-bottom: 1rem;
+
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+.div_container h4 {
+   color: var(--neutral-110);
+   margin-bottom: 1rem;
+}
+.content {
+   color: var(--neutral-100);
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   gap: 2rem;
+}
+.content p {
+   font-size: 16px;
+   font-weight: 400;
+   margin-bottom: 0.8rem;
+}
+.div_text {
+   display: flex;
+   flex-direction: column;
+}
+
+.div_file {
+   width: 400px;
+   background-color: var(--neutral-70);
+}
+
+.div_input {
+   width: 413px;
+   height: 336px;
+   display: flex;
+   flex-direction: column;
+
+   gap: 14px;
+}
+
+.div_input input {
+   height: 4rem;
+   width: 100%;
+}
+
+.div_input textarea {
+   width: 100%;
+   min-height: 139px;
+   resize: none;
+   padding: 0.5rem 0.5rem;
+}
+
+.div_button p {
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+}
+.div_buttons {
+   display: flex;
+   flex-direction: row;
+
+   width: 30%;
+   gap: 16px;
+}
+
+.labelAvatar {
+   top: 8.8rem;
+
+   width: 389px;
+   height: 300px;
+   background-color: var(--neutral-70);
+   margin-bottom: 1rem;
+   border-radius: 0.3rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+}
+
+.labelAvatar input {
+   display: none;
+}
+.labelAvatar span {
+   z-index: 99;
+   position: absolute;
+   opacity: 0.7;
+   transition: all 0.5s;
+}
+.labelAvatar span:hover {
+   opacity: 1;
+   transform: scale(1.1);
+}
+
+.preview {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   border-radius: 0.3rem;
+}

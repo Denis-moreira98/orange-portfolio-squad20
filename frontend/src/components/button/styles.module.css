@@ -9,7 +9,6 @@
    font-size: 1rem;
    font-weight: 500;
    transition: 0.7s;
-   background: var(--secondary-100);
    cursor: pointer;
    -webkit-box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.48);
    -moz-box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.48);
