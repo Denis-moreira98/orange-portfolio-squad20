@@ -1,10 +1,11 @@
 import Modal from "react-modal";
-import { FiUpload, FiX } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 import styles from "./styles.module.css";
 
 import { Button } from "../button";
 import InputModal, { TextArea } from "./input/index";
 import { ChangeEvent, useState } from "react";
+import { FaImages } from "react-icons/fa";
 
 interface ModalProps {
    isOpen: boolean;
@@ -72,7 +73,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                   <div className={styles.div_file}>
                      <label className={styles.labelAvatar}>
                         <span>
-                           <FiUpload size={30} color="#FFF" />
+                           <FaImages size={35} color="#323232" />
                         </span>
                         <input
                            type="file"
@@ -102,8 +103,10 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
             <div className={styles.div_button}>
                <p>Visualizar publicação</p>
                <div className={styles.div_buttons}>
-                  <Button>SALVAR</Button>
-                  <Button>CANCELAR</Button>
+                  <Button variant="orange">SALVAR</Button>
+                  <Button variant="gray" style={{ color: "#818388" }}>
+                     CANCELAR
+                  </Button>
                </div>
             </div>
          </form>

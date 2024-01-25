@@ -52,7 +52,7 @@ export function Login() {
                   >
                      {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
                   </button>
-                  <Button>ENTRAR</Button>
+                  <Button variant="orange">ENTRAR</Button>
                </form>
                <Link to="/register">
                   <p>Cadastre-se</p>
