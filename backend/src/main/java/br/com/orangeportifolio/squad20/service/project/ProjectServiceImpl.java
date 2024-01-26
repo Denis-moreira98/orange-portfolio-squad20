@@ -7,9 +7,11 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.orangeportifolio.squad20.dao.IProjectDAO;
 import br.com.orangeportifolio.squad20.model.Project;
+import br.com.orangeportifolio.squad20.service.midia.IFotoStorageService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -20,11 +22,30 @@ public class ProjectServiceImpl implements IProjectService{
 	
 	@Autowired
 	private IProjectDAO dao;
+	
+	@Autowired
+	private IFotoStorageService uploadService;
+
 
 	@Override
-	public Project create(@Valid @NotNull Project novo) {
-		return dao.save(novo);
+	public Project create(@Valid @NotNull Project project, MultipartFile file) {
+	    try {
+	        // Fazendo o upload do arquivo e obtendo o nome do arquivo
+	        String fileName = uploadService.uploadLocalFile(file);
+
+	        // Configurando o nome do arquivo na mídia do projeto
+	        project.setMidia(fileName);
+
+	        // Salvando o projeto
+	        return dao.save(project);
+	        
+	    } catch (Exception e) {
+	        // Tratando a exceção
+	        System.err.println("Ocorreu um erro ao criar o projeto: " + e.getMessage());
+	        return null;
+	    }
 	}
+
 
 	@Override
 	public boolean update(@Valid @NotNull Project project, @NotNull @Positive Integer id) {

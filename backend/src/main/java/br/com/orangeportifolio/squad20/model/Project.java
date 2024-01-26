@@ -1,7 +1,5 @@
 package br.com.orangeportifolio.squad20.model;
 
-import javax.swing.Spring;
-
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -13,7 +11,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -36,8 +33,6 @@ public class Project {
 	@Column(name = "tags", length = 50)
 	private String tags;
 	
-	@NotBlank
-	@NotNull
 	@Column(name = "link_project", length = 255)
 	private String linkProject;
 	
@@ -50,9 +45,10 @@ public class Project {
 	@JsonIgnoreProperties("projects")
 	private User userProject;
 	
-	 @OneToOne
-	 @JoinColumn(name = "id_midia")  // Nome da coluna que armazenará a chave estrangeira para Midia
-	 private Midia midia;
+//	@OneToOne
+//	@JoinColumn(name = "id_midia")
+	@Column(name = "midia")
+	private String midia;
 	
 	//GET E SET
 	
@@ -92,10 +88,10 @@ public class Project {
 	public void setUserProject(User userProject) {
 		this.userProject = userProject;
 	}
-	public Midia getMidia() {
+	public String getMidia() {
 		return midia;
 	}
-	public void setMidia(Midia midia) {
+	public void setMidia(String midia) {
 		this.midia = midia;
 	}	
 }

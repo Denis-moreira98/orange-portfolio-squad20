@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import br.com.orangeportifolio.squad20.dao.IProjectDAO;
 import br.com.orangeportifolio.squad20.model.Project;
 import br.com.orangeportifolio.squad20.service.project.IProjectService;
 import jakarta.validation.Valid;
@@ -31,8 +31,10 @@ public class ProjectController {
     private IProjectService projectService;
 
     @PostMapping("/")
-    public ResponseEntity<Project> create(@RequestBody @Valid @NotNull Project project) {
-        if(projectService.create(project) != null) {
+    public ResponseEntity<Project> create(@RequestPart("project") @Valid @NotNull Project project, 
+    										@RequestParam("file") @NotNull MultipartFile file) {
+       
+    	if(projectService.create(project, file) != null) {
             return ResponseEntity.ok(project);
         }
         return ResponseEntity.badRequest().build();
