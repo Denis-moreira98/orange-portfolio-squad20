@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -44,22 +45,21 @@ public class Project {
 	@Column(name = "description", length = 500)
 	private String description;
 	
-	@NotNull
-	@Length(max = 500)
-	@Column(name = "midia")
-	private String midia;
-	
 	@ManyToOne
 	@JoinColumn(name = "user_project")
 	@JsonIgnoreProperties("projects")
 	private User userProject;
+	
+	 @OneToOne
+	 @JoinColumn(name = "id_midia")  // Nome da coluna que armazenará a chave estrangeira para Midia
+	 private Midia midia;
 	
 	//GET E SET
 	
 	public Integer getIdProject() {
 		return idProject;
 	}
-	public void setIdPproject(Integer idProject) {
+	public void setIdProject(Integer idProject) {
 		this.idProject = idProject;
 	}
 	public String getTitle() {
@@ -92,4 +92,10 @@ public class Project {
 	public void setUserProject(User userProject) {
 		this.userProject = userProject;
 	}
+	public Midia getMidia() {
+		return midia;
+	}
+	public void setMidia(Midia midia) {
+		this.midia = midia;
+	}	
 }
