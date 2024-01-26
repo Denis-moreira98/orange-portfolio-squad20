@@ -22,7 +22,6 @@ import jakarta.validation.constraints.NotNull;
 @RequestMapping("/user")
 public class UserController {
 
-    //Injeção de dependência para instanciar
     @Autowired
     private IUserService userService;
     
