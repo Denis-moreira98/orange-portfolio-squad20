@@ -1,4 +1,4 @@
-package br.com.orangeportifolio.squad20.services;
+package br.com.orangeportifolio.squad20.service.user;
 
 import br.com.orangeportifolio.squad20.model.User;
 import jakarta.validation.Valid;

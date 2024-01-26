@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.orangeportifolio.squad20.dao.IUsersDAO;
 import br.com.orangeportifolio.squad20.model.User;
-import br.com.orangeportifolio.squad20.services.IUserService;
+import br.com.orangeportifolio.squad20.service.user.IUserService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 

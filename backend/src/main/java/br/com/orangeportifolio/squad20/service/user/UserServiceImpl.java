@@ -1,4 +1,4 @@
-package br.com.orangeportifolio.squad20.services;
+package br.com.orangeportifolio.squad20.service.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

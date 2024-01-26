@@ -1,4 +1,4 @@
-package br.com.orangeportifolio.squad20.services;
+package br.com.orangeportifolio.squad20.service.project;
 
 import java.util.List;
 import java.util.Optional;

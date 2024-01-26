@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.orangeportifolio.squad20.dao.IProjectDAO;
 import br.com.orangeportifolio.squad20.model.Project;
-import br.com.orangeportifolio.squad20.services.IProjectService;
+import br.com.orangeportifolio.squad20.service.project.IProjectService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
