@@ -8,5 +8,5 @@ import br.com.orangeportifolio.squad20.model.Project;
 
 public interface IProjectDAO extends JpaRepository<Project, Integer> {
 	
-	public List<Project> findByTags(String tag);
+	public List<Project> findByTagsContaining(String tag);
 }

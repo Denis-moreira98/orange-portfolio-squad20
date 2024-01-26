@@ -21,11 +21,11 @@ import jakarta.validation.constraints.NotNull;
 public class UserController {
 
     @Autowired
-    private IUserService userService;
+    private IUserService service;
     
 	@PostMapping("/")
 	public ResponseEntity<User> create(@RequestBody @Valid @NotNull User user) {
-		if(userService.create(user) != null) {
+		if(service.create(user) != null) {
 			return ResponseEntity.ok(user);
 		}
 		return ResponseEntity.badRequest().build();
@@ -33,7 +33,7 @@ public class UserController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<User> findById(@PathVariable @NotNull Integer id){
-		User res = userService.findById(id);
+		User res = service.findById(id);
 		if (res != null) {
 			return ResponseEntity.ok(res);
 		}

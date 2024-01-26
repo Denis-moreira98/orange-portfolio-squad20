@@ -61,8 +61,8 @@ public class ProjectController {
     }
 
     @GetMapping("/{tag}")
-    public ResponseEntity<List<Project>> findByTags(@PathVariable String tag) {
-        List<Project> listProj = service.findByTags(tag);
+    public ResponseEntity<List<Project>> findByTagsContaining(@PathVariable String tag) {
+        List<Project> listProj = service.findByTagsContaining(tag);
         if (listProj != null) {
             return ResponseEntity.ok(listProj);
         }

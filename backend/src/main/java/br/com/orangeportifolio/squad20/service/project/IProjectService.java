@@ -16,6 +16,6 @@ public interface IProjectService {
 	public boolean update(@Valid @NotNull Project project, @NotNull @Positive Integer id);
 	public List<Project> findAll();
 	public Project findById(@NotNull @Positive Integer id);
-	public List<Project> findByTags(String nome);
+	public List<Project> findByTagsContaining(String nome);
 	public boolean delete(@NotNull @Positive Integer id);
 }

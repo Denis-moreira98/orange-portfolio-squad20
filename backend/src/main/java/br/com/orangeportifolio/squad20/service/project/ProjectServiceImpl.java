@@ -71,8 +71,8 @@ public class ProjectServiceImpl implements IProjectService{
 	}
 
 	@Override
-	public List<Project> findByTags(String nome) {
-		return dao.findByTags(nome);
+	public List<Project> findByTagsContaining(String nome) {
+		return dao.findByTagsContaining(nome);
 	}
 
 	@Override

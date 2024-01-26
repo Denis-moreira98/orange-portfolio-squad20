@@ -24,7 +24,6 @@ public class LocalFotoStorageServiceImpl implements IFotoStorageService{
 
 	        String uniqueFileName = generateUniqueFileName(image.getOriginalFilename());
 
-	        //Path path = Paths.get(pathImage + File.separator + uniqueFileName);
 	        File dir = new File(pathImage);
 	        
 	        // Crie o diretório se ele não existir
