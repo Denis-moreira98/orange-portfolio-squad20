@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -28,46 +30,52 @@ import jakarta.validation.constraints.NotNull;
 public class ProjectController {
 
     @Autowired
-    private IProjectService projectService;
+    private IProjectService service;
 
     @PostMapping("/")
     public ResponseEntity<Project> create(@RequestPart("project") @Valid @NotNull Project project, 
     										@RequestParam("file") @NotNull MultipartFile file) {
        
-    	if(projectService.create(project, file) != null) {
+    	if(service.create(project, file) != null) {
             return ResponseEntity.ok(project);
         }
         return ResponseEntity.badRequest().build();
     }
 
-    // @PutMapping("/project/{id}")
-    // public ResponseEntity<Project> update(@RequestBody @Valid @NotNull Project project, @PathVariable Integer id) {
-    //     project.setIdPproject(id);
-    //     Project upProject = projectService.updateProject(project);
-    //     if (upProject != null) {
-    //         return ResponseEntity.ok(upProject);
-    //     }
-    //     return ResponseEntity.badRequest().build();
-    // }
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<Project> update(@RequestBody Project project, @PathVariable Integer id){
 
-    @GetMapping("/projects")
-    public ResponseEntity<List<Project>> findAll() {
-        return ResponseEntity.ok(projectService.findAll());
+        if(service.update(project, id)) {
+            return ResponseEntity.ok(project);
+        }
+        return ResponseEntity.badRequest().build();
     }
 
-    @GetMapping(value = "/{tag}")
+    @GetMapping("/all")
+    public ResponseEntity<List<Project>> findAll() {
+        List<Project> list = service.findAll();
+        if(list.size() > 0) {
+            return ResponseEntity.ok(service.findAll());
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/{tag}")
     public ResponseEntity<List<Project>> findByTags(@PathVariable String tag) {
-        List<Project> listProj = projectService.findByTags(tag);
+        List<Project> listProj = service.findByTags(tag);
         if (listProj != null) {
             return ResponseEntity.ok(listProj);
         }
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/project/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable Integer id) {
-        projectService.delete(id);
-        return null;
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Project> delete(@PathVariable Integer id) {
+        Project res = service.findById(id);
+        if(res != null) { 
+            service.delete(id);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
-
 }

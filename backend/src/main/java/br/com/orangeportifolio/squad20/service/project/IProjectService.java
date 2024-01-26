@@ -15,6 +15,7 @@ public interface IProjectService {
 	public Project create(@Valid @NotNull Project project, @RequestParam("file") MultipartFile file);
 	public boolean update(@Valid @NotNull Project project, @NotNull @Positive Integer id);
 	public List<Project> findAll();
+	public Project findById(@NotNull @Positive Integer id);
 	public List<Project> findByTags(String nome);
 	public boolean delete(@NotNull @Positive Integer id);
 }

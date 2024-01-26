@@ -61,6 +61,11 @@ public class ProjectServiceImpl implements IProjectService{
 	}
 
 	@Override
+	public Project findById(@NotNull @Positive Integer id) {
+		return dao.findById(id).orElse(null);
+	}
+
+	@Override
 	public List<Project> findAll() {
 		return dao.findAll();
 	}
@@ -80,4 +85,5 @@ public class ProjectServiceImpl implements IProjectService{
 		System.err.println("Ocorreu um erro ao excluir o projeto!");
 		return false;
 	}
+
 }
