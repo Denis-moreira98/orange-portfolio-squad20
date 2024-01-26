@@ -68,7 +68,7 @@ public class ProjectController {
         }
         return ResponseEntity.notFound().build();
     }
-
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<Project> delete(@PathVariable Integer id) {
         Project res = service.findById(id);

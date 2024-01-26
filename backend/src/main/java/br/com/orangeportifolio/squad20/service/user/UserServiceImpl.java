@@ -18,7 +18,11 @@ public class UserServiceImpl implements IUserService{
 
 	@Override
 	public User create(@Valid User user) {
-		return dao.save(user);
+		if(dao.findByEmail(user.getEmail()) == null) {
+			return dao.save(user);
+		}
+		System.err.println("Usuário já existe no banco de dados!");
+		return null;
 	}
 
 	@Override

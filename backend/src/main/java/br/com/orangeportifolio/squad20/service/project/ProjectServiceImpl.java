@@ -26,7 +26,6 @@ public class ProjectServiceImpl implements IProjectService{
 	@Autowired
 	private IFotoStorageService uploadService;
 
-
 	@Override
 	public Project create(@Valid @NotNull Project project, MultipartFile file) {
 	    try {
@@ -45,7 +44,6 @@ public class ProjectServiceImpl implements IProjectService{
 	        return null;
 	    }
 	}
-
 
 	@Override
 	public boolean update(@Valid @NotNull Project project, @NotNull @Positive Integer id) {
@@ -85,5 +83,4 @@ public class ProjectServiceImpl implements IProjectService{
 		System.err.println("Ocorreu um erro ao excluir o projeto!");
 		return false;
 	}
-
 }
