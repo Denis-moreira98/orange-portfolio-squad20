@@ -59,6 +59,7 @@ export function ModalPreview({ isOpen, onRequestClose, image }: ModalProps) {
                <FiX size={30} color="#323232" />
             </button>
             <div className={styles.container}>
+               <h3 className={styles.div_h3}>Ecommerce One Page</h3>
                <div className={styles.content}>
                   <div className={styles.info}>
                      <img src={ImgPerfil} alt="perfil" />
@@ -73,8 +74,10 @@ export function ModalPreview({ isOpen, onRequestClose, image }: ModalProps) {
                      <Label>WEB</Label>
                   </div>
                </div>
-               <div className={styles.project}>
+               <div className={styles.div_img}>
                   <img src={image} alt="projeto" />
+               </div>
+               <div className={styles.project}>
                   <p>
                      Temos o prazer de compartilhar com vocês uma variação da
                      nosso primeiro recurso gratuito, Monoceros. É um modelo de
