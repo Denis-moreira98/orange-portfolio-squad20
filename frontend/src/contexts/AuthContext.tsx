@@ -1,7 +1,6 @@
 import { createContext, ReactNode, useState, useEffect } from "react";
 import { destroyCookie, setCookie, parseCookies } from "nookies";
 
-import {} from "react-dom";
 import { api } from "../services/apiClient";
 import { redirect } from "react-router-dom";
 
