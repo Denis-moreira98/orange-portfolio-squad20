@@ -2,6 +2,8 @@ package br.com.orangeportifolio.squad20.model;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -12,6 +14,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name="users")
@@ -22,13 +28,26 @@ public class User {
 	@Column(name = "id_user")
 	private Integer idUser;
 	
-	@Column(name = "name")
+	@NotBlank
+	@NotNull
+	@Length(min = 3, max = 75)
+	@Column(name = "name", length = 75)
 	private String name;
 	
-	@Column(name = "email")
+	@NotBlank
+	@NotNull
+	@Length(min = 5, max = 20)
+	@Column(name = "country", length = 20)
+	private String country;
+	
+	@NotNull
+	@Email(message = "Email não é válido")
+	@Column(name = "email", length = 45, nullable = false)
 	private String email;
 	
-	@Column(name = "password")
+	@NotNull
+	@Length(min = 5, max = 75)
+	@Column(name = "password", length = 45, nullable = false)
 	private String  password;
 	
 	@OneToMany(mappedBy = "userProject", cascade = CascadeType.ALL)
@@ -53,6 +72,14 @@ public class User {
 		this.name = name;
 	}
 
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -61,13 +88,19 @@ public class User {
 		this.email = email;
 	}
 
-	public String  getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String  password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}	
 }
