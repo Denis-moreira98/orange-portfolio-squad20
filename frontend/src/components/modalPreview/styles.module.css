@@ -1,0 +1,155 @@
+.container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+
+   margin-top: 3rem;
+}
+.div_h3 {
+   display: none;
+}
+
+.content {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   width: 100%;
+   margin-bottom: 36px;
+
+   gap: 3rem;
+}
+.container h3 {
+   color: var(--neutral-120);
+   font-size: 25px;
+   font-weight: 400;
+}
+.info {
+   display: flex;
+   flex-direction: row;
+}
+
+.info img {
+   border-radius: 50%;
+   margin-right: 8px;
+   height: 50px;
+   width: 50px;
+}
+
+.nome {
+   display: flex;
+   flex-direction: column;
+   gap: 0.8rem;
+}
+.nome p {
+   font-size: 16px;
+   font-weight: 600;
+   color: var(--neutral-120);
+}
+.nome span {
+   font-size: 16px;
+   font-weight: 400;
+   color: var(--neutral-110);
+}
+.tag {
+   display: flex;
+   flex-direction: row;
+   gap: 0.2rem;
+}
+
+.project {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 2rem;
+}
+.div_img {
+   width: 100%;
+}
+.div_img img {
+   width: 100%;
+   height: auto;
+   max-height: 480px;
+   object-fit: cover;
+
+   margin-bottom: 1rem;
+}
+
+.link {
+   width: 100%;
+   text-align: left;
+   color: var(--neutral-120);
+   size: 16px;
+   font-weight: 400;
+}
+
+@media screen and (max-width: 510px) {
+   .container h3 {
+      font-size: 18px;
+   }
+   .info img {
+      height: 38px;
+      width: 38px;
+   }
+   .nome {
+      gap: 0.3rem;
+   }
+   .nome p {
+      font-size: 12px;
+   }
+   .nome span {
+      font-size: 12px;
+   }
+}
+
+@media screen and (max-width: 440px) {
+   .div_h3 {
+      display: block;
+      margin-bottom: 1rem;
+   }
+   .div_img {
+      order: 1;
+   }
+   .content {
+      order: 2;
+   }
+   .project {
+      order: 3;
+   }
+
+   .info img {
+      height: 38px;
+      width: 38px;
+   }
+   .content h3 {
+      display: none;
+   }
+   .container {
+      width: 310px;
+   }
+   .container h3 {
+      font-size: 24px;
+      font-weight: 500;
+   }
+   .info img {
+      height: 39px;
+      width: 39px;
+   }
+   .nome {
+      gap: 0.2rem;
+   }
+   .nome p {
+      font-size: 16px;
+   }
+   .nome span {
+      font-size: 13px;
+   }
+   .project p {
+      font-size: 16px;
+   }
+
+   .link {
+      font-size: 16px;
+   }
+}

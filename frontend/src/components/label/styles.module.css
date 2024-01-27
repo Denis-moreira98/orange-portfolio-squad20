@@ -1,0 +1,23 @@
+.label {
+   height: 35px;
+   flex-grow: 1;
+   padding: 9px 10px 10px 10px;
+   text-align: center;
+   background-color: var(--neutral-70);
+   border-radius: 30%;
+   color: var(--neutral-120);
+   font-weight: 400;
+   font-size: 14px;
+   transition: all 0.5s;
+}
+
+.label:hover {
+   font-weight: 700;
+}
+
+@media screen and (max-width: 420px) {
+   .label {
+      font-size: 12px;
+      height: 28px;
+   }
+}
