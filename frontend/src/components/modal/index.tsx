@@ -3,10 +3,10 @@ import styles from "./styles.module.css";
 
 import { Button } from "../button";
 import InputModal, { TextArea } from "./input/index";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { FaImages } from "react-icons/fa";
 
-// import { ModalView } from "../modalView";
+import { ModalPreview } from "../modalPreview";
 
 interface ModalProps {
    isOpen: boolean;
@@ -14,18 +14,18 @@ interface ModalProps {
 }
 
 export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
-   // const [modalVisible, setModalVisible] = useState(false);
+   const [modalVisible, setModalVisible] = useState(false);
 
-   // function handleOpenModal(e: FormEvent) {
-   //    e.preventDefault();
+   function handleOpenModal(e: FormEvent) {
+      e.preventDefault();
 
-   //    setTimeout(() => {
-   //       setModalVisible(true);
-   //    }, 800);
-   // }
-   // function handleCloseModal() {
-   //    setModalVisible(false);
-   // }
+      setTimeout(() => {
+         setModalVisible(true);
+      }, 800);
+   }
+   function handleCloseModal() {
+      setModalVisible(false);
+   }
 
    const [avatarUrl, setAvatarUrl] = useState("");
    // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -107,7 +107,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                      <p>Visualizar publicação</p>
                      <div className={styles.div_buttons}>
                         <Button
-                           // onClick={handleOpenModal}
+                           onClick={handleOpenModal}
                            type="submit"
                            variant="orange"
                         >
@@ -127,13 +127,13 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                </form>
             </div>
          </Modal>
-         {/* {modalVisible && (
-            <ModalView
+         {modalVisible && (
+            <ModalPreview
                image={avatarUrl}
                isOpen={modalVisible}
                onRequestClose={handleCloseModal}
             />
-         )} */}
+         )}
       </>
    );
 }
