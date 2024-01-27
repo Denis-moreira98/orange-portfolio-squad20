@@ -8,8 +8,9 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const scheme = z.object({
    email: z
@@ -22,6 +23,8 @@ const scheme = z.object({
 type FormData = z.infer<typeof scheme>;
 
 export function Login() {
+   const { signIn } = useContext(AuthContext);
+
    const [mostrarSenha, setMostrarSenha] = useState(false);
    const [senha, setSenha] = useState("");
 
@@ -38,8 +41,13 @@ export function Login() {
       mode: "onChange",
    });
 
-   function onSubmit(data: FormData) {
-      console.log(data);
+   async function onSubmit(data: FormData) {
+      const dataUser = {
+         email: data.email,
+         password: data.password,
+      };
+
+      await signIn(dataUser);
    }
 
    return (
