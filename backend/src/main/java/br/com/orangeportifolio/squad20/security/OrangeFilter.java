@@ -2,7 +2,8 @@ package br.com.orangeportifolio.squad20.security;
 
 import java.io.IOException;
 
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import jakarta.servlet.FilterChain;
@@ -17,12 +18,21 @@ public class OrangeFilter extends OncePerRequestFilter{
 									HttpServletResponse response, 
 									FilterChain filterChain) throws ServletException, IOException {
 		
-		System.out.println("Requisição passou pelo filtro");
+		System.out.println("Requisição passou pelo OrangeFilter");
 		
 		if(request.getHeader("Authorization") != null) {
+			
 			Authentication auth = TokenUtil.decode(request);
+			
+			if(auth != null) {
+				SecurityContextHolder.getContext().setAuthentication(auth);
+				
+			}else {
+				response.setStatus(401);;
+				response.getWriter().println("Acesso nao autorizado!");
+				return;
+			}
 		}
-		
 		//Encaminhando a requisição para frente
 		filterChain.doFilter(request, response);
 
