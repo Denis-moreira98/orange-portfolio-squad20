@@ -2,12 +2,13 @@ import { Input } from "../../components/input";
 import styles from "./styles.module.css";
 import ImgCadastro from "../../assets/imgcadastro.png";
 import { Button } from "../../components/button";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const scheme = z.object({
    name: z.string().nonempty("O campo nome é obrigatório"),
@@ -25,6 +26,8 @@ const scheme = z.object({
 type FormData = z.infer<typeof scheme>;
 
 export function Register() {
+   const { signUp } = useContext(AuthContext);
+
    const [senha, setSenha] = useState("");
    const [mostrarSenha, setMostrarSenha] = useState(false);
 
@@ -41,8 +44,15 @@ export function Register() {
       mode: "onChange",
    });
 
-   function handleRegister(data: FormData) {
-      console.log(data);
+   async function handleRegister(data: FormData) {
+      const dataUser = {
+         name: data.name,
+         sobrenome: data.sobrenome,
+         email: data.email,
+         password: data.password,
+      };
+
+      await signUp(dataUser);
    }
 
    return (
