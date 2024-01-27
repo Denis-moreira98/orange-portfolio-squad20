@@ -1,6 +1,7 @@
 package br.com.orangeportifolio.squad20.service.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -18,7 +19,12 @@ public class UserServiceImpl implements IUserService{
 
 	@Override
 	public User create(@Valid User user) {
+		
 		if(dao.findByEmail(user.getEmail()) == null) {
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			String newPassword = encoder.encode(user.getPassword());
+			user.setPassword(newPassword);
+			
 			return dao.save(user);
 		}
 		System.err.println("Usuário já existe no banco de dados!");

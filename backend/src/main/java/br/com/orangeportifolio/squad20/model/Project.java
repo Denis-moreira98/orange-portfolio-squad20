@@ -45,8 +45,6 @@ public class Project {
 	@JsonIgnoreProperties("projects")
 	private User userProject;
 	
-//	@OneToOne
-//	@JoinColumn(name = "id_midia")
 	@Column(name = "midia")
 	private String midia;
 	

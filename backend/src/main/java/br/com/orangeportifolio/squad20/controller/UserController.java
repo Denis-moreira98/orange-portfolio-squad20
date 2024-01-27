@@ -14,6 +14,7 @@ import br.com.orangeportifolio.squad20.model.User;
 import br.com.orangeportifolio.squad20.service.user.IUserService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 @Validated
 @RestController
@@ -23,7 +24,7 @@ public class UserController {
     @Autowired
     private IUserService service;
     
-	@PostMapping("/")
+	@PostMapping("/new")
 	public ResponseEntity<User> create(@RequestBody @Valid @NotNull User user) {
 		if(service.create(user) != null) {
 			return ResponseEntity.ok(user);
@@ -32,7 +33,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<User> findById(@PathVariable @NotNull Integer id){
+	public ResponseEntity<User> findById(@PathVariable @NotNull @Positive Integer id){
 		User res = service.findById(id);
 		if (res != null) {
 			return ResponseEntity.ok(res);
