@@ -8,7 +8,7 @@ export function setupAPIClient(ctx = undefined) {
    const cookies = parseCookies(ctx);
 
    const api = axios.create({
-      baseURL: process.env.BASE_URL,
+      baseURL: "http://localhost:3333",
       headers: {
          Authorization: `Bearer ${cookies["@Squad20.token"]}`,
       },
