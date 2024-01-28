@@ -2,6 +2,7 @@ import { createContext, ReactNode, useState, useEffect } from "react";
 import { destroyCookie, setCookie, parseCookies } from "nookies";
 
 import { api } from "../services/apiClient";
+import toast from "react-hot-toast";
 
 type AuthContextData = {
    user: UserProps;
@@ -92,9 +93,33 @@ export function AuthProvider({ children }: AuthProviderProps) {
          //Passar para proximas requisições o token
          api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
-         alert("LOGADO COM SUCESSO");
+         toast.success("Logado com sucesso!", {
+            duration: 3000,
+            style: {
+               border: "1px solid rgba(58, 58, 58, 0.219)",
+               padding: "8px",
+               color: "#fff",
+               backgroundColor: "#2E7D32",
+            },
+            iconTheme: {
+               primary: "#fff",
+               secondary: "#2E7D32",
+            },
+         });
       } catch (err) {
-         // console.log("ERRO AO LOGAR!");
+         toast.error("Erro ao fazer o login!", {
+            duration: 3000,
+            style: {
+               border: "1px solid rgba(58, 58, 58, 0.219)",
+               padding: "8px",
+               color: "#fff",
+               backgroundColor: "#bb0000",
+            },
+            iconTheme: {
+               primary: "#fff",
+               secondary: "#bb0000",
+            },
+         });
       }
    }
 
@@ -110,8 +135,34 @@ export function AuthProvider({ children }: AuthProviderProps) {
          });
 
          console.log(response);
+         toast.success("Cadastrado com sucesso!", {
+            duration: 3000,
+            style: {
+               border: "1px solid rgba(58, 58, 58, 0.219)",
+               padding: "8px",
+               color: "#fff",
+               backgroundColor: "#2E7D32",
+            },
+            iconTheme: {
+               primary: "#fff",
+               secondary: "#2E7D32",
+            },
+         });
       } catch (err) {
          // console.log("erro ao deslogar");
+         toast.error("Erro ao fazer o login!", {
+            duration: 3000,
+            style: {
+               border: "1px solid rgba(58, 58, 58, 0.219)",
+               padding: "8px",
+               color: "#fff",
+               backgroundColor: "#bb0000",
+            },
+            iconTheme: {
+               primary: "#fff",
+               secondary: "#bb0000",
+            },
+         });
       }
    }
 
