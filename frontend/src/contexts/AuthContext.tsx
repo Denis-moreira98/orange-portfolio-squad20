@@ -2,7 +2,6 @@ import { createContext, ReactNode, useState, useEffect } from "react";
 import { destroyCookie, setCookie, parseCookies } from "nookies";
 
 import { api } from "../services/apiClient";
-import { redirect } from "react-router-dom";
 
 type AuthContextData = {
    user: UserProps;
@@ -38,7 +37,6 @@ export const AuthContext = createContext({} as AuthContextData);
 export function signOut() {
    try {
       destroyCookie(undefined, "@SQUAD20.token");
-      redirect("/");
    } catch {
       console.log("erro ao deslogar");
    }
@@ -85,7 +83,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
             maxAgr: 60 * 60 * 24 * 30, // expira em 1 mês
             path: "/", //Quais caminhos terão acesso ao cookies
          });
-
+         console.log(response.data);
          setUser({
             id,
             name,
@@ -94,8 +92,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
          //Passar para proximas requisições o token
          api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
-         //Redidecionar o user para /dashboard
-         redirect("/dashboard");
+         alert("LOGADO COM SUCESSO");
       } catch (err) {
          // console.log("ERRO AO LOGAR!");
       }
@@ -113,8 +110,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
          });
 
          console.log(response);
-
-         redirect("/");
       } catch (err) {
          // console.log("erro ao deslogar");
       }
