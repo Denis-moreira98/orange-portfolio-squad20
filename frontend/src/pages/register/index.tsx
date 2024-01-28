@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AuthContext } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const scheme = z.object({
    name: z.string().nonempty("O campo nome é obrigatório"),
@@ -26,6 +27,7 @@ const scheme = z.object({
 type FormData = z.infer<typeof scheme>;
 
 export function Register() {
+   const navigate = useNavigate();
    const { signUp } = useContext(AuthContext);
 
    const [senha, setSenha] = useState("");
@@ -53,6 +55,7 @@ export function Register() {
       };
 
       await signUp(dataUser);
+      navigate("/");
    }
 
    return (
