@@ -1,6 +1,7 @@
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { Dashboard } from "./pages/dashboard";
+import {Discover} from "./pages/discover";
 import { NotFound } from "./pages/notFound";
 
 import { createBrowserRouter } from "react-router-dom";
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
          {
             path: "/",
             element: <Dashboard />,
+         },
+         {
+            path: "/discover",
+            element: <Discover />,
          },
          {
             path: "*",
