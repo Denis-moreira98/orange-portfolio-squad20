@@ -1,22 +1,33 @@
 package br.com.orangeportifolio.squad20.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.orangeportifolio.squad20.model.User;
+import br.com.orangeportifolio.squad20.dto.UserDTO;
+import br.com.orangeportifolio.squad20.security.OrangeToken;
+import br.com.orangeportifolio.squad20.service.auth.IAuthService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 @Validated
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/auth")
 public class AuthController {
+	
+	@Autowired
+	IAuthService service;
 
 	@PostMapping("/login")
-	public ResponseEntity<User> login(){
-		return null;
+	public ResponseEntity<OrangeToken> login(@RequestBody @Valid @NotNull UserDTO user){
+		OrangeToken token = service.login(user);
+		if(token != null) {
+			return ResponseEntity.ok(token);
+		}
+		return ResponseEntity.status(401).build();
 	}
 }

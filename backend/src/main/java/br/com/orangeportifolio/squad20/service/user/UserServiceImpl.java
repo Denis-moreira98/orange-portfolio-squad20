@@ -5,9 +5,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
-import br.com.orangeportifolio.squad20.dao.IUsersDAO;
+import br.com.orangeportifolio.squad20.dao.IUserDAO;
 import br.com.orangeportifolio.squad20.model.User;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Validated
@@ -15,7 +16,7 @@ import jakarta.validation.constraints.NotNull;
 public class UserServiceImpl implements IUserService{
 	
 	@Autowired
-	private IUsersDAO dao;
+	private IUserDAO dao;
 
 	@Override
 	public User create(@Valid User user) {

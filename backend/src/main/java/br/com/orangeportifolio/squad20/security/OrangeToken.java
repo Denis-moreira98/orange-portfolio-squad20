@@ -4,6 +4,10 @@ public class OrangeToken {
 	
 	private String token;
 
+	public OrangeToken(String token) {
+		this.token = token;
+	}
+
 	public String getToken() {
 		return token;
 	}
