@@ -25,9 +25,8 @@ const scheme = z.object({
 type FormData = z.infer<typeof scheme>;
 
 export function Login() {
-   const navigate = useNavigate();
-
    const { signIn } = useContext(AuthContext);
+   const navigate = useNavigate();
 
    const [mostrarSenha, setMostrarSenha] = useState(false);
    const [senha, setSenha] = useState("");

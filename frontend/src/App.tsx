@@ -4,8 +4,10 @@ import { Dashboard } from "./pages/dashboard";
 import { NotFound } from "./pages/notFound";
 
 import { createBrowserRouter } from "react-router-dom";
-import { Layout } from "./components/layout";
 import { Private } from "./routes/private";
+import { Descobrir } from "./pages/descobrir";
+import { Home } from "./pages/home";
+import { Layout } from "./components/layout";
 
 const router = createBrowserRouter([
    {
@@ -19,19 +21,49 @@ const router = createBrowserRouter([
                </Private>
             ),
          },
+         {
+            path: "/descobrir",
+            element: (
+               <Private>
+                  <Descobrir />
+               </Private>
+            ),
+         },
       ],
    },
+
    {
       path: "/",
-      element: <Login />,
+      element: (
+         <>
+            <Home />
+         </>
+      ),
    },
    {
+      path: "/login",
+      element: (
+         <>
+            <Login />
+         </>
+      ),
+   },
+
+   {
       path: "/register",
-      element: <Register />,
+      element: (
+         <>
+            <Register />,
+         </>
+      ),
    },
    {
       path: "*",
-      element: <NotFound />,
+      element: (
+         <>
+            <NotFound />,
+         </>
+      ),
    },
 ]);
 
