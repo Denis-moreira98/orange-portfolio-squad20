@@ -8,9 +8,9 @@ type AuthContextData = {
    user: UserProps;
    isAuthenticated: boolean;
    signed: boolean;
-   signIn: (credentials: SignInProps) => Promise<void>;
-   signOut: () => void;
-   signUp: (credentials: SignInProps) => Promise<void>;
+   signIn: (credentials: SignInProps) => Promise<any>;
+   signOut: () => any;
+   signUp: (credentials: SignInProps) => Promise<any>;
 };
 type UserProps = {
    id: string;
@@ -87,7 +87,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
             maxAgr: 60 * 60 * 24 * 30, // expira em 1 mês
             path: "/", //Quais caminhos terão acesso ao cookies
          });
-         console.log(response.data);
+
          setUser({
             id,
             name,
@@ -109,8 +109,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
                secondary: "#2E7D32",
             },
          });
+         return response.data;
       } catch (err) {
-         toast.error("Erro ao fazer o login!", {
+         toast.error("Login ou senha incorretos!", {
             duration: 3000,
             style: {
                border: "1px solid rgba(58, 58, 58, 0.219)",
@@ -127,8 +128,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
    }
 
    async function signUp({ name, sobrenome, email, password }: signUpProps) {
-      console.log("CADASTRADO", name, sobrenome, email, password);
-
       try {
          const response = await api.post("/users", {
             name,
@@ -136,8 +135,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
             email,
             password,
          });
-
-         console.log(response);
          toast.success("Cadastrado com sucesso!", {
             duration: 3000,
             style: {
@@ -151,9 +148,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
                secondary: "#2E7D32",
             },
          });
+         console.log("CADASTRADO", name, sobrenome, email, password);
+         return response;
       } catch (err) {
-         // console.log("erro ao deslogar");
-         toast.error("Erro ao fazer o login!", {
+         console.log(err.message);
+         toast.error("Algo inesperado aconteceu, tente novamente!", {
             duration: 3000,
             style: {
                border: "1px solid rgba(58, 58, 58, 0.219)",
