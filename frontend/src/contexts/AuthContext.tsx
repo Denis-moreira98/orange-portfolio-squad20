@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 type AuthContextData = {
    user: UserProps;
-   isAuthenticated: boolean;
+   loadingAuth: boolean;
    signed: boolean;
    signIn: (credentials: SignInProps) => Promise<any>;
    signOut: () => any;
@@ -39,14 +39,15 @@ export const AuthContext = createContext({} as AuthContextData);
 export function signOut() {
    try {
       destroyCookie(undefined, "@SQUAD20.token");
+      window.location.href = "/login";
    } catch {
       console.log("erro ao deslogar");
    }
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-   const [user, setUser] = useState<UserProps>();
-   const [isAuthenticated, setIsAuthenticated] = useState(true);
+   const [user, setUser] = useState<UserProps | null>(null);
+   const [loadingAuth, setLoadingAuth] = useState(true);
 
    useEffect(() => {
       //TENTAR PEGAR ALGO DO TOKEN NO COOKIES
@@ -62,15 +63,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
                   name,
                   email,
                });
-               setIsAuthenticated(false);
+               setLoadingAuth(false);
             })
             .catch(() => {
                // Caiu aqui é porque o token não foi validado
                // então deslogamos o user
-               setUser(null);
-               setIsAuthenticated(false);
                signOut();
             });
+      } else {
+         setUser(null);
+         setLoadingAuth(false);
       }
    }, []);
 
@@ -111,7 +113,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
          });
          return response.data;
       } catch (err) {
-         toast.error("Login ou senha incorretos!", {
+         toast.error("Email ou senha incorretos!", {
             duration: 3000,
             style: {
                border: "1px solid rgba(58, 58, 58, 0.219)",
@@ -173,7 +175,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
          value={{
             signed: !!user,
             user,
-            isAuthenticated,
+            loadingAuth,
             signIn,
             signOut,
             signUp,
