@@ -1,29 +1,29 @@
 import styles from "./styles.module.css";
-// import ImgProject from "../../assets/project.png";
 import ImgPerfil from "../../assets/image-perfil.png";
 
 import Modal from "react-modal";
 import { FiX } from "react-icons/fi";
 import { Label } from "../label";
-import { ModalSuccess } from "../modalSuccess";
-import { useState } from "react";
 
-interface ModalProps {
+interface ModalViewsProps {
    isOpen: boolean;
    onRequestClose: () => void;
    image: string;
+   title: string;
+   tags: string[];
+   description: string;
+   link: string;
 }
 
-export function ModalPreview({ isOpen, onRequestClose, image }: ModalProps) {
-   const [modalVisible, setModalVisible] = useState(false);
-
-   function handleOpenModal() {
-      setModalVisible(true);
-   }
-   function handleCloseModal() {
-      setModalVisible(false);
-   }
-
+export function ModalPreview({
+   isOpen,
+   onRequestClose,
+   image,
+   title,
+   tags,
+   description,
+   link,
+}: ModalViewsProps) {
    const customStyles = {
       content: {
          top: "50%",
@@ -47,7 +47,7 @@ export function ModalPreview({ isOpen, onRequestClose, image }: ModalProps) {
          >
             <button
                type="button"
-               onClick={handleOpenModal}
+               onClick={onRequestClose}
                className="react-modal-close"
                style={{
                   backgroundColor: "transparent",
@@ -68,41 +68,27 @@ export function ModalPreview({ isOpen, onRequestClose, image }: ModalProps) {
                         <span>12/12</span>
                      </div>
                   </div>
-                  <h3>Ecommerce One Page</h3>
+                  <h3>{title}</h3>
                   <div className={styles.tag}>
-                     <Label>UI</Label>
-                     <Label>WEB</Label>
+                     {tags.map((tag) => (
+                        <Label key={tag}>{tag.toUpperCase()}</Label>
+                     ))}
                   </div>
                </div>
                <div className={styles.div_img}>
                   <img src={image} alt="projeto" />
                </div>
                <div className={styles.project}>
-                  <p>
-                     Temos o prazer de compartilhar com vocês uma variação da
-                     nosso primeiro recurso gratuito, Monoceros. É um modelo de
-                     uma página para mostrar seus produtos. Tentamos redesenhar
-                     uma versão mais B2C e minimalista do nosso primeiro
-                     template de e-commerce.
-                  </p>
+                  <p>{description}</p>
                   <div className={styles.link}>
                      <p>Download</p>
-                     <a
-                        target="_blank"
-                        href="https://denis-moreira-portfolio.vercel.app/"
-                     >
-                        https://denis-moreira-portfolio.vercel.app/
+                     <a target="_blank" href={link}>
+                        {link}
                      </a>
                   </div>
                </div>
             </div>
          </Modal>
-         {modalVisible && (
-            <ModalSuccess
-               isOpen={modalVisible}
-               onRequestClose={handleCloseModal}
-            />
-         )}
       </>
    );
 }
