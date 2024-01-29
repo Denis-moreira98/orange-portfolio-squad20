@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 type AuthContextData = {
    user: UserProps;
    isAuthenticated: boolean;
+   signed: boolean;
    signIn: (credentials: SignInProps) => Promise<void>;
    signOut: () => void;
    signUp: (credentials: SignInProps) => Promise<void>;
@@ -45,8 +46,7 @@ export function signOut() {
 
 export function AuthProvider({ children }: AuthProviderProps) {
    const [user, setUser] = useState<UserProps>();
-
-   const isAuthenticated = !!user;
+   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
    useEffect(() => {
       //TENTAR PEGAR ALGO DO TOKEN NO COOKIES
@@ -62,10 +62,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
                   name,
                   email,
                });
+               setIsAuthenticated(false);
             })
             .catch(() => {
                // Caiu aqui é porque o token não foi validado
                // então deslogamos o user
+               setUser(null);
+               setIsAuthenticated(false);
                signOut();
             });
       }
@@ -168,7 +171,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
    return (
       <AuthContext.Provider
-         value={{ user, isAuthenticated, signIn, signOut, signUp }}
+         value={{
+            signed: !!user,
+            user,
+            isAuthenticated,
+            signIn,
+            signOut,
+            signUp,
+         }}
       >
          {children}
       </AuthContext.Provider>
