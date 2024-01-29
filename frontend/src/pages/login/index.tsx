@@ -12,7 +12,7 @@ import { useState, useContext } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../contexts/AuthContext";
 
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const scheme = z.object({
    email: z
@@ -25,7 +25,7 @@ const scheme = z.object({
 type FormData = z.infer<typeof scheme>;
 
 export function Login() {
-   // const navigate = useNavigate();
+   const navigate = useNavigate();
 
    const { signIn } = useContext(AuthContext);
 
@@ -51,9 +51,8 @@ export function Login() {
          password: data.password,
       };
 
-      await signIn(dataUser);
-      //Redidecionar o user para /dashboard
-      // navigate("/dashboard");
+      const result = await signIn(dataUser);
+      result != undefined ? navigate("/dashboard") : null;
    }
 
    return (

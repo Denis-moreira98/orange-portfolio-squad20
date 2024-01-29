@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./styles.module.css";
 
 import { FaImages } from "react-icons/fa";
@@ -7,8 +7,10 @@ import { ModalAddProject } from "../../components/modal";
 import Modal from "react-modal";
 import InputModal from "../../components/modal/input";
 import { Button } from "../../components/button";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export function Dashboard() {
+   const { user } = useContext(AuthContext);
    const [modalVisible, setModalVisible] = useState(false);
 
    function handleOpenModal() {
@@ -29,7 +31,7 @@ export function Dashboard() {
                   alt="perfil"
                />
                <div className={styles.informacoes}>
-                  <p className={styles.nome}>Camila Soares</p>
+                  <p className={styles.nome}>{user.name}</p>
                   <p className={styles.pais}>Brasil</p>
                   <Button
                      variant="gray"

@@ -54,8 +54,8 @@ export function Register() {
          password: data.password,
       };
 
-      await signUp(dataUser);
-      navigate("/");
+      const result = await signUp(dataUser);
+      result != undefined ? navigate("/login") : null;
    }
 
    return (
@@ -107,7 +107,11 @@ export function Register() {
                   >
                      {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
                   </button>
-                  <Button variant="orange" className={styles.btnRegister}>
+                  <Button
+                     variant="orange"
+                     type="submit"
+                     className={styles.btnRegister}
+                  >
                      CADASTRAR
                   </Button>
                </form>
