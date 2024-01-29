@@ -8,7 +8,6 @@ import org.springframework.validation.annotation.Validated;
 import br.com.orangeportifolio.squad20.dao.IUserDAO;
 import br.com.orangeportifolio.squad20.model.User;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Validated

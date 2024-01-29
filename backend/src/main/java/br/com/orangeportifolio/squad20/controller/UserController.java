@@ -25,11 +25,11 @@ public class UserController {
     private IUserService service;
     
 	@PostMapping("/new")
-	public ResponseEntity<User> create(@RequestBody @Valid @NotNull User user) {
+	public ResponseEntity<?> create(@RequestBody @Valid @NotNull User user) {
 		if(service.create(user) != null) {
 			return ResponseEntity.ok(user);
 		}
-		return ResponseEntity.status(403).build();
+		return ResponseEntity.status(403).body("ERRO! Usuário já existe no Banco de Dados!");
 	}
 	
 	@GetMapping("/{id}")

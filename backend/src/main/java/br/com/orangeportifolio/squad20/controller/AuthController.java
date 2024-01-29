@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.orangeportifolio.squad20.dto.UserDTO;
+import br.com.orangeportifolio.squad20.dto.LoginDTO;
 import br.com.orangeportifolio.squad20.security.OrangeToken;
 import br.com.orangeportifolio.squad20.service.auth.IAuthService;
 import jakarta.validation.Valid;
@@ -23,8 +23,9 @@ public class AuthController {
 	IAuthService service;
 
 	@PostMapping("/login")
-	public ResponseEntity<OrangeToken> login(@RequestBody @Valid @NotNull UserDTO user){
-		OrangeToken token = service.login(user);
+	public ResponseEntity<OrangeToken> authenticate(@RequestBody @Valid @NotNull LoginDTO user){
+		
+		OrangeToken token = service.authenticate(user);
 		if(token != null) {
 			return ResponseEntity.ok(token);
 		}

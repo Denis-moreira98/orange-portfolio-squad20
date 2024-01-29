@@ -18,8 +18,6 @@ public class OrangeFilter extends OncePerRequestFilter{
 									HttpServletResponse response, 
 									FilterChain filterChain) throws ServletException, IOException {
 		
-		System.out.println("Requisição passou pelo OrangeFilter");
-		
 		if(request.getHeader("Authorization") != null) {
 			
 			Authentication auth = TokenUtil.decode(request);
@@ -35,6 +33,5 @@ public class OrangeFilter extends OncePerRequestFilter{
 		}
 		//Encaminhando a requisição para frente
 		filterChain.doFilter(request, response);
-
 	}
 }
