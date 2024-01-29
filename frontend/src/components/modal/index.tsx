@@ -7,6 +7,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { FaImages } from "react-icons/fa";
 
 import { ModalPreview } from "../modalPreview";
+import { ModalSuccess } from "../modalSuccess";
 
 interface ModalProps {
    isOpen: boolean;
@@ -15,14 +16,46 @@ interface ModalProps {
 
 export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
    const [modalVisible, setModalVisible] = useState(false);
+   const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
 
-   function handleOpenModal(e: FormEvent) {
+   // states do form
+   const [title, setTitle] = useState("");
+   const [tags, setTags] = useState("");
+   const [arrayDeTags, setArrayDeTags] = useState([]);
+   const [link, setLink] = useState("");
+   const [description, setDescription] = useState("");
+
+   const handleChangeTags = (event) => {
+      setTags(event.target.value);
+
+      const tagsProntas = tags.split(" ");
+
+      setArrayDeTags(tagsProntas);
+   };
+
+   function handleRegisterProject(e: FormEvent) {
+      e.preventDefault();
+      console.log(FormData);
+   }
+
+   //Modal Success
+   function handleOpenModalSuccess(e: FormEvent) {
       e.preventDefault();
 
       setTimeout(() => {
-         setModalVisible(true);
+         setModalSuccessVisible(true);
       }, 800);
    }
+   function handleCloseModalSuccess() {
+      setModalSuccessVisible(false);
+   }
+
+   //Modal View
+   function handleOpenModal(e: FormEvent) {
+      e.preventDefault();
+      setModalVisible(true);
+   }
+
    function handleCloseModal() {
       setModalVisible(false);
    }
@@ -67,7 +100,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          >
             <div className={styles.div_container}>
                <h4>Adicionar Projeto</h4>
-               <form>
+               <form onSubmit={handleRegisterProject}>
                   <div className={styles.content}>
                      <div className={styles.div_text}>
                         <div className={styles.div_file}>
@@ -97,17 +130,39 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                         </div>
                      </div>
                      <div className={styles.div_input}>
-                        <InputModal placeholder="Título" />
-                        <InputModal placeholder="Tags" />
-                        <InputModal placeholder="Link" />
-                        <TextArea placeholder="Descrição" />
+                        <InputModal
+                           value={title}
+                           onChange={(e) => setTitle(e.target.value)}
+                           placeholder="Título"
+                        />
+                        <InputModal
+                           value={tags}
+                           onChange={handleChangeTags}
+                           placeholder="Tags"
+                        />
+                        <InputModal
+                           value={link}
+                           onChange={(e) => setLink(e.target.value)}
+                           placeholder="Link"
+                        />
+                        <TextArea
+                           value={description}
+                           onChange={(e) => setDescription(e.target.value)}
+                           placeholder="Descrição"
+                        />
                      </div>
                   </div>
                   <div className={styles.div_button}>
-                     <p>Visualizar publicação</p>
+                     <button
+                        className={styles.btn_view}
+                        type="button"
+                        onClick={handleOpenModal}
+                     >
+                        Visualizar publicação
+                     </button>
                      <div className={styles.div_buttons}>
                         <Button
-                           onClick={handleOpenModal}
+                           onClick={handleOpenModalSuccess}
                            type="submit"
                            variant="orange"
                         >
@@ -129,9 +184,19 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          </Modal>
          {modalVisible && (
             <ModalPreview
+               title={title}
+               link={link}
+               description={description}
+               tags={arrayDeTags}
                image={avatarUrl}
                isOpen={modalVisible}
                onRequestClose={handleCloseModal}
+            />
+         )}
+         {modalSuccessVisible && (
+            <ModalSuccess
+               isOpen={modalSuccessVisible}
+               onRequestClose={handleCloseModalSuccess}
             />
          )}
       </>

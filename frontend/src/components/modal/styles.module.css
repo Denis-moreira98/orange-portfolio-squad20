@@ -50,10 +50,6 @@
    padding: 0.5rem 0.5rem;
 }
 
-.div_button p {
-   margin-top: 1rem;
-   margin-bottom: 0.5rem;
-}
 .div_buttons {
    display: flex;
    flex-direction: row;
@@ -95,6 +91,15 @@
    height: 100%;
    object-fit: cover;
    border-radius: 0.3rem;
+}
+.btn_view {
+   font-size: 16px;
+   color: var(--neutral-120);
+   border: none;
+   background-color: transparent;
+   cursor: pointer;
+   margin-bottom: 1rem;
+   margin-top: 1rem;
 }
 
 @media screen and (max-width: 930px) {
