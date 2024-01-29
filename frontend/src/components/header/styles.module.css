@@ -71,6 +71,18 @@ nav.menu ul li a:hover {
    opacity: 0.5;
 }
 
+.btn__out {
+   width: 40px;
+   height: 40px;
+   border: none;
+   color: var(--neutral-60);
+   cursor: pointer;
+   font-size: 20px;
+   /* transition: opacity 0.2s;    */
+   background: transparent;
+}
+
+
 /* MOBILE */
 .icon__menu {
    display: none;
