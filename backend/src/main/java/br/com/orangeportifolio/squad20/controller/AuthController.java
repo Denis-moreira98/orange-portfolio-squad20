@@ -28,10 +28,8 @@ public class AuthController {
 		OrangeToken token = service.authenticate(user);
 		
 		if(token != null) {
-			System.err.println("Login successful. Returning token: " + token.getToken());
 			return ResponseEntity.ok(token);
 		}else {
-			System.err.println("Login failed. Unauthorized.");
 			return ResponseEntity.status(401).build();
 		}
 		

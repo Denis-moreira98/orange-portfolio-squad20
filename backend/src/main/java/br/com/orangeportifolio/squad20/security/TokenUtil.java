@@ -45,7 +45,7 @@ public class TokenUtil {
 											.signWith(key)
 											.compact();
 			
-			OrangeToken token = new OrangeToken(jwtToken); //VERIFICAR
+			OrangeToken token = new OrangeToken(jwtToken);
 			return token;
 		} 
 		catch (Exception ex) {

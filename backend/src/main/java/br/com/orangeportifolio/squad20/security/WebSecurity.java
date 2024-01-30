@@ -27,8 +27,6 @@ public class WebSecurity {
 		//Desabilita a tela de login do SpringBoot
 		.csrf( (csrf) -> { 
 			csrf.disable();
-		
-		
 		})
 		.authorizeHttpRequests( (auth) -> {
 			auth.requestMatchers(new  AntPathRequestMatcher("/user/new", "POST")).permitAll()
@@ -51,5 +49,4 @@ public class WebSecurity {
 	    source.registerCorsConfiguration("/**", configuration);
 	    return source;
 	}
-
 }
