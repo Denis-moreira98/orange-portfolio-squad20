@@ -9,6 +9,8 @@ import { FaImages } from "react-icons/fa";
 import { ModalPreview } from "../modalPreview";
 import { ModalSuccess } from "../modalSuccess";
 
+// import { validateEspecialChars } from "../../utils/validations";
+
 interface ModalProps {
    isOpen: boolean;
    onRequestClose: () => void;
@@ -22,6 +24,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
    const [title, setTitle] = useState("");
    const [tags, setTags] = useState("");
    const [arrayDeTags, setArrayDeTags] = useState([]);
+   // const [chars, SetChars] = useState(false);
    const [link, setLink] = useState("");
    const [description, setDescription] = useState("");
 
@@ -33,15 +36,21 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
       setArrayDeTags(tagsProntas);
    };
 
+   // const validate = () => {
+   //    if (validateEspecialChars.test(tags)) {
+   //       SetChars(true);
+   //    } else {
+   //       SetChars(false);
+   //    }
+   // };
+
    function handleRegisterProject(e: FormEvent) {
       e.preventDefault();
-      console.log(FormData);
+      // validate();
    }
 
    //Modal Success
-   function handleOpenModalSuccess(e: FormEvent) {
-      e.preventDefault();
-
+   function handleOpenModalSuccess() {
       setTimeout(() => {
          setModalSuccessVisible(true);
       }, 800);
@@ -51,8 +60,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
    }
 
    //Modal View
-   function handleOpenModal(e: FormEvent) {
-      e.preventDefault();
+   function handleOpenModal() {
       setModalVisible(true);
    }
 
@@ -140,6 +148,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                            onChange={handleChangeTags}
                            placeholder="Tags"
                         />
+                        {/* {chars && <p>Não vai pegar frango</p>} */}
                         <InputModal
                            value={link}
                            onChange={(e) => setLink(e.target.value)}
@@ -162,9 +171,9 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                      </button>
                      <div className={styles.div_buttons}>
                         <Button
-                           onClick={handleOpenModalSuccess}
-                           type="submit"
+                           type="button"
                            variant="orange"
+                           onClick={handleOpenModalSuccess}
                         >
                            SALVAR
                         </Button>
