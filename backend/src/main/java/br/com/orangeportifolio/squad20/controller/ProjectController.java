@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.orangeportifolio.squad20.model.Project;
-import br.com.orangeportifolio.squad20.service.midia.IFotoStorageService;
 import br.com.orangeportifolio.squad20.service.project.IProjectService;
+import br.com.orangeportifolio.squad20.service.storage.ILocalFotoStorageService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -35,7 +35,7 @@ public class ProjectController {
 	private IProjectService service;
 
 	@Autowired
-	private IFotoStorageService fotoStorageService;
+	private ILocalFotoStorageService fotoStorageService;
 
 	@PostMapping("/")
 	public ResponseEntity<Project> create(@RequestPart("project") @Valid @NotNull Project project,

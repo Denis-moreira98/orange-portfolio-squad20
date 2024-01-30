@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import br.com.orangeportifolio.squad20.dao.IProjectDAO;
 import br.com.orangeportifolio.squad20.model.Project;
-import br.com.orangeportifolio.squad20.service.midia.IFotoStorageService;
+import br.com.orangeportifolio.squad20.service.storage.ILocalFotoStorageService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -24,7 +24,7 @@ public class ProjectServiceImpl implements IProjectService{
 	private IProjectDAO dao;
 	
 	@Autowired
-	private IFotoStorageService uploadService;
+	private ILocalFotoStorageService uploadService;
 
 	@Override
 	public Project create(@Valid @NotNull Project project, MultipartFile file) {
