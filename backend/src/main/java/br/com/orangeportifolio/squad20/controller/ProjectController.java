@@ -39,20 +39,22 @@ public class ProjectController {
 	private ILocalFotoStorageService fotoStorageService;
 
 	@PostMapping("/")
-	public ResponseEntity<Project> create(@RequestPart("project") @Valid @NotNull Project project,
+	public ResponseEntity<ProjectDTO> create(@RequestPart("project") @Valid @NotNull Project project,
 			@RequestParam("file") @NotNull MultipartFile file) {
-
-		if (service.create(project, file) != null) {
-			return ResponseEntity.ok(project);
+		
+		ProjectDTO projectDTO = service.create(project, file);
+		
+		if (projectDTO != null) {
+			return ResponseEntity.ok(projectDTO);
 		}
 		return ResponseEntity.badRequest().build();
 	}
 
 	@PutMapping("/edit/{id}")
-	public ResponseEntity<Project> update(@RequestBody Project project, @PathVariable Integer id) {
+	public ResponseEntity<ProjectDTO> update(@RequestBody Project project, @PathVariable Integer id) {
 
 		if (service.update(project, id)) {
-			return ResponseEntity.ok(project);
+			return ResponseEntity.ok(ProjectDTO.fromProject(project));
 		}
 		return ResponseEntity.badRequest().build();
 	}
@@ -67,12 +69,12 @@ public class ProjectController {
 	}
 
 	@GetMapping("/{tag}")
-	public ResponseEntity<List<Project>> findByTagsContaining(@RequestParam (name = "tag") String tag) {
-		List<Project> listProj = service.findByTagsContaining(tag);
+	public ResponseEntity<List<ProjectDTO>> findByTagsContaining(@RequestParam (name = "tag") String tag) {
+		List<ProjectDTO> listProj = service.findByTagsContaining(tag);
 		if (listProj != null) {
-			for (Project project : listProj) {
-				byte[] image = fotoStorageService.getImage(project.getMidia());
-				project.setMidia(Base64.getEncoder().encodeToString(image));
+			for (ProjectDTO projects : listProj) {
+				byte[] image = fotoStorageService.getImage(projects.getMidia());
+				projects.setMidia(Base64.getEncoder().encodeToString(image));
 			}
 			return ResponseEntity.ok(listProj);
 		}
