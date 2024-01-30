@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.com.orangeportifolio.squad20.dto.ProjectDTO;
 import br.com.orangeportifolio.squad20.model.Project;
 import br.com.orangeportifolio.squad20.service.project.IProjectService;
 import br.com.orangeportifolio.squad20.service.storage.ILocalFotoStorageService;
@@ -57,10 +58,10 @@ public class ProjectController {
 	}
 
 	@GetMapping("/all")
-	public ResponseEntity<List<Project>> findAll() {
-		List<Project> list = service.findAll();
+	public ResponseEntity<List<ProjectDTO>> findAll() {
+		List<ProjectDTO> list = service.findAll();
 		if (list.size() > 0) {
-			return ResponseEntity.ok(service.findAll());
+			return ResponseEntity.ok(list);
 		}
 		return ResponseEntity.notFound().build();
 	}
