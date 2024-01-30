@@ -6,9 +6,10 @@ import { signOut } from "../contexts/AuthContext";
 
 export function setupAPIClient(ctx = undefined) {
    const cookies = parseCookies(ctx);
+   const apiUrl = import.meta.env.VITE_API_URL;
 
    const api = axios.create({
-      baseURL: "http://localhost:3333",
+      baseURL: apiUrl,
       headers: {
          Authorization: `Bearer ${cookies["@Squad20.token"]}`,
       },

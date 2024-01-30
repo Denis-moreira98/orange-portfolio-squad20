@@ -111,6 +111,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                secondary: "#2E7D32",
             },
          });
+
          return response.data;
       } catch (err) {
          toast.error("Email ou senha incorretos!", {
