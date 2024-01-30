@@ -27,21 +27,21 @@
 }
 
 @media screen and (max-width: 800px){
-    p{
+    .menssage{
         margin-top: 120px;
         font-size: 1.8rem;
     }
 }
 
 @media screen and (max-width: 500px){
-    p{
+    .menssage{
         margin-top: 120px;
         font-size: 1.2rem;
     }
 }
 
 @media screen and (max-width: 360px){
-    p{
+    .menssage{
         font-size: 0.9rem;
     }
 }
