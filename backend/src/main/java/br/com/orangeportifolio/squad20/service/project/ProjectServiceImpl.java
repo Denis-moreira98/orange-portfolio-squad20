@@ -2,6 +2,7 @@ package br.com.orangeportifolio.squad20.service.project;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.orangeportifolio.squad20.dao.IProjectDAO;
+import br.com.orangeportifolio.squad20.dto.ProjectDTO;
 import br.com.orangeportifolio.squad20.model.Project;
 import br.com.orangeportifolio.squad20.service.storage.ILocalFotoStorageService;
 import jakarta.validation.Valid;
@@ -27,7 +29,7 @@ public class ProjectServiceImpl implements IProjectService{
 	private ILocalFotoStorageService uploadService;
 
 	@Override
-	public Project create(@Valid @NotNull Project project, MultipartFile file) {
+	public ProjectDTO create(@Valid @NotNull Project project, MultipartFile file) {
 	    try {
 	        // Fazendo o upload do arquivo e obtendo o nome do arquivo
 	        String fileName = uploadService.uploadLocalFile(file);
@@ -36,7 +38,9 @@ public class ProjectServiceImpl implements IProjectService{
 	        project.setMidia(fileName);
 
 	        // Salvando o projeto
-	        return dao.save(project);
+	        dao.save(project);
+	       
+	        return ProjectDTO.fromProject(project);
 	        
 	    } catch (Exception e) {
 	        // Tratando a exceção
@@ -64,9 +68,15 @@ public class ProjectServiceImpl implements IProjectService{
 	}
 
 	@Override
-	public List<Project> findAll() {
-		return dao.findAll();
+	public List<ProjectDTO> findAll() {
+	    List<Project> projects = dao.findAll();
+	    List<ProjectDTO> projectDTOs = projects.stream()
+	    		.map(ProjectDTO::fromProject)
+	    		.collect(Collectors.toList());
+	    
+	    return projectDTOs;
 	}
+	
 
 	@Override
 	public List<Project> findByTagsContaining(String nome) {
