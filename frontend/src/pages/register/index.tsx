@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 const scheme = z.object({
    name: z.string().nonempty("O campo nome é obrigatório"),
-   sobrenome: z.string().nonempty("O campo sobrenome é obrigatório"),
+   surname: z.string().nonempty("O campo sobrenome é obrigatório"),
    email: z
       .string()
       .email("Insira um email válido")
@@ -47,12 +47,13 @@ export function Register() {
    });
 
    async function handleRegister(data: FormData) {
+      const nameComplete = `${data.name} ${data.surname}`;
       const dataUser = {
-         name: data.name,
-         sobrenome: data.sobrenome,
+         name: nameComplete,
          email: data.email,
          password: data.password,
       };
+      console.log(dataUser);
 
       const result = await signUp(dataUser);
       result != undefined ? navigate("/login") : null;
@@ -79,8 +80,8 @@ export function Register() {
                      <Input
                         label="Sobrenome*"
                         type="text"
-                        name="sobrenome"
-                        error={errors.sobrenome?.message}
+                        name="surname"
+                        error={errors.surname?.message}
                         register={register}
                      />
                   </div>

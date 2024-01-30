@@ -25,7 +25,6 @@ type SignInProps = {
 
 type signUpProps = {
    name: string;
-   sobrenome: string;
    email: string;
    password: string;
 };
@@ -129,11 +128,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
       }
    }
 
-   async function signUp({ name, sobrenome, email, password }: signUpProps) {
+   async function signUp({ name, email, password }: signUpProps) {
       try {
          const response = await api.post("/users", {
             name,
-            sobrenome,
             email,
             password,
          });
@@ -150,7 +148,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                secondary: "#2E7D32",
             },
          });
-         console.log("CADASTRADO", name, sobrenome, email, password);
+         console.log("CADASTRADO", name, email, password);
          return response;
       } catch (err) {
          console.log(err.message);
