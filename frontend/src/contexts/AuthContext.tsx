@@ -38,8 +38,7 @@ export const AuthContext = createContext({} as AuthContextData);
 
 export function signOut() {
    try {
-      destroyCookie(undefined, "@SQUAD20.token");
-      window.location.href = "/login";
+      destroyCookie(undefined, "@Squad20.token");
    } catch {
       console.log("erro ao deslogar");
    }

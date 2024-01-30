@@ -8,10 +8,12 @@ import Modal from "react-modal";
 import InputModal from "../../components/modal/input";
 import { Button } from "../../components/button";
 import { AuthContext } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export function Dashboard() {
-   const { user } = useContext(AuthContext);
+   const { user, signOut } = useContext(AuthContext);
    const [modalVisible, setModalVisible] = useState(false);
+   const navigate = useNavigate();
 
    function handleOpenModal() {
       setModalVisible(true);
@@ -20,6 +22,11 @@ export function Dashboard() {
       setModalVisible(false);
    }
    Modal.setAppElement("#root");
+
+   function handleSignOut() {
+      signOut();
+      navigate("/login");
+   }
 
    return (
       <>
@@ -40,6 +47,9 @@ export function Dashboard() {
                      type="button"
                   >
                      ADICIONAR PROJETO
+                  </Button>
+                  <Button variant="orange" onClick={handleSignOut}>
+                     SAIR
                   </Button>
                </div>
             </div>
