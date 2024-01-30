@@ -8,13 +8,12 @@
     align-items: center; 
 }
 
-p{
+.menssage{
     margin-top: 5px;
     margin-bottom: 5px;
 
     font-size:  2.5rem;
     font-weight: 700;
-    border-radius: 50%;
     color: var(--error-90);
 }
 

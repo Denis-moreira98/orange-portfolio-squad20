@@ -16,7 +16,7 @@ export function NotFound() {
 
    return (
       <main className={styles.container__main}>
-         <p>OPS! PÁGINA NÃO ENCONTRADA</p>
+         <p className={styles.menssage}>OPS! PÁGINA NÃO ENCONTRADA</p>
          <div className={styles.n__404}>
             <svg width="100%" height="auto" viewBox="0 0 636 324" fill="none" xmlns="http://www.w3.org/2000/svg">
                <g id="OBJECTS">
