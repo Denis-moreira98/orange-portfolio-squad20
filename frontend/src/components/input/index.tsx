@@ -5,7 +5,6 @@ import { RegisterOptions, UseFormRegister } from "react-hook-form";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
    label?: string;
-   className?: string;
    name: string;
    register: UseFormRegister<any>;
    type: string;
@@ -15,7 +14,6 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export function Input({
    label,
-   className,
    name,
    register,
    type,
@@ -25,13 +23,16 @@ export function Input({
    return (
       <>
          <div className={styles.container}>
-            <label htmlFor="input">{label}</label>
             <input
+               placeholder=""
                id={name}
-               className={className}
+               className={styles.form__input}
                {...register(name, rules)}
                type={type}
             />
+            <label htmlFor="input" className={styles.form__label}>
+               {label}
+            </label>
             {error && (
                <p
                   style={{
