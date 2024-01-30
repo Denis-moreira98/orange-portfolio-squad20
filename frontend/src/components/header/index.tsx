@@ -7,6 +7,7 @@ import { IoMenuSharp } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
 import { FaSignOutAlt } from "react-icons/fa";
 
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export function Header() {
@@ -23,26 +24,26 @@ export function Header() {
                <div className={styles.div__left} >
                   <div className={styles.container__menu} >
                      <IoMenuSharp className={styles.icon__menu} onClick={toggleMenu} />
-                     <a href="/">
+                     <Link to="/">
                         <img src={orangeLogo} title="Página inicial do Orange Portifólio"
                            alt="Imagem de uma fruta laranja com um texto escrito Orange Portifólio ao lado direito da fruta."
                            className={styles.header__logo} />
-                     </a>
+                     </Link>
                   </div>
                   <nav className={styles.menu}>
                      <ul>
-                        <li><a href="#">Meus projetos</a></li>
-                        <li><a href="#">Descobrir</a></li>
+                        <li><Link to="#">Meus projetos</Link></li>
+                        <li><Link to="#">Descobrir</Link></li>
                      </ul>
                   </nav>
                </div>
 
                <div className={styles.div__rigth}>
-                  <a href="#">
+                  <Link to="#">
                      <img src={imagePerfil}
                         alt="Imagem do Perfil"
                         className={styles.img__perfil} />
-                  </a>
+                  </Link>
                   {/* <IoIosNotifications className={styles.img__notifications} title="Notificações" /> */}
                   <button className={styles.btn__out}>
                      <FaSignOutAlt className={styles.icon__out} title="Sair" />
@@ -55,9 +56,9 @@ export function Header() {
          {menuOpen && (
             <nav className={styles.dropdown} >
                <ul>
-                  <li><a href="#">Meus projetos</a></li>
-                  <li><a href="#">Descobrir</a></li>
-                  <li className={styles.linha__menu}><a href="#" >Configurações</a></li>
+                  <li><Link to="#">Meus projetos</Link></li>
+                  <li><Link to="#">Descobrir</Link></li>
+                  <li className={styles.linha__menu}><Link to="#">Configurações</Link></li>
                </ul>
             </nav>
          )}
