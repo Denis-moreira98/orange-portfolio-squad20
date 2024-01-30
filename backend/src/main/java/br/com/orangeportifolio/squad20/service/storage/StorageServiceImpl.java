@@ -15,10 +15,10 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.util.IOUtils;
 
-import lombok.extern.slf4j.Slf4j;
+// import lombok.extern.slf4j.Slf4j;
 
 @Service
-@Slf4j
+// @Slf4j
 public class StorageServiceImpl implements IStorageService {
 
 	@Value("${aws.s3.bucket}")
@@ -68,7 +68,8 @@ public class StorageServiceImpl implements IStorageService {
         try (FileOutputStream fos = new FileOutputStream(convertedFile)) {
             fos.write(file.getBytes());
         } catch (IOException e) {
-            log.error("Erro ao converter multipartFile para file.", e);
+            System.err.println("Erro ao converter multipartFile para file. " + e.getMessage());
+            // log.error("Erro ao converter multipartFile para file.", e);
         }
         return convertedFile;
     }
