@@ -77,10 +77,14 @@ public class ProjectServiceImpl implements IProjectService{
 	    return projectDTOs;
 	}
 	
-
 	@Override
-	public List<Project> findByTagsContaining(String nome) {
-		return dao.findByTagsContaining(nome);
+	public List<ProjectDTO> findByTagsContaining(String nome) {
+		
+		List<Project> projects = dao.findByTagsContaining(nome);
+		 List<ProjectDTO> projectDTOs = projects.stream()
+		    		.map(ProjectDTO::fromProject)
+		    		.collect(Collectors.toList());
+		return projectDTOs;
 	}
 
 	@Override
