@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  spring-app:
+    image: backend-portfolio:latest
+    ports:
+      - "8080:8080"
+    environment:
+      aws_key: 
+      aws_secret: 
+      aws_region: 
+      aws_bucket: 
+
+  react-app:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+    depends_on:
+      - spring-app
