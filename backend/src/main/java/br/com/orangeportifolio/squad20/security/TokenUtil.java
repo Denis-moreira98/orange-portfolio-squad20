@@ -45,7 +45,7 @@ public class TokenUtil {
 											.signWith(key)
 											.compact();
 			
-			OrangeToken token = new OrangeToken(PREFIX + jwtToken);
+			OrangeToken token = new OrangeToken(jwtToken); //VERIFICAR
 			return token;
 		} 
 		catch (Exception ex) {
@@ -59,8 +59,13 @@ public class TokenUtil {
 		
 		try {
 			String token = request.getHeader("Authorization");
-			if(token != null) {
+			
+			if (token != null) {
+				
+				System.err.println("TokenUtil: " + token);
+				
 				token = token.replace(PREFIX, ""); //Remove o 'Bearer' e extrai apenas o JWT
+				
 				SecretKey secretKey = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 				
 				//Criando o parser do token
@@ -80,6 +85,7 @@ public class TokenUtil {
 			}
 			
 		} catch (Exception e) {
+			System.err.println("Deu erro aqui: ");
 			e.printStackTrace();
 		}
 		return null;

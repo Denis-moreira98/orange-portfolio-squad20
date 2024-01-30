@@ -29,6 +29,7 @@ public class AuthServiceImpl implements IAuthService{
 			
 			if(encoder.matches(user.password(), res.getPassword())) {
 				OrangeToken token = TokenUtil.encode(res);
+				System.err.println("Retornando token do AuthService: " + token);
 				return token;
 			}
 		}
