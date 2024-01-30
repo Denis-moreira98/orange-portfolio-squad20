@@ -43,9 +43,9 @@ public class LocalFotoStorageServiceImpl implements IFotoStorageService{
 	        
 	        // Retorne o caminho completo do arquivo salvo
 	        System.out.println("Armazenando em: " + serveFile.getAbsolutePath());
-	        String fullPath = serveFile.getAbsolutePath();
+	        String fullPath = serveFile.getName();
 	        
-	        return fullPath;
+	        return uniqueFileName;
 
 	    } catch (IOException e) {
 	        System.err.printf("Ocorreu um erro ao realizar o upload do arquivo: ");
