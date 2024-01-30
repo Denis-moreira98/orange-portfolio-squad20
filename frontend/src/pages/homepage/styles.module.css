@@ -16,12 +16,12 @@
 .ulhome {
   list-style: none;
   display: flex;
-  gap: .5rem;
   align-items: center;
+  gap: 20px;
 }
 
 .lihome img {
-  width: 120px;
+  width: 50px;
 }
 
 .balaofala {
@@ -64,9 +64,14 @@
   transition: .3s all ease-out;
   border: none;
 }
+.divhome h1{
+  color: var(--primary-90);
+  font-weight: 500;
+    font-size: 42px;
+}
 
 .lihome:last-child .buttonhome:hover,.sectionhome .divhome .buttonhome:hover {
-  background-color: #177cd1;
+  background-color: #ff8833;
   transition: .3s all ease-out;
 }
 

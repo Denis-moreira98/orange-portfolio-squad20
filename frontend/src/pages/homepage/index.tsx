@@ -1,5 +1,6 @@
 import styles from "./styles.module.css";
-
+import vite from "../../../public/vite.svg";
+import { Link } from "react-router-dom";
 
 export function Homepage() {
   return (
@@ -9,7 +10,8 @@ export function Homepage() {
           <ul className={styles.ulhome}>
             <li className={styles.lihome}>
               <img
-                src="https://d335luupugsy2.cloudfront.net/cms/files/692217/1694801416/$9dhg0ggifvi"
+                src={vite}
+                /*  src="https://d335luupugsy2.cloudfront.net/cms/files/692217/1694801416/$9dhg0ggifvi" */
                 alt=""
               />
             </li>
@@ -18,10 +20,16 @@ export function Homepage() {
 
           <ul className={styles.ulhome}>
             <li className={styles.lihome}>
-              <button className={styles.buttonhome}>Login</button>
+              <Link to="/login">
+                {" "}
+                <button className={styles.buttonhome}> Login</button>{" "}
+              </Link>
             </li>
             <li className={styles.lihome}>
-              <button className={styles.buttonhome}>Cadastro</button>
+              <Link to="/Register">
+                {" "}
+                <button className={styles.buttonhome}>Cadastro</button>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -36,7 +44,10 @@ export function Homepage() {
                 mantendo-se informado sobre as últimas tendências em design e
                 desenvolvimento.
               </p>
-              <button className={styles.buttonhome}>Iniciar Jornada</button>
+              <Link to="/Register">
+                {" "}
+                <button className={styles.buttonhome}>Iniciar Jornada</button>
+              </Link>
             </div>
 
             <div className={styles.divhome}>
@@ -50,10 +61,13 @@ export function Homepage() {
 
         <footer>
           <div>
-            <p>Torne-se o protagonista da sua história e faça parte da comunidade tech mais vitaminada!</p>
+            <p>
+              Torne-se o protagonista da sua história e faça parte da comunidade
+              tech mais vitaminada!
+            </p>
           </div>
 
-          <div className={styles.partners}>
+          {/*        <div className={styles.partners}>
             <img
               src="https://i.pinimg.com/originals/49/72/6e/49726e65f6b35c2e8e366a16c0734fb7.png"
               alt=""
@@ -86,7 +100,7 @@ export function Homepage() {
             />
 
             <img src="https://images.sympla.com.br/5aec9652c823d.png" alt="" />
-          </div>
+          </div> */}
         </footer>
       </div>
     </>
