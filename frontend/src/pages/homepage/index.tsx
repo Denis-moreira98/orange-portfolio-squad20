@@ -8,7 +8,7 @@ export function Homepage() {
       <div className={styles.containerhome}>
         <nav className={styles.navhome}>
           <ul className={styles.ulhome}>
-            <li className={styles.lihome}>
+            <li>
               <img
                 src={vite}
                 /*  src="https://d335luupugsy2.cloudfront.net/cms/files/692217/1694801416/$9dhg0ggifvi" */
@@ -19,13 +19,13 @@ export function Homepage() {
           </ul>
 
           <ul className={styles.ulhome}>
-            <li className={styles.lihome}>
+            <li>
               <Link to="/login">
                 {" "}
                 <button className={styles.buttonhome}> Login</button>{" "}
               </Link>
             </li>
-            <li className={styles.lihome}>
+            <li className={styles.lihome} id={styles.idl}>
               <Link to="/Register">
                 {" "}
                 <button className={styles.buttonhome}>Cadastro</button>
