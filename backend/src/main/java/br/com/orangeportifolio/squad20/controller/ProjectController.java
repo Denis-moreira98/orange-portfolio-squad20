@@ -54,7 +54,8 @@ public class ProjectController {
 	public ResponseEntity<ProjectDTO> update(@RequestBody Project project, @PathVariable Integer id) {
 
 		if (service.update(project, id)) {
-			return ResponseEntity.ok(ProjectDTO.fromProject(project));
+			ProjectDTO projectDTO = ProjectDTO.fromProject(project);
+			return ResponseEntity.ok(projectDTO);
 		}
 		return ResponseEntity.badRequest().build();
 	}
