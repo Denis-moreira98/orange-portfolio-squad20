@@ -1,0 +1,29 @@
+.container {
+   width: 300px;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 2rem;
+   text-align: center;
+}
+.container h3 {
+   font-size: 28px;
+   color: var(--neutral-110);
+   font-weight: 400;
+}
+
+@media screen and (max-width: 609px) {
+   .container h3 {
+      font-size: 24px;
+   }
+}
+@media screen and (max-width: 574px) {
+   .container {
+      width: 227px !important;
+   }
+   .container h3 {
+      font-size: 24px;
+   }
+}
