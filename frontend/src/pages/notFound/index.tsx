@@ -103,7 +103,7 @@ export function NotFound() {
                   </linearGradient>
                   {/* montanhas ao fundo */}
                   <linearGradient id="paint2_linear" x1="344.3" y1="64.1527" x2="344.961" y2="87.284" gradientUnits="userSpaceOnUse">
-                     <stop stop-color="orange" />
+                     <stop stop-color="#FF5522" />
                      <stop offset="1" stop-color="white" stop-opacity="0" />
                   </linearGradient>
                   {/* 4 */}
