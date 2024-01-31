@@ -9,6 +9,13 @@
    border: 2px solid #ccc;
    overflow: hidden;
 }
+.input:hover {
+   border-color: var(--neutral-110);
+}
+
+.input:focus {
+   border-color: var(--info-100);
+}
 
 input textarea {
    width: 100%;
