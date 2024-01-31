@@ -1,0 +1,32 @@
+.container {
+   max-width: 400px;
+   display: flex;
+   flex-direction: column;
+   text-align: left;
+   gap: 2rem;
+}
+.container p {
+   color: var(--neutral-110);
+   font-size: 16px;
+   font-weight: 400;
+}
+.container h3 {
+   font-size: 28px;
+   color: var(--neutral-110);
+   font-weight: 400;
+}
+.div_btn {
+   display: flex;
+   flex-direction: row;
+   align-items: start;
+   gap: 1rem;
+}
+
+@media screen and (max-width: 400px) {
+   .container {
+      width: 227px !important;
+   }
+   .container h3 {
+      font-size: 24px;
+   }
+}

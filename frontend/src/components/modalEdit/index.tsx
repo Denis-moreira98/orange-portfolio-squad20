@@ -2,40 +2,37 @@ import Modal from "react-modal";
 import styles from "./styles.module.css";
 
 import { Button } from "../button";
-import InputModal, { TextArea } from "./input/index";
+import InputModal, { TextArea } from "../modal/input/index";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { FaImages } from "react-icons/fa";
 
-import { ModalPreview } from "../modalPreview";
-import { ModalSuccess } from "../modalSuccess";
+import { ModalEditSuccess } from "../modalEditSuccess";
 
 interface ModalProps {
    isOpen: boolean;
    onRequestClose: () => void;
 }
 
-export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
-   const [modalVisible, setModalVisible] = useState(false);
+export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
    const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
 
    // states do form
    const [title, setTitle] = useState("");
    const [tags, setTags] = useState("");
-   const [arrayDeTags, setArrayDeTags] = useState([]);
    const [link, setLink] = useState("");
    const [description, setDescription] = useState("");
+   // const [arrayDeTags, setArrayDeTags] = useState([]);
 
-   const handleChangeTags = (event) => {
-      setTags(event.target.value);
+   // const handleChangeTags = (event) => {
+   //    setTags(event.target.value);
 
-      const tagsProntas = tags.split(" ");
+   //    const tagsProntas = tags.split(" ");
 
-      setArrayDeTags(tagsProntas);
-   };
+   //    setArrayDeTags(tagsProntas);
+   // };
 
    function handleRegisterProject(e: FormEvent) {
       e.preventDefault();
-      console.log(FormData);
    }
 
    //Modal Success
@@ -48,16 +45,6 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
    }
    function handleCloseModalSuccess() {
       setModalSuccessVisible(false);
-   }
-
-   //Modal View
-   function handleOpenModal(e: FormEvent) {
-      e.preventDefault();
-      setModalVisible(true);
-   }
-
-   function handleCloseModal() {
-      setModalVisible(false);
    }
 
    const [avatarUrl, setAvatarUrl] = useState("");
@@ -99,7 +86,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
             style={customStyles}
          >
             <div className={styles.div_container}>
-               <h4>Adicionar Projeto</h4>
+               <h4>Editar projeto </h4>
                <form onSubmit={handleRegisterProject}>
                   <div className={styles.content}>
                      <div className={styles.div_text}>
@@ -137,7 +124,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                         />
                         <InputModal
                            value={tags}
-                           onChange={handleChangeTags}
+                           onChange={(e) => setTags(e.target.value)}
                            placeholder="Tags"
                         />
                         <InputModal
@@ -153,13 +140,6 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                      </div>
                   </div>
                   <div className={styles.div_button}>
-                     <button
-                        className={styles.btn_view}
-                        type="button"
-                        onClick={handleOpenModal}
-                     >
-                        Visualizar publicação
-                     </button>
                      <div className={styles.div_buttons}>
                         <Button
                            onClick={handleOpenModalSuccess}
@@ -182,19 +162,8 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                </form>
             </div>
          </Modal>
-         {modalVisible && (
-            <ModalPreview
-               title={title}
-               link={link}
-               description={description}
-               tags={arrayDeTags}
-               image={avatarUrl}
-               isOpen={modalVisible}
-               onRequestClose={handleCloseModal}
-            />
-         )}
          {modalSuccessVisible && (
-            <ModalSuccess
+            <ModalEditSuccess
                isOpen={modalSuccessVisible}
                onRequestClose={handleCloseModalSuccess}
             />

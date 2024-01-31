@@ -1,27 +1,35 @@
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { Dashboard } from "./pages/dashboard";
+import {Discover} from "./pages/discover";
 import { NotFound } from "./pages/notFound";
 import { Homepage } from "./pages/homepage";
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./components/layout";
 
 const router = createBrowserRouter([
+
   {
     element: <Layout />,
     children: [
       {
-        path: "/",
+        path: "/dashboard",
         element: <Dashboard />,
       },
       {
-        path: "*",
-        element: <NotFound />,
-      },
+            path: "/discover",
+            element: <Discover />,
+         },
+     
+     
     ],
   },
+   {
+        path: "*",
+        element: <NotFound />,
+    },     
   {
-    path: "/homepage",
+    path: "/",
     element: <Homepage />,
   },
   {
@@ -32,6 +40,7 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
-]);
+  
+ 
 
 export { router };
