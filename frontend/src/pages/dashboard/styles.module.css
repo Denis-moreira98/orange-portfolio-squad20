@@ -78,17 +78,18 @@
 }
 
 .pesquisa {
-  width: 400px;
+  width: 513px;
   line-height: 24px;
+  height: 56px;
   padding: 10px;
-
   margin-top: 15px;
-
   border: 2px solid rgba(0, 0, 0, 0.23);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.15px;
+  border-radius: 4px;
+
 }
 
 .pesquisa:focus {
