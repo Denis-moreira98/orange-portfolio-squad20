@@ -32,6 +32,5 @@ public class AuthController {
 		}else {
 			return ResponseEntity.status(401).build();
 		}
-		
 	}
 }

@@ -14,6 +14,7 @@ import br.com.orangeportifolio.squad20.dao.IProjectDAO;
 import br.com.orangeportifolio.squad20.dto.ProjectDTO;
 import br.com.orangeportifolio.squad20.model.Project;
 import br.com.orangeportifolio.squad20.service.storage.ILocalFotoStorageService;
+import br.com.orangeportifolio.squad20.service.storage.StorageServiceImpl;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -26,16 +27,25 @@ public class ProjectServiceImpl implements IProjectService{
 	private IProjectDAO dao;
 	
 	@Autowired
-	private ILocalFotoStorageService uploadService;
+	private ILocalFotoStorageService localFotoService;
+	
+	@Autowired
+	private StorageServiceImpl storageS3Service;
 
 	@Override
 	public ProjectDTO create(@Valid @NotNull Project project, MultipartFile file) {
-	    try {
-	        // Fazendo o upload do arquivo e obtendo o nome do arquivo
-	        String fileName = uploadService.uploadLocalFile(file);
+			    
+		try {
+	        // Fazendo o upload para o s3 e retorna o caminho url
+			String pathFile = storageS3Service.uploadS3File(file);
+	    	
+	    	if(pathFile == null) { //Fazendo upload para pasta local caso a requisição do s3 falhe
+	    		
+	    		pathFile = localFotoService.uploadLocalFile(file);
+	    	}
 
 	        // Configurando o nome do arquivo na mídia do projeto
-	        project.setMidia(fileName);
+	        project.setMidia(pathFile);
 
 	        // Salvando o projeto
 	        dao.save(project);
@@ -43,7 +53,7 @@ public class ProjectServiceImpl implements IProjectService{
 	        return ProjectDTO.fromProject(project);
 	        
 	    } catch (Exception e) {
-	        // Tratando a exceção
+
 	        System.err.println("Ocorreu um erro ao criar o projeto: " + e.getMessage());
 	        return null;
 	    }
