@@ -16,6 +16,7 @@
 
 .input:focus {
    border-color: var(--info-100);
+   outline: none;
 }
 
 input textarea {
