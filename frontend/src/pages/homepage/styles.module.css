@@ -51,11 +51,19 @@ li .buttonhome {
   height: 40px;
   border-radius: 3px;
   cursor: pointer;
+  
 }
 
 li:first-child .buttonhome {
   background-color: transparent;
   border: 2px solid #f3f6f7;
+  
+  
+}
+li:first-child .buttonhome:hover{
+  box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.48);
+
+
 }
 
 li:last-child .buttonhome,
@@ -65,6 +73,7 @@ li:first-child .buttonhome:hover,
   color: #ffffff;
   transition: 0.3s all ease-out;
   border: none;
+
 }
 .divhome h1 {
   color: var(--primary-90);
@@ -76,6 +85,8 @@ li:last-child .buttonhome:hover,
 .sectionhome .divhome .buttonhome:hover {
   background-color: #ff8833;
   transition: 0.3s all ease-out;
+  box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.48);
+
 }
 
 .sectionhome {
