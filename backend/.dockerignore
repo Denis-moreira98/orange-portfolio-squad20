@@ -1,0 +1,13 @@
+.idea/
+*.iml
+*.iws
+target/
+.sonar/
+.sonarlint/
+.vscode/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar

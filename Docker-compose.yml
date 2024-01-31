@@ -6,9 +6,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=orange_portfolio_db
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB= 
+      - POSTGRES_USER= 
+      - POSTGRES_PASSWORD= 
 
   spring-app:
     # build:
@@ -18,7 +18,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jbdc:postgressql://postgres-db:5432/orange_portfolio_db
+      SPRING_DATASOURCE_URL: 
       aws_key: 
       aws_secret: 
       aws_region: 
