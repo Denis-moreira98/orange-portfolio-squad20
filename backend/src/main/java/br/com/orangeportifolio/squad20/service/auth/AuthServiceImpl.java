@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.orangeportifolio.squad20.dao.IUserDAO;
 import br.com.orangeportifolio.squad20.dto.LoginDTO;
+import br.com.orangeportifolio.squad20.dto.UserDTO;
 import br.com.orangeportifolio.squad20.model.User;
 import br.com.orangeportifolio.squad20.security.OrangeToken;
 import br.com.orangeportifolio.squad20.security.TokenUtil;
@@ -19,7 +20,7 @@ public class AuthServiceImpl implements IAuthService{
 	IUserDAO dao;
 
 	@Override
-	public OrangeToken authenticate(@Valid @NotNull LoginDTO user) {
+	public UserDTO authenticate(@Valid @NotNull LoginDTO user) {
 		
 		User res = dao.findByEmail(user.email());
 		
@@ -29,8 +30,8 @@ public class AuthServiceImpl implements IAuthService{
 			
 			if(encoder.matches(user.password(), res.getPassword())) {
 				OrangeToken token = TokenUtil.encode(res);
-				System.err.println("Retornando token do AuthService: " + token);
-				return token;
+				
+				return new UserDTO(res.getIdUser(), res.getName(),res.getLastName(), res.getEmail(), token.toString());
 			}
 		}
 		return null;
