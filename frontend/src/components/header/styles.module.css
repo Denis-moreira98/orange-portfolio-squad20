@@ -8,7 +8,7 @@
 
    font-size: 20px;
    font-weight: 500;
-   letter-spacing: .15px;
+   letter-spacing: 0.15px;
 
    display: flex;
    justify-content: space-between;
@@ -87,12 +87,12 @@ nav.menu ul li a:hover {
    cursor: pointer;
    font-size: 20px;
    background: transparent;
+   transition: all 0.3s ease-in;
 }
 
 .btn__out:hover {
-   transform: scale(1.2)
+   transform: scale(1.2);
 }
-
 
 /* MOBILE */
 .icon__menu {
@@ -111,8 +111,7 @@ nav.menu ul li a:hover {
    border-radius: 4px;
    visibility: hidden;
    opacity: 0;
-   box-shadow:
-      2px 2px 8px 0px;
+   box-shadow: 2px 2px 8px 0px;
 }
 
 .dropdown ul {
@@ -147,12 +146,10 @@ nav.menu ul li a:hover {
 
 /* FIM MENU LATERAL */
 
-
 @media screen and (max-width: 800px) {
    .header__container {
       width: 100%;
-      box-shadow:
-         0px 2px 4px -1px rgba(0, 0, 0, 0.20),
+      box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
          0px 4px 5px 0px rgba(0, 0, 0, 0.14),
          0px 1px 10px 0px rgba(0, 0, 0, 0.12);
       border-radius: 4px;
@@ -210,6 +207,14 @@ nav.menu ul li a:hover {
    .btn__out {
       display: none;
    }
+   .sair {
+      display: flex;
+      flex-direction: row;
+
+      align-items: center;
+   }
+   .btn__outDrop {
+   }
 
    .dropdown ul li .btn__outDrop {
       width: 150px;
@@ -233,7 +238,6 @@ nav.menu ul li a:hover {
    .dropdown ul li .btn__outDrop:hover {
       background: var(--error-80);
    }
-
 }
 
 @media screen and (max-width: 1000px) {

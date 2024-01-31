@@ -53,10 +53,10 @@ export function Register() {
          email: data.email,
          password: data.password,
       };
-      console.log(dataUser);
 
       const result = await signUp(dataUser);
       result != undefined ? navigate("/login") : null;
+      console.log(dataUser);
    }
 
    return (
