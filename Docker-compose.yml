@@ -1,20 +1,36 @@
 version: '3.8'
 
 services:
+  postgres-db:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=orange_portfolio_db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=123456
+
   spring-app:
+    # build:
+    #   context: ./backend
+    #   dockerfile: Dockerfile
     image: backend-portfolio:latest
     ports:
       - "8080:8080"
     environment:
+      SPRING_DATASOURCE_URL: jbdc:postgressql://postgres-db:5432/orange_portfolio_db
       aws_key: 
       aws_secret: 
       aws_region: 
       aws_bucket: 
+    depends_on:
+      - postgres-db
 
   react-app:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    # image: frontend-portfolio:latest
     ports:
       - "9090:9090"
     depends_on:
