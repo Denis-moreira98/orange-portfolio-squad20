@@ -26,6 +26,7 @@ public class UserServiceImpl implements IUserService{
 			user.setPassword(newPassword);
 			
 			return dao.save(user);
+			
 		}
 		System.err.println("Usuário já existe no banco de dados!");
 		return null;
