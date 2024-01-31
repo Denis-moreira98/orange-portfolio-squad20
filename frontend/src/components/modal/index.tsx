@@ -62,6 +62,53 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
    function handleCloseModal() {
       setModalVisible(false);
    }
+   async function handleRegisterProject(event: FormEvent) {
+      event.preventDefault();
+
+      try {
+         const data = new FormData();
+
+         if (
+            title === "" ||
+            tags === "" ||
+            link === "" ||
+            description === "" ||
+            imageAvatar === null
+         ) {
+            alert("PREENCHA TODOS OS CAMPOS!");
+            return;
+         } else if (validateEspecialChars.test(tags)) {
+            SetErrorChars(true);
+            return;
+         } else {
+            SetErrorChars(false);
+         }
+
+         data.append("title", title);
+         data.append("tag", tags);
+         data.append("link", link);
+         data.append("description", description);
+         data.append("file", imageAvatar);
+
+         for (const [key, value] of data.entries()) {
+            console.log(`${key}: ${value}`);
+         }
+
+         // await axios.post("http://localhost:3000/projects", data);
+         // const apiClient = setupAPIClient();
+         // await apiClient.post("/projects", data);
+
+         // setTitle("");
+         // setLink("");
+         // setTags("");
+         // setDescription("");
+         // setImageAvatar("");
+         // setImageAvatar(null);
+         // setAvatarUrl("");
+      } catch (err) {
+         console.log(err);
+      }
+   }
 
    const [avatarUrl, setAvatarUrl] = useState("");
    const [imageAvatar, setImageAvatar] = useState(null);
