@@ -15,4 +15,9 @@ public class OrangeToken {
 	public void setToken(String token) {
 		this.token = token;
 	}
+	
+	@Override
+	public String toString() {
+		return token ;
+	}
 }
