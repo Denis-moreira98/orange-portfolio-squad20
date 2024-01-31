@@ -1,4 +1,4 @@
-package br.com.orangeportifolio.squad20.service.midia;
+package br.com.orangeportifolio.squad20.service.storage;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.validation.constraints.NotNull;
 
 @Service
-public class LocalFotoStorageServiceImpl implements IFotoStorageService{
+public class LocalFotoStorageServiceImpl implements ILocalFotoStorageService{
 
 	private static String pathImage = "C:\\Users\\Jefferson Pedro\\Documents\\GitHub\\orange-portfolio-squad20\\backend\\src\\image";
 	
@@ -43,9 +43,9 @@ public class LocalFotoStorageServiceImpl implements IFotoStorageService{
 	        
 	        // Retorne o caminho completo do arquivo salvo
 	        System.out.println("Armazenando em: " + serveFile.getAbsolutePath());
-	        String fullPath = serveFile.getAbsolutePath();
+	        String fullPath = serveFile.getName();
 	        
-	        return fullPath;
+	        return uniqueFileName;
 
 	    } catch (IOException e) {
 	        System.err.printf("Ocorreu um erro ao realizar o upload do arquivo: ");
