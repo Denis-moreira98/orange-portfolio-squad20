@@ -1,0 +1,214 @@
+.containerhome {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.navhome {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.5rem 3rem;
+  background-color: white;
+}
+
+.ulhome {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+li img {
+  width: 50px;
+}
+
+.balaofala {
+  font-size: 14px;
+  position: relative;
+  background-color: #f3f6f7;
+  padding: 8px;
+  border-radius: 8px;
+  max-width: 200px;
+  margin: 20px;
+}
+
+.balaofala::before {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  border-width: 7px 7px 7px 0;
+  border-color: transparent #f3f6f7 transparent transparent;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+li .buttonhome {
+  border: none;
+  width: 80px;
+  height: 40px;
+  border-radius: 3px;
+  cursor: pointer;
+  
+}
+
+li:first-child .buttonhome {
+  background-color: transparent;
+  border: 2px solid #f3f6f7;
+  
+  
+}
+li:first-child .buttonhome:hover{
+  box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.48);
+
+
+}
+
+li:last-child .buttonhome,
+li:first-child .buttonhome:hover,
+.sectionhome .divhome .buttonhome {
+  background-color: rgb(255, 85, 34);
+  color: #ffffff;
+  transition: 0.3s all ease-out;
+  border: none;
+
+}
+.divhome h1 {
+  color: var(--primary-90);
+  font-weight: 500;
+  font-size: 42px;
+}
+
+li:last-child .buttonhome:hover,
+.sectionhome .divhome .buttonhome:hover {
+  background-color: #ff8833;
+  transition: 0.3s all ease-out;
+  box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.48);
+
+}
+
+.sectionhome {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem 3rem;
+  align-items: center;
+}
+
+.sectionhome div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionhome .divhome h1 {
+  font-size: 35px;
+}
+
+.sectionhome .divhome p {
+  color: #828282;
+  width: 70%;
+  font-size: 18px;
+}
+
+.sectionhome img {
+  width: 450px;
+}
+
+.sectionhome .divhome button {
+  border: none;
+  width: 120px;
+  height: 40px;
+  border-radius: 3px;
+  cursor: pointer;
+
+  margin: 1rem 0 0 0;
+}
+
+footer {
+  padding: 1.5rem 3rem;
+  font-weight: bold;
+  color: #5c5c5c;
+}
+
+.partners {
+  padding: 1rem 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.partners img {
+  width: 80px;
+  object-fit: scale-down;
+}
+
+
+
+@media  screen and (max-width: 924px) {
+  .navhome {
+    padding: 1.5rem;
+  }
+  .ulhome {
+    gap: 10px;
+  }
+  .li img {
+    width: 40px;
+  }
+  .balaofala {
+    font-size: 15px;
+    max-width: 150px;
+    margin: 10px;
+  }
+  .sectionhome {
+    padding: 1rem;
+  }
+  .sectionhome .divhome p {
+    width: 100%;
+  }
+
+  .sectionhome {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+  .sectionhome img {
+    width: 400px;
+  }
+}
+
+@media  screen and (max-width:768px) {
+  .sectionhome img {
+    width: 350px;
+  }
+
+  li img {
+    width: 30px;
+  }
+  .balaofala {
+    font-size: 15px;
+    margin: 10px;
+  }
+  .sectionhome {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  footer {
+    text-align: center;
+  }
+  .divhome {
+    margin-top: 10%;
+  }
+  .sectionhome .divhome h1 {
+    font-size: 30px;
+  }
+  .lihome{
+    display: none;
+  }
+
+}
