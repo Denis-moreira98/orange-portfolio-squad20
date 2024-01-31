@@ -1,4 +1,4 @@
-export function Descobrir() {
+export function Discover() {
    return (
       <>
          <h1>DESCOBRIR PAGE</h1>

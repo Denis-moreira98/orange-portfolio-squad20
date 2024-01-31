@@ -2,12 +2,12 @@ import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { Dashboard } from "./pages/dashboard";
 import { NotFound } from "./pages/notFound";
-
 import { createBrowserRouter } from "react-router-dom";
-import { Private } from "./routes/private";
-import { Descobrir } from "./pages/descobrir";
-import { Home } from "./pages/home";
 import { Layout } from "./components/layout";
+import { Discover } from "./pages/discover";
+import { Homepage } from "./pages/homepage";
+
+import { Private } from "./routes/private";
 
 const router = createBrowserRouter([
    {
@@ -22,48 +22,30 @@ const router = createBrowserRouter([
             ),
          },
          {
-            path: "/descobrir",
+            path: "/discover",
             element: (
                <Private>
-                  <Descobrir />
+                  <Discover />
                </Private>
             ),
          },
       ],
    },
-
+   {
+      path: "*",
+      element: <NotFound />,
+   },
    {
       path: "/",
-      element: (
-         <>
-            <Home />
-         </>
-      ),
+      element: <Homepage />,
    },
    {
       path: "/login",
-      element: (
-         <>
-            <Login />
-         </>
-      ),
+      element: <Login />,
    },
-
    {
       path: "/register",
-      element: (
-         <>
-            <Register />,
-         </>
-      ),
-   },
-   {
-      path: "*",
-      element: (
-         <>
-            <NotFound />,
-         </>
-      ),
+      element: <Register />,
    },
 ]);
 
