@@ -52,10 +52,10 @@
   font-weight: 400;
   line-height: 16px;
   letter-spacing: 0.15px;
-  opacity: 0.5;
-}
+  color: var( --neutral-100);}
 
 .buttondashboard {
+  transition: all 0.3s ease-in;
   display: flex;
   padding: 8px 22px;
   flex-direction: column;
@@ -66,6 +66,7 @@
   background-color: #dddddd;
   border: #dddddd;
   border-radius: 4px;
+  
 }
 
 .projetos {
@@ -98,8 +99,11 @@ letter-spacing: 0.15px;
    width: 46px;
    height: 46px;
    cursor: pointer;
+   transition: all 0.3s ease-in;
 }
-
+.iconedashboard:hover {
+  transform: scale(1.2);
+}
 .picture__image {
   opacity: 0.6;
   color: var(--neutral-120);
@@ -140,8 +144,7 @@ letter-spacing: 0.15px;
 }
  */
 
-@media screen and (max-width: 800px) {
-}
+
 @media screen and (max-width: 452px) {
   .perfil {
     flex-direction: column;
