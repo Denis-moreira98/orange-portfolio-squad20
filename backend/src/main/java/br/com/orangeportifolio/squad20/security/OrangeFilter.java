@@ -1,8 +1,6 @@
 package br.com.orangeportifolio.squad20.security;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,11 +18,9 @@ public class OrangeFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 
 		// Log para ler o cabeçalho:
-		String authorizationHeader = request.getHeader("Authorization");
-		System.err.println("Authorization Header(Orange Filter): " + authorizationHeader);
-		System.out.println("Passou pelo filtro!" + request.getRequestURI().toString());
-
-		String path = request.getRequestURI();
+//		String authorizationHeader = request.getHeader("Authorization");
+//		System.err.println("Authorization Header(Orange Filter): " + authorizationHeader);
+//		System.out.println("Passou pelo filtro!" + request.getRequestURI().toString());
 
 		if (request.getHeader("Authorization") != null) {
 
