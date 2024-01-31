@@ -10,6 +10,13 @@
    font-size: 16px;
    font-weight: 400;
 }
+.input:hover {
+   border-color: var(--neutral-110);
+}
+
+.input:focus {
+   border-color: var(--info-100);
+}
 
 input textarea {
    width: 100%;
