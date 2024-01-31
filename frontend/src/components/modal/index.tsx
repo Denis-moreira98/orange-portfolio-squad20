@@ -7,9 +7,9 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { FaImages } from "react-icons/fa";
 
 import { ModalPreview } from "../modalPreview";
-import { ModalSuccess } from "../modalSuccess";
+// import { ModalSuccess } from "../modalSuccess";
 
-// import { validateEspecialChars } from "../../utils/validations";
+import { validateEspecialChars } from "../../utils/validations";
 
 interface ModalProps {
    isOpen: boolean;
@@ -18,58 +18,52 @@ interface ModalProps {
 
 export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
    const [modalVisible, setModalVisible] = useState(false);
-   const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
+   // const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
 
    // states do form
    const [title, setTitle] = useState("");
    const [tags, setTags] = useState("");
    const [arrayDeTags, setArrayDeTags] = useState([]);
-   // const [chars, SetChars] = useState(false);
+   const [errorChars, SetErrorChars] = useState(false);
    const [link, setLink] = useState("");
    const [description, setDescription] = useState("");
 
-   const handleChangeTags = (event) => {
-      setTags(event.target.value);
-
-      const tagsProntas = tags.split(" ");
-
-      setArrayDeTags(tagsProntas);
-   };
-
-   // const validate = () => {
-   //    if (validateEspecialChars.test(tags)) {
-   //       SetChars(true);
-   //    } else {
-   //       SetChars(false);
-   //    }
-   // };
-
-   function handleRegisterProject(e: FormEvent) {
-      e.preventDefault();
-      // validate();
-   }
-
    //Modal Success
-   function handleOpenModalSuccess() {
-      setTimeout(() => {
-         setModalSuccessVisible(true);
-      }, 800);
-   }
-   function handleCloseModalSuccess() {
-      setModalSuccessVisible(false);
-   }
+   // function handleOpenModalSuccess() {
+   //    setTimeout(() => {
+   //       setModalSuccessVisible(true);
+   //    }, 800);
+   // }
+   // function handleCloseModalSuccess() {
+   //    setModalSuccessVisible(false);
+   // }
 
-   //Modal View
+   //ModalPreview
    function handleOpenModal() {
+      if (
+         title === "" ||
+         tags === "" ||
+         link === "" ||
+         description === "" ||
+         imageAvatar === null
+      ) {
+         alert("PREENCHA TODOS OS CAMPOS!");
+         return;
+      } else if (validateEspecialChars.test(tags)) {
+         SetErrorChars(true);
+         return;
+      } else {
+         SetErrorChars(false);
+      }
+      const tagsSeparadas = tags.split(" ");
+      setArrayDeTags(tagsSeparadas);
       setModalVisible(true);
    }
-
    function handleCloseModal() {
       setModalVisible(false);
    }
 
    const [avatarUrl, setAvatarUrl] = useState("");
-   // eslint-disable-next-line @typescript-eslint/no-unused-vars
    const [imageAvatar, setImageAvatar] = useState(null);
 
    function handleFile(e: ChangeEvent<HTMLInputElement>) {
@@ -145,10 +139,24 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                         />
                         <InputModal
                            value={tags}
-                           onChange={handleChangeTags}
+                           onChange={(e) => setTags(e.target.value)}
                            placeholder="Tags"
                         />
-                        {/* {chars && <p>Não vai pegar frango</p>} */}
+                        {errorChars && (
+                           <p
+                              style={{
+                                 color: "#ff4433",
+                                 fontSize: "14px",
+                                 marginTop: "-9px",
+                                 marginLeft: "5px",
+                                 marginBottom: "-7px",
+                                 fontWeight: "500",
+                              }}
+                           >
+                              Separe as tags apenas com espaço, sem caracteres
+                              especiais!
+                           </p>
+                        )}
                         <InputModal
                            value={link}
                            onChange={(e) => setLink(e.target.value)}
@@ -171,9 +179,9 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                      </button>
                      <div className={styles.div_buttons}>
                         <Button
-                           type="button"
+                           type="submit"
                            variant="orange"
-                           onClick={handleOpenModalSuccess}
+                           // onClick={handleOpenModalSuccess}
                         >
                            SALVAR
                         </Button>
@@ -194,20 +202,20 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          {modalVisible && (
             <ModalPreview
                title={title}
+               tags={arrayDeTags}
                link={link}
                description={description}
-               tags={arrayDeTags}
                image={avatarUrl}
                isOpen={modalVisible}
                onRequestClose={handleCloseModal}
             />
          )}
-         {modalSuccessVisible && (
+         {/* {modalSuccessVisible && (
             <ModalSuccess
                isOpen={modalSuccessVisible}
                onRequestClose={handleCloseModalSuccess}
             />
-         )}
+         )} */}
       </>
    );
 }
