@@ -50,7 +50,7 @@ export function Dashboard() {
           placeholder="Buscar tags"
         />
         <div className={styles.containerproj}>
-          <div className={styles.adicionar}  onClick={handleOpenModal}>
+          <div className={styles.adicionar} onClick={handleOpenModal}>
             <button
               className={styles.buttondashboardd}
               onClick={handleOpenModal}
