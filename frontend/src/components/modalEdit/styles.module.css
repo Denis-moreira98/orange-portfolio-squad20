@@ -61,9 +61,9 @@
 .labelAvatar {
    top: 7.8rem;
    width: 400px;
-   height: 300px;
+   height: 304px;
    background-color: var(--neutral-70);
-   margin-bottom: 1rem;
+   margin-bottom: 0rem;
    border-radius: 0.3rem;
    display: flex;
    justify-content: center;
@@ -145,7 +145,7 @@
    .labelAvatar {
       top: 8.5rem;
       width: 210px;
-      height: 210px;
+      height: 196px;
       margin-left: 0;
    }
    .div_input input {
