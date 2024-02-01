@@ -6,6 +6,6 @@ COPY mvnw pom.xml ./
 COPY .mvn ./.mvn
 COPY src ./src
 
-# RUN ./mvnw clean package -DskipTests
+RUN ./mvnw clean package -DskipTests
 
 ENTRYPOINT [ "java", "-jar", "target/squad20-0.0.1-SNAPSHOT.jar" ]
