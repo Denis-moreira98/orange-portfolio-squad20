@@ -62,16 +62,25 @@ public class ProjectServiceImpl implements IProjectService{
 	}
 
 	@Override
-	public boolean update(@Valid @NotNull Project project, @NotNull @Positive Integer id) {
+	public Boolean update(@Valid @NotNull Project project, @NotNull @Positive Integer id, MultipartFile file) {
+		
 		Optional<Project> res = dao.findById(id);
-		if(res.isPresent()) {
-			Project existingProject = res.get();
-			BeanUtils.copyProperties(project, existingProject, "idUser");
-			dao.save(existingProject);
-			return true;
+		String pathFile = storageS3Service.uploadS3File(file);
+		
+		try {
+			
+			if(res.isPresent()) {
+				Project existingProject = res.get();
+				project.setMidia(pathFile);
+				BeanUtils.copyProperties(project, existingProject, "idUser");
+				dao.save(existingProject);
+				return true;
+			}
+		} catch (Exception e) {
+			System.err.println("Erro ao atualizar o projeto!");
+			return false;
 		}
-		System.err.println("Erro ao atualizar o projeto!");
-		return false;
+		return null;
 	}
 
 	@Override
