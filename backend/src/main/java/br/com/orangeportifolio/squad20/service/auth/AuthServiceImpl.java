@@ -31,7 +31,7 @@ public class AuthServiceImpl implements IAuthService{
 			if(encoder.matches(user.password(), res.getPassword())) {
 				OrangeToken token = TokenUtil.encode(res);
 				//System.err.println("Token passado para o UserDTO: " + token.toString());
-				return new UserDTO(res.getIdUser(), res.getName(),res.getLastName(), res.getEmail(), token.toString());
+				return new UserDTO(res.getIdUser(), res.getName(), res.getEmail(), token.toString());
 			}
 		}
 		return null;
