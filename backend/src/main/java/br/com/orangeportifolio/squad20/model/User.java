@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -43,7 +42,6 @@ public class User {
 	
 	
 	@NotNull(message = "O campo senha não pode ser nulo")
-	@JsonIgnore
 	@Length(min = 5, max = 75)
 	@Column(name = "password", length = 45, nullable = false)
 	private String  password;
