@@ -22,7 +22,7 @@ import jakarta.validation.constraints.NotNull;
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_user")
 	private Integer idUser;
 	
@@ -50,6 +50,8 @@ public class User {
 	@JsonIgnoreProperties("userProject")
 	private List<Project> projects;
 	
+	private User() {}
+
 	//GET AND SET
 
 	public Integer getIdUser() {

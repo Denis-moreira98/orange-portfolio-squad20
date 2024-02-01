@@ -20,7 +20,7 @@ import jakarta.validation.constraints.NotNull;
 public class Project {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_project")
 	private Integer idProject;
 	
@@ -49,6 +49,8 @@ public class Project {
 	
 	@Column(name = "midia")
 	private String midia;
+
+	private Project() {}
 	
 	//GET E SET
 	
