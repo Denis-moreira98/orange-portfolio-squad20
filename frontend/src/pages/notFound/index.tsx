@@ -1,17 +1,6 @@
 import styles from "./styles.module.css";
-import anime from "animejs";
 
 export function NotFound() {
-   anime({
-      targets: `.${styles.zero}`,
-      translateX: 8,
-      autoplay: true,
-      loop: true,
-      easing: "easeInOutSine",
-      direction: "alternate",
-      scale: [{ value: 1 }, { value: 1.2 }, { value: 1, delay: 250 }],
-      rotateY: { value: "+=360", delay: 300 },
-   });
 
    return (
       <main className={styles.container__main}>

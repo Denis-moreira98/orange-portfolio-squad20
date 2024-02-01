@@ -33,12 +33,16 @@ main {
     padding: 16px;
     outline: none;
     border-radius: 4px;
-    border: 1px solid #0000003b;
+    border: 2px solid #0000003b;
 }
 
-.input__field:focus {
-    border: 2px solid var(--info-100);
+.input__field:hover{
+    border-color: 2px solid var(--neutral-110);
 }
+.input__field:focus {
+    border: 2px solid var(--info-100);;
+}
+
 
 .placeholder_label {
     color: var(--neutral-100);
