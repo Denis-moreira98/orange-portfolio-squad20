@@ -85,18 +85,18 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          }
 
          data.append("title", title);
-         data.append("tag", tags);
-         data.append("link", link);
+         data.append("tags", tags);
+         data.append("linkProject", link);
          data.append("description", description);
-         data.append("file", imageAvatar);
+         // data.append("userProject", user.id);
+         data.append("midia", imageAvatar);
 
          for (const [key, value] of data.entries()) {
             console.log(`${key}: ${value}`);
          }
 
-         // await axios.post("http://localhost:3000/projects", data);
          // const apiClient = setupAPIClient();
-         // await apiClient.post("/projects", data);
+         // await apiClient.post("/project", data);
 
          // setTitle("");
          // setLink("");
