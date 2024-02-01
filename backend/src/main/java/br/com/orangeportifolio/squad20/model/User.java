@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -66,11 +68,13 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	@JsonGetter("country")
 	public String getCountry() {
 		return country;
 	}
-
+	
+	@JsonSetter("country")
 	public void setCountry(String country) {
 		this.country = country;
 	}
@@ -82,11 +86,13 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
+	@JsonGetter("password")
 	public String getPassword() {
 		return password;
 	}
-
+	
+	@JsonSetter("password")
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -97,5 +103,6 @@ public class User {
 
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
-	}	
+	}
+
 }
