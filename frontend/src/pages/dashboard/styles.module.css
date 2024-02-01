@@ -1,179 +1,302 @@
 .containerdashboard {
-   width: 100%;
-   height: auto;
-   margin: auto;
-
-   padding-left: 2rem;
-   padding-right: 2rem;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .perfil {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   gap: 42px;
-   margin-top: 112px;
-   margin-bottom: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 42px;
+  margin-top: 112px;
+  margin-bottom: 56px;
 }
 .containerp {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .fotoperfil {
-   border-radius: 300px;
-   display: flex;
-   width: 122px;
-   height: 122px;
-   justify-content: center;
-   align-items: center;
+  border-radius: 300px;
+  display: flex;
+  width: 122px;
+  height: 122px;
+  justify-content: center;
+  align-items: center;
 }
 .informacoes {
-   display: flex;
-   padding: var(--none, 0px);
-   flex-direction: column;
-   align-items: flex-start;
-   gap: var(--3, 24px);
+  display: flex;
+  padding: var(--none, 0px);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--3, 24px);
 }
 
 .nome {
-   font-size: 20px;
-   font-style: normal;
-   font-weight: 400;
-   line-height: 24px;
-   color: var(--neutral-120);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--neutral-120);
 }
 .pais {
-   font-size: 16px;
-   font-style: normal;
-   font-weight: 400;
-   line-height: 16px;
-   letter-spacing: 0.15px;
-   color: var(--neutral-100);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.15px;
+  opacity: 0.5;
 }
 
 .buttondashboard {
-   transition: all 0.3s ease-in;
-   display: flex;
-   padding: 8px 22px;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   color: var(--disable);
-   cursor: pointer;
-   background-color: #dddddd;
-   border: #dddddd;
-   border-radius: 4px;
+  display: flex;
+  padding: 8px 22px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--disable);
+  cursor: pointer;
+  background-color: #dddddd;
+  border: #dddddd;
+  border-radius: 4px;
 }
 
 .projetos {
-   color: var(--neutral-120);
-   font-size: 20px;
-   font-style: normal;
-   font-weight: 500;
-   line-height: 20px;
-   letter-spacing: 0.15px;
-   opacity: 0.6;
+  color: var(--neutral-120);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.15px;
+  opacity: 0.6;
 }
 
 .pesquisa {
-   width: 513px;
-   line-height: 24px;
-   height: 56px;
-   padding: 10px;
-   margin-top: 15px;
-   border: 2px solid rgba(0, 0, 0, 0.23);
-   font-size: 16px;
-   font-style: normal;
-   font-weight: 400;
-   letter-spacing: 0.15px;
-   border-radius: 4px;
-}
-.pesquisa:hover {
-   border-color: var(--neutral-110);
-}
+  width: 400px;
+  line-height: 24px;
+  padding: 10px;
 
-.pesquisa:focus {
-   border-color: var(--info-100);
-   outline: none;
+  margin-top: 15px;
+
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.15px;
 }
 
 .iconedashboard {
-   width: 46px;
-   height: 46px;
-   cursor: pointer;
-   transition: all 0.3s ease-in;
-}
-.iconedashboard:hover {
-   transform: scale(1.1);
-}
-.picture__image {
-   opacity: 0.6;
-   color: var(--neutral-120);
-   font-size: 16px;
-   text-align: start;
-}
-.picture__image2 {
-   opacity: 0.6;
-   color: var(--neutral-120);
-   font-size: 15px;
-   text-align: start;
+  width: 46px;
+  height: 46px;
+  cursor: pointer;
 }
 
+.sobre .imgPerfil {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.datanome {
+  display: flex;
+  margin-left: 10px;
+  gap: 10px;
+}
+.sobre {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-base-white);
+  margin-top: 12px;
+  color: var(--neutral-110);
+  height: 42px;
+}
+
+.tags {
+  margin-left: auto;
+}
+
+.tags span {
+  width: 24px;
+  height: 24px;
+  padding: 9px;
+  line-height: 0;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: var(--primary-70);
+  border-radius: 50px;
+}
+
+.tags span + span {
+  margin-left: 8px;
+}
+
+.sobre .imgPerfil {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.adicionar2 {
+  position: relative;
+
+  width: 100%;
+  height: 258px;
+  background: var(--neutral-60);
+  border-radius: var(--borderRadius, 4px);
+  margin-top: 15px;
+}
 .adicionar {
-   width: 389px;
-   height: 258px;
-   background: var(--neutral-70);
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   flex-direction: column;
-   cursor: pointer;
-   gap: 10px;
-   border-radius: var(--borderRadius, 4px);
-
-   margin-top: 15px;
+  position: relative;
+  width: 100%;
+  height: 258px;
+  background: var(--neutral-70);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 10px;
+  border-radius: var(--borderRadius, 4px);
+  margin-top: 15px;
 }
 .buttondashboardd {
-   border: 0;
-   background: none;
+  border: 0;
+  background: none;
 }
-/* .complemento {
-   width: 389px;
-   height: 258px;
-   border-radius: var(--borderRadius, 4px);
-   background: rgba(230, 233, 242, 0.2);
-   cursor: pointer;
+.lapisdashboard {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 15px;
+  background-color: rgba(255, 204, 153, 1);
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
- */
+.containerproj {
+  display: grid;
+  grid-column-gap: 24px;
+  margin-top: 15px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.containeri {
+  position: relative;
+}
 
-@media screen and (max-width: 452px) {
-   .perfil {
-      flex-direction: column;
-      gap: 20px;
-      height: 39%;
-      margin-top: 40px;
-      margin-bottom: 40px;
-   }
-   .informacoes {
-      gap: var(--1, 8px);
-   }
-   .buttondashboard {
-      border-radius: 4px;
-      padding: 10px 22px;
-      background: rgba(0, 0, 0, 0.12);
-      color: rgba(0, 0, 0, 0.38);
-   }
-   .pesquisa {
-      width: 312px;
-      line-height: 23px;
-   }
-   .adicionar {
-      width: 312px;
-      height: 258px;
-   }
-   .picture__image2 {
-      margin-left: 12px;
-   }
+.menu {
+  position: absolute;
+  top: calc(100px - 60px);
+  right: 0;
+
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+}
+
+.menu button {
+  padding: 8px;
+  cursor: pointer;
+  border: none;
+
+  background-color: transparent;
+  border-radius: 4px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.menu button:hover {
+  background-color: rgba(255, 238, 204, 1);
+}
+
+.menu:after {
+  /*Triangulo*/
+  content: "";
+  height: 0;
+  position: absolute;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid white;
+  top: -10px;
+  left: 84%;
+  width: 0;
+}
+
+@media screen and (max-width: 1000px) {
+  .containerproj {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .perfil {
+    flex-direction: column;
+    gap: 20px;
+    height: 39%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .informacoes {
+    gap: var(--1, 8px);
+  }
+  .buttondashboard {
+    border-radius: 4px;
+    padding: 10px 22px;
+    background: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.38);
+  }
+  .pesquisa {
+    width: 312px;
+    line-height: 23px;
+  }
+
+  .containerproj {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .adicionar,
+  .adicionar2 {
+    width: 350px;
+    text-align: center;
+  }
+  .datanome {
+    flex-direction: column;
+    display: flex;
+    margin-left: 10px;
+    margin-right: 0;
+    margin-top: 10px;
+    gap: 1px;
+  }
+
+  .datanome span {
+    white-space: nowrap;
+  }
+
+  .tags span {
+    margin-right: 8px;
+  }
+
+  .tags span + span {
+    margin-left: 0;
+  }
+  .datanome > span.ponto {
+    display: none;
+  }
 }
