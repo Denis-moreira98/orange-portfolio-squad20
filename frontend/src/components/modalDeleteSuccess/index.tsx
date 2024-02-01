@@ -30,14 +30,16 @@ export function ModalDeleteSuccess({ isOpen, onRequestClose }: ModalProps) {
          <div className={styles.container}>
             <h3>Projeto deletado com sucesso!</h3>
             <FaCheckCircle color="green" size={40} />
-            <Button
-               type="button"
-               onClick={onRequestClose}
-               className="react-modal-close"
-               variant="orange"
-            >
-               VOLTAR PARA PROJETO
-            </Button>
+            <a href="/dashboard">
+               <Button
+                  type="button"
+                  onClick={onRequestClose}
+                  className="react-modal-close"
+                  variant="orange"
+               >
+                  VOLTAR PARA PROJETO
+               </Button>
+            </a>
          </div>
       </Modal>
    );
