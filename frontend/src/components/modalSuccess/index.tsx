@@ -31,7 +31,7 @@ export function ModalSuccess({ isOpen, onRequestClose }: ModalProps) {
          <div className={styles.container}>
             <h3>Projeto adicionado com sucesso!</h3>
             <FaCheckCircle color="green" size={40} />
-            <a href="/">
+            <a href="/dashboard">
                <Button
                   type="button"
                   onClick={onRequestClose}
