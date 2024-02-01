@@ -31,6 +31,11 @@ public class User {
 	@Column(name = "name", length = 75)
 	private String name;
 	
+	@NotNull(message = "O campo sobrenome não pode ser nulo")
+	@Length(min = 3, max = 75)
+	@Column(name = "last_name", length = 75)
+	private String lastName;
+	
 	@NotNull(message = "O campo país não pode ser nulo")
 	@Length(min = 5, max = 20)
 	@Column(name = "country", length = 20)
@@ -66,6 +71,14 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getCountry() {

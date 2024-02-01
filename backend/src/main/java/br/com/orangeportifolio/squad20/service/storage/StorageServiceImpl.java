@@ -24,13 +24,15 @@ public class StorageServiceImpl implements IStorageService {
     @Autowired
     private AmazonS3 s3Client;
 
-    public String uploadFile(MultipartFile file) {
+    public String uploadS3File(MultipartFile file) {
         try {
             File fileObj = convertMultiPartFileToFile(file);
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
             s3Client.putObject(new PutObjectRequest(bucketName, fileName, fileObj));
             fileObj.delete();
+            
             return s3Client.getUrl(bucketName, fileName).toString();
+            
         } catch (Exception e) {
             System.err.println("Ocorreu um erro ao fazer o upload do arquivo: " + e.getMessage());
             return null;

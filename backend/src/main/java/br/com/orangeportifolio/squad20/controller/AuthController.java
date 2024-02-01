@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.orangeportifolio.squad20.dto.LoginDTO;
-import br.com.orangeportifolio.squad20.security.OrangeToken;
+import br.com.orangeportifolio.squad20.dto.UserDTO;
 import br.com.orangeportifolio.squad20.service.auth.IAuthService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -23,15 +23,14 @@ public class AuthController {
 	IAuthService service;
 
 	@PostMapping("/login")
-	public ResponseEntity<OrangeToken> authenticate(@RequestBody @Valid @NotNull LoginDTO user){
+	public ResponseEntity<UserDTO> authenticate(@RequestBody @Valid @NotNull LoginDTO user){
 		
-		OrangeToken token = service.authenticate(user);
+		UserDTO userDTO = service.authenticate(user);
 		
-		if(token != null) {
-			return ResponseEntity.ok(token);
+		if(userDTO != null) {
+			return ResponseEntity.ok(userDTO);
 		}else {
 			return ResponseEntity.status(401).build();
 		}
-		
 	}
 }

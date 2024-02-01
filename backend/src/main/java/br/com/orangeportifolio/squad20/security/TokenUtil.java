@@ -45,6 +45,8 @@ public class TokenUtil {
 											.signWith(key)
 											.compact();
 			
+			//System.err.println("TokenUtil sendo gerado: " + jwtToken.toString());
+			
 			OrangeToken token = new OrangeToken(jwtToken);
 			return token;
 		} 
@@ -62,7 +64,7 @@ public class TokenUtil {
 			
 			if (token != null) {
 				
-				System.err.println("TokenUtil: " + token);
+				//System.err.println("TokenUtil: " + token);
 				
 				token = token.replace(PREFIX, ""); //Remove o 'Bearer' e extrai apenas o JWT
 				

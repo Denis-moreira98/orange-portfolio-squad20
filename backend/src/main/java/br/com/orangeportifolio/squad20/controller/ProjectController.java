@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.com.orangeportifolio.squad20.dto.ProjectDTO;
 import br.com.orangeportifolio.squad20.model.Project;
 import br.com.orangeportifolio.squad20.service.project.IProjectService;
 import br.com.orangeportifolio.squad20.service.storage.ILocalFotoStorageService;
@@ -38,40 +39,45 @@ public class ProjectController {
 	private ILocalFotoStorageService fotoStorageService;
 
 	@PostMapping("/")
-	public ResponseEntity<Project> create(@RequestPart("project") @Valid @NotNull Project project,
-			@RequestParam("file") @NotNull MultipartFile file) {
-
-		if (service.create(project, file) != null) {
-			return ResponseEntity.ok(project);
+	public ResponseEntity<ProjectDTO> create(@RequestPart("project") @Valid @NotNull Project project,
+											@RequestParam("file") @NotNull MultipartFile file) {
+		
+		ProjectDTO projectDTO = service.create(project, file);
+		
+		if (projectDTO != null) {
+			return ResponseEntity.ok(projectDTO);
 		}
 		return ResponseEntity.badRequest().build();
 	}
 
 	@PutMapping("/edit/{id}")
-	public ResponseEntity<Project> update(@RequestBody Project project, @PathVariable Integer id) {
+	public ResponseEntity<ProjectDTO> update(@RequestPart("project") @Valid @NotNull Project project, 
+											 @PathVariable Integer id,
+											 @RequestParam("file") MultipartFile file) {
 
-		if (service.update(project, id)) {
-			return ResponseEntity.ok(project);
+		if (service.update(project, id, file)) {
+			ProjectDTO projectDTO = ProjectDTO.fromProject(project);
+			return ResponseEntity.ok(projectDTO);
 		}
 		return ResponseEntity.badRequest().build();
 	}
 
 	@GetMapping("/all")
-	public ResponseEntity<List<Project>> findAll() {
-		List<Project> list = service.findAll();
+	public ResponseEntity<List<ProjectDTO>> findAll() {
+		List<ProjectDTO> list = service.findAll();
 		if (list.size() > 0) {
-			return ResponseEntity.ok(service.findAll());
+			return ResponseEntity.ok(list);
 		}
 		return ResponseEntity.notFound().build();
 	}
 
 	@GetMapping("/{tag}")
-	public ResponseEntity<List<Project>> findByTagsContaining(@RequestParam (name = "tag") String tag) {
-		List<Project> listProj = service.findByTagsContaining(tag);
+	public ResponseEntity<List<ProjectDTO>> findByTagsContaining(@RequestParam (name = "tag") String tag) {
+		List<ProjectDTO> listProj = service.findByTagsContaining(tag);
 		if (listProj != null) {
-			for (Project project : listProj) {
-				byte[] image = fotoStorageService.getImage(project.getMidia());
-				project.setMidia(Base64.getEncoder().encodeToString(image));
+			for (ProjectDTO projects : listProj) {
+				byte[] image = fotoStorageService.getImage(projects.getMidia());
+				projects.setMidia(Base64.getEncoder().encodeToString(image));
 			}
 			return ResponseEntity.ok(listProj);
 		}

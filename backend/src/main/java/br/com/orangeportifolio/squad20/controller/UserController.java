@@ -27,7 +27,7 @@ public class UserController {
 	@PostMapping("/new")
 	public ResponseEntity<?> create(@RequestBody @Valid @NotNull User user) {
 		if(service.create(user) != null) {
-			return ResponseEntity.ok(user);
+			return ResponseEntity.ok().body("Usuário criado com sucesso!");
 		}
 		return ResponseEntity.status(403).body("ERRO! Usuário já existe no Banco de Dados!");
 	}
