@@ -15,9 +15,9 @@ export function Discover() {
                             type="search"
                             name="campoInput"
                             id="campoInput"
-                            placeholder="Buscar tags"
+                            placeholder="Buscar tags "
                         />
-                        <label htmlFor="campoInput" className={styles.placeholder_label}>Buscar tags</label>
+                        <label htmlFor="campoInput" className={styles.placeholder_label}>Buscar tags </label>
                     </div>
                 </div>                
 
