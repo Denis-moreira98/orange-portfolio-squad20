@@ -64,7 +64,7 @@ public class TokenUtil {
 			
 			if (token != null) {
 				
-				System.err.println("TokenUtil: " + token);
+				//System.err.println("TokenUtil: " + token);
 				
 				token = token.replace(PREFIX, ""); //Remove o 'Bearer' e extrai apenas o JWT
 				
