@@ -13,6 +13,9 @@
    color: var(--neutral-110);
    font-weight: 400;
 }
+.container a {
+   text-decoration: none;
+}
 
 @media screen and (max-width: 609px) {
    .container h3 {

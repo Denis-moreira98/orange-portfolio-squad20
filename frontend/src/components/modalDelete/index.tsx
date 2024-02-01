@@ -2,13 +2,34 @@ import styles from "./styles.module.css";
 
 import Modal from "react-modal";
 import { Button } from "../button";
+import { ModalDeleteSuccess } from "../modalDeleteSuccess";
+import { useState } from "react";
 
 interface ModalProps {
    isOpen: boolean;
    onRequestClose: () => void;
+   idProject?: string;
 }
 
+Modal.setAppElement("#root");
+
 export function ModalDelete({ isOpen, onRequestClose }: ModalProps) {
+   const [modalDeleteSuccess, setModalDeleteSuccess] = useState(false);
+
+   function handleOpenModalDelete() {
+      setModalDeleteSuccess(true);
+   }
+
+   // async function handleDeleteProject(idProject) {
+   //    try {
+   //       const apiClient = setupAPIClient();
+   //       await apiClient.delete(`/project/${idProject}`);
+   //       console.log(`Projeto com ID ${idProject} excluído com sucesso!`);
+   //    } catch (error) {
+   //       console.log(error);
+   //    }
+   // }
+
    const customStyles = {
       content: {
          top: "50%",
@@ -20,30 +41,43 @@ export function ModalDelete({ isOpen, onRequestClose }: ModalProps) {
          backgroundColor: "#FEFEFE",
       },
    };
+
    return (
-      <Modal
-         isOpen={isOpen}
-         onRequestClose={onRequestClose}
-         style={customStyles}
-      >
-         <div className={styles.container}>
-            <h3>Deseja Excluir?</h3>
-            <p>Se você prosseguir irá excluir o projeto do seu portfólio</p>
-            <div className={styles.div_btn}>
-               <Button variant="orange" type="button">
-                  EXCLUIR
-               </Button>
-               <Button
-                  type="button"
-                  onClick={onRequestClose}
-                  className="react-modal-close"
-                  style={{ color: "#818388" }}
-                  variant="gray"
-               >
-                  CANCELAR
-               </Button>
+      <>
+         <Modal
+            isOpen={isOpen}
+            onRequestClose={onRequestClose}
+            style={customStyles}
+         >
+            <div className={styles.container}>
+               <h3>Deseja Excluir?</h3>
+               <p>Se você prosseguir irá excluir o projeto do seu portfólio</p>
+               <div className={styles.div_btn}>
+                  <Button
+                     variant="orange"
+                     type="button"
+                     onClick={handleOpenModalDelete}
+                  >
+                     EXCLUIR
+                  </Button>
+                  <Button
+                     type="button"
+                     onClick={onRequestClose}
+                     className="react-modal-close"
+                     style={{ color: "#818388" }}
+                     variant="gray"
+                  >
+                     CANCELAR
+                  </Button>
+               </div>
             </div>
-         </div>
-      </Modal>
+         </Modal>
+         {modalDeleteSuccess && (
+            <ModalDeleteSuccess
+               isOpen={modalDeleteSuccess}
+               onRequestClose={onRequestClose}
+            />
+         )}
+      </>
    );
 }

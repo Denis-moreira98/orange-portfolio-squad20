@@ -6,7 +6,9 @@ import InputModal, { TextArea } from "../modal/input/index";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { FaImages } from "react-icons/fa";
 
-import { ModalEditSuccess } from "../modalEditSuccess";
+// import { ModalEditSuccess } from "../modalEditSuccess";
+import { validateEspecialChars } from "../../utils/validations";
+import { ModalPreview } from "../modalPreview";
 
 interface ModalProps {
    isOpen: boolean;
@@ -14,37 +16,94 @@ interface ModalProps {
 }
 
 export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
-   const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
+   const [modalPreviewVisible, setModalPreviewVisible] = useState(false);
+   // const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
 
    // states do form
    const [title, setTitle] = useState("");
    const [tags, setTags] = useState("");
+   const [arrayDeTags, setArrayDeTags] = useState([]);
+   const [errorChars, SetErrorChars] = useState(false);
    const [link, setLink] = useState("");
    const [description, setDescription] = useState("");
-   // const [arrayDeTags, setArrayDeTags] = useState([]);
 
-   // const handleChangeTags = (event) => {
-   //    setTags(event.target.value);
+   // //Modal Success
+   // function handleOpenModalSuccess() {
+   //    setTimeout(() => {
+   //       setModalSuccessVisible(true);
+   //    }, 500);
+   // }
 
-   //    const tagsProntas = tags.split(" ");
-
-   //    setArrayDeTags(tagsProntas);
-   // };
-
-   function handleRegisterProject(e: FormEvent) {
-      e.preventDefault();
+   //ModalPreview
+   function handleOpenModalPreview() {
+      if (
+         title === "" ||
+         tags === "" ||
+         link === "" ||
+         description === "" ||
+         imageAvatar === null
+      ) {
+         alert("PREENCHA TODOS OS CAMPOS!");
+         return;
+      } else if (validateEspecialChars.test(tags)) {
+         SetErrorChars(true);
+         return;
+      } else {
+         SetErrorChars(false);
+      }
+      const tagsSeparadas = tags.split(" ");
+      setArrayDeTags(tagsSeparadas);
+      setModalPreviewVisible(true);
    }
-
-   //Modal Success
-   function handleOpenModalSuccess(e: FormEvent) {
-      e.preventDefault();
-
-      setTimeout(() => {
-         setModalSuccessVisible(true);
-      }, 800);
+   function handleCloseModal() {
+      setModalPreviewVisible(false);
    }
-   function handleCloseModalSuccess() {
-      setModalSuccessVisible(false);
+   async function handleEditProject(event: FormEvent) {
+      event.preventDefault();
+
+      try {
+         const data = new FormData();
+
+         if (
+            title === "" ||
+            tags === "" ||
+            link === "" ||
+            description === "" ||
+            imageAvatar === null
+         ) {
+            alert("PREENCHA TODOS OS CAMPOS!");
+            return;
+         } else if (validateEspecialChars.test(tags)) {
+            SetErrorChars(true);
+            return;
+         } else {
+            SetErrorChars(false);
+         }
+
+         data.append("title", title);
+         data.append("tags", tags);
+         data.append("linkProject", link);
+         data.append("description", description);
+         // data.append("userProject", user.id);
+         data.append("midia", imageAvatar);
+
+         for (const [key, value] of data.entries()) {
+            console.log(`${key}: ${value}`);
+         }
+
+         // const apiClient = setupAPIClient();
+         // await apiClient.put(`/project/edit/${project.id}`, data);
+
+         // setTitle("");
+         // setLink("");
+         // setTags("");
+         // setDescription("");
+         // setImageAvatar("");
+         // setImageAvatar(null);
+         // setAvatarUrl("");
+      } catch (err) {
+         console.log(err);
+      }
    }
 
    const [avatarUrl, setAvatarUrl] = useState("");
@@ -87,7 +146,7 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
          >
             <div className={styles.div_container}>
                <h4>Editar projeto </h4>
-               <form onSubmit={handleRegisterProject}>
+               <form onSubmit={handleEditProject}>
                   <div className={styles.content}>
                      <div className={styles.div_text}>
                         <div className={styles.div_file}>
@@ -127,6 +186,21 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
                            onChange={(e) => setTags(e.target.value)}
                            placeholder="Tags"
                         />
+                        {errorChars && (
+                           <p
+                              style={{
+                                 color: "#ff4433",
+                                 fontSize: "14px",
+                                 marginTop: "-9px",
+                                 marginLeft: "5px",
+                                 marginBottom: "-7px",
+                                 fontWeight: "500",
+                              }}
+                           >
+                              Separe as tags apenas com espaço, sem caracteres
+                              especiais!
+                           </p>
+                        )}
                         <InputModal
                            value={link}
                            onChange={(e) => setLink(e.target.value)}
@@ -140,9 +214,16 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
                      </div>
                   </div>
                   <div className={styles.div_button}>
+                     <button
+                        className={styles.btn_view}
+                        type="button"
+                        onClick={handleOpenModalPreview}
+                     >
+                        Visualizar publicação
+                     </button>
                      <div className={styles.div_buttons}>
                         <Button
-                           onClick={handleOpenModalSuccess}
+                           // onClick={handleOpenModalSuccess}
                            type="submit"
                            variant="orange"
                         >
@@ -162,12 +243,23 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
                </form>
             </div>
          </Modal>
-         {modalSuccessVisible && (
-            <ModalEditSuccess
-               isOpen={modalSuccessVisible}
-               onRequestClose={handleCloseModalSuccess}
+         {modalPreviewVisible && (
+            <ModalPreview
+               title={title}
+               tags={arrayDeTags}
+               link={link}
+               description={description}
+               image={avatarUrl}
+               isOpen={modalPreviewVisible}
+               onRequestClose={handleCloseModal}
             />
          )}
+         {/* {modalSuccessVisible && (
+            <ModalEditSuccess
+               isOpen={modalSuccessVisible}
+               onRequestClose={onRequestClose}
+            />
+         )} */}
       </>
    );
 }
