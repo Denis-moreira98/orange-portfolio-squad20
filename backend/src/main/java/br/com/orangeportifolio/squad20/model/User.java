@@ -31,7 +31,6 @@ public class User {
 	@Column(name = "name", length = 75)
 	private String name;
 	
-	@NotNull(message = "O campo país não pode ser nulo")
 	@Length(min = 5, max = 20)
 	@Column(name = "country", length = 20)
 	private String country;
