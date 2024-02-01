@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -42,7 +41,9 @@ public class User {
 	@Column(name = "email", length = 45, nullable = false)
 	private String email;
 	
+	
 	@NotNull(message = "O campo senha não pode ser nulo")
+	@JsonIgnore
 	@Length(min = 5, max = 75)
 	@Column(name = "password", length = 45, nullable = false)
 	private String  password;
@@ -69,12 +70,10 @@ public class User {
 		this.name = name;
 	}
 	
-	@JsonGetter("country")
 	public String getCountry() {
 		return country;
 	}
 	
-	@JsonSetter("country")
 	public void setCountry(String country) {
 		this.country = country;
 	}
@@ -87,12 +86,10 @@ public class User {
 		this.email = email;
 	}
 	
-	@JsonGetter("password")
 	public String getPassword() {
 		return password;
 	}
 	
-	@JsonSetter("password")
 	public void setPassword(String password) {
 		this.password = password;
 	}
