@@ -51,13 +51,12 @@ public class ProjectController {
 	}
 
 	@PutMapping("/edit/{id}")
-	public ResponseEntity<ProjectDTO> update(@RequestPart("project") @Valid @NotNull Project project, 
+	public ResponseEntity<ProjectDTO> update(@RequestPart("project") @Valid @NotNull ProjectDTO project, 
 											 @PathVariable Integer id,
-											 @RequestParam("file") MultipartFile file) {
+											 @RequestPart("file") MultipartFile file) {
 
 		if (service.update(project, id, file)) {
-			ProjectDTO projectDTO = ProjectDTO.fromProject(project);
-			return ResponseEntity.ok(projectDTO);
+			return ResponseEntity.ok(project);
 		}
 		return ResponseEntity.badRequest().build();
 	}
