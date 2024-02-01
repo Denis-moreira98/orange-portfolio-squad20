@@ -1,3 +1,6 @@
+start.sh
+squad20.zip
+Docker-compose.yml
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
