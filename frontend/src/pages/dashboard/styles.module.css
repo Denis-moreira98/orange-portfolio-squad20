@@ -63,6 +63,7 @@
   background-color: #dddddd;
   border: #dddddd;
   border-radius: 4px;
+  transition: all 0.3s ease-in;
 }
 
 .projetos {
@@ -76,26 +77,34 @@
 }
 
 .pesquisa {
-  width: 400px;
+  width: 513px;
   line-height: 24px;
+  height: 56px;
   padding: 10px;
-
   margin-top: 15px;
-
-  border: 1px solid rgba(0, 0, 0, 0.23);
+  border: 2px solid rgba(0, 0, 0, 0.23);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0.15px;
+border-radius: 4px;  
+letter-spacing: 0.15px;
 }
-
+.pesquisa:hover {
+   border-color: var(--neutral-110);
+}
+.pesquisa:focus {
+   border-color: var(--info-100);
+   outline: none;
+}
 .iconedashboard {
   width: 46px;
   height: 46px;
   cursor: pointer;
+  transition: all 0.3s ease-in;
 }
-
+.iconedashboard:hover {
+   transform: scale(1.1);
+}
 .sobre .imgPerfil {
   width: 24px;
   height: 24px;
@@ -154,7 +163,6 @@
   margin-top: 15px;
 }
 .adicionar {
-  position: relative;
   width: 100%;
   height: 258px;
   background: var(--neutral-70);
