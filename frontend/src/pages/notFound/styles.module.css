@@ -22,9 +22,21 @@
     max-width: 100%;
 }
 
-.zero {
-    transform-origin: bottom;
-}
+.zero  {
+    animation: jump 2s infinite; 
+  }
+
+  @keyframes jump {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-30px);
+    }
+    60% {
+      transform: translateY(-15px);
+    }
+  }
 
 @media screen and (max-width: 800px){
     .menssage{
