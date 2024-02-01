@@ -38,9 +38,9 @@ public class ProjectController {
 	@Autowired
 	private ILocalFotoStorageService fotoStorageService;
 
-	@PostMapping("/upload")
+	@PostMapping("/")
 	public ResponseEntity<ProjectDTO> create(@RequestPart("project") @Valid @NotNull Project project,
-			@RequestParam("file") @NotNull MultipartFile file) {
+											@RequestParam("file") @NotNull MultipartFile file) {
 		
 		ProjectDTO projectDTO = service.create(project, file);
 		
@@ -51,9 +51,11 @@ public class ProjectController {
 	}
 
 	@PutMapping("/edit/{id}")
-	public ResponseEntity<ProjectDTO> update(@RequestBody Project project, @PathVariable Integer id) {
+	public ResponseEntity<ProjectDTO> update(@RequestPart("project") @Valid @NotNull Project project, 
+											 @PathVariable Integer id,
+											 @RequestParam("file") MultipartFile file) {
 
-		if (service.update(project, id)) {
+		if (service.update(project, id, file)) {
 			ProjectDTO projectDTO = ProjectDTO.fromProject(project);
 			return ResponseEntity.ok(projectDTO);
 		}
