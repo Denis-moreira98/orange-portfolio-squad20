@@ -119,7 +119,7 @@ export function Header() {
                <ul>
                   <li>
                      <p>
-                        Olá, <strong>Camila Soares</strong>
+                        Olá, <strong>{user?.name}</strong>
                      </p>
                   </li>
                   <li>
