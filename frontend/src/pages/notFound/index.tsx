@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
 export function NotFound() {
@@ -313,6 +314,9 @@ export function NotFound() {
                </defs>
             </svg>
          </div>
+         <p className={styles.text__return}>
+            Volte para a <Link to={"/"} className={styles.text__link}>home</Link>
+         </p>
       </main>
    );
 }
