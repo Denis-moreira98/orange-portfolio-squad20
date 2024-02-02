@@ -3,12 +3,14 @@ import styles from "./styles.module.css";
 
 import { Button } from "../button";
 import InputModal, { TextArea } from "../modal/input/index";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { FaImages } from "react-icons/fa";
 
 // import { ModalEditSuccess } from "../modalEditSuccess";
 import { validateEspecialChars } from "../../utils/validations";
 import { ModalPreview } from "../modalPreview";
+import { AuthContext } from "../../contexts/AuthContext";
+import { setupAPIClient } from "../../services/api";
 
 interface ModalProps {
    isOpen: boolean;
@@ -16,6 +18,7 @@ interface ModalProps {
 }
 
 export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
+   const { user } = useContext(AuthContext);
    const [modalPreviewVisible, setModalPreviewVisible] = useState(false);
    // const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
 
@@ -80,27 +83,31 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
             SetErrorChars(false);
          }
 
+         const { id } = user;
+
          data.append("title", title);
          data.append("tags", tags);
          data.append("linkProject", link);
          data.append("description", description);
-         // data.append("userProject", user.id);
+         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+         // @ts-ignore
+         data.append("userProject", id);
          data.append("midia", imageAvatar);
 
          for (const [key, value] of data.entries()) {
             console.log(`${key}: ${value}`);
          }
 
-         // const apiClient = setupAPIClient();
-         // await apiClient.put(`/project/edit/${project.id}`, data);
+         const apiClient = setupAPIClient();
+         await apiClient.put("/project/edit/1", data);
 
-         // setTitle("");
-         // setLink("");
-         // setTags("");
-         // setDescription("");
-         // setImageAvatar("");
-         // setImageAvatar(null);
-         // setAvatarUrl("");
+         setTitle("");
+         setLink("");
+         setTags("");
+         setDescription("");
+         setImageAvatar("");
+         setImageAvatar(null);
+         setAvatarUrl("");
       } catch (err) {
          console.log(err);
       }

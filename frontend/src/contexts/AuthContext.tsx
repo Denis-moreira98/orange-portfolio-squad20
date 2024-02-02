@@ -13,7 +13,7 @@ type AuthContextData = {
    signUp: (credentials: SignInProps) => Promise<any>;
 };
 type UserProps = {
-   id: string | number;
+   id: number | string;
    name: string;
    email: string;
 };
@@ -60,7 +60,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
          if (token) {
             const decoded: JwtPayload = jwtDecode(token);
             const { sub, name, email } = decoded;
-
+            console.log(decoded);
             setUser({
                id: sub,
                name: name,
@@ -79,7 +79,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
    async function signIn({ email, password }: SignInProps) {
       try {
-         const response = await api.post("/session", {
+         const response = await api.post("/login", {
             email,
             password,
          });
@@ -133,7 +133,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
    async function signUp({ name, email, password }: signUpProps) {
       try {
-         const response = await api.post("/users", {
+         const response = await api.post("/user/new", {
             name,
             email,
             password,
