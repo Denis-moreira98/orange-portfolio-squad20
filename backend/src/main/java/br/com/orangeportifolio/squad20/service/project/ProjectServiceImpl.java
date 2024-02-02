@@ -41,8 +41,8 @@ public class ProjectServiceImpl implements IProjectService{
 		try {
 	        // Fazendo o upload para o s3 e retorna o caminho url
 			System.out.println("Subindo arquivo para o S3...");
-			//String pathFile = storageS3Service.uploadS3File(file);
-			String pathFile = null;
+			String pathFile = storageS3Service.uploadS3File(file);
+			//String pathFile = null;
 	    	
 	    	if(pathFile == null) { //Fazendo upload para pasta local caso a requisição do s3 falhe
 	    		
@@ -75,7 +75,10 @@ public class ProjectServiceImpl implements IProjectService{
 			
 			if(res.isPresent()) {
 				Project existingProject = res.get();
+				this.exclusedImageStorage(existingProject);
+				
 				project.setMidia(pathFile);
+				
 				BeanUtils.copyProperties(project, existingProject, "idProject", "userId");
 			
 				dao.save(existingProject);
@@ -118,21 +121,28 @@ public class ProjectServiceImpl implements IProjectService{
 		Optional<Project> res = dao.findById(id);
 		if(res.isPresent()) {
 			Project project = res.get();
-			String url = project.getMidia();
-			
-			 try {
-		            URL fileUrl = new URL(url);
-		            String fileName = new File(fileUrl.getPath()).getName();
-		            System.out.println(fileName);
-		            
-		            storageS3Service.deleteFile(fileName);
-		            dao.deleteById(id);
-		            return true;
-		        } catch (MalformedURLException e) {
-		            System.err.println("URL inválida: " + url);
-		        }
-		}
-		System.err.println("Ocorreu um erro ao excluir o projeto!");
+			this.exclusedImageStorage(project);
+			dao.deleteById(id);
+		    return true;
+		} 
 		return false;
+	}
+	
+	public Boolean exclusedImageStorage(Project project) {
+		
+		String url = project.getMidia();
+		
+		 try {
+	            URL fileUrl = new URL(url);
+	            String fileName = new File(fileUrl.getPath()).getName();
+	            System.out.println("Excluindo imagem: " + fileName);
+	            
+	            storageS3Service.deleteFile(fileName);
+	            return true;
+	            
+	        } catch (MalformedURLException e) {
+	            System.err.println("URL inválida: " + url);
+	            return false;
+	        }
 	}
 }
