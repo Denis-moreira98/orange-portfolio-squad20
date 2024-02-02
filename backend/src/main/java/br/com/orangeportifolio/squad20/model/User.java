@@ -31,12 +31,6 @@ public class User {
 	@Column(name = "name", length = 75)
 	private String name;
 	
-	@NotNull(message = "O campo sobrenome não pode ser nulo")
-	@Length(min = 3, max = 75)
-	@Column(name = "last_name", length = 75)
-	private String lastName;
-	
-	@NotNull(message = "O campo país não pode ser nulo")
 	@Length(min = 5, max = 20)
 	@Column(name = "country", length = 20)
 	private String country;
@@ -45,6 +39,7 @@ public class User {
 	@Email(message = "Email não é válido")
 	@Column(name = "email", length = 45, nullable = false)
 	private String email;
+	
 	
 	@NotNull(message = "O campo senha não pode ser nulo")
 	@Length(min = 5, max = 75)
@@ -72,19 +67,11 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
+	
 	public String getCountry() {
 		return country;
 	}
-
+	
 	public void setCountry(String country) {
 		this.country = country;
 	}
@@ -96,11 +83,11 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public String getPassword() {
 		return password;
 	}
-
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -111,5 +98,6 @@ public class User {
 
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
-	}	
+	}
+
 }

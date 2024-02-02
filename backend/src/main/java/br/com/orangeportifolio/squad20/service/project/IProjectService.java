@@ -14,7 +14,7 @@ import jakarta.validation.constraints.Positive;
 public interface IProjectService {
 	
 	public ProjectDTO create(@Valid @NotNull Project project, @RequestParam("file") MultipartFile file);
-	public Boolean update(@Valid @NotNull Project project, @NotNull @Positive Integer id, MultipartFile file);
+	public Boolean update(@Valid @NotNull ProjectDTO project, @NotNull @Positive Integer id, MultipartFile file);
 	public List<ProjectDTO> findAll();
 	public Project findById(@NotNull @Positive Integer id);
 	public List<ProjectDTO> findByTagsContaining(String nome);

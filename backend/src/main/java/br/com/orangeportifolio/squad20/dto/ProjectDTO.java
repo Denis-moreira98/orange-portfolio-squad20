@@ -27,11 +27,9 @@ public class ProjectDTO {
 		return title;
 	}
 
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
 
 	public String getTags() {
 		return tags;
@@ -52,11 +50,9 @@ public class ProjectDTO {
 		this.linkProject = linkProject;
 	}
 
-
 	public String getDescription() {
 		return description;
 	}
-
 
 	public void setDescription(String description) {
 		this.description = description;
@@ -67,11 +63,9 @@ public class ProjectDTO {
 		return userId;
 	}
 
-
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-
 
 	public String getMidia() {
 		return midia;

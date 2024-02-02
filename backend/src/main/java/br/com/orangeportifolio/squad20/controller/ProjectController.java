@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -51,13 +50,12 @@ public class ProjectController {
 	}
 
 	@PutMapping("/edit/{id}")
-	public ResponseEntity<ProjectDTO> update(@RequestPart("project") @Valid @NotNull Project project, 
+	public ResponseEntity<ProjectDTO> update(@RequestPart("project") @Valid @NotNull ProjectDTO project, 
 											 @PathVariable Integer id,
-											 @RequestParam("file") MultipartFile file) {
+											 @RequestPart("file") MultipartFile file) {
 
 		if (service.update(project, id, file)) {
-			ProjectDTO projectDTO = ProjectDTO.fromProject(project);
-			return ResponseEntity.ok(projectDTO);
+			return ResponseEntity.ok(project);
 		}
 		return ResponseEntity.badRequest().build();
 	}

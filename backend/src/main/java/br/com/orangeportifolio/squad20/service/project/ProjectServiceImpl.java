@@ -62,7 +62,7 @@ public class ProjectServiceImpl implements IProjectService{
 	}
 
 	@Override
-	public Boolean update(@Valid @NotNull Project project, @NotNull @Positive Integer id, MultipartFile file) {
+	public Boolean update(@Valid @NotNull ProjectDTO project, @NotNull @Positive Integer id, MultipartFile file) {
 		
 		Optional<Project> res = dao.findById(id);
 		String pathFile = storageS3Service.uploadS3File(file);
@@ -72,7 +72,8 @@ public class ProjectServiceImpl implements IProjectService{
 			if(res.isPresent()) {
 				Project existingProject = res.get();
 				project.setMidia(pathFile);
-				BeanUtils.copyProperties(project, existingProject, "idUser");
+				BeanUtils.copyProperties(project, existingProject, "idProject", "userId");
+			
 				dao.save(existingProject);
 				return true;
 			}
