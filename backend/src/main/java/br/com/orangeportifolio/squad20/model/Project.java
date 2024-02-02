@@ -49,6 +49,8 @@ public class Project {
 	
 	@Column(name = "midia")
 	private String midia;
+
+	private Project() {}
 	
 	//GET E SET
 	

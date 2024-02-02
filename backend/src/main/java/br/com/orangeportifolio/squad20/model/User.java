@@ -50,6 +50,8 @@ public class User {
 	@JsonIgnoreProperties("userProject")
 	private List<Project> projects;
 	
+	private User() {}
+
 	//GET AND SET
 
 	public Integer getIdUser() {
