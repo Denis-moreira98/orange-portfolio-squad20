@@ -59,12 +59,13 @@ public class TokenUtil {
 	
 	public static Authentication decode(HttpServletRequest request) throws ServletException, IOException{
 		
+		String token = request.getHeader("Authorization");
+		
 		try {
-			String token = request.getHeader("Authorization");
 			
 			if (token != null) {
 				
-				//System.err.println("TokenUtil: " + token);
+				System.err.println("TokenUtil: " + token);
 				
 				token = token.replace(PREFIX, ""); //Remove o 'Bearer' e extrai apenas o JWT
 				
@@ -87,8 +88,9 @@ public class TokenUtil {
 			}
 			
 		} catch (Exception e) {
-			System.err.println("Deu erro aqui: ");
+			System.err.println("Erro ao decoficar o token: ");
 			e.printStackTrace();
+			System.err.println("TokenUtil: " + token);
 		}
 		return null;
 	}
