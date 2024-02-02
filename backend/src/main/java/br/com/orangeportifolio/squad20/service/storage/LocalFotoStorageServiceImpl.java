@@ -17,9 +17,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Service
 public class LocalFotoStorageServiceImpl implements ILocalFotoStorageService{
-	
-	private static String pathImage = "src\\image";
-		
+			
 	@Override
 	public String uploadLocalFile(@NotNull MultipartFile image) {
 					
@@ -27,14 +25,8 @@ public class LocalFotoStorageServiceImpl implements ILocalFotoStorageService{
 	        System.out.println("Realizando upload do arquivo: " + image.getOriginalFilename());
 
 	        String uniqueFileName = generateUniqueFileName(image.getOriginalFilename());
-
-	        // Obtenha o caminho absoluto do diretório do projeto
-	        String projectDirectory = new File("").getAbsolutePath();
 	        
-	        // Concatene com o caminho da imagem para obter o caminho completo
-	        String fullPath = projectDirectory + File.separator + pathImage;
-	        
-	        File dir = new File(fullPath);
+	        File dir = new File(pathImageAbsolute());
 	        
 	        // Crie o diretório se ele não existir
 	        if(!dir.exists()) {
@@ -70,7 +62,7 @@ public class LocalFotoStorageServiceImpl implements ILocalFotoStorageService{
 	public String getImage(String imageName) {
 		
 	    try {
-	            Path path = Paths.get(pathImage, imageName);
+	            Path path = Paths.get(pathImageAbsolute(), imageName);
 	            byte[] imageData = Files.readAllBytes(path);
 	            
 	            // Converte o array de bytes para uma string Base64
@@ -84,10 +76,22 @@ public class LocalFotoStorageServiceImpl implements ILocalFotoStorageService{
 	    }
 	    return null;
 	}
-
 	
 	private String generateUniqueFileName(String originalFileName) {
         String uniqueID = UUID.randomUUID().toString();
         return "image_" + uniqueID + "_" + originalFileName;
     }
+	
+	private static String pathImageAbsolute() {
+		
+		String pathImage = "src\\image";
+		
+		// Obtenha o caminho absoluto do diretório do projeto
+        String projectDirectory = new File("").getAbsolutePath();
+        
+        // Concatene com o caminho da imagem para obter o caminho completo
+        String fullPath = projectDirectory + File.separator + pathImage;
+        
+        return fullPath;
+	}
 }
