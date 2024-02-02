@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.orangeportifolio.squad20.dto.UserDTO;
 import br.com.orangeportifolio.squad20.model.User;
 import br.com.orangeportifolio.squad20.service.user.IUserService;
 import jakarta.validation.Valid;
@@ -26,6 +27,7 @@ public class UserController {
     
 	@PostMapping("/new")
 	public ResponseEntity<?> create(@RequestBody @Valid @NotNull User user) {
+		
 		if(service.create(user) != null) {
 			return ResponseEntity.ok().body("Usuário criado com sucesso!");
 		}
@@ -33,12 +35,11 @@ public class UserController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<User> findById(@PathVariable @NotNull @Positive Integer id){
+	public ResponseEntity<?> findById(@PathVariable @NotNull @Positive Integer id){
 		User res = service.findById(id);
 		if (res != null) {
-			return ResponseEntity.ok(res);
+			return ResponseEntity.ok(UserDTO.fromUser(res));
 		}
 		return ResponseEntity.notFound().build();
 	}
-	
 }
