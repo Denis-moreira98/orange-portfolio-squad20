@@ -22,13 +22,13 @@ export function Homepage() {
             <li>
               <Link to="/login">
                 {" "}
-                <button className={styles.buttonhome}> Login</button>{" "}
+                <button className={styles.buttonhome}> LOGIN</button>{" "}
               </Link>
             </li>
             <li className={styles.lihome} id={styles.idl}>
               <Link to="/Register">
                 {" "}
-                <button className={styles.buttonhome}>Cadastro</button>
+                <button className={styles.buttonhome}>CADASTRO</button>
               </Link>
             </li>
           </ul>
@@ -37,7 +37,7 @@ export function Homepage() {
         <main>
           <section className={styles.sectionhome}>
             <div className={styles.divhome}>
-              <h1>Catalogue seus Projetos</h1>
+              <h3>Catalogue seus Projetos</h3>
               <p>
                 Crie, exiba e compartilhe seu portfólio de projetos de maneira
                 intuitiva, conectando-se a uma comunidade de mentes criativas e
@@ -46,7 +46,7 @@ export function Homepage() {
               </p>
               <Link to="/Register">
                 {" "}
-                <button className={styles.buttonhome}>Iniciar Jornada</button>
+                <button className={styles.buttonhome}>INICIAR JORNADA</button>
               </Link>
             </div>
 
