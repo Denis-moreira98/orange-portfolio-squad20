@@ -3,7 +3,9 @@ import ImgPerfil from "../../assets/image-perfil.png";
 
 import Modal from "react-modal";
 import { FiX } from "react-icons/fi";
-import { Label } from "../label";
+import { Label } from "./label";
+import { ModalSuccess } from "../modalSuccess";
+import { useState } from "react";
 
 interface ModalViewsProps {
    isOpen: boolean;

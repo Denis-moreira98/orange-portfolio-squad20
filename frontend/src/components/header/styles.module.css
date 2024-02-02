@@ -207,6 +207,14 @@ nav.menu ul li a:hover {
    .btn__out {
       display: none;
    }
+   .sair {
+      display: flex;
+      flex-direction: row;
+
+      align-items: center;
+   }
+   .btn__outDrop {
+   }
 
    .dropdown ul li .btn__outDrop {
       width: 150px;

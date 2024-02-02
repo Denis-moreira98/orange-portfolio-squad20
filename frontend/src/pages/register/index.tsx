@@ -2,16 +2,18 @@ import { Input } from "../../components/input";
 import styles from "./styles.module.css";
 import ImgCadastro from "../../assets/imgcadastro.png";
 import { Button } from "../../components/button";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const scheme = z.object({
    name: z.string().nonempty("O campo nome é obrigatório"),
-   sobrenome: z.string().nonempty("O campo sobrenome é obrigatório"),
+   surname: z.string().nonempty("O campo sobrenome é obrigatório"),
    email: z
       .string()
       .email("Insira um email válido")
@@ -25,6 +27,9 @@ const scheme = z.object({
 type FormData = z.infer<typeof scheme>;
 
 export function Register() {
+   const navigate = useNavigate();
+   const { signUp } = useContext(AuthContext);
+
    const [senha, setSenha] = useState("");
    const [mostrarSenha, setMostrarSenha] = useState(false);
 
@@ -41,8 +46,17 @@ export function Register() {
       mode: "onChange",
    });
 
-   function handleRegister(data: FormData) {
-      console.log(data);
+   async function handleRegister(data: FormData) {
+      const nameComplete = `${data.name} ${data.surname}`;
+      const dataUser = {
+         name: nameComplete,
+         email: data.email,
+         password: data.password,
+      };
+
+      const result = await signUp(dataUser);
+      result != undefined ? navigate("/login") : null;
+      console.log(dataUser);
    }
 
    return (
@@ -66,8 +80,8 @@ export function Register() {
                      <Input
                         label="Sobrenome*"
                         type="text"
-                        name="sobrenome"
-                        error={errors.sobrenome?.message}
+                        name="surname"
+                        error={errors.surname?.message}
                         register={register}
                      />
                   </div>
@@ -94,7 +108,11 @@ export function Register() {
                   >
                      {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
                   </button>
-                  <Button variant="orange" className={styles.btnRegister}>
+                  <Button
+                     variant="orange"
+                     type="submit"
+                     className={styles.btnRegister}
+                  >
                      CADASTRAR
                   </Button>
                </form>
