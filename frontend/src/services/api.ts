@@ -5,32 +5,48 @@ import { AuthTokenErrors } from "./errors/AuthTokenErrors";
 import { signOut } from "../contexts/AuthContext";
 
 export function setupAPIClient(ctx = undefined) {
-   const cookies = parseCookies(ctx);
    const apiUrl = import.meta.env.VITE_API_URL;
-
    const api = axios.create({
       baseURL: apiUrl,
-      headers: {
-         Authorization: `Bearer ${cookies["@Squad20.token"]}`,
-      },
+   });
+
+   api.interceptors.request.use((config) => {
+      const cookies = parseCookies(ctx);
+
+      // Lista de rotas que não requerem token de autenticação
+      const routesWithoutAuthorization = ["/login", "/user/new"];
+
+      // Verifica se a rota não requer token de autenticação
+      if (!routesWithoutAuthorization.includes(config.url)) {
+         config.headers.Authorization = `Bearer ${cookies["@Squad20.token"]}`;
+      }
+
+      return config;
    });
 
    api.interceptors.response.use(
       (response) => {
          return response;
       },
-      (error: AxiosError) => {
-         if (error.response.status === 401) {
-            //Qualquer erro 401 (não autorizado) devemos deslogar o usuario
+      async (error: AxiosError) => {
+         const { response } = error;
 
-            // eslint-disable-next-line valid-typeof
-            if (typeof window !== undefined) {
-               // chamar a função para deslogar usuario
-               signOut();
+         if (response) {
+            if (response.status === 401) {
+               if (typeof window !== "undefined") {
+                  signOut();
+               } else {
+                  return Promise.reject(new AuthTokenErrors());
+               }
+            } else if (response.status === 403) {
+               console.error("Erro de permissão:", error);
             } else {
-               return Promise.reject(new AuthTokenErrors());
+               console.error("Erro desconhecido:", error);
             }
+         } else {
+            console.error("Erro de rede:", error);
          }
+
          return Promise.reject(error);
       }
    );
