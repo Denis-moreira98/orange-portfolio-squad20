@@ -43,9 +43,10 @@
 
 .form p {
    text-align: left;
+   letter-spacing: 0.15px; 
    text-decoration: none;
-   font-weight: 600;
-   color: var(--neutral-110);
+   font-weight: 400;
+   color: var(--neutral-100);
    margin-top: 18px;
 }
 .form a {

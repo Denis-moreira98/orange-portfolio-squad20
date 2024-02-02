@@ -76,7 +76,7 @@ export function Header() {
                   <nav className={styles.menu}>
                      <ul>
                         <li>
-                           <Link to="/">Meus projetos</Link>
+                           <Link to="dashboard">Meus projetos</Link>
                         </li>
                         <li>
                            <Link to="discover">Descobrir</Link>
@@ -123,7 +123,7 @@ export function Header() {
                      </p>
                   </li>
                   <li>
-                     <Link to="/">Meus projetos</Link>
+                     <Link to="dashboard">Meus projetos</Link>
                   </li>
                   <li>
                      <Link to="discover">Descobrir</Link>
@@ -133,19 +133,18 @@ export function Header() {
                   </li>
                   <li>
                      <div className={styles.sair}>
-                        <p>Sair</p>
 
-                        <button
+                        <Link
+                           to={"/login"}
                            onClick={handleSignOut}
-                           type="button"
-                           className={styles.btn__outDrop}
-                        >
+                           className={styles.btn__outDrop}>
+                              Sair
                            <FaSignOutAlt
                               className={styles.icon__outDrop}
                               title="Sair"
-                              size={24}
+                              size={22}
                            />
-                        </button>
+                        </Link>
                      </div>
                   </li>
                </ul>
