@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState, useEffect } from "react";
 import { destroyCookie, setCookie, parseCookies } from "nookies";
-
+import { jwtDecode } from "jwt-decode";
 import { api } from "../services/apiClient";
 import toast from "react-hot-toast";
 
@@ -13,7 +13,7 @@ type AuthContextData = {
    signUp: (credentials: SignInProps) => Promise<any>;
 };
 type UserProps = {
-   id: string;
+   id: string | number;
    name: string;
    email: string;
 };
@@ -33,6 +33,12 @@ type AuthProviderProps = {
    children: ReactNode;
 };
 
+interface JwtPayload {
+   sub: string;
+   name: string;
+   email: string;
+}
+
 export const AuthContext = createContext({} as AuthContextData);
 
 export function signOut() {
@@ -44,33 +50,30 @@ export function signOut() {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-   const [user, setUser] = useState<UserProps | null>(null);
+   const [user, setUser] = useState<UserProps | null>();
    const [loadingAuth, setLoadingAuth] = useState(true);
 
    useEffect(() => {
-      //TENTAR PEGAR ALGO DO TOKEN NO COOKIES
+      try {
+         // Tentar pegar algo do token no cookies
+         const { "@Squad20.token": token } = parseCookies();
+         if (token) {
+            const decoded: JwtPayload = jwtDecode(token);
+            const { sub, name, email } = decoded;
 
-      const { "@Squad20.token": token } = parseCookies();
-      if (token) {
-         api.get("/me")
-            .then((Response) => {
-               const { id, name, email } = Response.data;
-
-               setUser({
-                  id,
-                  name,
-                  email,
-               });
-               setLoadingAuth(false);
-            })
-            .catch(() => {
-               // Caiu aqui é porque o token não foi validado
-               // então deslogamos o user
-               signOut();
+            setUser({
+               id: sub,
+               name: name,
+               email: email,
             });
-      } else {
-         setUser(null);
-         setLoadingAuth(false);
+            setLoadingAuth(false);
+         } else {
+            setUser(null);
+            setLoadingAuth(false);
+         }
+      } catch (error) {
+         console.error(error);
+         signOut();
       }
    }, []);
 
@@ -84,7 +87,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
          const { id, name, token } = response.data;
 
          setCookie(undefined, "@Squad20.token", token, {
-            maxAgr: 60 * 60 * 24 * 30, // expira em 1 mês
+            maxAgr: 60 * 60 * 24 * 5, // expira em 5 dias
             path: "/", //Quais caminhos terão acesso ao cookies
          });
 
@@ -136,7 +139,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
             password,
          });
          toast.success("Cadastrado com sucesso!", {
-            duration: 3000,
+            duration: 2000,
             style: {
                border: "1px solid rgba(58, 58, 58, 0.219)",
                padding: "8px",
@@ -153,7 +156,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       } catch (err) {
          console.log(err.message);
          toast.error("Algo inesperado aconteceu, tente novamente!", {
-            duration: 3000,
+            duration: 2000,
             style: {
                border: "1px solid rgba(58, 58, 58, 0.219)",
                padding: "8px",
