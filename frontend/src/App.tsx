@@ -4,10 +4,6 @@ import { Dashboard } from "./pages/dashboard";
 import { NotFound } from "./pages/notFound";
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./components/layout";
-import { Discover } from "./pages/discover";
-import { Homepage } from "./pages/homepage";
-
-import { Private } from "./routes/private";
 
 const router = createBrowserRouter([
    {
@@ -15,19 +11,7 @@ const router = createBrowserRouter([
       children: [
          {
             path: "/dashboard",
-            element: (
-               <Private>
-                  <Dashboard />
-               </Private>
-            ),
-         },
-         {
-            path: "/discover",
-            element: (
-               <Private>
-                  <Discover />
-               </Private>
-            ),
+            element: <Dashboard />,
          },
       ],
    },
@@ -35,10 +19,7 @@ const router = createBrowserRouter([
       path: "*",
       element: <NotFound />,
    },
-   {
-      path: "/",
-      element: <Homepage />,
-   },
+
    {
       path: "/login",
       element: <Login />,
