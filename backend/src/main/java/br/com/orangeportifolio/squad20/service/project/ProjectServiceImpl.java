@@ -1,5 +1,8 @@
 package br.com.orangeportifolio.squad20.service.project;
 
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -38,7 +41,8 @@ public class ProjectServiceImpl implements IProjectService{
 		try {
 	        // Fazendo o upload para o s3 e retorna o caminho url
 			System.out.println("Subindo arquivo para o S3...");
-			String pathFile = storageS3Service.uploadS3File(file);
+			//String pathFile = storageS3Service.uploadS3File(file);
+			String pathFile = null;
 	    	
 	    	if(pathFile == null) { //Fazendo upload para pasta local caso a requisição do s3 falhe
 	    		
@@ -113,8 +117,20 @@ public class ProjectServiceImpl implements IProjectService{
 	public boolean delete(@NotNull @Positive Integer id) {
 		Optional<Project> res = dao.findById(id);
 		if(res.isPresent()) {
-			dao.deleteById(id);
-			return true;
+			Project project = res.get();
+			String url = project.getMidia();
+			
+			 try {
+		            URL fileUrl = new URL(url);
+		            String fileName = new File(fileUrl.getPath()).getName();
+		            System.out.println(fileName);
+		            
+		            storageS3Service.deleteFile(fileName);
+		            dao.deleteById(id);
+		            return true;
+		        } catch (MalformedURLException e) {
+		            System.err.println("URL inválida: " + url);
+		        }
 		}
 		System.err.println("Ocorreu um erro ao excluir o projeto!");
 		return false;
