@@ -41,8 +41,8 @@ public class ProjectServiceImpl implements IProjectService{
 		try {
 	        // Fazendo o upload para o s3 e retorna o caminho url
 			System.out.println("Subindo arquivo para o S3...");
-			String pathFile = storageS3Service.uploadS3File(file);
-			//String pathFile = null;
+			//String pathFile = storageS3Service.uploadS3File(file);
+			String pathFile = null;
 	    	
 	    	if(pathFile == null) { //Fazendo upload para pasta local caso a requisição do s3 falhe
 	    		
@@ -68,11 +68,20 @@ public class ProjectServiceImpl implements IProjectService{
 	@Override
 	public Boolean update(@Valid @NotNull ProjectDTO project, @NotNull @Positive Integer id, MultipartFile file) {
 		
-		Optional<Project> res = dao.findById(id);
-		String pathFile = storageS3Service.uploadS3File(file);
-		
 		try {
 			
+			 // Fazendo o upload para o s3 e retorna o caminho url
+			System.out.println("Subindo arquivo para o S3...");
+			//String pathFile = storageS3Service.uploadS3File(file);
+			String pathFile = null;
+	    	
+	    	if(pathFile == null) { //Fazendo upload para pasta local caso a requisição do s3 falhe
+	    		
+	    		System.out.println("Requisição para o S3 falhou! Salvando localmente...");
+	    		pathFile = localFotoService.uploadLocalFile(file);
+	    	}
+	    	
+	    	Optional<Project> res = dao.findById(id);
 			if(res.isPresent()) {
 				Project existingProject = res.get();
 				this.exclusedImageStorage(existingProject);
@@ -85,7 +94,7 @@ public class ProjectServiceImpl implements IProjectService{
 				return true;
 			}
 		} catch (Exception e) {
-			System.err.println("Erro ao atualizar o projeto!");
+			System.err.println("Erro ao atualizar o projeto!" + e);
 			return false;
 		}
 		return null;
@@ -128,7 +137,7 @@ public class ProjectServiceImpl implements IProjectService{
 		return false;
 	}
 	
-	public Boolean exclusedImageStorage(Project project) {
+	private Boolean exclusedImageStorage(Project project) {
 		
 		String url = project.getMidia();
 		

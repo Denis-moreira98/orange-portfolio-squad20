@@ -1,5 +1,7 @@
 package br.com.orangeportifolio.squad20.controller;
 
+import java.util.Enumeration;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.orangeportifolio.squad20.dto.UserDTO;
 import br.com.orangeportifolio.squad20.model.User;
 import br.com.orangeportifolio.squad20.service.user.IUserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -26,8 +29,24 @@ public class UserController {
     private IUserService service;
     
 	@PostMapping("/new")
-	public ResponseEntity<?> create(@RequestBody @Valid @NotNull User user) {
+	public ResponseEntity<?> create(@RequestBody @Valid @NotNull User user, HttpServletRequest request) {
 		
+		System.err.println("Recebi no AuthController: " + user.toString());
+		
+		 // Imprimir todos os cabeçalhos da requisição
+//	    Enumeration<String> headerNames = request.getHeaderNames();
+//	    while (headerNames.hasMoreElements()) {
+//	        String headerName = headerNames.nextElement();
+//	        System.out.println("Header Name - " + headerName + ", Value - " + request.getHeader(headerName));
+//	    }
+//	    
+//	 // Imprimir todos os parâmetros da requisição
+//	    Enumeration<String> params = request.getParameterNames(); 
+//	    while(params.hasMoreElements()){
+//	        String paramName = params.nextElement();
+//	        System.out.println("Parameter Name - "+paramName+", Value - "+request.getParameter(paramName));
+//	    }
+//		
 		if(service.create(user) != null) {
 			return ResponseEntity.ok().body("Usuário criado com sucesso!");
 		}

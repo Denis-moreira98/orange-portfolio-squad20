@@ -5,7 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface ILocalFotoStorageService {
 	public String uploadLocalFile(MultipartFile file);
 	
-	public void deleteLocalFile(String fileName);
+	public Boolean deleteLocalFile(String fileName);
 	
-	public byte[] getImage(String imageName);
+	public String getImage(String imageName);
 }
