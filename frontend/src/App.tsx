@@ -5,6 +5,9 @@ import { Discover } from "./pages/discover";
 import { NotFound } from "./pages/notFound";
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./components/layout";
+import { Home } from "./pages/home";
+
+import { Private } from "./routes/private";
 
 const router = createBrowserRouter([
    {
@@ -12,13 +15,29 @@ const router = createBrowserRouter([
       children: [
          {
             path: "/dashboard",
-            element: <Dashboard />,
+            element: (
+               <Private>
+                  <Dashboard />
+               </Private>
+            ),
+         },
+         {
+            path: "/discover",
+            element: (
+               <Private>
+                  <Discover />
+               </Private>
+            ),
          },
       ],
    },
    {
       path: "*",
       element: <NotFound />,
+   },
+   {
+      path: "/",
+      element: <Home />,
    },
    {
       path: "/login",
