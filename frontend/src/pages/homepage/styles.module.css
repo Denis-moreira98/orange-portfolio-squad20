@@ -47,14 +47,15 @@ li img {
 
 li .buttonhome {
    border: none;
-   width: 80px;
+   width: 120px;
    height: 40px;
    border-radius: 3px;
    cursor: pointer;
 }
 
 li:first-child .buttonhome {
-   background-color: transparent;
+   color: var( --neutral-110);
+   background-color: #F0F0F0;
    border: 2px solid #f3f6f7;
 }
 li:first-child .buttonhome:hover {
@@ -62,18 +63,18 @@ li:first-child .buttonhome:hover {
 }
 
 li:last-child .buttonhome,
-li:first-child .buttonhome:hover,
 .sectionhome .divhome .buttonhome {
    background-color: rgb(255, 85, 34);
    color: #ffffff;
    transition: 0.3s all ease-out;
    border: none;
 }
-.divhome h1 {
+.divhome h3 {
    color: var(--primary-90);
    font-weight: 500;
    font-size: 42px;
 }
+
 
 li:last-child .buttonhome:hover,
 .sectionhome .divhome .buttonhome:hover {
@@ -101,9 +102,9 @@ li:last-child .buttonhome:hover,
 }
 
 .sectionhome .divhome p {
-   color: #828282;
-   width: 70%;
-   font-size: 18px;
+   color: var(--neutral-110);
+   font-size: 22px;
+  
 }
 
 .sectionhome img {
@@ -112,8 +113,9 @@ li:last-child .buttonhome:hover,
 
 .sectionhome .divhome button {
    border: none;
-   width: 120px;
-   height: 40px;
+   width: 20%;
+   height: 50px;
+   font-size: 15px;
    border-radius: 3px;
    cursor: pointer;
 
@@ -125,7 +127,9 @@ footer {
    font-weight: bold;
    color: #5c5c5c;
 }
-
+   footer div p{
+      font-size: 18px;
+   }
 .partners {
    padding: 1rem 0 0 0;
    display: flex;
@@ -139,7 +143,7 @@ footer {
    object-fit: scale-down;
 }
 
-@media screen and (max-width: 924px) {
+@media screen and (max-width: 997px) {
    .navhome {
       padding: 1.5rem;
    }
@@ -171,7 +175,7 @@ footer {
    }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
    .sectionhome img {
       width: 350px;
    }
@@ -199,6 +203,15 @@ footer {
       font-size: 30px;
    }
    .lihome {
+      display: none;
+   }
+   .sectionhome .divhome button {
+      width: 80%;
+      height: 50px;
+      
+   
+   }
+   ul .balaofala{
       display: none;
    }
 }
