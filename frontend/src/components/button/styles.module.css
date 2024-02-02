@@ -8,7 +8,7 @@
    color: white;
    font-size: 1rem;
    font-weight: 500;
-   transition: 0.5s;
+   transition: all 0.3s ease-in;
    cursor: pointer;
    width: 100%;
 }
