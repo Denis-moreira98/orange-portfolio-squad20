@@ -39,7 +39,7 @@ public class TokenUtil {
 			Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 			
 			// gerando um JWT e colocando as informações necessarias
-			String jwtToken = Jwts.builder().subject(user.getEmail())
+			String jwtToken = Jwts.builder().subject(user.getIdUser().toString()).claim("email", user.getEmail()).claim("name", user.getName())
 											.issuer(ISSUER)
 											.expiration(new Date(System.currentTimeMillis() + EXPIRATION))
 											.signWith(key)
