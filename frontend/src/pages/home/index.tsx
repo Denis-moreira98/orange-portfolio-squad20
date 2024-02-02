@@ -1,6 +1,9 @@
 import styles from "./styles.module.css";
 import vite from "../../assets/vite.svg";
 import { Link } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
+
+import imgBanner from "../../assets/$x8r9ctcwosj.png";
 
 export function Home() {
    return (
@@ -9,11 +12,7 @@ export function Home() {
             <nav className={styles.navhome}>
                <ul className={styles.ulhome}>
                   <li>
-                     <img
-                        src={vite}
-                        /*  src="https://d335luupugsy2.cloudfront.net/cms/files/692217/1694801416/$9dhg0ggifvi" */
-                        alt=""
-                     />
+                     <img src={vite} alt="logo laranja" />
                   </li>
                   <li className={styles.balaofala}>Torne-se um de Nós</li>
                </ul>
@@ -21,16 +20,11 @@ export function Home() {
                <ul className={styles.ulhome}>
                   <li>
                      <Link to="/login">
-                        {" "}
-                        <button className={styles.buttonhome}>
-                           {" "}
-                           LOGIN
-                        </button>{" "}
+                        <button className={styles.buttonhome}>LOGIN</button>
                      </Link>
                   </li>
                   <li className={styles.lihome} id={styles.idl}>
-                     <Link to="/Register">
-                        {" "}
+                     <Link to="/register">
                         <button className={styles.buttonhome}>CADASTRO</button>
                      </Link>
                   </li>
@@ -40,30 +34,36 @@ export function Home() {
             <main>
                <section className={styles.sectionhome}>
                   <div className={styles.divhome}>
-                     <h3>Catalogue seus Projetos</h3>
+                     <h3>
+                        <Typewriter
+                           words={["Catalogue seus Projetos!"]}
+                           loop={Infinity}
+                           cursor
+                           cursorStyle="|"
+                           typeSpeed={80}
+                           deleteSpeed={50}
+                           delaySpeed={1200}
+                        />
+                     </h3>
                      <p>
                         Crie, exiba e compartilhe seu portfólio de projetos de
                         maneira intuitiva, conectando-se a uma comunidade de
                         mentes criativas e mantendo-se informado sobre as
                         últimas tendências em design e desenvolvimento.
                      </p>
-                     <Link to="/Register">
-                        {" "}
+
+                     <Link to="/register">
                         <button className={styles.buttonhome}>
-                           INICIAR JORNADA
+                           COMEÇAR AGORA
                         </button>
                      </Link>
                   </div>
 
                   <div className={styles.divhome}>
-                     <img
-                        src="https://d335luupugsy2.cloudfront.net/cms/files/692217/1701269107/$x8r9ctcwosj"
-                        alt=""
-                     />
+                     <img src={imgBanner} alt="banner" />
                   </div>
                </section>
             </main>
-
             <footer>
                <div>
                   <p>
@@ -71,41 +71,6 @@ export function Home() {
                      comunidade tech mais vitaminada!
                   </p>
                </div>
-
-               {/*        <div className={styles.partners}>
-            <img
-              src="https://i.pinimg.com/originals/49/72/6e/49726e65f6b35c2e8e366a16c0734fb7.png"
-              alt=""
-            />
-            <img
-              src="https://www.resilia.com.br/wp-content/uploads/2021/08/logo.png"
-              alt=""
-            />
-
-            <img src="https://pngimg.com/d/github_PNG15.png" alt="" />
-
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Klabin.svg/2560px-Klabin.svg.png"
-              alt=""
-            />
-
-            <img
-              src="https://storage.googleapis.com/atados-v3/user-uploaded/images/e8d4e9bf-6096-49a9-81e4-a39bb0bfec77.png"
-              alt=""
-            />
-
-            <img
-              src="https://ajustes.org.br/wp-content/uploads/2019/12/2018-07-05-17-39-54-logo-unimed-png-e1576232236210.png"
-              alt=""
-            />
-
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/2/24/Bancopanlogo.png"
-              alt=""
-            />
-
-            <img src="https://images.sympla.com.br/5aec9652c823d.png" alt="" />
-          </div> */}
             </footer>
          </div>
       </>
