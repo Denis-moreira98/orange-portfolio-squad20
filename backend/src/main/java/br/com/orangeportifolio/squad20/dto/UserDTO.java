@@ -3,7 +3,6 @@ package br.com.orangeportifolio.squad20.dto;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.orangeportifolio.squad20.model.Project;
 import br.com.orangeportifolio.squad20.model.User;
 
 public class UserDTO {

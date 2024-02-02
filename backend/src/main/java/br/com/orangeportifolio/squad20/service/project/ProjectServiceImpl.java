@@ -1,5 +1,8 @@
 package br.com.orangeportifolio.squad20.service.project;
 
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -38,7 +41,8 @@ public class ProjectServiceImpl implements IProjectService{
 		try {
 	        // Fazendo o upload para o s3 e retorna o caminho url
 			System.out.println("Subindo arquivo para o S3...");
-			String pathFile = storageS3Service.uploadS3File(file);
+			//String pathFile = storageS3Service.uploadS3File(file);
+			String pathFile = null;
 	    	
 	    	if(pathFile == null) { //Fazendo upload para pasta local caso a requisição do s3 falhe
 	    		
@@ -64,21 +68,33 @@ public class ProjectServiceImpl implements IProjectService{
 	@Override
 	public Boolean update(@Valid @NotNull ProjectDTO project, @NotNull @Positive Integer id, MultipartFile file) {
 		
-		Optional<Project> res = dao.findById(id);
-		String pathFile = storageS3Service.uploadS3File(file);
-		
 		try {
 			
+			 // Fazendo o upload para o s3 e retorna o caminho url
+			System.out.println("Subindo arquivo para o S3...");
+			//String pathFile = storageS3Service.uploadS3File(file);
+			String pathFile = null;
+	    	
+	    	if(pathFile == null) { //Fazendo upload para pasta local caso a requisição do s3 falhe
+	    		
+	    		System.out.println("Requisição para o S3 falhou! Salvando localmente...");
+	    		pathFile = localFotoService.uploadLocalFile(file);
+	    	}
+	    	
+	    	Optional<Project> res = dao.findById(id);
 			if(res.isPresent()) {
 				Project existingProject = res.get();
+				this.exclusedImageStorage(existingProject);
+				
 				project.setMidia(pathFile);
+				
 				BeanUtils.copyProperties(project, existingProject, "idProject", "userId");
 			
 				dao.save(existingProject);
 				return true;
 			}
 		} catch (Exception e) {
-			System.err.println("Erro ao atualizar o projeto!");
+			System.err.println("Erro ao atualizar o projeto!" + e);
 			return false;
 		}
 		return null;
@@ -113,10 +129,29 @@ public class ProjectServiceImpl implements IProjectService{
 	public boolean delete(@NotNull @Positive Integer id) {
 		Optional<Project> res = dao.findById(id);
 		if(res.isPresent()) {
+			Project project = res.get();
+			this.exclusedImageStorage(project);
 			dao.deleteById(id);
-			return true;
-		}
-		System.err.println("Ocorreu um erro ao excluir o projeto!");
+		    return true;
+		} 
 		return false;
+	}
+	
+	private Boolean exclusedImageStorage(Project project) {
+		
+		String url = project.getMidia();
+		
+		 try {
+	            URL fileUrl = new URL(url);
+	            String fileName = new File(fileUrl.getPath()).getName();
+	            System.out.println("Excluindo imagem: " + fileName);
+	            
+	            storageS3Service.deleteFile(fileName);
+	            return true;
+	            
+	        } catch (MalformedURLException e) {
+	            System.err.println("URL inválida: " + url);
+	            return false;
+	        }
 	}
 }

@@ -102,4 +102,11 @@ public class User {
 		this.projects = projects;
 	}
 
+	@Override
+	public String toString() {
+		return "User [idUser=" + idUser + ", name=" + name + ", country=" + country + ", email=" + email + ", password="
+				+ password + ", projects=" + projects + "]";
+	}
+	
+	
 }

@@ -70,13 +70,9 @@ public class ProjectController {
 	}
 
 	@GetMapping("/{tag}")
-	public ResponseEntity<List<ProjectDTO>> findByTagsContaining(@RequestParam (name = "tag") String tag) {
+	public ResponseEntity<List<ProjectDTO>> findByTagsContaining(@RequestParam (name = "tag") @NotNull String tag) {
 		List<ProjectDTO> listProj = service.findByTagsContaining(tag);
 		if (listProj != null) {
-			for (ProjectDTO projects : listProj) {
-				byte[] image = fotoStorageService.getImage(projects.getMidia());
-				projects.setMidia(Base64.getEncoder().encodeToString(image));
-			}
 			return ResponseEntity.ok(listProj);
 		}
 		return ResponseEntity.notFound().build();
