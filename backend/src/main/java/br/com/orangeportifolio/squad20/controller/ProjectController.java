@@ -37,7 +37,7 @@ public class ProjectController {
 	@Autowired
 	private ILocalFotoStorageService fotoStorageService;
 
-	@PostMapping("/new")
+	@PostMapping("/")
 	public ResponseEntity<Project> create(@RequestPart("project") @Valid @NotNull Project project,
 			@RequestParam("file") @NotNull MultipartFile file) {
 
