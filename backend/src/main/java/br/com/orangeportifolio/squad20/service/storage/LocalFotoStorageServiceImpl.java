@@ -61,16 +61,6 @@ public class LocalFotoStorageServiceImpl implements ILocalFotoStorageService{
 
 	@Override
 	public byte[] getImage(String imageName) {
-		 
-		 try {
-			 
-			Path path = Paths.get(pathImage, imageName);
-			return Files.readAllBytes(path);
-			
-		} catch (IOException e) {
-			System.err.println("Ocorreu um erro ao obter a imagem: ");
-			e.printStackTrace();
-		}
 		 return null;
 	}
 	
