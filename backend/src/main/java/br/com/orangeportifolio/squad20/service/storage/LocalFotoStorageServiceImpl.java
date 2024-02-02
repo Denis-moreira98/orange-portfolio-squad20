@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -67,9 +67,24 @@ public class LocalFotoStorageServiceImpl implements ILocalFotoStorageService{
 	}
 
 	@Override
-	public byte[] getImage(String imageName) {
-		 return null;
+	public String getImage(String imageName) {
+		
+	    try {
+	            Path path = Paths.get(pathImage, imageName);
+	            byte[] imageData = Files.readAllBytes(path);
+	            
+	            // Converte o array de bytes para uma string Base64
+	            String imageDataString = Base64.getEncoder().encodeToString(imageData);
+	            
+	            return imageDataString;
+	        }
+	     catch (IOException e) {
+	        System.err.println("Ocorreu um erro ao obter a imagem: ");
+	        e.printStackTrace();
+	    }
+	    return null;
 	}
+
 	
 	private String generateUniqueFileName(String originalFileName) {
         String uniqueID = UUID.randomUUID().toString();

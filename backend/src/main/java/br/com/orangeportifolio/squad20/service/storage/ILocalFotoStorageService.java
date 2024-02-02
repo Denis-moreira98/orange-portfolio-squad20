@@ -7,5 +7,5 @@ public interface ILocalFotoStorageService {
 	
 	public void deleteLocalFile(String fileName);
 	
-	public byte[] getImage(String imageName);
+	public String getImage(String imageName);
 }
