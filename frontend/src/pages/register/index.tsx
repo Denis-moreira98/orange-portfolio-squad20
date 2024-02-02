@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AuthContext } from "../../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const scheme = z.object({
    name: z.string().nonempty("O campo nome é obrigatório"),
@@ -115,6 +115,7 @@ export function Register() {
                   >
                      CADASTRAR
                   </Button>
+                  <p className={styles.textReturn}>Já tem uma conta? <Link to={"/login"}>Acessar</Link></p>
                </form>
             </div>
          </div>
