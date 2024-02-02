@@ -15,6 +15,7 @@
 }
 
 .content {
+   width: 100%;
    max-width: 517px;
    height: 432px;
    align-items: center;
@@ -33,7 +34,7 @@
    color: var(--neutral-110);
    font-size: 24px;
    font-weight: 400;
-   margin-bottom: 10px;
+   margin-bottom: 1.4rem;
 }
 
 .form {
@@ -42,23 +43,25 @@
 
 .form p {
    text-align: left;
+   letter-spacing: 0.15px; 
    text-decoration: none;
-   font-weight: 600;
-   color: var(--neutral-110);
+   font-weight: 400;
+   color: var(--neutral-100);
    margin-top: 18px;
 }
 .form a {
    text-decoration: none;
 }
 
-.button_view {
+.inputPassword svg {
    border: none;
    background-color: transparent;
+   position: fixed;
    font-size: 18px;
    position: relative;
-   top: -50px;
+   top: -58px;
    float: right;
-   margin-right: 9px;
+   margin-right: 14px;
    cursor: pointer;
    margin-bottom: -15px;
 }

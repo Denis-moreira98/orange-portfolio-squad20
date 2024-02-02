@@ -1,40 +1,48 @@
 .container {
    position: relative;
-   display: flex;
-   align-items: center;
-   padding: 0 1rem;
-   height: 3.5rem;
+   height: 4.8rem;
+   width: 100%;
+}
+.form__input {
+   position: relative;
+   background-color: transparent;
+   top: 0;
+   left: 0;
+   height: 3.4rem;
+   width: 100%;
    border: 2px solid #ccc;
    border-radius: 4px;
-   box-shadow: var(--primary-100);
-   width: 100%;
-   margin-bottom: 0.8rem;
-}
-.container:hover {
-   border-color: var(--info-100);
-}
-.container input {
-   background: transparent;
-   height: auto;
+   color: var(--neutral-120);
+   font-size: 16px;
    outline: none;
    font-size: 1rem;
-   width: 100%;
-   color: rgb(5, 5, 5);
-
-   border: none;
+   padding: 0.5rem;
+   transition: all 160ms ease-in;
+}
+.form__input:hover {
+   border-color: var(--neutral-110);
 }
 
-.container input::placeholder {
-   text-align: left;
+.form__input:focus {
+   border-color: var(--info-100);
 }
 
-label {
-   color: var(--neutral-110);
+.form__label {
    position: absolute;
-   top: -0.55rem;
-   height: 20px;
+   left: 1rem;
+   top: 1rem;
+   color: var(--neutral-110);
    padding: 0.1rem 0.2rem;
-   font-size: 13px;
-   font-weight: 500;
+   font-size: 16px;
+   font-weight: 400;
+   cursor: text;
+   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
    background-color: white;
+}
+
+.form__input:focus ~ .form__label,
+.form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+   top: -0.5rem;
+   font-size: 12px;
+   left: 0.8rem;
 }

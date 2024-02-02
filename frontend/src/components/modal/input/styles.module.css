@@ -3,11 +3,20 @@
    border: 0;
    border-radius: 4px;
    background-color: transparent;
-   box-shadow: var(--primary-100);
    color: var(--neutral-100);
-   padding: 1rem;
+   padding: 0.5rem 0.5rem;
    border: 2px solid #ccc;
    overflow: hidden;
+   font-size: 16px;
+   font-weight: 400;
+}
+.input:hover {
+   border-color: var(--neutral-110);
+}
+
+.input:focus {
+   border-color: var(--info-100);
+   outline: none;
 }
 
 input textarea {
@@ -16,6 +25,8 @@ input textarea {
    resize: none;
    padding: 0.5rem 0.5rem;
 }
-/* .input::placeholder {
-   color: var(--neutral-130);
-} */
+@media screen and (max-width: 450px) {
+   .input {
+      font-size: 14px;
+   }
+}

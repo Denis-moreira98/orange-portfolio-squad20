@@ -2,25 +2,24 @@ import Modal from "react-modal";
 import styles from "./styles.module.css";
 
 import { Button } from "../button";
-import InputModal, { TextArea } from "./input/index";
+import InputModal, { TextArea } from "../modal/input/index";
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { FaImages } from "react-icons/fa";
 
-import { ModalPreview } from "../modalPreview";
-// import { ModalSuccess } from "../modalSuccess";
-
+// import { ModalEditSuccess } from "../modalEditSuccess";
 import { validateEspecialChars } from "../../utils/validations";
-import { setupAPIClient } from "../../services/api";
+import { ModalPreview } from "../modalPreview";
 import { AuthContext } from "../../contexts/AuthContext";
+import { setupAPIClient } from "../../services/api";
 
 interface ModalProps {
    isOpen: boolean;
    onRequestClose: () => void;
 }
 
-export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
-   const [modalVisible, setModalVisible] = useState(false);
+export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
    const { user } = useContext(AuthContext);
+   const [modalPreviewVisible, setModalPreviewVisible] = useState(false);
    // const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
 
    // states do form
@@ -31,18 +30,15 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
    const [link, setLink] = useState("");
    const [description, setDescription] = useState("");
 
-   //Modal Success
+   // //Modal Success
    // function handleOpenModalSuccess() {
    //    setTimeout(() => {
    //       setModalSuccessVisible(true);
-   //    }, 800);
-   // }
-   // function handleCloseModalSuccess() {
-   //    setModalSuccessVisible(false);
+   //    }, 500);
    // }
 
    //ModalPreview
-   function handleOpenModal() {
+   function handleOpenModalPreview() {
       if (
          title === "" ||
          tags === "" ||
@@ -60,12 +56,12 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
       }
       const tagsSeparadas = tags.split(" ");
       setArrayDeTags(tagsSeparadas);
-      setModalVisible(true);
+      setModalPreviewVisible(true);
    }
    function handleCloseModal() {
-      setModalVisible(false);
+      setModalPreviewVisible(false);
    }
-   async function handleRegisterProject(event: FormEvent) {
+   async function handleEditProject(event: FormEvent) {
       event.preventDefault();
 
       try {
@@ -103,7 +99,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          }
 
          const apiClient = setupAPIClient();
-         await apiClient.post("/project/", data);
+         await apiClient.put("/project/edit/1", data);
 
          setTitle("");
          setLink("");
@@ -118,6 +114,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
    }
 
    const [avatarUrl, setAvatarUrl] = useState("");
+   // eslint-disable-next-line @typescript-eslint/no-unused-vars
    const [imageAvatar, setImageAvatar] = useState(null);
 
    function handleFile(e: ChangeEvent<HTMLInputElement>) {
@@ -155,8 +152,8 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
             style={customStyles}
          >
             <div className={styles.div_container}>
-               <h4>Adicionar Projeto</h4>
-               <form onSubmit={handleRegisterProject}>
+               <h4>Editar projeto </h4>
+               <form onSubmit={handleEditProject}>
                   <div className={styles.content}>
                      <div className={styles.div_text}>
                         <div className={styles.div_file}>
@@ -227,15 +224,15 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                      <button
                         className={styles.btn_view}
                         type="button"
-                        onClick={handleOpenModal}
+                        onClick={handleOpenModalPreview}
                      >
                         Visualizar publicação
                      </button>
                      <div className={styles.div_buttons}>
                         <Button
+                           // onClick={handleOpenModalSuccess}
                            type="submit"
                            variant="orange"
-                           // onClick={handleOpenModalSuccess}
                         >
                            SALVAR
                         </Button>
@@ -253,21 +250,21 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                </form>
             </div>
          </Modal>
-         {modalVisible && (
+         {modalPreviewVisible && (
             <ModalPreview
                title={title}
                tags={arrayDeTags}
                link={link}
                description={description}
                image={avatarUrl}
-               isOpen={modalVisible}
+               isOpen={modalPreviewVisible}
                onRequestClose={handleCloseModal}
             />
          )}
          {/* {modalSuccessVisible && (
-            <ModalSuccess
+            <ModalEditSuccess
                isOpen={modalSuccessVisible}
-               onRequestClose={handleCloseModalSuccess}
+               onRequestClose={onRequestClose}
             />
          )} */}
       </>

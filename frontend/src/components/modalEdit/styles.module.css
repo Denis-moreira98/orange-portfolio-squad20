@@ -35,7 +35,7 @@
    display: flex;
    flex-direction: column;
 
-   gap: 0.8rem;
+   gap: 14px;
 }
 
 .div_input input {
@@ -63,6 +63,7 @@
    width: 400px;
    height: 304px;
    background-color: var(--neutral-70);
+   margin-bottom: 0rem;
    border-radius: 0.3rem;
    display: flex;
    justify-content: center;
@@ -144,7 +145,7 @@
    .labelAvatar {
       top: 8.5rem;
       width: 210px;
-      height: 194px;
+      height: 196px;
       margin-left: 0;
    }
    .div_input input {
