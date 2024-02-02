@@ -112,6 +112,7 @@ nav.menu ul li a:hover {
    visibility: hidden;
    opacity: 0;
    box-shadow: 2px 2px 8px 0px;
+   z-index: 7;
 }
 
 .dropdown ul {
@@ -204,16 +205,18 @@ nav.menu ul li a:hover {
       display: none;
    }
 
-   .btn__out {
+   /* .btn__out {
       display: none;
-   }
+   } */
    .sair {
       display: flex;
       flex-direction: row;
 
       align-items: center;
    }
+
    .btn__outDrop {
+      border: none;
    }
 
    .dropdown ul li .btn__outDrop {
