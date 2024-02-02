@@ -53,9 +53,30 @@ public class LocalFotoStorageServiceImpl implements ILocalFotoStorageService{
 	}
 
 	@Override
-	public void deleteLocalFile(String fileName) {
-		// TODO Auto-generated method stub
+	public Boolean deleteLocalFile(String fileName) {
 		
+		 Path path = Paths.get(pathImageAbsolute(), fileName);
+		 
+		 // Tente excluir o arquivo, se ele existir
+	        try {
+	        	
+	        	 boolean deleted = Files.deleteIfExists(path);
+	             
+	             if (deleted) {
+	                 System.out.println("Arquivo deletado com sucesso: " + path);
+	                 return true;
+	                 
+	             } else {
+	                 System.out.println("Arquivo não encontrado: " + path);
+	                 return false;
+	             }
+				
+			} catch (IOException e) {
+				
+				  System.err.println("Ocorreu um erro ao tentar deletar o arquivo: ");
+			        e.printStackTrace();
+				return false;
+			}
 	}
 
 	@Override
