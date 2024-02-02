@@ -15,6 +15,7 @@
 }
 
 .content {
+   width: 100%;
    max-width: 517px;
    height: 432px;
    align-items: center;
@@ -57,9 +58,9 @@
    position: fixed;
    font-size: 18px;
    position: relative;
-   top: -61px;
+   top: -58px;
    float: right;
-   margin-right: 12px;
+   margin-right: 14px;
    cursor: pointer;
    margin-bottom: -15px;
 }

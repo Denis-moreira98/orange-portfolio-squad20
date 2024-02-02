@@ -7,6 +7,9 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { FaImages } from "react-icons/fa";
 
 import { ModalPreview } from "../modalPreview";
+// import { ModalSuccess } from "../modalSuccess";
+
+import { validateEspecialChars } from "../../utils/validations";
 
 interface ModalProps {
    isOpen: boolean;
@@ -15,20 +18,99 @@ interface ModalProps {
 
 export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
    const [modalVisible, setModalVisible] = useState(false);
+   // const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
 
-   function handleOpenModal(e: FormEvent) {
-      e.preventDefault();
+   // states do form
+   const [title, setTitle] = useState("");
+   const [tags, setTags] = useState("");
+   const [arrayDeTags, setArrayDeTags] = useState([]);
+   const [errorChars, SetErrorChars] = useState(false);
+   const [link, setLink] = useState("");
+   const [description, setDescription] = useState("");
 
-      setTimeout(() => {
-         setModalVisible(true);
-      }, 800);
+   //Modal Success
+   // function handleOpenModalSuccess() {
+   //    setTimeout(() => {
+   //       setModalSuccessVisible(true);
+   //    }, 800);
+   // }
+   // function handleCloseModalSuccess() {
+   //    setModalSuccessVisible(false);
+   // }
+
+   //ModalPreview
+   function handleOpenModal() {
+      if (
+         title === "" ||
+         tags === "" ||
+         link === "" ||
+         description === "" ||
+         imageAvatar === null
+      ) {
+         alert("PREENCHA TODOS OS CAMPOS!");
+         return;
+      } else if (validateEspecialChars.test(tags)) {
+         SetErrorChars(true);
+         return;
+      } else {
+         SetErrorChars(false);
+      }
+      const tagsSeparadas = tags.split(" ");
+      setArrayDeTags(tagsSeparadas);
+      setModalVisible(true);
    }
    function handleCloseModal() {
       setModalVisible(false);
    }
+   async function handleRegisterProject(event: FormEvent) {
+      event.preventDefault();
+
+      try {
+         const data = new FormData();
+
+         if (
+            title === "" ||
+            tags === "" ||
+            link === "" ||
+            description === "" ||
+            imageAvatar === null
+         ) {
+            alert("PREENCHA TODOS OS CAMPOS!");
+            return;
+         } else if (validateEspecialChars.test(tags)) {
+            SetErrorChars(true);
+            return;
+         } else {
+            SetErrorChars(false);
+         }
+
+         data.append("title", title);
+         data.append("tags", tags);
+         data.append("linkProject", link);
+         data.append("description", description);
+         // data.append("userProject", user.id);
+         data.append("midia", imageAvatar);
+
+         for (const [key, value] of data.entries()) {
+            console.log(`${key}: ${value}`);
+         }
+
+         // const apiClient = setupAPIClient();
+         // await apiClient.post("/project", data);
+
+         // setTitle("");
+         // setLink("");
+         // setTags("");
+         // setDescription("");
+         // setImageAvatar("");
+         // setImageAvatar(null);
+         // setAvatarUrl("");
+      } catch (err) {
+         console.log(err);
+      }
+   }
 
    const [avatarUrl, setAvatarUrl] = useState("");
-   // eslint-disable-next-line @typescript-eslint/no-unused-vars
    const [imageAvatar, setImageAvatar] = useState(null);
 
    function handleFile(e: ChangeEvent<HTMLInputElement>) {
@@ -67,7 +149,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          >
             <div className={styles.div_container}>
                <h4>Adicionar Projeto</h4>
-               <form>
+               <form onSubmit={handleRegisterProject}>
                   <div className={styles.content}>
                      <div className={styles.div_text}>
                         <div className={styles.div_file}>
@@ -97,19 +179,56 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                         </div>
                      </div>
                      <div className={styles.div_input}>
-                        <InputModal placeholder="Título" />
-                        <InputModal placeholder="Tags" />
-                        <InputModal placeholder="Link" />
-                        <TextArea placeholder="Descrição" />
+                        <InputModal
+                           value={title}
+                           onChange={(e) => setTitle(e.target.value)}
+                           placeholder="Título"
+                        />
+                        <InputModal
+                           value={tags}
+                           onChange={(e) => setTags(e.target.value)}
+                           placeholder="Tags"
+                        />
+                        {errorChars && (
+                           <p
+                              style={{
+                                 color: "#ff4433",
+                                 fontSize: "14px",
+                                 marginTop: "-9px",
+                                 marginLeft: "5px",
+                                 marginBottom: "-7px",
+                                 fontWeight: "500",
+                              }}
+                           >
+                              Separe as tags apenas com espaço, sem caracteres
+                              especiais!
+                           </p>
+                        )}
+                        <InputModal
+                           value={link}
+                           onChange={(e) => setLink(e.target.value)}
+                           placeholder="Link"
+                        />
+                        <TextArea
+                           value={description}
+                           onChange={(e) => setDescription(e.target.value)}
+                           placeholder="Descrição"
+                        />
                      </div>
                   </div>
                   <div className={styles.div_button}>
-                     <p>Visualizar publicação</p>
+                     <button
+                        className={styles.btn_view}
+                        type="button"
+                        onClick={handleOpenModal}
+                     >
+                        Visualizar publicação
+                     </button>
                      <div className={styles.div_buttons}>
                         <Button
-                           onClick={handleOpenModal}
                            type="submit"
                            variant="orange"
+                           // onClick={handleOpenModalSuccess}
                         >
                            SALVAR
                         </Button>
@@ -129,11 +248,21 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          </Modal>
          {modalVisible && (
             <ModalPreview
+               title={title}
+               tags={arrayDeTags}
+               link={link}
+               description={description}
                image={avatarUrl}
                isOpen={modalVisible}
                onRequestClose={handleCloseModal}
             />
          )}
+         {/* {modalSuccessVisible && (
+            <ModalSuccess
+               isOpen={modalSuccessVisible}
+               onRequestClose={handleCloseModalSuccess}
+            />
+         )} */}
       </>
    );
 }

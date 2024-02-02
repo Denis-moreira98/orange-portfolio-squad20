@@ -1,29 +1,48 @@
 .container {
    position: relative;
-   display: flex;
-   flex-direction: column;
-   height: 5rem;
+   height: 4.8rem;
    width: 100%;
 }
-.container input {
+.form__input {
+   position: relative;
    background-color: transparent;
-   border-radius: 4px;
+   top: 0;
+   left: 0;
    height: 3.4rem;
-   border: 2px solid #ccc;
-   color: var(--neutral-120);
-   font-size: 1rem;
    width: 100%;
+   border: 2px solid #ccc;
+   border-radius: 4px;
+   color: var(--neutral-120);
+   font-size: 16px;
+   outline: none;
+   font-size: 1rem;
    padding: 0.5rem;
+   transition: all 160ms ease-in;
+}
+.form__input:hover {
+   border-color: var(--neutral-110);
 }
 
-label {
-   color: var(--neutral-110);
+.form__input:focus {
+   border-color: var(--info-100);
+}
+
+.form__label {
    position: absolute;
-   margin-left: 0.5rem;
-   top: -0.5rem;
-   height: 20px;
+   left: 1rem;
+   top: 1rem;
+   color: var(--neutral-110);
    padding: 0.1rem 0.2rem;
-   font-size: 13px;
-   font-weight: 500;
+   font-size: 16px;
+   font-weight: 400;
+   cursor: text;
+   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
    background-color: white;
+}
+
+.form__input:focus ~ .form__label,
+.form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+   top: -0.5rem;
+   font-size: 12px;
+   left: 0.8rem;
 }
