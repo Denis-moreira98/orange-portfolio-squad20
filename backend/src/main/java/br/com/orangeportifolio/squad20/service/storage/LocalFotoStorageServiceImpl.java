@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,9 +17,9 @@ import jakarta.validation.constraints.NotNull;
 
 @Service
 public class LocalFotoStorageServiceImpl implements ILocalFotoStorageService{
-
-	private static String pathImage = "C:\\Users\\Jefferson Pedro\\Documents\\GitHub\\orange-portfolio-squad20\\backend\\src\\image";
 	
+	private static String pathImage = "src\\image";
+		
 	@Override
 	public String uploadLocalFile(@NotNull MultipartFile image) {
 					
@@ -27,11 +28,17 @@ public class LocalFotoStorageServiceImpl implements ILocalFotoStorageService{
 
 	        String uniqueFileName = generateUniqueFileName(image.getOriginalFilename());
 
-	        File dir = new File(pathImage);
+	        // Obtenha o caminho absoluto do diretório do projeto
+	        String projectDirectory = new File("").getAbsolutePath();
+	        
+	        // Concatene com o caminho da imagem para obter o caminho completo
+	        String fullPath = projectDirectory + File.separator + pathImage;
+	        
+	        File dir = new File(fullPath);
 	        
 	        // Crie o diretório se ele não existir
 	        if(!dir.exists()) {
-	        	dir.mkdir();
+	        	dir.mkdirs();
 	        }
 	        
 	        //Criando arquivo no diretório
