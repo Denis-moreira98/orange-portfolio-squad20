@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.orangeportifolio.squad20.dto.AuthDTO;
 import br.com.orangeportifolio.squad20.dto.LoginDTO;
-import br.com.orangeportifolio.squad20.dto.UserDTO;
 import br.com.orangeportifolio.squad20.service.auth.IAuthService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -23,12 +23,12 @@ public class AuthController {
 	IAuthService service;
 
 	@PostMapping("/login")
-	public ResponseEntity<UserDTO> authenticate(@RequestBody @Valid @NotNull LoginDTO user){
+	public ResponseEntity<AuthDTO> authenticate(@RequestBody @Valid @NotNull LoginDTO user){
 		
-		UserDTO userDTO = service.authenticate(user);
+		AuthDTO auth = service.authenticate(user);
 		
-		if(userDTO != null) {
-			return ResponseEntity.ok(userDTO);
+		if(auth != null) {
+			return ResponseEntity.ok(auth);
 		}else {
 			return ResponseEntity.status(401).build();
 		}
