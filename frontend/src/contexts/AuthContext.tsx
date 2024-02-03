@@ -60,7 +60,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
          if (token) {
             const decoded: JwtPayload = jwtDecode(token);
             const { sub, name, email } = decoded;
-            console.log(decoded);
+
             setUser({
                id: sub,
                name: name,
@@ -88,7 +88,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
          setCookie(undefined, "@Squad20.token", token, {
             maxAgr: 60 * 60 * 24 * 5, // expira em 5 dias
-            path: "/", //Quais caminhos terão acesso ao cookies
+            path: "/",
          });
 
          setUser({
@@ -96,6 +96,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
             name,
             email,
          });
+
          //Passar para proximas requisições o token
          api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
@@ -115,6 +116,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
          return response.data;
       } catch (err) {
+         console.log(err);
          toast.error("Email ou senha incorretos!", {
             duration: 3000,
             style: {
@@ -151,7 +153,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                secondary: "#2E7D32",
             },
          });
-         console.log("CADASTRADO", name, email, password);
+
          return response;
       } catch (err) {
          console.log(err.message);

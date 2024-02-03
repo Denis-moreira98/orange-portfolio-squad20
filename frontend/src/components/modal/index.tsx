@@ -9,6 +9,7 @@ import { validateEspecialChars } from "../../utils/validations";
 import { setupAPIClient } from "../../services/api";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ModalSuccess } from "../modalSuccess";
+import toast from "react-hot-toast";
 
 interface ModalProps {
    isOpen: boolean;
@@ -64,7 +65,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          description === "" ||
          imageAvatar === null
       ) {
-         alert("PREENCHA TODOS OS CAMPOS!");
+         toast.error("Preencha todos os campos!");
          return false;
       } else if (validateEspecialChars.test(tags)) {
          SetErrorChars(true);
@@ -104,11 +105,11 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          data.append("file", imageAvatar);
 
          const apiClient = setupAPIClient();
+         // eslint-disable-next-line @typescript-eslint/no-unused-vars
          const response = await apiClient.post("/project/", data, {
             headers: { "Content-Type": "multipart/form-data" },
          });
 
-         console.log(response.data);
          handleClearStates();
          handleOpenModalSuccess();
       } catch (err) {
