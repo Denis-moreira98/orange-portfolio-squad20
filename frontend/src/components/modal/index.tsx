@@ -21,7 +21,6 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
    const [avatarUrl, setAvatarUrl] = useState("");
    const [imageAvatar, setImageAvatar] = useState(null);
    const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
-
    const [title, setTitle] = useState("");
    const [tags, setTags] = useState("");
    const [arrayDeTags, setArrayDeTags] = useState([]);
@@ -31,13 +30,30 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
 
    // Modal Success
    function handleOpenModalSuccess() {
-      setTimeout(() => {
-         setModalSuccessVisible(true);
-      }, 500);
+      setModalSuccessVisible(true);
    }
 
    //ModalPreview
    function handleOpenModal() {
+      if (!validateForm()) {
+         return;
+      }
+      const tagsSeparadas = tags.split(" ");
+      setArrayDeTags(tagsSeparadas);
+      setModalVisible(true);
+   }
+
+   //Limpa states
+   function handleClearStates() {
+      setTitle("");
+      setLink("");
+      setTags("");
+      setDescription("");
+      setImageAvatar(null);
+      setAvatarUrl("");
+   }
+
+   function validateForm() {
       if (
          title === "" ||
          tags === "" ||
@@ -46,19 +62,14 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          imageAvatar === null
       ) {
          alert("PREENCHA TODOS OS CAMPOS!");
-         return;
+         return false;
       } else if (validateEspecialChars.test(tags)) {
          SetErrorChars(true);
-         return;
-      } else {
-         SetErrorChars(false);
+         return false;
       }
-      const tagsSeparadas = tags.split(" ");
-      setArrayDeTags(tagsSeparadas);
-      setModalVisible(true);
-   }
-   function handleCloseModal() {
-      setModalVisible(false);
+
+      SetErrorChars(false);
+      return true;
    }
 
    async function handleRegisterProject(event: FormEvent) {
@@ -66,21 +77,8 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
 
       try {
          const data = new FormData();
-
-         if (
-            title === "" ||
-            tags === "" ||
-            link === "" ||
-            description === "" ||
-            imageAvatar === null
-         ) {
-            alert("PREENCHA TODOS OS CAMPOS!");
+         if (!validateForm()) {
             return;
-         } else if (validateEspecialChars.test(tags)) {
-            SetErrorChars(true);
-            return;
-         } else {
-            SetErrorChars(false);
          }
 
          const { id } = user;
@@ -108,14 +106,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          });
 
          console.log(response.data);
-
-         setTitle("");
-         setLink("");
-         setTags("");
-         setDescription("");
-         setImageAvatar(null);
-         setAvatarUrl("");
-
+         handleClearStates();
          handleOpenModalSuccess();
       } catch (err) {
          console.log(err);
@@ -234,11 +225,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                         Visualizar publicação
                      </button>
                      <div className={styles.div_buttons}>
-                        <Button
-                           type="submit"
-                           variant="orange"
-                           // onClick={handleOpenModalSuccess}
-                        >
+                        <Button type="submit" variant="orange">
                            SALVAR
                         </Button>
                         <Button
@@ -263,7 +250,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                description={description}
                image={avatarUrl}
                isOpen={modalVisible}
-               onRequestClose={handleCloseModal}
+               onRequestClose={onRequestClose}
             />
          )}
          {modalSuccessVisible && (
