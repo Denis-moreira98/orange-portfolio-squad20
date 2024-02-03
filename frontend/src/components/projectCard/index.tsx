@@ -1,6 +1,6 @@
 import { Label } from "../modalPreview/label";
 import styles from "./styles.module.css";
-import imagePerfil from "../../assets/image-perfil.png";
+import avatarDefault from "../../assets/avatarDefault.jpg";
 
 interface ProjectProps {
    title: string;
@@ -18,7 +18,7 @@ export function ProjectCard({ title, midia, tags, onClick }: ProjectProps) {
             <figcaption className={styles.details}>
                <div className={styles.info}>
                   <img
-                     src={imagePerfil}
+                     src={avatarDefault}
                      alt="Imagem do usuário"
                      className={styles.imgPerfil}
                   />
