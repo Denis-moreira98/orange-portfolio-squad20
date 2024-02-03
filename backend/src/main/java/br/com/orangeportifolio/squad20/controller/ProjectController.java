@@ -22,6 +22,9 @@ import br.com.orangeportifolio.squad20.dto.ProjectDTO;
 import br.com.orangeportifolio.squad20.model.Project;
 import br.com.orangeportifolio.squad20.service.project.IProjectService;
 import br.com.orangeportifolio.squad20.service.storage.ILocalFotoStorageService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -37,6 +40,11 @@ public class ProjectController {
 	@Autowired
 	private ILocalFotoStorageService fotoStorageService;
 
+	@Operation(description = "Criar um novo projeto")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Projeto criado com sucesso"),
+			@ApiResponse(responseCode = "400", description = "Requisição inválida")
+	})
 	@PostMapping("/")
 	public ResponseEntity<ProjectDTO> create(@RequestPart("project") @Valid @NotNull Project project,
 											@RequestParam("file") @NotNull MultipartFile file) {
@@ -49,6 +57,11 @@ public class ProjectController {
 		return ResponseEntity.badRequest().build();
 	}
 
+	@Operation(description = "Editar um projeto")
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "Projeto editado com sucesso"),
+		@ApiResponse(responseCode = "400", description = "Requisição inválida")
+	})
 	@PutMapping("/edit/{id}")
 	public ResponseEntity<ProjectDTO> update(@RequestPart("project") @Valid @NotNull ProjectDTO project, 
 											 @PathVariable Integer id,
@@ -60,6 +73,11 @@ public class ProjectController {
 		return ResponseEntity.badRequest().build();
 	}
 
+	@Operation(description = "Listar todos os projetos")
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "Projetos listados com sucesso"),
+		@ApiResponse(responseCode = "404", description = "Projetos não encontrados")
+	})
 	@GetMapping("/all")
 	public ResponseEntity<List<ProjectDTO>> findAll() {
 		List<ProjectDTO> list = service.findAll();
@@ -69,6 +87,11 @@ public class ProjectController {
 		return ResponseEntity.notFound().build();
 	}
 
+	@Operation(description = "Listar projetos por tag")
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "Projetos listados com sucesso"),
+		@ApiResponse(responseCode = "404", description = "Projetos não encontrados")
+	})
 	@GetMapping("/{tag}")
 	public ResponseEntity<List<ProjectDTO>> findByTagsContaining(@RequestParam (name = "tag") @NotNull String tag) {
 		List<ProjectDTO> listProj = service.findByTagsContaining(tag);
@@ -78,6 +101,11 @@ public class ProjectController {
 		return ResponseEntity.notFound().build();
 	}
 
+	@Operation(description = "Excluir um projeto")
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "204", description = "Projeto excluído com sucesso"),
+		@ApiResponse(responseCode = "404", description = "Projeto não encontrado")
+	})
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Project> delete(@PathVariable Integer id) {
 		Project res = service.findById(id);

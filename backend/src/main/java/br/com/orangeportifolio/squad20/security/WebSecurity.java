@@ -32,6 +32,8 @@ public class WebSecurity {
 			auth.requestMatchers(new  AntPathRequestMatcher("/user/new", "POST")).permitAll()
 			    .requestMatchers(new  AntPathRequestMatcher("/login", "POST")).permitAll()
 			    .requestMatchers(new  AntPathRequestMatcher("/h2-console/**")).permitAll()
+				.requestMatchers(new  AntPathRequestMatcher("/swagger-ui/**")).permitAll()
+				.requestMatchers(new  AntPathRequestMatcher("/v3/api-docs/**")).permitAll()
 			    .anyRequest().authenticated();
 		})
 		.addFilterBefore(new OrangeFilter(), UsernamePasswordAuthenticationFilter.class)
