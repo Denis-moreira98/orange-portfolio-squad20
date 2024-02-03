@@ -42,6 +42,9 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
       setArrayDeTags(tagsSeparadas);
       setModalPreviewVisible(true);
    }
+   function handleCLoseModalPreview() {
+      setModalPreviewVisible(false);
+   }
 
    function validateForm() {
       if (
@@ -101,7 +104,7 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
          data.append("file", imageAvatar);
 
          const apiClient = setupAPIClient();
-         const response = await apiClient.put("/project/edit/1", data, {
+         const response = await apiClient.put("/project/edit/10", data, {
             headers: { "Content-Type": "multipart/form-data" },
          });
 
@@ -252,7 +255,7 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
                description={description}
                image={avatarUrl}
                isOpen={modalPreviewVisible}
-               onRequestClose={onRequestClose}
+               onRequestClose={handleCLoseModalPreview}
             />
          )}
          {modalSuccessVisible && (

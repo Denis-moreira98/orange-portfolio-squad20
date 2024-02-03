@@ -42,6 +42,9 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
       setArrayDeTags(tagsSeparadas);
       setModalVisible(true);
    }
+   function handleCloseModal() {
+      setModalVisible(false);
+   }
 
    //Limpa states
    function handleClearStates() {
@@ -250,7 +253,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                description={description}
                image={avatarUrl}
                isOpen={modalVisible}
-               onRequestClose={onRequestClose}
+               onRequestClose={handleCloseModal}
             />
          )}
          {modalSuccessVisible && (

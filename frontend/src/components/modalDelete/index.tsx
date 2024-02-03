@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import { Button } from "../button";
 import { ModalDeleteSuccess } from "../modalDeleteSuccess";
 import { useState } from "react";
+import { setupAPIClient } from "../../services/api";
 
 interface ModalProps {
    isOpen: boolean;
@@ -20,15 +21,15 @@ export function ModalDelete({ isOpen, onRequestClose }: ModalProps) {
       setModalDeleteSuccess(true);
    }
 
-   // async function handleDeleteProject(idProject) {
-   //    try {
-   //       const apiClient = setupAPIClient();
-   //       await apiClient.delete(`/project/${idProject}`);
-   //       console.log(`Projeto com ID ${idProject} excluído com sucesso!`);
-   //    } catch (error) {
-   //       console.log(error);
-   //    }
-   // }
+   async function handleDeleteProject() {
+      try {
+         const apiClient = setupAPIClient();
+         await apiClient.delete(`/project/8`);
+         handleOpenModalDelete();
+      } catch (error) {
+         console.log(error);
+      }
+   }
 
    const customStyles = {
       content: {
@@ -56,7 +57,7 @@ export function ModalDelete({ isOpen, onRequestClose }: ModalProps) {
                   <Button
                      variant="orange"
                      type="button"
-                     onClick={handleOpenModalDelete}
+                     onClick={handleDeleteProject}
                   >
                      EXCLUIR
                   </Button>

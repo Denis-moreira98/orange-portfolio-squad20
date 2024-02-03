@@ -15,7 +15,11 @@ const router = createBrowserRouter([
       children: [
          {
             path: "/dashboard",
-            element: <Dashboard />,
+            element: (
+               <Private>
+                  <Dashboard />,
+               </Private>
+            ),
          },
          {
             path: "/discover",
