@@ -17,10 +17,13 @@ export interface ProjectsProps {
 
 export function Discover() {
    const [projects, setProjects] = useState<ProjectsProps[]>([]);
+   const [originalProjects, setOriginalProjects] = useState<ProjectsProps[]>([]); 
    const [openModalPreview, setOpenModalPreview] = useState(false);
    const [selectedProject, setSelectedProject] = useState<ProjectsProps | null>(
       null
    );
+   const [search, setSearch] = useState("");
+   const searchUpperCase = search.toUpperCase();
 
    useEffect(() => {
       async function getProject() {
@@ -29,6 +32,7 @@ export function Discover() {
             const response = await apiClient.get("/project/all");
 
             setProjects(response.data);
+            setOriginalProjects(response.data);
          } catch (err) {
             console.log(err);
          }
@@ -36,6 +40,22 @@ export function Discover() {
 
       getProject();
    }, []);
+
+   useEffect(() => {
+      // Verificar se há uma pesquisa antes de aplicar o filtro
+      if (search.trim() !== '') {
+         // Filtrar os projetos com base na pesquisa
+         const filteredProjects = originalProjects.filter(project =>
+            project.tags.toUpperCase().includes(searchUpperCase)
+         );
+
+         // Atualizar o estado com os projetos filtrados
+         setProjects(filteredProjects);
+      } else {
+         // Se a pesquisa estiver vazia, restaurar a lista original
+         setProjects(originalProjects);
+      }
+   }, [search, originalProjects, searchUpperCase]);
 
    // Abre o modal e define o projeto selecionado
    function handleOpenModal(project: ProjectsProps) {
@@ -65,6 +85,7 @@ export function Discover() {
                         name="campoInput"
                         id="campoInput"
                         placeholder="Buscar tags "
+                        onChange={(e) => setSearch(e.target.value)}
                      />
                      <label
                         htmlFor="campoInput"
