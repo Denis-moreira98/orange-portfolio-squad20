@@ -4,6 +4,7 @@ import { ProjectCard } from "../../components/projectCard";
 import { useEffect, useState } from "react";
 import { setupAPIClient } from "../../services/api";
 import { ModalPreview } from "../../components/modalPreview";
+import { Loading } from "../../components/loading";
 
 export interface ProjectsProps {
    idProject: string;
@@ -17,13 +18,16 @@ export interface ProjectsProps {
 
 export function Discover() {
    const [projects, setProjects] = useState<ProjectsProps[]>([]);
-   const [originalProjects, setOriginalProjects] = useState<ProjectsProps[]>([]); 
+   const [originalProjects, setOriginalProjects] = useState<ProjectsProps[]>(
+      []
+   );
    const [openModalPreview, setOpenModalPreview] = useState(false);
    const [selectedProject, setSelectedProject] = useState<ProjectsProps | null>(
       null
    );
    const [search, setSearch] = useState("");
    const searchUpperCase = search.toUpperCase();
+   const [loading, setLoading] = useState(true);
 
    useEffect(() => {
       async function getProject() {
@@ -33,6 +37,7 @@ export function Discover() {
 
             setProjects(response.data);
             setOriginalProjects(response.data);
+            setLoading(false);
          } catch (err) {
             console.log(err);
          }
@@ -43,9 +48,9 @@ export function Discover() {
 
    useEffect(() => {
       // Verificar se há uma pesquisa antes de aplicar o filtro
-      if (search.trim() !== '') {
+      if (search.trim() !== "") {
          // Filtrar os projetos com base na pesquisa
-         const filteredProjects = originalProjects.filter(project =>
+         const filteredProjects = originalProjects.filter((project) =>
             project.tags.toUpperCase().includes(searchUpperCase)
          );
 
@@ -70,45 +75,50 @@ export function Discover() {
    }
    return (
       <>
-         <div className={styles.container}>
-            <main>
-               <p className={styles.description}>
-                  Junte-se à comunidade de inovação, inspiração e descobertas,
-                  transformando experiências em conexões inesquecíveis
-               </p>
+         {loading ? (
+            <Loading />
+         ) : (
+            <div className={styles.container}>
+               <main>
+                  <p className={styles.description}>
+                     Junte-se à comunidade de inovação, inspiração e
+                     descobertas, transformando experiências em conexões
+                     inesquecíveis
+                  </p>
 
-               <div className={styles.input__box}>
-                  <div className={styles.div__input}>
-                     <InputModal
-                        className={styles.input__field}
-                        type="search"
-                        name="campoInput"
-                        id="campoInput"
-                        placeholder="Buscar tags "
-                        onChange={(e) => setSearch(e.target.value)}
-                     />
-                     <label
-                        htmlFor="campoInput"
-                        className={styles.placeholder_label}
-                     >
-                        Buscar tags{" "}
-                     </label>
+                  <div className={styles.input__box}>
+                     <div className={styles.div__input}>
+                        <InputModal
+                           className={styles.input__field}
+                           type="search"
+                           name="campoInput"
+                           id="campoInput"
+                           placeholder="Buscar tags "
+                           onChange={(e) => setSearch(e.target.value)}
+                        />
+                        <label
+                           htmlFor="campoInput"
+                           className={styles.placeholder_label}
+                        >
+                           Buscar tags{" "}
+                        </label>
+                     </div>
                   </div>
-               </div>
 
-               <section className={styles.gallery}>
-                  {projects.map((project) => (
-                     <ProjectCard
-                        key={project.idProject}
-                        title={project.title}
-                        midia={project.midia}
-                        tags={project.tags.split(" ")}
-                        onClick={() => handleOpenModal(project)}
-                     />
-                  ))}
-               </section>
-            </main>
-         </div>
+                  <section className={styles.gallery}>
+                     {projects.map((project) => (
+                        <ProjectCard
+                           key={project.idProject}
+                           title={project.title}
+                           midia={project.midia}
+                           tags={project.tags.split(" ")}
+                           onClick={() => handleOpenModal(project)}
+                        />
+                     ))}
+                  </section>
+               </main>
+            </div>
+         )}
          {openModalPreview && selectedProject && (
             <ModalPreview
                title={selectedProject.title}
