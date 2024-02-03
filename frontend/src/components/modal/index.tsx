@@ -1,17 +1,14 @@
 import Modal from "react-modal";
 import styles from "./styles.module.css";
-
 import { Button } from "../button";
 import InputModal, { TextArea } from "./input/index";
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { FaImages } from "react-icons/fa";
-
 import { ModalPreview } from "../modalPreview";
-// import { ModalSuccess } from "../modalSuccess";
-
 import { validateEspecialChars } from "../../utils/validations";
 import { setupAPIClient } from "../../services/api";
 import { AuthContext } from "../../contexts/AuthContext";
+import { ModalSuccess } from "../modalSuccess";
 
 interface ModalProps {
    isOpen: boolean;
@@ -19,11 +16,12 @@ interface ModalProps {
 }
 
 export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
-   const [modalVisible, setModalVisible] = useState(false);
    const { user } = useContext(AuthContext);
-   // const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
+   const [modalVisible, setModalVisible] = useState(false);
+   const [avatarUrl, setAvatarUrl] = useState("");
+   const [imageAvatar, setImageAvatar] = useState(null);
+   const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
 
-   // states do form
    const [title, setTitle] = useState("");
    const [tags, setTags] = useState("");
    const [arrayDeTags, setArrayDeTags] = useState([]);
@@ -31,15 +29,12 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
    const [link, setLink] = useState("");
    const [description, setDescription] = useState("");
 
-   //Modal Success
-   // function handleOpenModalSuccess() {
-   //    setTimeout(() => {
-   //       setModalSuccessVisible(true);
-   //    }, 800);
-   // }
-   // function handleCloseModalSuccess() {
-   //    setModalSuccessVisible(false);
-   // }
+   // Modal Success
+   function handleOpenModalSuccess() {
+      setTimeout(() => {
+         setModalSuccessVisible(true);
+      }, 500);
+   }
 
    //ModalPreview
    function handleOpenModal() {
@@ -65,6 +60,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
    function handleCloseModal() {
       setModalVisible(false);
    }
+
    async function handleRegisterProject(event: FormEvent) {
       event.preventDefault();
 
@@ -88,37 +84,43 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          }
 
          const { id } = user;
+         const projectData = {
+            title,
+            tags,
+            linkProject: link,
+            description,
+            userProject: {
+               idUser: id.toString(),
+            },
+         };
 
-         data.append("title", title);
-         data.append("tags", tags);
-         data.append("linkProject", link);
-         data.append("description", description);
-         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-         // @ts-ignore
-         data.append("userProject", id);
-         data.append("midia", imageAvatar);
-
-         for (const [key, value] of data.entries()) {
-            console.log(`${key}: ${value}`);
-         }
+         data.append(
+            "project",
+            new Blob([JSON.stringify(projectData)], {
+               type: "application/json",
+            })
+         );
+         data.append("file", imageAvatar);
 
          const apiClient = setupAPIClient();
-         await apiClient.post("/project/", data);
+         const response = await apiClient.post("/project/", data, {
+            headers: { "Content-Type": "multipart/form-data" },
+         });
+
+         console.log(response.data);
 
          setTitle("");
          setLink("");
          setTags("");
          setDescription("");
-         setImageAvatar("");
          setImageAvatar(null);
          setAvatarUrl("");
+
+         handleOpenModalSuccess();
       } catch (err) {
          console.log(err);
       }
    }
-
-   const [avatarUrl, setAvatarUrl] = useState("");
-   const [imageAvatar, setImageAvatar] = useState(null);
 
    function handleFile(e: ChangeEvent<HTMLInputElement>) {
       if (!e.target.files) {
@@ -264,12 +266,12 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                onRequestClose={handleCloseModal}
             />
          )}
-         {/* {modalSuccessVisible && (
+         {modalSuccessVisible && (
             <ModalSuccess
                isOpen={modalSuccessVisible}
-               onRequestClose={handleCloseModalSuccess}
+               onRequestClose={onRequestClose}
             />
-         )} */}
+         )}
       </>
    );
 }
