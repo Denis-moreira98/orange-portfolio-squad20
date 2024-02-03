@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import ImgPerfil from "../../assets/image-perfil.png";
+import ImgPerfil from "../../assets/avatarDefault.jpg";
 
 import Modal from "react-modal";
 import { FiX } from "react-icons/fi";
