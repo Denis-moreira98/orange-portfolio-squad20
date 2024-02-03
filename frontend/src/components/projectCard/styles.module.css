@@ -1,56 +1,68 @@
+.container {
+   border: none;
+   background-color: transparent;
+   cursor: pointer;
+}
 .item {
-    background-color: var(--neutral-60);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-top: 40px;
+   background-color: var(--neutral-60);
+   border-radius: 4px;
+   overflow: hidden;
+   margin-top: 40px;
 }
 
 .item .capa {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    border-radius: 4px;
-    transition: all 200ms ease-out;
-    display: block;
+   height: 100%;
+   width: 100%;
+   aspect-ratio: 16/9;
+   object-fit: cover;
+   border-radius: 4px;
+   transition: all 200ms ease-out;
+   display: block;
 }
 
 .item .capa:hover {
-    filter: hue-rotate(7deg) contrast(101%) saturate(200%);
-    transform: scale(1.1);
+   filter: hue-rotate(7deg) contrast(101%) saturate(200%);
+   transform: scale(1.1);
 }
 
 .details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--color-base-white);
-    z-index: 1;
-    position: relative;
-    margin-top: 12px;
-    color: var(--neutral-110);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: var(--color-base-white);
+   position: relative;
+   margin-top: 12px;
+   color: var(--neutral-110);
+}
+
+.tags {
+   display: flex;
+   flex-direction: row;
+   gap: 0.4rem;
 }
 
 .info {
-    width: 190px;
-    align-items: center;
+   width: 190px;
+   align-items: center;
+   gap: 1rem;
 }
 
 .info .imgPerfil {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    margin-right: 8px;
-    vertical-align: middle;
+   width: 24px;
+   height: 24px;
+   border-radius: 50%;
+   margin-right: 8px;
+   vertical-align: middle;
 }
 
 .info span {
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
-    letter-spacing: 0.15px;
+   font-size: 16px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 16px;
+   letter-spacing: 0.15px;
 }
 
-.info span+span {
-    margin-left: 8px
+.info span + span {
+   margin-left: 8px;
 }
