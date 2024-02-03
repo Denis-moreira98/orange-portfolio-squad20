@@ -1,7 +1,6 @@
 import styles from "./styles.module.css";
 import orangeLogo from "../../assets/logo-orange.png";
-// import imagePerfil from "../../assets/image-perfil.png";
-import MessiImg from "../../assets/leoMessi.webp";
+import imgPerfil from "../../assets/avatarDefault.jpg";
 import { IoMenuSharp } from "react-icons/io5";
 // import { IoIosNotifications } from "react-icons/io";
 import { FaSignOutAlt } from "react-icons/fa";
@@ -64,7 +63,7 @@ export function Header() {
             <header className={styles.header__container}>
                <div className={styles.div__left}>
                   <div className={styles.container__menu}>
-                     <Link to="/">
+                     <Link to="/dashboard">
                         <img
                            src={orangeLogo}
                            title="Página inicial do Orange Portifólio"
@@ -76,10 +75,10 @@ export function Header() {
                   <nav className={styles.menu}>
                      <ul>
                         <li>
-                           <Link to="dashboard">Meus projetos</Link>
+                           <Link to="/dashboard">Meus projetos</Link>
                         </li>
                         <li>
-                           <Link to="discover">Descobrir</Link>
+                           <Link to="/discover">Descobrir</Link>
                         </li>
                      </ul>
                   </nav>
@@ -93,7 +92,7 @@ export function Header() {
                   </div>
                   <Link to="#">
                      <img
-                        src={MessiImg}
+                        src={imgPerfil}
                         alt="Imagem do Perfil"
                         className={styles.img__perfil}
                      />
@@ -133,12 +132,12 @@ export function Header() {
                   </li>
                   <li>
                      <div className={styles.sair}>
-
                         <Link
                            to={"/login"}
                            onClick={handleSignOut}
-                           className={styles.btn__outDrop}>
-                              Sair
+                           className={styles.btn__outDrop}
+                        >
+                           Sair
                            <FaSignOutAlt
                               className={styles.icon__outDrop}
                               title="Sair"
