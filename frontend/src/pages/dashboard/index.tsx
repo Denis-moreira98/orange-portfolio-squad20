@@ -98,6 +98,7 @@ export function Dashboard() {
                </div>
                <p className={styles.projetos}>Meus projetos</p>
                <InputModal
+                  autoComplete="off"
                   className={styles.pesquisa}
                   type="search"
                   name="campoInput"
