@@ -13,10 +13,10 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 @Configuration
 public class StorageConfig {
 
-	@Value("${aws.access.key.id}")
+	@Value("${AWS_KEY}")
 	private String accessKey;
 	
-	@Value("${aws.access.key.secret}")
+	@Value("${AWS_SECRET}")
 	private String accessSecret;
 	
 	@Value("${aws.region}")
@@ -27,6 +27,7 @@ public class StorageConfig {
 		AWSCredentials credentials=new BasicAWSCredentials(accessKey, accessSecret);
 		return AmazonS3ClientBuilder.standard()
 				.withCredentials(new AWSStaticCredentialsProvider(credentials))
-				.withRegion(region).build();
+				.withRegion(region)
+				.build();
 	}
 }
