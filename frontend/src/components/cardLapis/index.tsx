@@ -82,7 +82,7 @@ export function CardLapis({ userName, midia, tags, idProject }: ProjectProps) {
                      <span>02/24</span>
                   </div>
                </div>
-               <div className={styles.tags}>
+               <div className={styles.tags2}>
                   {tags.map((tag) => (
                      <Label key={tag}>{tag.toUpperCase()}</Label>
                   ))}

@@ -259,6 +259,7 @@ export function ModalEditProject({
          </Modal>
          {modalPreviewVisible && (
             <ModalPreview
+               userName={user?.name}
                title={title}
                tags={arrayDeTags}
                link={link}

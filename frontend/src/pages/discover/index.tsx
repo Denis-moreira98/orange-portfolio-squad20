@@ -118,6 +118,7 @@ export function Discover() {
          )}
          {openModalPreview && selectedProject && (
             <ModalPreview
+               userName={selectedProject.userName}
                title={selectedProject.title}
                tags={selectedProject.tags.split(" ")}
                link={selectedProject.linkProject}

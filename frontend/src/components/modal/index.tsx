@@ -248,6 +248,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          </Modal>
          {modalVisible && (
             <ModalPreview
+               userName={user?.name}
                title={title}
                tags={arrayDeTags}
                link={link}

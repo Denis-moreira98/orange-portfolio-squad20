@@ -1,6 +1,6 @@
 .container {
    border: none;
-   background-color: transparent;   
+   background-color: transparent;
 }
 
 .item {
@@ -58,11 +58,12 @@
    letter-spacing: 0.15px;
 }
 
- .info span + span {
+.info span + span {
    margin-left: 8px;
 }
 
 .tags {
    display: flex;
    flex-direction: row;
+   gap: 0.2rem;
 }

@@ -13,6 +13,7 @@ interface ModalViewsProps {
    tags: string[];
    description: string;
    link: string;
+   userName: string;
 }
 
 export function ModalPreview({
@@ -23,6 +24,7 @@ export function ModalPreview({
    tags,
    description,
    link,
+   userName,
 }: ModalViewsProps) {
    const customStyles = {
       content: {
@@ -64,7 +66,7 @@ export function ModalPreview({
                   <div className={styles.info}>
                      <img src={ImgPerfil} alt="perfil" />
                      <div className={styles.nome}>
-                        <p>Camila Soares</p>
+                        <p>{userName}</p>
                         <span>02/24</span>
                      </div>
                   </div>
