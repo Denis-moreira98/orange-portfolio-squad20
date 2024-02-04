@@ -16,7 +16,6 @@
     position: absolute;
     top: calc(100px - 60px);
     right: 0;
-  
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -32,7 +31,6 @@
     padding: 8px;
     cursor: pointer;
     border: none;
-    
     background-color: transparent;
     border-radius: 4px;
     text-align: left;

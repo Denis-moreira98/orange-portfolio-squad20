@@ -52,14 +52,12 @@ export function CardLapis() {
           >
             <button
               type="button"
-              className={styles.ls}
               onClick={handleEditarProject}
             >
               Editar
             </button>
             <button
               type="button"
-              className={styles.ls}
               onClick={handleDeleteProject}
             >
               Excluir
