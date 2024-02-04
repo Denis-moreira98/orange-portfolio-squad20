@@ -13,6 +13,7 @@ export interface ProjectsProps {
    linkProject: string;
    description: string;
    userId: string | number;
+   userName: string;
    midia: string;
 }
 
@@ -47,28 +48,22 @@ export function Discover() {
    }, []);
 
    useEffect(() => {
-      // Verificar se há uma pesquisa antes de aplicar o filtro
       if (search.trim() !== "") {
-         // Filtrar os projetos com base na pesquisa
          const filteredProjects = originalProjects.filter((project) =>
             project.tags.toUpperCase().includes(searchUpperCase)
          );
 
-         // Atualizar o estado com os projetos filtrados
          setProjects(filteredProjects);
       } else {
-         // Se a pesquisa estiver vazia, restaurar a lista original
          setProjects(originalProjects);
       }
    }, [search, originalProjects, searchUpperCase]);
 
-   // Abre o modal e define o projeto selecionado
    function handleOpenModal(project: ProjectsProps) {
       setSelectedProject(project);
       setOpenModalPreview(true);
    }
 
-   // Fecha o modal e limpa o projeto selecionado
    function handleCloseModalPreview() {
       setSelectedProject(null);
       setOpenModalPreview(false);
@@ -110,6 +105,7 @@ export function Discover() {
                         <ProjectCard
                            key={project.idProject}
                            title={project.title}
+                           userName={project.userName}
                            midia={project.midia}
                            tags={project.tags.split(" ")}
                            onClick={() => handleOpenModal(project)}
