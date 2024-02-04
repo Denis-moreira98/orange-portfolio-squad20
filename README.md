@@ -34,7 +34,7 @@ A Orange Portfólio é uma plataforma interativa que possibilita aos usuários c
 - Postgress:
 - S3 AWS:
 
-O Backend segue o padrão MVC (Model-View-Controller), onde os controladores gerenciam as requisições, os serviços manipulam a lógica de negócios, e os modelos representam os dados. Além disso, você pode estar implementando o padrão DAO para acesso a dados.
+O Backend segue o padrão MVC (Model-View-Controller), onde os controladores gerenciam as requisições, os serviços manipulam a lógica de negócios, e os modelos representam os dados. Além disso, estamos implementando o padrão DAO para acesso a dados.
 
 Você pode visualizar a documentação da API deste projeto através deste link 👉🏻 [Swagger](https://op-app-jrdxq.ondigitalocean.app/swagger-ui/index.html#/)
 
