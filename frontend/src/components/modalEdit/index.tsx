@@ -14,9 +14,14 @@ import toast from "react-hot-toast";
 interface ModalProps {
    isOpen: boolean;
    onRequestClose: () => void;
+   idProject: string;
 }
 
-export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
+export function ModalEditProject({
+   isOpen,
+   onRequestClose,
+   idProject,
+}: ModalProps) {
    const { user } = useContext(AuthContext);
    const [modalPreviewVisible, setModalPreviewVisible] = useState(false);
    const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
@@ -76,7 +81,7 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
       setAvatarUrl("");
    }
 
-   async function handleEditProject(event: FormEvent) {
+   async function handleEditProject(event: FormEvent, idProject: string) {
       event.preventDefault();
 
       try {
@@ -106,9 +111,13 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
 
          const apiClient = setupAPIClient();
          // eslint-disable-next-line @typescript-eslint/no-unused-vars
-         const response = await apiClient.put("/project/edit/10", data, {
-            headers: { "Content-Type": "multipart/form-data" },
-         });
+         const response = await apiClient.put(
+            `/project/edit/${idProject}`,
+            data,
+            {
+               headers: { "Content-Type": "multipart/form-data" },
+            }
+         );
 
          handleClearStates();
          handleOpenModalSuccess();
@@ -155,7 +164,7 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
          >
             <div className={styles.div_container}>
                <h4>Editar projeto </h4>
-               <form onSubmit={handleEditProject}>
+               <form onSubmit={(e) => handleEditProject(e, idProject)}>
                   <div className={styles.content}>
                      <div className={styles.div_text}>
                         <div className={styles.div_file}>
