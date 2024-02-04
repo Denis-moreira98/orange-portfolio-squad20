@@ -15,16 +15,22 @@ A Orange Portfólio é uma plataforma interativa que possibilita aos usuários c
   <img alt="Projeto" src="https://private-user-images.githubusercontent.com/72985107/302132675-1806e0c8-e5be-438e-9138-01aa285d62ae.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDcwNzk4NTQsIm5iZiI6MTcwNzA3OTU1NCwicGF0aCI6Ii83Mjk4NTEwNy8zMDIxMzI2NzUtMTgwNmUwYzgtZTViZS00MzhlLTkxMzgtMDFhYTI4NWQ2MmFlLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAyMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMjA0VDIwNDU1NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM0NzhmZGY2MTA5YmNiODU3ZjZkNmM0NDg0MWNkM2U4OTNmYWRmZGFmOTE1NzkwYTUwMTk3OWUzMGE5MWRmN2QmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.0sx3N-NpxixXOKD3LtlJ3REpMuf1NiaaRn8gnTeT7jM" width="800px">
 </p>
 
-## Tecnologias
-Esse projeto foi desenvolvido com as seguintes tecnologias
-- HTML e CSS
-- TypeScript
-- React
-- Java Spring
-- Postgress
-- Git e Github
+## 🛠️ Tecnologias
 
-## Frontend
+### Frontend:
+  <img src="https://skillicons.dev/icons?i=typescript,react,css,vite,vercel,"/></a></p>
+- React com TypeScript: Aproveitar os benefícios do sistema de tipos estáticos do TypeScript ao desenvolver componentes React, fornecendo uma camada adicional de segurança e facilitando a manutenção do código.
+- CSS3: linguagem de estilo para estilizar a interface do usuário.
+- Vite: Ferramenta de construção de aplicações web rápida e eficiente, especialmente otimizada para o desenvolvimento moderno.
+- Vercel: Ferramenta utilizada para fazer o deploy da aplicação web.
+#
+### Backend:
+<img src="https://skillicons.dev/icons?i=java,spring,postgres,aws"/>
+
+- Java Spring:
+- Postgress:
+- S3 AWS:
+
 
 ## Backend
 
@@ -69,9 +75,32 @@ No Terminal/Console:
 </ol>
 
 
-## **Autores:**
-- [🍊 Brenda Machado](https://github.com/brenddamachado)  
-- [🍊 Denis Moreira](https://github.com/Denis-moreira98)  
-- [🍊 Jefferson Pedro](https://github.com/Jefferson-Pedro) 
-- [🍊 Quézia Filadelfo](https://github.com/queziafiladelfo)   
-- [🍊 Wilbert Silva](https://github.com/WilbertSilva)  
+ ## 👨🏻‍💻 Colaboradores 👩🏻‍💻
+
+<div>
+
+<a href="https://github.com/brenddamachado" target="_blank">
+
+<img src="https://avatars.githubusercontent.com/u/112699067?v=4" heigth="50px" width="50px" style="border-radius: 50%;" />
+</a>
+
+<a href="https://github.com/Denis-moreira98" target="_blank">
+
+<img src="https://avatars.githubusercontent.com/u/72985107?v=4" heigth="50px" width="50px" style="border-radius: 50%;" />
+</a>
+
+<a href="https://github.com/Jefferson-Pedro" target="_blank">
+
+<img src="https://avatars.githubusercontent.com/u/79370742?v=4" heigth="50px" width="50px" style="border-radius: 50%;" />
+</a>
+
+<a href="https://github.com/queziafiladelfo" target="_blank">
+
+<img src="https://avatars.githubusercontent.com/u/9157219?v=4" heigth="50px" width="50px" style="border-radius: 50%;" />
+</a>
+
+<a href="https://github.com/WilbertSilva" target="_blank">
+
+<img src="https://avatars.githubusercontent.com/u/43455642?v=4" heigth="50px" width="50px" style="border-radius: 50%;" />
+</a>
+
