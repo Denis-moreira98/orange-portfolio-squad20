@@ -4,31 +4,33 @@ import Modal from "react-modal";
 import { Button } from "../button";
 import { ModalDeleteSuccess } from "../modalDeleteSuccess";
 import { useState } from "react";
+import { setupAPIClient } from "../../services/api";
 
 interface ModalProps {
    isOpen: boolean;
    onRequestClose: () => void;
-   idProject?: string;
+   idProject: string;
 }
 
 Modal.setAppElement("#root");
 
-export function ModalDelete({ isOpen, onRequestClose }: ModalProps) {
+export function ModalDelete({ isOpen, onRequestClose, idProject }: ModalProps) {
    const [modalDeleteSuccess, setModalDeleteSuccess] = useState(false);
 
    function handleOpenModalDelete() {
       setModalDeleteSuccess(true);
    }
 
-   // async function handleDeleteProject(idProject) {
-   //    try {
-   //       const apiClient = setupAPIClient();
-   //       await apiClient.delete(`/project/${idProject}`);
-   //       console.log(`Projeto com ID ${idProject} excluído com sucesso!`);
-   //    } catch (error) {
-   //       console.log(error);
-   //    }
-   // }
+   async function handleDeleteProject(idProject: string) {
+      try {
+         const apiClient = setupAPIClient();
+         await apiClient.delete(`/project/${idProject}`);
+
+         handleOpenModalDelete();
+      } catch (error) {
+         console.log(error);
+      }
+   }
 
    const customStyles = {
       content: {
@@ -56,7 +58,7 @@ export function ModalDelete({ isOpen, onRequestClose }: ModalProps) {
                   <Button
                      variant="orange"
                      type="button"
-                     onClick={handleOpenModalDelete}
+                     onClick={() => handleDeleteProject(idProject)}
                   >
                      EXCLUIR
                   </Button>

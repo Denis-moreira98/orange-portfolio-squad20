@@ -1,85 +1,133 @@
 import InputModal from "../../components/modal/input";
-import imagePerfil from "../../assets/image-perfil.png";
 import styles from "./styles.module.css";
-import { Label } from "../../components/modalPreview/label";
+import { ProjectCard } from "../../components/projectCard";
+import { useEffect, useState } from "react";
+import { setupAPIClient } from "../../services/api";
+import { ModalPreview } from "../../components/modalPreview";
+import { Loading } from "../../components/loading";
+
+export interface ProjectsProps {
+   idProject: string;
+   title: string;
+   tags: string;
+   linkProject: string;
+   description: string;
+   userId: string | number;
+   userName: string;
+   midia: string;
+}
 
 export function Discover() {
-    return (
-        <div className={styles.container}>
-            <main>
-                <p className={styles.description}>Junte-se à comunidade de inovação, inspiração e descobertas, transformando experiências em conexões inesquecíveis</p>
+   const [projects, setProjects] = useState<ProjectsProps[]>([]);
+   const [originalProjects, setOriginalProjects] = useState<ProjectsProps[]>(
+      []
+   );
+   const [openModalPreview, setOpenModalPreview] = useState(false);
+   const [selectedProject, setSelectedProject] = useState<ProjectsProps | null>(
+      null
+   );
+   const [search, setSearch] = useState("");
+   const searchUpperCase = search.toUpperCase();
+   const [loading, setLoading] = useState(true);
 
-                <div className={styles.input__box}>
-                    <div className={styles.div__input}>
+   useEffect(() => {
+      async function getProject() {
+         try {
+            const apiClient = setupAPIClient();
+            const response = await apiClient.get("/project/all");
+
+            setProjects(response.data);
+            setOriginalProjects(response.data);
+            setLoading(false);
+         } catch (err) {
+            console.log(err);
+         }
+      }
+
+      getProject();
+   }, []);
+
+   useEffect(() => {
+      if (search.trim() !== "") {
+         const filteredProjects = originalProjects.filter((project) =>
+            project.tags.toUpperCase().includes(searchUpperCase)
+         );
+
+         setProjects(filteredProjects);
+      } else {
+         setProjects(originalProjects);
+      }
+   }, [search, originalProjects, searchUpperCase]);
+
+   function handleOpenModal(project: ProjectsProps) {
+      setSelectedProject(project);
+      setOpenModalPreview(true);
+   }
+
+   function handleCloseModalPreview() {
+      setSelectedProject(null);
+      setOpenModalPreview(false);
+   }
+   return (
+      <>
+         {loading ? (
+            <Loading />
+         ) : (
+            <div className={styles.container}>
+               <main>
+                  <p className={styles.description}>
+                     Junte-se à comunidade de inovação, inspiração e
+                     descobertas, transformando experiências em conexões
+                     inesquecíveis
+                  </p>
+
+                  <div className={styles.input__box}>
+                     <div className={styles.div__input}>
                         <InputModal
-                            className={styles.input__field}
-                            type="search"
-                            name="campoInput"
-                            id="campoInput"
-                            placeholder="Buscar tags "
+                           autoComplete="off"
+                           className={styles.input__field}
+                           type="search"
+                           name="campoInput"
+                           id="campoInput"
+                           placeholder="Buscar tags "
+                           onChange={(e) => setSearch(e.target.value)}
                         />
-                        <label htmlFor="campoInput" className={styles.placeholder_label}>Buscar tags </label>
-                    </div>
-                </div>
+                        <label
+                           htmlFor="campoInput"
+                           className={styles.placeholder_label}
+                        >
+                           Buscar tags{" "}
+                        </label>
+                     </div>
+                  </div>
 
-                <section className={styles.gallery}>
-                    <figure className={styles.item}>
-                        <img src="https://minhasaude.proteste.org.br/wp-content/webp-express/webp-images/uploads/2022/10/muitas-laranjas.png.webp" alt="" className={styles.capa} />
-                        <figcaption className={styles.details}>
-                            <div className={styles.info}>
-                                <img src={imagePerfil} alt="Imagem do usuário" className={styles.imgPerfil} />
-                                <span>Bianca Martin</span>
-                                <span>02/24</span>
-                            </div>
-                            <div className={styles.tags}>
-                                <Label>UI</Label>
-                            </div>
-                        </figcaption>
-                    </figure>
-
-                    <figure className={styles.item}>
-                        <img src="https://minhasaude.proteste.org.br/wp-content/webp-express/webp-images/uploads/2022/10/muitas-laranjas.png.webp" alt="" className={styles.capa} />
-                        <figcaption className={styles.details}>
-                            <div className={styles.info}>
-                                <img src={imagePerfil} alt="Imagem do usuário" className={styles.imgPerfil} />
-                                <span>Bianca Martin</span>
-                                <span>02/24</span>
-                            </div>
-                            <div className={styles.tags}>
-                                <Label>UI</Label>
-                            </div>
-                        </figcaption>
-                    </figure>
-
-                    <figure className={styles.item}>
-                        <img src="https://minhasaude.proteste.org.br/wp-content/webp-express/webp-images/uploads/2022/10/muitas-laranjas.png.webp" alt="" className={styles.capa} />
-                        <figcaption className={styles.details}>
-                            <div className={styles.info}>
-                                <img src={imagePerfil} alt="Imagem do usuário" className={styles.imgPerfil} />
-                                <span>Bianca Martin</span>
-                                <span>02/24</span>
-                            </div>
-                            <div className={styles.tags}>
-                                <Label>UI</Label>
-                            </div>
-                        </figcaption>
-                    </figure>
-
-                    <figure className={styles.item}>
-                        <img src="https://minhasaude.proteste.org.br/wp-content/webp-express/webp-images/uploads/2022/10/muitas-laranjas.png.webp" alt="" className={styles.capa} />
-                        <figcaption className={styles.details}>
-                            <div className={styles.info}>
-                                <img src={imagePerfil} alt="Imagem do usuário" className={styles.imgPerfil} />
-                                <span>Bianca Martin</span>
-                                <span>02/24</span>
-                            </div>
-                            <div className={styles.tags}>
-                                <Label>UI</Label>
-                            </div>
-                        </figcaption>
-                    </figure>
-                </section>
-            </main>
-        </div>
-    );
+                  <section className={styles.gallery}>
+                     {projects.map((project) => (
+                        <ProjectCard
+                           key={project.idProject}
+                           title={project.title}
+                           userName={project.userName}
+                           midia={project.midia}
+                           tags={project.tags.split(" ")}
+                           onClick={() => handleOpenModal(project)}
+                        />
+                     ))}
+                  </section>
+               </main>
+            </div>
+         )}
+         {openModalPreview && selectedProject && (
+            <ModalPreview
+               userName={selectedProject.userName}
+               title={selectedProject.title}
+               tags={selectedProject.tags.split(" ")}
+               link={selectedProject.linkProject}
+               description={selectedProject.description}
+               image={selectedProject.midia}
+               isOpen={openModalPreview}
+               onRequestClose={handleCloseModalPreview}
+            />
+         )}
+      </>
+   );
 }

@@ -67,12 +67,13 @@
    --info-130: #091862;
 
    --white: #ffff;
-  --disabledBackground: #0000001F;
-  --disable:#00000061;
+   --disabledBackground: #0000001f;
+   --disable: #00000061;
 }
 
 body {
    background-color: var(--white);
+   overflow-x: hidden !important;
 }
 
 h1 {
@@ -90,4 +91,17 @@ h3 {
 h4 {
    font-size: 34px;
    font-weight: 400;
+}
+
+::-webkit-scrollbar {
+   width: 0.6rem;
+}
+
+::-webkit-scrollbar-track {
+   background: white;
+}
+
+::-webkit-scrollbar-thumb {
+   background: var(--neutral-80);
+   border-radius: 999px;
 }

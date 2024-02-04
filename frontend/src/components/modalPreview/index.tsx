@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import ImgPerfil from "../../assets/image-perfil.png";
+import ImgPerfil from "../../assets/avatarDefault.jpg";
 
 import Modal from "react-modal";
 import { FiX } from "react-icons/fi";
@@ -13,6 +13,7 @@ interface ModalViewsProps {
    tags: string[];
    description: string;
    link: string;
+   userName: string;
 }
 
 export function ModalPreview({
@@ -23,6 +24,7 @@ export function ModalPreview({
    tags,
    description,
    link,
+   userName,
 }: ModalViewsProps) {
    const customStyles = {
       content: {
@@ -64,8 +66,8 @@ export function ModalPreview({
                   <div className={styles.info}>
                      <img src={ImgPerfil} alt="perfil" />
                      <div className={styles.nome}>
-                        <p>Camila Soares</p>
-                        <span>12/12</span>
+                        <p>{userName}</p>
+                        <span>02/24</span>
                      </div>
                   </div>
                   <h3>{title}</h3>

@@ -205,9 +205,6 @@ nav.menu ul li a:hover {
       display: none;
    }
 
-   /* .btn__out {
-      display: none;
-   } */
    .sair {
       display: flex;
       flex-direction: row;

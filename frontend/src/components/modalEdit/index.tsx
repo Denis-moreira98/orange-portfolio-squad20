@@ -1,28 +1,32 @@
 import Modal from "react-modal";
 import styles from "./styles.module.css";
-
 import { Button } from "../button";
 import InputModal, { TextArea } from "../modal/input/index";
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { FaImages } from "react-icons/fa";
-
-// import { ModalEditSuccess } from "../modalEditSuccess";
+import { ModalEditSuccess } from "../modalEditSuccess";
 import { validateEspecialChars } from "../../utils/validations";
 import { ModalPreview } from "../modalPreview";
 import { AuthContext } from "../../contexts/AuthContext";
 import { setupAPIClient } from "../../services/api";
+import toast from "react-hot-toast";
 
 interface ModalProps {
    isOpen: boolean;
    onRequestClose: () => void;
+   idProject: string;
 }
 
-export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
+export function ModalEditProject({
+   isOpen,
+   onRequestClose,
+   idProject,
+}: ModalProps) {
    const { user } = useContext(AuthContext);
    const [modalPreviewVisible, setModalPreviewVisible] = useState(false);
-   // const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
-
-   // states do form
+   const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
+   const [avatarUrl, setAvatarUrl] = useState("");
+   const [imageAvatar, setImageAvatar] = useState(null);
    const [title, setTitle] = useState("");
    const [tags, setTags] = useState("");
    const [arrayDeTags, setArrayDeTags] = useState([]);
@@ -30,15 +34,25 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
    const [link, setLink] = useState("");
    const [description, setDescription] = useState("");
 
-   // //Modal Success
-   // function handleOpenModalSuccess() {
-   //    setTimeout(() => {
-   //       setModalSuccessVisible(true);
-   //    }, 500);
-   // }
+   //Modal Success
+   function handleOpenModalSuccess() {
+      setModalSuccessVisible(true);
+   }
 
    //ModalPreview
    function handleOpenModalPreview() {
+      if (!validateForm()) {
+         return;
+      }
+      const tagsSeparadas = tags.split(" ");
+      setArrayDeTags(tagsSeparadas);
+      setModalPreviewVisible(true);
+   }
+   function handleCLoseModalPreview() {
+      setModalPreviewVisible(false);
+   }
+
+   function validateForm() {
       if (
          title === "" ||
          tags === "" ||
@@ -46,76 +60,72 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
          description === "" ||
          imageAvatar === null
       ) {
-         alert("PREENCHA TODOS OS CAMPOS!");
-         return;
+         toast.error("Preencha todos os campos!");
+         return false;
       } else if (validateEspecialChars.test(tags)) {
          SetErrorChars(true);
-         return;
-      } else {
-         SetErrorChars(false);
+         return false;
       }
-      const tagsSeparadas = tags.split(" ");
-      setArrayDeTags(tagsSeparadas);
-      setModalPreviewVisible(true);
+
+      SetErrorChars(false);
+      return true;
    }
-   function handleCloseModal() {
-      setModalPreviewVisible(false);
+
+   //Limpa states
+   function handleClearStates() {
+      setTitle("");
+      setLink("");
+      setTags("");
+      setDescription("");
+      setImageAvatar(null);
+      setAvatarUrl("");
    }
-   async function handleEditProject(event: FormEvent) {
+
+   async function handleEditProject(event: FormEvent, idProject: string) {
       event.preventDefault();
 
       try {
          const data = new FormData();
-
-         if (
-            title === "" ||
-            tags === "" ||
-            link === "" ||
-            description === "" ||
-            imageAvatar === null
-         ) {
-            alert("PREENCHA TODOS OS CAMPOS!");
+         if (!validateForm()) {
             return;
-         } else if (validateEspecialChars.test(tags)) {
-            SetErrorChars(true);
-            return;
-         } else {
-            SetErrorChars(false);
          }
 
          const { id } = user;
+         const projectData = {
+            title,
+            tags,
+            linkProject: link,
+            description,
+            userProject: {
+               idUser: id.toString(),
+            },
+         };
 
-         data.append("title", title);
-         data.append("tags", tags);
-         data.append("linkProject", link);
-         data.append("description", description);
-         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-         // @ts-ignore
-         data.append("userProject", id);
-         data.append("midia", imageAvatar);
-
-         for (const [key, value] of data.entries()) {
-            console.log(`${key}: ${value}`);
-         }
+         data.append(
+            "project",
+            new Blob([JSON.stringify(projectData)], {
+               type: "application/json",
+            })
+         );
+         data.append("file", imageAvatar);
 
          const apiClient = setupAPIClient();
-         await apiClient.put("/project/edit/1", data);
+         //@ts-expect-error variavel
+         // eslint-disable-next-line @typescript-eslint/no-unused-vars
+         const response = await apiClient.put(
+            `/project/edit/${idProject}`,
+            data,
+            {
+               headers: { "Content-Type": "multipart/form-data" },
+            }
+         );
 
-         setTitle("");
-         setLink("");
-         setTags("");
-         setDescription("");
-         setImageAvatar("");
-         setImageAvatar(null);
-         setAvatarUrl("");
+         handleClearStates();
+         handleOpenModalSuccess();
       } catch (err) {
          console.log(err);
       }
    }
-
-   const [avatarUrl, setAvatarUrl] = useState("");
-   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-   const [imageAvatar, setImageAvatar] = useState(null);
 
    function handleFile(e: ChangeEvent<HTMLInputElement>) {
       if (!e.target.files) {
@@ -143,7 +153,9 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
          backgroundColor: "#FEFEFE",
       },
    };
+
    Modal.setAppElement("#root");
+
    return (
       <>
          <Modal
@@ -153,7 +165,7 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
          >
             <div className={styles.div_container}>
                <h4>Editar projeto </h4>
-               <form onSubmit={handleEditProject}>
+               <form onSubmit={(e) => handleEditProject(e, idProject)}>
                   <div className={styles.content}>
                      <div className={styles.div_text}>
                         <div className={styles.div_file}>
@@ -229,11 +241,7 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
                         Visualizar publicação
                      </button>
                      <div className={styles.div_buttons}>
-                        <Button
-                           // onClick={handleOpenModalSuccess}
-                           type="submit"
-                           variant="orange"
-                        >
+                        <Button type="submit" variant="orange">
                            SALVAR
                         </Button>
                         <Button
@@ -252,21 +260,22 @@ export function ModalEditProject({ isOpen, onRequestClose }: ModalProps) {
          </Modal>
          {modalPreviewVisible && (
             <ModalPreview
+               userName={user?.name}
                title={title}
                tags={arrayDeTags}
                link={link}
                description={description}
                image={avatarUrl}
                isOpen={modalPreviewVisible}
-               onRequestClose={handleCloseModal}
+               onRequestClose={handleCLoseModalPreview}
             />
          )}
-         {/* {modalSuccessVisible && (
+         {modalSuccessVisible && (
             <ModalEditSuccess
                isOpen={modalSuccessVisible}
                onRequestClose={onRequestClose}
             />
-         )} */}
+         )}
       </>
    );
 }
