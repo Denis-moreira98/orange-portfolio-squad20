@@ -110,6 +110,7 @@ export function ModalEditProject({
          data.append("file", imageAvatar);
 
          const apiClient = setupAPIClient();
+         //@ts-expect-error variavel
          // eslint-disable-next-line @typescript-eslint/no-unused-vars
          const response = await apiClient.put(
             `/project/edit/${idProject}`,

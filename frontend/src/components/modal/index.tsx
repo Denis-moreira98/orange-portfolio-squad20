@@ -105,6 +105,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          data.append("file", imageAvatar);
 
          const apiClient = setupAPIClient();
+         //@ts-expect-error variavel
          // eslint-disable-next-line @typescript-eslint/no-unused-vars
          const response = await apiClient.post("/project/", data, {
             headers: { "Content-Type": "multipart/form-data" },
