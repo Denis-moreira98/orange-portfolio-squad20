@@ -36,7 +36,7 @@ export function ProjectCard({
                </div>
                <div className={styles.tags}>
                   {tags.map((tag) => (
-                     <Label key={tag}>{tag}</Label>
+                     <Label key={tag}>{tag.toUpperCase()}</Label>
                   ))}
                </div>
             </figcaption>
