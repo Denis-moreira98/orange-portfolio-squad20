@@ -29,9 +29,10 @@ export function ProjectCard({
                      alt="Imagem do usuário"
                      className={styles.imgPerfil}
                   />
-
-                  <span>{userName}</span>
-                  <span>02/24</span>
+                  <div>
+                     <span>{userName}</span>
+                     <span>02/24</span>
+                  </div>
                </div>
                <div className={styles.tags}>
                   {tags.map((tag) => (
