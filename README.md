@@ -15,6 +15,9 @@ A Orange Portfólio é uma plataforma interativa que possibilita aos usuários c
 <p align="center">
   <img alt="Projeto" src="https://i.imgur.com/5kgvIUJ.png" width="800px">
 </p>
+
+#
+
 ## 🛠️ Tecnologias
 
 ### Frontend:
