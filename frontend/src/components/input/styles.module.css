@@ -20,7 +20,7 @@
    transition: all 160ms ease-in;
 }
 .form__input:hover {
-   border-color: #000000;
+   border-color: var(--neutral-110);
 }
 
 .form__input:focus {

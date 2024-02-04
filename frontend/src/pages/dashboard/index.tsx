@@ -3,11 +3,13 @@ import styles from "./styles.module.css";
 
 import { FaImages } from "react-icons/fa";
 import { ModalAddProject } from "../../components/modal";
+import imagePerfil from "../../assets/image-perfil.png";
 
 import Modal from "react-modal";
 import InputModal from "../../components/modal/input";
 import { Button } from "../../components/button";
 
+import { BiSolidPencil } from "react-icons/bi";
 export function Dashboard() {
    const [modalVisible, setModalVisible] = useState(false);
 
@@ -19,6 +21,26 @@ export function Dashboard() {
    }
    Modal.setAppElement("#root");
 
+   const [menuAberto, setMenuAberto] = useState(false);
+
+   const handleIconClick = () => {
+      setMenuAberto(!menuAberto);
+   };
+
+   const [opcaoSelecionada, setOpcaoSelecionada] = useState<string | null>(
+      null
+   );
+
+   const handleExcluirClicado = () => {
+      setOpcaoSelecionada("excluir");
+      console.log("Excluir clicado");
+   };
+
+   const handleEditarClick = () => {
+      setOpcaoSelecionada("editar");
+
+      console.log("Editar clicado");
+   };
    return (
       <>
          <div className={styles.containerdashboard}>
@@ -51,12 +73,12 @@ export function Dashboard() {
             />
             <div className={styles.containerproj}>
                <div className={styles.adicionar}>
-                  <button
+                  <div
                      className={styles.buttondashboardd}
                      onClick={handleOpenModal}
                   >
                      <FaImages className={styles.iconedashboard} />
-                  </button>
+                  </div>
                   <div className={styles.containerp}>
                      <p className={styles.picture__image}>
                         Adicione seu primeiro projeto
@@ -66,9 +88,61 @@ export function Dashboard() {
                      </p>
                   </div>
                </div>
-               {/*   <div className={styles.complemento}></div>
-</div>
-               <div className={styles.complemento}></div> */}
+               <div className={styles.contianerinfo}>
+                  <div className={styles.adicionar2}>
+                     <div
+                        className={styles.lapisdashboard}
+                        onClick={handleIconClick}
+                     >
+                        <BiSolidPencil />
+                        {menuAberto && (
+                           <div
+                              className={`${styles.menu} ${
+                                 opcaoSelecionada === "excluir"
+                                    ? styles.excluir
+                                    : ""
+                              } ${
+                                 opcaoSelecionada === "editar"
+                                    ? styles.editar
+                                    : ""
+                              }`}
+                           >
+                              <button
+                                 className={styles.ls}
+                                 onClick={handleEditarClick}
+                              >
+                                 Editar
+                              </button>
+                              <button
+                                 className={styles.ls}
+                                 onClick={handleExcluirClicado}
+                              >
+                                 Excluir
+                              </button>
+                           </div>
+                        )}
+                     </div>
+                  </div>
+                  <figcaption className={styles.detalhes}>
+                     <div className={styles.sobre}>
+                        <img
+                           src={imagePerfil}
+                           alt="Imagem do usuário"
+                           className={styles.imgPerfil}
+                        />
+                        <div className={styles.datanome}>
+                           {" "}
+                           <span>Camila Soares</span>
+                           <span className={styles.ponto}>°</span>
+                           <span>12/23</span>
+                        </div>
+                        <div className={styles.tags}>
+                           <span>UX</span>
+                           <span>web</span>
+                        </div>
+                     </div>
+                  </figcaption>
+               </div>
             </div>
          </div>
          {modalVisible && (

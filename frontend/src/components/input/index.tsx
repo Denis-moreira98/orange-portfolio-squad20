@@ -30,7 +30,7 @@ export function Input({
                {...register(name, rules)}
                type={type}
             />
-            <label htmlFor="input" className={styles.form__label}>
+            <label htmlFor={name} className={styles.form__label}>
                {label}
             </label>
             {error && (

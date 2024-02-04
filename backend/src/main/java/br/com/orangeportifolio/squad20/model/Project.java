@@ -25,7 +25,7 @@ public class Project {
 	private Integer idProject;
 	
 	@NotBlank
-	@NotNull
+	@NotNull(message = "O campo Titulo nao pode ser nulo")
 	@Length(min = 3, max = 45)
 	@Column(name = "title", length = 45, nullable = false)
 	private String title;
@@ -33,6 +33,8 @@ public class Project {
 	@Column(name = "tags", length = 50)
 	private String tags;
 	
+	@NotBlank
+	@NotNull(message = "O campo Link do Projeto nao pode ser nulo")
 	@Column(name = "link_project", length = 255)
 	private String linkProject;
 	
@@ -45,10 +47,10 @@ public class Project {
 	@JsonIgnoreProperties("projects")
 	private User userProject;
 	
-//	@OneToOne
-//	@JoinColumn(name = "id_midia")
 	@Column(name = "midia")
 	private String midia;
+
+	private Project() {}
 	
 	//GET E SET
 	
