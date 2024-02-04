@@ -6,18 +6,15 @@ import imagePerfil from "../../assets/avatarDefault.jpg";
 import Modal from "react-modal";
 import InputModal from "../../components/modal/input";
 import { Button } from "../../components/button";
-import { BiSolidPencil } from "react-icons/bi";
 import { AuthContext } from "../../contexts/AuthContext";
-import { ModalDelete } from "../../components/modalDelete";
-import { ModalEditProject } from "../../components/modalEdit";
+
 // import project from "../../assets/MoreiraPizzas.png";
+import {CardLapis} from "../../components/cardLapis"
 
 export function Dashboard() {
    const { user } = useContext(AuthContext);
    const [modalVisible, setModalVisible] = useState(false);
-   const [menuAberto, setMenuAberto] = useState(false);
-   const [modalDelete, setModalDelete] = useState(false);
-   const [modalEdit, setModalEdit] = useState(false);
+
 
    function handleOpenModal() {
       setModalVisible(true);
@@ -26,33 +23,7 @@ export function Dashboard() {
       setModalVisible(false);
    }
 
-   const handleIconClick = () => {
-      setMenuAberto(!menuAberto);
-   };
-
-   const [opcaoSelecionada, setOpcaoSelecionada] = useState<string | null>(
-      null
-   );
-
-   //Modal Delete
-   const handleDeleteProject = () => {
-      setModalDelete(true);
-      setOpcaoSelecionada("excluir");
-
-      console;
-   };
-   function handleCloseModalDelete() {
-      setModalDelete(false);
-   }
-
-   //modal edit
-   function handleEditarProject() {
-      setModalEdit(true);
-      setOpcaoSelecionada("editar");
-   }
-   function handleCloseModalEdit() {
-      setModalEdit(false);
-   }
+ 
 
    Modal.setAppElement("#root");
    return (
@@ -86,10 +57,9 @@ export function Dashboard() {
                placeholder="Buscar tags"
             />
             <div className={styles.containerproj}>
-               <div className={styles.adicionar}>
+               <div className={styles.adicionar} onClick={handleOpenModal}>
                   <div
                      className={styles.buttondashboardd}
-                     onClick={handleOpenModal}
                   >
                      <FaImages className={styles.iconedashboard} />
                   </div>
@@ -102,63 +72,13 @@ export function Dashboard() {
                      </p>
                   </div>
                </div>
-               <div className={styles.contianerinfo}>
+            
                   <div className={styles.adicionar2}>
-                     <div
-                        className={styles.lapisdashboard}
-                        onClick={handleIconClick}
-                     >
-                        <BiSolidPencil />
-                        {menuAberto && (
-                           <div
-                              className={`${styles.menu} ${
-                                 opcaoSelecionada === "excluir"
-                                    ? styles.excluir
-                                    : ""
-                              } ${
-                                 opcaoSelecionada === "editar"
-                                    ? styles.editar
-                                    : ""
-                              }`}
-                           >
-                              <button
-                                 type="button"
-                                 className={styles.ls}
-                                 onClick={handleEditarProject}
-                              >
-                                 Editar
-                              </button>
-                              <button
-                                 type="button"
-                                 className={styles.ls}
-                                 onClick={handleDeleteProject}
-                              >
-                                 Excluir
-                              </button>
-                           </div>
-                        )}
-                     </div>
+                  <CardLapis/>
                   </div>
-                  <figcaption className={styles.detalhes}>
-                     <div className={styles.sobre}>
-                        <img
-                           src={imagePerfil}
-                           alt="Imagem do usuário"
-                           className={styles.imgPerfil}
-                        />
-                        <div className={styles.datanome}>
-                           {" "}
-                           <span>Camila Soares</span>
-                           <span className={styles.ponto}>°</span>
-                           <span>12/23</span>
-                        </div>
-                        <div className={styles.tags}>
-                           <span>UX</span>
-                           <span>web</span>
-                        </div>
-                     </div>
-                  </figcaption>
-               </div>
+                  <div className={styles.adicionar2}>
+                  <CardLapis/>
+                  </div>
             </div>
          </div>
          {modalVisible && (
@@ -166,19 +86,7 @@ export function Dashboard() {
                isOpen={modalVisible}
                onRequestClose={handleCloseModal}
             />
-         )}
-         {modalEdit && (
-            <ModalEditProject
-               isOpen={modalEdit}
-               onRequestClose={handleCloseModalEdit}
-            />
-         )}
-         {modalDelete && (
-            <ModalDelete
-               isOpen={modalDelete}
-               onRequestClose={handleCloseModalDelete}
-            />
-         )}
+)}
       </>
    );
 }

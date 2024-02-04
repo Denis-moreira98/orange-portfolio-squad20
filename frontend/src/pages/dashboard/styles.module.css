@@ -105,6 +105,10 @@ letter-spacing: 0.15px;
 .iconedashboard:hover {
    transform: scale(1.1);
 }
+.capa{
+  object-position: cover;
+  width: 100%;
+}
 .sobre .imgPerfil {
   width: 24px;
   height: 24px;
@@ -154,10 +158,8 @@ letter-spacing: 0.15px;
 }
 
 .adicionar2 {
-  position: relative;
 
-  width: 100%;
-  height: 258px;
+  position: relative;
   background: var(--neutral-60);
   border-radius: var(--borderRadius, 4px);
   margin-top: 15px;
@@ -268,7 +270,7 @@ letter-spacing: 0.15px;
     color: rgba(0, 0, 0, 0.38);
   }
   .pesquisa {
-    width: 312px;
+    width: 350px;
     line-height: 23px;
   }
 
