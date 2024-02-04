@@ -100,9 +100,9 @@ export function Dashboard() {
                <InputModal
                   className={styles.pesquisa}
                   type="search"
-                  name=""
-                  id=""
-                  placeholder="Buscar tags"
+                  name="campoInput"
+                  id="campoInput"
+                  placeholder="Buscar tags "
                   onChange={(e) => setSearch(e.target.value)}
                />
                {projects.length > 0 ? (

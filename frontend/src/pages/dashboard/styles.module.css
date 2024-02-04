@@ -7,43 +7,44 @@
 }
 
 .perfil {
+   margin: 112px auto 72px;
+   width: 364px;
    display: flex;
    align-items: center;
    justify-content: center;
    gap: 42px;
-   margin-top: 112px;
-   margin-bottom: 56px;
+   padding: 0;
 }
 
 .fotoperfil {
-   border-radius: 300px;
-   display: flex;
-   width: 122px;
-   height: 122px;
-   justify-content: center;
-   align-items: center;
+   width: 112px;
+   height: 112px;
+   border-radius: 50%;
 }
+
 .informacoes {
    display: flex;
-   padding: var(--none, 0px);
+   padding: 0;
    flex-direction: column;
    align-items: flex-start;
-   gap: var(--3, 24px);
 }
 
 .nome {
-   font-size: 20px;
+   font-size: 24px;
    font-style: normal;
    font-weight: 400;
    line-height: 24px;
    color: var(--neutral-120);
+   margin: 16px 0 24px;
 }
+
 .pais {
    font-size: 16px;
    font-style: normal;
    font-weight: 400;
    line-height: 16px;
    letter-spacing: 0.15px;
+   color: var(--neutral-130);
    opacity: 0.5;
 }
 
@@ -55,32 +56,40 @@
    line-height: 20px;
    letter-spacing: 0.15px;
    opacity: 0.6;
+   margin-bottom: 16px;
 }
+
 .pesquisa {
-   width: 513px;
+   width: 723px;
    line-height: 24px;
    height: 56px;
    padding: 10px;
-   margin-top: 15px;
    border: 2px solid rgba(0, 0, 0, 0.23);
    font-size: 16px;
    font-style: normal;
    font-weight: 400;
    border-radius: 4px;
    letter-spacing: 0.15px;
+   margin-bottom: 40px;
 }
+
 .pesquisa:hover {
    border-color: var(--neutral-110);
 }
+
 .pesquisa:focus {
    border-color: var(--info-100);
    outline: none;
 }
+
+.div__input {
+   position: relative;
+}
+
 .containerproj {
    display: grid;
-   grid-column-gap: 24px;
-   margin-top: 15px;
    grid-template-columns: repeat(3, 1fr);
+   grid-column-gap: 24px;
 }
 
 .adicionar {
@@ -94,8 +103,7 @@
    flex-direction: column;
    cursor: pointer;
    gap: 10px;
-   border-radius: var(--borderRadius, 4px);
-   margin-top: 15px;
+   border-radius: 4px;
 }
 
 .buttondashboard {
@@ -118,19 +126,21 @@
    cursor: pointer;
    transition: all 0.3s ease-in;
 }
+
 .iconedashboard:hover {
    transform: scale(1.1);
 }
+
 .containerp {
    display: flex;
    flex-direction: column;
    align-items: center;
 }
+
 .adicionar2 {
    position: relative;
    background: var(--neutral-60);
    border-radius: var(--borderRadius, 4px);
-   margin-top: 15px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -147,15 +157,18 @@
       margin-top: 40px;
       margin-bottom: 40px;
    }
+
    .informacoes {
       gap: var(--1, 8px);
    }
+
    .buttondashboard {
       border-radius: 4px;
       padding: 10px 22px;
       background: rgba(0, 0, 0, 0.12);
       color: rgba(0, 0, 0, 0.38);
    }
+
    .pesquisa {
       width: 350px;
       line-height: 23px;
@@ -168,6 +181,7 @@
       align-items: center;
       width: 100%;
    }
+
    .adicionar,
    .adicionar2 {
       width: 350px;
