@@ -1,10 +1,4 @@
-<div style="text-align: center; font-weight: bold;">
-  
-# Orange Portfólio
-
-</div>
-  
-#
+<h1 align="center"> Squad 20 | Orange Portifólio </h1>
 
 Esta é uma solução para o desafio da **5ª** edição do [Programa de Formação](https://tech.orangejuice.com.br/programadeformacao) da FCamara.
 
@@ -12,50 +6,24 @@ Esta é uma solução para o desafio da **5ª** edição do [Programa de Formaç
 
 A Orange Portfólio é uma plataforma interativa que possibilita aos usuários compartilharem detalhes sobre os projetos que desenvolveram. Isso permite que outros usuários explorem e descubram uma variedade de projetos cadastrados na plataforma. É uma maneira eficaz de exibir e descobrir experiências, habilidades e realizações de diferentes pessoas em um ambiente online interativo.
 
-## Indíce
+<p align="center">
+  <img alt="Projeto" src="" width="100%">
+</p>
 
-- [Overview](#overview)
-  - [Figma](#figma)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [Desenvolvimento](#desenvolvimento)
-  - [Tecnologias](#tecnologias)
-  - [Funcionalidades](#funcionalidades)
-  - [Front-End](#front-end)
-  - [Back-End](#back-end)
-    - [Swagger](#swagger)
-  - [Banco de Dados](#banco-de-dados)
-  - [Docker](#docker)
-- [Resultados](#resultados)
-  - [Material Complementar](#material-complementar)
-  - [Referências](#referencias)
-- [Agradecimentos](#agradecimentos)
+## Tecnologias
+Esse projeto foi desenvolvido com as seguintes tecnologias
+- HTML e CSS
+- TypeScript
+- React
+- Java Spring
+- Postgress
+- Git e Github
 
-## Overview
-### Figma
-### Screenshot
-### Links
+## Frontend
 
-## Desenvolvimento
-### Tecnologias
-### Funcionalidades
-Cadastro de Usuário: O usuários pode se cadastrar na plataforma, fornecendo nome, sobrenome, email e senha.
-
-Adicionar projeto: O usuário pode adicionar projetos ao seu perfil
-Editar projeto:
-Listar projetos: 
-
-### Front-End
-### Back-End
-#### Swagger
+## Backend
 Doc [Swagger](https://op-app-jrdxq.ondigitalocean.app/swagger-ui/index.html#/)
-### Banco de Dados
-### Docker
-### Links
-## Resultados
-### Material Complementar
-### Referências
-## Agradecimentos
+
 
 ## **Autores:**
 - [🍊 Brenda Machado](https://github.com/brenddamachado)  
