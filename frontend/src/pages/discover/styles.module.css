@@ -5,8 +5,7 @@
 
 main {
     max-width: 100%;
-    margin-top: 112px;
-    margin-bottom: 40px;
+    margin: 0 auto 40px;
 }
 
 .description {
@@ -19,7 +18,7 @@ main {
     line-height: 34px;
     text-align: center;
     color: var(--primary-90);
-    margin: 0 auto;
+    margin: 112px auto 0;
 }
 
 .div__input {
@@ -67,7 +66,6 @@ main {
     transition: all 0.3s ease-out;
 }
 
-
 /* GRID PROJETOS */
 .gallery {
     width: 100%;
@@ -76,94 +74,12 @@ main {
     grid-column-gap: 24px;
 }
 
-.item {
-    /* width: 461px; */
-    /* height: 300px; */
-    background-color: var(--neutral-60);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-top: 32px;
-}
-
-.item .capa {
-    width: 100%;
-    height: 258px;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    border-radius: 4px;
-    transition: all 200ms ease-out;
-    display: block;
-
-}
-
-.item .capa:hover {
-    filter: hue-rotate(7deg) contrast(101%) saturate(200%);
-    transform: scale(1.1);
-}
-
-.details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--color-base-white);
-    /* z-index: 1; */
-    /* position: relative; */
-    margin-top: 12px;
-    color: var(--neutral-110);
-    height: 42px;
-}
-
-.info {
-    width: 190px;
-    align-items: center;
-}
-
-.info .imgPerfil {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    margin-right: 8px;
-    vertical-align: middle;
-}
-
-.info span {
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
-    letter-spacing: 0.15px;
-}
-
-.info span+span {
-    margin-left: 8px
-}
-
-.tags {    
-    align-items: center;
-}
-
-.tags span {
-    width: 24px;
-    height: 24px;
-    padding: 9px;   
-    line-height: 0;
-    font-size: 12px;
-    font-weight: bold;
-    background-color: var(--primary-70);
-    border-radius: 50px;
-}
-
-.tags span+span {
-    margin-left: 8px
-}
-
 /* RESPONSIVO */
 @media screen and (max-width: 1000px) {
     .gallery {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 
 @media screen and (max-width: 800px) {
     .container {
