@@ -1,0 +1,123 @@
+.lapisdashboard {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 15px;
+    background-color: rgba(255, 204, 153, 1);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .menu {
+    position: absolute;
+    top: calc(100px - 60px);
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    min-width: 140px;
+    z-index: 0;
+  }
+  
+  .menu button {
+    padding: 8px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    border-radius: 4px;
+    text-align: left;
+    font-size: 16px;
+  }
+  
+  .menu button:hover {
+    background-color: rgba(255, 238, 204, 1);
+  }
+  
+  .menu:after {
+    /*Triangulo*/
+    content: "";
+    height: 0;
+    position: absolute;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid white;
+    top: -10px;
+    left: 84%;
+    width: 0;
+  }
+  
+  .item {
+    background-color: var(--neutral-60);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .capa {
+    width: 100%;
+    height: 258px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 4px;
+    transition: all 200ms ease-out;
+    display: block;
+  }
+  
+  .details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-base-white);
+    z-index: 1;
+    position: relative;
+    margin-top: 12px;
+    color: var(--neutral-110);
+  }
+  
+  .info {
+    width: 190px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info .imgPerfil {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  
+  .info span {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.15px;
+  }
+  
+  .dados {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+  }
+  
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  @media screen and (max-width: 680px) {
+    .dados {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  } 
