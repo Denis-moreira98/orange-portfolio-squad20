@@ -27,12 +27,9 @@ A Orange Portfólio é uma plataforma interativa que possibilita aos usuários c
 ### Backend:
 <img src="https://skillicons.dev/icons?i=java,spring,postgres,aws"/>
 
-- Java Spring:
+- Java Spring:  Java com o Spring Boot oferece desenvolvimento eficiente, simplificando a configuração, facilitando a criação de aplicativos robustos e escaláveis, além de integração perfeita com o ecossistema Spring e qualque outro Framework frontend, no caso deste projeto, o React.
 - Postgress:
 - S3 AWS:
-
-
-## Backend
 
 O Backend segue o padrão MVC (Model-View-Controller), onde os controladores gerenciam as requisições, os serviços manipulam a lógica de negócios, e os modelos representam os dados. Além disso, você pode estar implementando o padrão DAO para acesso a dados.
 
