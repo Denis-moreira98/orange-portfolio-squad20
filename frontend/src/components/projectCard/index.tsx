@@ -6,10 +6,17 @@ interface ProjectProps {
    title: string;
    midia: string;
    tags: string[];
+   userName: string;
    onClick?: () => void;
 }
 
-export function ProjectCard({ title, midia, tags, onClick }: ProjectProps) {
+export function ProjectCard({
+   title,
+   midia,
+   tags,
+   onClick,
+   userName,
+}: ProjectProps) {
    return (
       <label onClick={onClick} className={styles.container}>
          <figure className={styles.item}>
@@ -23,7 +30,7 @@ export function ProjectCard({ title, midia, tags, onClick }: ProjectProps) {
                      className={styles.imgPerfil}
                   />
 
-                  <span>Bianca Martin</span>
+                  <span>{userName}</span>
                   <span>02/24</span>
                </div>
                <div className={styles.tags}>

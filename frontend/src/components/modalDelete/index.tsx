@@ -9,22 +9,23 @@ import { setupAPIClient } from "../../services/api";
 interface ModalProps {
    isOpen: boolean;
    onRequestClose: () => void;
-   idProject?: string;
+   idProject: string;
 }
 
 Modal.setAppElement("#root");
 
-export function ModalDelete({ isOpen, onRequestClose }: ModalProps) {
+export function ModalDelete({ isOpen, onRequestClose, idProject }: ModalProps) {
    const [modalDeleteSuccess, setModalDeleteSuccess] = useState(false);
 
    function handleOpenModalDelete() {
       setModalDeleteSuccess(true);
    }
 
-   async function handleDeleteProject() {
+   async function handleDeleteProject(idProject: string) {
       try {
          const apiClient = setupAPIClient();
-         await apiClient.delete(`/project/8`);
+         await apiClient.delete(`/project/${idProject}`);
+
          handleOpenModalDelete();
       } catch (error) {
          console.log(error);
@@ -57,7 +58,7 @@ export function ModalDelete({ isOpen, onRequestClose }: ModalProps) {
                   <Button
                      variant="orange"
                      type="button"
-                     onClick={handleDeleteProject}
+                     onClick={() => handleDeleteProject(idProject)}
                   >
                      EXCLUIR
                   </Button>

@@ -1,6 +1,5 @@
 .container {
    width: 300px;
-
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -12,6 +11,9 @@
    font-size: 28px;
    color: var(--neutral-110);
    font-weight: 400;
+}
+.container a {
+   text-decoration: none;
 }
 
 @media screen and (max-width: 609px) {

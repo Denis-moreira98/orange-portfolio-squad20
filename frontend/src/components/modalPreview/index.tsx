@@ -65,7 +65,7 @@ export function ModalPreview({
                      <img src={ImgPerfil} alt="perfil" />
                      <div className={styles.nome}>
                         <p>Camila Soares</p>
-                        <span>12/12</span>
+                        <span>02/24</span>
                      </div>
                   </div>
                   <h3>{title}</h3>
