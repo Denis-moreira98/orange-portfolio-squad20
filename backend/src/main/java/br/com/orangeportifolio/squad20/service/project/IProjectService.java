@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.orangeportifolio.squad20.dto.ProjectDTO;
+import br.com.orangeportifolio.squad20.dto.ProjectDetailsDTO;
 import br.com.orangeportifolio.squad20.model.Project;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -15,7 +16,7 @@ public interface IProjectService {
 	
 	public ProjectDTO create(@Valid @NotNull Project project, @RequestParam("file") MultipartFile file);
 	public Boolean update(@Valid @NotNull ProjectDTO project, @NotNull @Positive Integer id, MultipartFile file);
-	public List<ProjectDTO> findAll();
+	public List<ProjectDetailsDTO> findAllProjectDTO();
 	public Project findById(@NotNull @Positive Integer id);
 	public List<ProjectDTO> findByTagsContaining(String nome);
 	public boolean delete(@NotNull @Positive Integer id);
