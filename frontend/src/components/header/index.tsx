@@ -15,9 +15,6 @@ export function Header() {
    const menuRef = useRef(null);
    const navigate = useNavigate();
 
-   // const toggleMenu = () => {
-   //    setMenuOpen(!menuOpen);
-   // };
    const toggleMenu = (event: React.MouseEvent<SVGElement, MouseEvent>) => {
       event.stopPropagation();
       setMenuOpen(!menuOpen);

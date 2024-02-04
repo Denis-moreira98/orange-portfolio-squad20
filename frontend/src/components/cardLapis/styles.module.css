@@ -1,3 +1,7 @@
+.container{
+  margin-bottom: 40px;
+}
+
 .lapisdashboard {
     position: absolute;
     top: 10px;
@@ -82,8 +86,9 @@
   }
   
   .info {
-    width: 190px;
+    max-width: 100%;
     display: flex;
+    gap: 8px;
     align-items: center;
   }
   
@@ -96,7 +101,7 @@
   }
   
   .info span {
-    font-size: 16px;
+    font-size: 1em;
     font-style: normal;
     font-weight: 400;
     line-height: 16px;

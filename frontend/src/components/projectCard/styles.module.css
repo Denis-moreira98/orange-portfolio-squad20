@@ -12,7 +12,6 @@
 }
 
 .item .capa {
-   height: 100%;
    width: 100%;
    aspect-ratio: 16/9;
    object-fit: cover;
@@ -52,7 +51,7 @@
 }
 
 .info span {
-   font-size: 16px;
+   font-size: 1em;
    font-style: normal;
    font-weight: 400;
    line-height: 16px;

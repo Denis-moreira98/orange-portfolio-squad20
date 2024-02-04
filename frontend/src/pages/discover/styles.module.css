@@ -75,7 +75,7 @@ main {
 }
 
 /* RESPONSIVO */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1120px) {
     .gallery {
         grid-template-columns: repeat(2, 1fr);
     }
