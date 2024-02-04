@@ -84,6 +84,7 @@ export function Discover() {
                   <div className={styles.input__box}>
                      <div className={styles.div__input}>
                         <InputModal
+                           autoComplete="off"
                            className={styles.input__field}
                            type="search"
                            name="campoInput"

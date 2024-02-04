@@ -1,17 +1,17 @@
 .container {
    border: none;
-   background-color: transparent;
-   cursor: pointer;
+   background-color: transparent;   
 }
+
 .item {
    background-color: var(--neutral-60);
    border-radius: 4px;
    overflow: hidden;
    margin-top: 40px;
+   cursor: pointer;
 }
 
 .item .capa {
-   height: 100%;
    width: 100%;
    aspect-ratio: 16/9;
    object-fit: cover;
@@ -35,16 +35,11 @@
    color: var(--neutral-110);
 }
 
-.tags {
-   display: flex;
-   flex-direction: row;
-   gap: 0.4rem;
-}
-
 .info {
-   width: 190px;
+   max-width: 100%;
    align-items: center;
-   gap: 1rem;
+   gap: 8px;
+   display: flex;
 }
 
 .info .imgPerfil {
@@ -56,13 +51,18 @@
 }
 
 .info span {
-   font-size: 16px;
+   font-size: 1em;
    font-style: normal;
    font-weight: 400;
    line-height: 16px;
    letter-spacing: 0.15px;
 }
 
-.info span + span {
+ .info span + span {
    margin-left: 8px;
+}
+
+.tags {
+   display: flex;
+   flex-direction: row;
 }
