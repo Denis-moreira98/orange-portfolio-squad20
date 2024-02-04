@@ -18,9 +18,9 @@ export function ProjectCard({
    userName,
 }: ProjectProps) {
    return (
-      <label onClick={onClick} className={styles.container}>
+      // <label onClick={onClick} className={styles.container}>
          <figure className={styles.item}>
-            <img src={midia} alt={title} className={styles.capa} />
+            <img src={midia} alt={title} className={styles.capa} onClick={onClick} />
 
             <figcaption className={styles.details}>
                <div className={styles.info}>
@@ -41,6 +41,6 @@ export function ProjectCard({
                </div>
             </figcaption>
          </figure>
-      </label>
+      // </label>
    );
 }
