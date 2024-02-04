@@ -1,6 +1,7 @@
 package br.com.orangeportifolio.squad20.dto;
 
 import br.com.orangeportifolio.squad20.model.Project;
+import br.com.orangeportifolio.squad20.model.User;
 
 public class ProjectDTO {
     private Integer idProject;
@@ -17,11 +18,9 @@ public class ProjectDTO {
 		return idProject;
 	}
 
-
 	public void setIdProject(Integer idProject) {
 		this.idProject = idProject;
 	}
-
 
 	public String getTitle() {
 		return title;
@@ -35,16 +34,13 @@ public class ProjectDTO {
 		return tags;
 	}
 
-
 	public void setTags(String tags) {
 		this.tags = tags;
 	}
 
-
 	public String getLinkProject() {
 		return linkProject;
 	}
-
 
 	public void setLinkProject(String linkProject) {
 		this.linkProject = linkProject;
@@ -58,7 +54,6 @@ public class ProjectDTO {
 		this.description = description;
 	}
 
-
 	public Integer getUserId() {
 		return userId;
 	}
@@ -70,7 +65,6 @@ public class ProjectDTO {
 	public String getMidia() {
 		return midia;
 	}
-
 
 	public void setMidia(String midia) {
 		this.midia = midia;
@@ -87,5 +81,5 @@ public class ProjectDTO {
         dto.setMidia(project.getMidia());
         
         return dto;
-    }
+    }	
 }

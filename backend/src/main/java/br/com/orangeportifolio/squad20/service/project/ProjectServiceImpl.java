@@ -14,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.orangeportifolio.squad20.dao.IProjectDAO;
+import br.com.orangeportifolio.squad20.dto.ProjectDetailsDTO;
 import br.com.orangeportifolio.squad20.dto.ProjectDTO;
 import br.com.orangeportifolio.squad20.model.Project;
 import br.com.orangeportifolio.squad20.service.storage.ILocalFotoStorageService;
@@ -35,14 +36,15 @@ public class ProjectServiceImpl implements IProjectService{
 	@Autowired
 	private StorageServiceImpl storageS3Service;
 
+
 	@Override
 	public ProjectDTO create(@Valid @NotNull Project project, MultipartFile file) {
 			    
 		try {
 	        // Fazendo o upload para o s3 e retorna o caminho url
 			System.out.println("Subindo arquivo para o S3...");
-			//String pathFile = storageS3Service.uploadS3File(file);
-			String pathFile = null;
+			String pathFile = storageS3Service.uploadS3File(file);
+			//String pathFile = null;
 	    	
 	    	if(pathFile == null) { //Fazendo upload para pasta local caso a requisição do s3 falhe
 	    		
@@ -61,7 +63,7 @@ public class ProjectServiceImpl implements IProjectService{
 	    } catch (Exception e) {
 
 	        System.err.println("Ocorreu um erro ao criar o projeto: " + e.getMessage());
-	        return null;
+	        return null; 
 	    }
 	}
 
@@ -72,8 +74,8 @@ public class ProjectServiceImpl implements IProjectService{
 			
 			 // Fazendo o upload para o s3 e retorna o caminho url
 			System.out.println("Subindo arquivo para o S3...");
-			//String pathFile = storageS3Service.uploadS3File(file);
-			String pathFile = null;
+			String pathFile = storageS3Service.uploadS3File(file);
+			//String pathFile = null;
 	    	
 	    	if(pathFile == null) { //Fazendo upload para pasta local caso a requisição do s3 falhe
 	    		
@@ -106,15 +108,10 @@ public class ProjectServiceImpl implements IProjectService{
 	}
 
 	@Override
-	public List<ProjectDTO> findAll() {
-	    List<Project> projects = dao.findAll();
-	    List<ProjectDTO> projectDTOs = projects.stream()
-	    		.map(ProjectDTO::fromProject)
-	    		.collect(Collectors.toList());
-	    
-	    return projectDTOs;
+	public List<ProjectDetailsDTO> findAllProjectDTO() {
+	    return dao.findAllProjectDTO();
 	}
-	
+
 	@Override
 	public List<ProjectDTO> findByTagsContaining(String nome) {
 		
