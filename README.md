@@ -32,12 +32,40 @@ O Backend segue o padrão MVC (Model-View-Controller), onde os controladores ger
 
 Você pode visualizar a documentação da API deste projeto através deste link 👉🏻 [Swagger](https://op-app-jrdxq.ondigitalocean.app/swagger-ui/index.html#/)
 
+<h3>Demostração da Aplicação</h3>
+<p>Antes de começar, você precisará ter instalado em sua máquina as seguintes ferramentas:</p>
+<table>
+<tr>
+	<th>Ferramenta</th>
+	<th>Versão</th>
+</tr>
+<tr>
+	<td>Java JDK</td>
+	<td>8+</td>
+</tr>
+<tr>
+	<td>Java</td>
+	<td>17</td>
+</tr>
+<tr>
+	<td>Eclipse IDE</td>
+	<td>2023-12</td>
+</tr>
+<tr>
+	<td>Git</td>
+	<td>2.**</td>
+</tr>
+</table>
+
+<h6>**  **</h6>
+
+
 No Terminal/Console:
 <ol>
 	<li>Faça um clone do projeto na sua máquina: <code>git clone https://github.com/Denis-moreira98/orange-portfolio-squad20</code></li>
 	<li>Entre na pasta raiz do projeto: <code>cd orange-portfolio-squad20</code></li> 
-	<li>Importe o projeto: Vá em File > Import > Paste General > "Existing projects Maven"</li>
-	<li>Use o SpringBoot 3.0+</li>
+	<li>No Eclipse, importe o projeto: Vá em File > Import > Paste General > "Existing projects Maven"</li>
+	<li>Para evitar erros, use o SpringBoot 3.1.8</li>
 </ol>
 
 
