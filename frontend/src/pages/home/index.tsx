@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 
 import imgBanner from "../../assets/$x8r9ctcwosj.png";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export function Home() {
+   const { user } = useContext(AuthContext);
    return (
       <>
          <div className={styles.containerhome}>
@@ -18,11 +21,21 @@ export function Home() {
                </ul>
 
                <ul className={styles.ulhome}>
-                  <li>
-                     <Link to="/login">
-                        <button className={styles.buttonhome}>LOGIN</button>
-                     </Link>
-                  </li>
+                  {user ? (
+                     <li>
+                        <Link to="/discover">
+                           <button className={styles.buttonhome}>
+                              ACESSAR
+                           </button>
+                        </Link>
+                     </li>
+                  ) : (
+                     <li>
+                        <Link to="/login">
+                           <button className={styles.buttonhome}>LOGIN</button>
+                        </Link>
+                     </li>
+                  )}
                   <li className={styles.lihome} id={styles.idl}>
                      <Link to="/register">
                         <button className={styles.buttonhome}>CADASTRO</button>
