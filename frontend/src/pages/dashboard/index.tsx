@@ -26,6 +26,12 @@ export function Dashboard() {
    const [modalVisible, setModalVisible] = useState(false);
    const [projects, setProjects] = useState<ProjectsUserProps[]>([]);
    const [loading, setLoading] = useState(true);
+   const [originalProjects, setOriginalProjects] = useState<ProjectsUserProps[]>(
+      []
+   );
+   const [search, setSearch] = useState("");
+   console.log(search);
+   const searchUpperCase = search.toUpperCase();
 
    function handleOpenModal() {
       setModalVisible(true);
@@ -43,6 +49,7 @@ export function Dashboard() {
             const response = await apiClient.get(`/user/${user.id}`);
 
             setProjects(response.data.projects);
+            setOriginalProjects(response.data.projects);
             setLoading(false);
          } catch (err) {
             console.log(err);
@@ -51,6 +58,18 @@ export function Dashboard() {
 
       getProject();
    }, []);
+
+   useEffect(() => {
+      if (search.trim() !== "") {
+         const filteredProjects = originalProjects.filter((project) =>
+            project.tags.toUpperCase().includes(searchUpperCase)
+         );
+
+         setProjects(filteredProjects);
+      } else {
+         setProjects(originalProjects);
+      }
+   }, [search, originalProjects, searchUpperCase]);
 
    return (
       <>
@@ -84,6 +103,7 @@ export function Dashboard() {
                   name=""
                   id=""
                   placeholder="Buscar tags"
+                  onChange={(e) => setSearch(e.target.value)}
                />
                {projects.length > 0 ? (
                   <div className={styles.containerproj}>
@@ -93,6 +113,7 @@ export function Dashboard() {
                            className={styles.adicionar2}
                         >
                            <CardLapis
+                              key={project.idProject}
                               userName={user?.name}
                               tags={project.tags.split(" ")}
                               idProject={project.idProject}
