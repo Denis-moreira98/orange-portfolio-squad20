@@ -27,7 +27,18 @@ Esse projeto foi desenvolvido com as seguintes tecnologias
 ## Frontend
 
 ## Backend
-Doc [Swagger](https://op-app-jrdxq.ondigitalocean.app/swagger-ui/index.html#/)
+
+O Backend segue o padrão MVC (Model-View-Controller), onde os controladores gerenciam as requisições, os serviços manipulam a lógica de negócios, e os modelos representam os dados. Além disso, você pode estar implementando o padrão DAO para acesso a dados.
+
+Você pode visualizar a documentação da API deste projeto através deste link 👉🏻 [Swagger](https://op-app-jrdxq.ondigitalocean.app/swagger-ui/index.html#/)
+
+No Terminal/Console:
+<ol>
+	<li>Faça um clone do projeto na sua máquina: <code>git clone https://github.com/Jefferson-Pedro/DESAFIO-EVERYMIND-2024</code></li>
+	<li>Entre na pasta raiz do projeto: <code>cd DESAFIO-EVERYMIND-2024</code></li> 
+	<li>Importe o projeto: Vá em File > Import > Paste General > "Existing projects Maven"</li>
+	<li>Use o SpringBoot 3.0+</li>
+</ol>
 
 
 ## **Autores:**
