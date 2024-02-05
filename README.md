@@ -5,16 +5,46 @@ Esta é uma solução para o desafio da **5ª** edição do [Programa de Formaç
 
 
 
-### Sobre o projeto
+## Sobre o projeto
 
-A Orange Portfólio é uma plataforma interativa que possibilita aos usuários compartilharem detalhes sobre os projetos que desenvolveram. Isso permite que outros usuários explorem e descubram uma variedade de projetos cadastrados na plataforma. É uma maneira eficaz de exibir e descobrir experiências, habilidades e realizações de diferentes pessoas em um ambiente online interativo.
+A Orange Portfólio é uma plataforma interativa projetada para facilitar o compartilhamento detalhado de projetos desenvolvidos por seus usuários. Essa abordagem única permite que membros da comunidade compartilhem suas experiências, habilidades e conquistas, proporcionando aos demais usuários a oportunidade de explorar e descobrir uma ampla variedade de projetos registrados na plataforma.
 
 #
-
 
 <p align="center">
   <img alt="Projeto" src="https://i.imgur.com/5kgvIUJ.png" width="800px">
 </p>
+
+#
+
+## Funcionalidades da Aplicação Web:
+ ### Página Home:
+ - Interface intuitiva e agradável visualmente.
+ - Informações necessárias para o usuário acessar a plataforma.
+ - Botões "Começar Agora" e "Cadastrar Usuário" para navegar para a página de cadastro.
+
+### Página de Cadastro:
+ - Formulário de cadastro com validação de campos.
+ - Formulário de login com validação de campos.
+ - Garantia de preenchimento correto dos campos através de validação.
+
+### Rotas Privadas:
+ - Acesso restrito a rotas privadas para usuários logados.
+
+### Dashboard (Meus Projetos):
+ - Cadastro de projetos com preenchimento obrigatório de todos os campos.
+ - Validar e exibir mensagem de erro se campos não estiverem preenchidos corretamente.
+ - Campo de tags seguindo regras específicas (separar tags apenas com espaço).
+ - Edição e exclusão de projetos.
+   
+### Barra de Pesquisa:
+- Pesquisa de projetos por tags na barra de pesquisa.
+
+### Página Descobrir:
+ - Visualização de todos os projetos cadastrados na plataforma.
+ - Modal com informações detalhadas do projeto ao clicar em um projeto específico.
+ - Exibição de título, nome do cadastrador, tags, imagem, descrição e link de acesso no modal.
+ - Pesquisa por tags na barra de pesquisa.
 
 #
 
@@ -37,6 +67,44 @@ A Orange Portfólio é uma plataforma interativa que possibilita aos usuários c
 O Backend segue o padrão MVC (Model-View-Controller), onde os controladores gerenciam as requisições, os serviços manipulam a lógica de negócios, e os modelos representam os dados. Além disso, estamos implementando o padrão DAO para acesso a dados.
 
 Você pode visualizar a documentação da API deste projeto através deste link 👉🏻 [Swagger](https://op-app-jrdxq.ondigitalocean.app/swagger-ui/index.html#/)
+
+#
+
+## Para Rodar localmente o frontend sua máquina:
+
+### É necessário ter o [Nodejs](https://nodejs.org/en/download) instalado na maquina. 
+
+Para começar, clone o repositório para o seu ambiente local:
+```bash
+git clone https://github.com/Denis-moreira98/orange-portfolio-squad20
+```
+
+## Instalando dependencias
+
+Acesse o diretório do projeto e instale as dependências utilizando o npm:
+
+```bash
+  cd frontend
+```
+```bash
+  npm install
+```
+
+## Inciando servidor
+
+ Adicione arquivo .env na pasta raiz do frontend, passando a url da api:
+```bash
+  VITE_API_URL="http://localhost:3000/exemplo"
+```
+
+Inicie o servidor:
+
+```bash
+  npm run dev
+```
+
+#
+
 
 <h3>Demostração da Aplicação</h3>
 <p>Antes de começar, você precisará ter instalado em sua máquina as seguintes ferramentas:</p>
