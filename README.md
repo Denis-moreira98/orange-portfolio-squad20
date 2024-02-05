@@ -1,5 +1,5 @@
 
-<h1 align="center"> Squad 20 | Orange Portifólio 🍊</h1>
+<h1 align="center">🍊 Squad 20 | Orange Portifólio 🍊</h1>
 
 Esta é uma solução para o desafio da **5ª** edição do [Programa de Formação](https://tech.orangejuice.com.br/programadeformacao) da FCamara.
 
