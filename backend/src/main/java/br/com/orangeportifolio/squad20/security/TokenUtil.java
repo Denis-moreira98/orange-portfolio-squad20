@@ -90,7 +90,7 @@ public class TokenUtil {
 		} catch (Exception e) {
 			System.err.println("Erro ao decoficar o token: ");
 			e.printStackTrace();
-			System.err.println("TokenUtil: " + token);
+			// System.err.println("TokenUtil: " + token);
 		}
 		return null;
 	}
