@@ -17,11 +17,6 @@ public class OrangeFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 
-		// Log para ler o cabeçalho:
-//		String authorizationHeader = request.getHeader("Authorization");
-//		System.err.println("Authorization Header(Orange Filter): " + authorizationHeader);
-//		System.out.println("Passou pelo filtro!" + request.getRequestURI().toString());
-
 		if (request.getHeader("Authorization") != null) {
 
 			Authentication auth = TokenUtil.decode(request);
