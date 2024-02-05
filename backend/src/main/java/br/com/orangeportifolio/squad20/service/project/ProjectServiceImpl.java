@@ -44,8 +44,7 @@ public class ProjectServiceImpl implements IProjectService{
 	        // Fazendo o upload para o s3 e retorna o caminho url
 			System.out.println("Subindo arquivo para o S3...");
 			String pathFile = storageS3Service.uploadS3File(file);
-			//String pathFile = null;
-	    	
+				    	
 	    	if(pathFile == null) { //Fazendo upload para pasta local caso a requisição do s3 falhe
 	    		
 	    		System.out.println("Requisição para o S3 falhou! Salvando localmente...");
