@@ -123,6 +123,22 @@ export function ModalEditProject({
          handleClearStates();
          handleOpenModalSuccess();
       } catch (err) {
+         toast.error(
+            "Algo inesperado aconteceu, revise os campos e tente novamente!",
+            {
+               duration: 3000,
+               style: {
+                  border: "1px solid rgba(58, 58, 58, 0.219)",
+                  padding: "8px",
+                  color: "#fff",
+                  backgroundColor: "#bb0000",
+               },
+               iconTheme: {
+                  primary: "#fff",
+                  secondary: "#bb0000",
+               },
+            }
+         );
          console.log(err);
       }
    }
