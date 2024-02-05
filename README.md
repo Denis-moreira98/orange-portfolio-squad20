@@ -107,8 +107,9 @@ Inicie o servidor:
 #
 
 
-<h3>Demostração da Aplicação</h3>
-<p>Antes de começar, você precisará ter instalado em sua máquina as seguintes ferramentas:</p>
+## Demostração da Aplicação 
+ Antes de começar, você precisará ter instalado em sua máquina as seguintes ferramentas:
+ 
 <table>
 <tr>
 	<th>Ferramenta</th>
@@ -132,17 +133,55 @@ Inicie o servidor:
 </tr>
 </table>
 
-<h6>**  **</h6>
+#
 
+## Para Rodar localmente o backend sua máquina:
 
-No Terminal/Console:
-<ol>
-	<li>Faça um clone do projeto na sua máquina: <code>git clone https://github.com/Denis-moreira98/orange-portfolio-squad20</code></li>
-	<li>Entre na pasta raiz do projeto: <code>cd orange-portfolio-squad20</code></li> 
-	<li>No Eclipse, importe o projeto: Vá em File > Import > Paste General > "Existing projects Maven"</li>
-	<li>Para evitar erros, use o SpringBoot 3.1.8</li>
-</ol>
+### Caso tenha dificuldade de instalar alguma ferramenta em sua maquina, deixamos aqui os videos necessários para isto:
 
+👉🏽 [Criando sua conta AWS](https://www.youtube.com/watch?v=JM_hBTrt9bk)
+
+👉🏽 [Gerando as credenciais](https://www.youtube.com/watch?v=SteXxricweA&pp=ygUZZ2VyYXIgY3JlZGVuY2lhaXMgZG8gYXdzIA%3D%3D)
+
+👉🏽 [Baixando Java + Eclipse](https://www.youtube.com/watch?v=Kn7IyPidePY)
+
+**Lembrando que os videos do AWS são necessários, uma vez que o banco de imagens está sendo utilizados lá**
+
+### Clone o repositório para o seu ambiente local:
+
+```bash
+git clone https://github.com/Denis-moreira98/orange-portfolio-squad20
+```
+
+No Eclipse, importe o projeto: Vá em File > Import > Paste General > "Existing projects Maven". 
+
+No arquivo application.properties
+
+```
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url= jdbc:postgresql://localhost:5432/seu_bancoDeDados
+spring.datasource.username=seu_username
+spring.datasource.password=sua_senha
+
+spring.jpa.hibernate.ddl-auto=update
+
+server.error.include-stacktrace=never
+server.error.include-message=never
+
+spring.servlet.multipart.max-file-size=3MB
+spring.servlet.multipart.max-request-size=3MB
+
+aws.access.key.id=sua_chave_key
+aws.access.key.secret=seu_acesso_key
+aws.region=sa-east-1
+aws.s3.bucket=orangeportfolio-bucket
+```
+
+## Inciando servidor
+
+ Basta clicar na classe principal OrangePortifolioApplication > Botão Direito > Run as Java Application;
+
+#
 
  ## 👨🏻‍💻 Colaboradores 👩🏻‍💻
 
