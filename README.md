@@ -21,7 +21,7 @@ A Orange Portfólio é uma plataforma interativa projetada para facilitar o comp
  ### Página Home:
  - Interface intuitiva e agradável visualmente.
  - Informações necessárias para o usuário acessar a plataforma.
- - Botões "Começar Agora" e "Cadastrar Usuário" para navegar para a página de cadastro.
+ - Botões "Começar Agora" e "Cadastrar" para navegar para a página de cadastro.
 
 ### Página de Cadastro:
  - Formulário de cadastro com validação de campos.
