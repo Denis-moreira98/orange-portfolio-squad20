@@ -61,8 +61,8 @@ A Orange Portfólio é uma plataforma interativa projetada para facilitar o comp
 <img src="https://skillicons.dev/icons?i=java,spring,postgres,aws"/>
 
 - Java Spring:  Java com o Spring Boot oferece desenvolvimento eficiente, simplificando a configuração, facilitando a criação de aplicativos robustos e escaláveis, além de integração perfeita com o ecossistema Spring e qualque outro Framework frontend, no caso deste projeto, o React.
-- Postgress:
-- S3 AWS:
+- PostgreSQL: É um sistema gerenciador de banco de dados relacional de software livre e multiplataforma, usado em variados tipos de aplicações.
+- AWS S3: O Amazon Simple Storage Service é um serviço de armazenamento de objetos que oferece escalabilidade, disponibilidade de dados, segurança e perfomance.
 
 O Backend segue o padrão MVC (Model-View-Controller), onde os controladores gerenciam as requisições, os serviços manipulam a lógica de negócios, e os modelos representam os dados. Além disso, estamos implementando o padrão DAO para acesso a dados.
 
