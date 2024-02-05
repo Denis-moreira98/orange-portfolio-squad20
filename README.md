@@ -141,11 +141,16 @@ Inicie o servidor:
 
 👉🏽 [Criando sua conta AWS](https://www.youtube.com/watch?v=JM_hBTrt9bk)
 
+👉🏽 [Criando seu S3](https://www.youtube.com/watch?v=Dwm1PqEX-8I)
+
 👉🏽 [Gerando as credenciais](https://www.youtube.com/watch?v=SteXxricweA&pp=ygUZZ2VyYXIgY3JlZGVuY2lhaXMgZG8gYXdzIA%3D%3D)
 
 👉🏽 [Baixando Java + Eclipse](https://www.youtube.com/watch?v=Kn7IyPidePY)
 
-**Lembrando que os videos do AWS são necessários, uma vez que o banco de imagens está sendo utilizados lá**
+**Lembrando que os videos do AWS são necessários, uma vez que o banco de imagens está sendo utilizados lá.**
+
+### Crie as variaveis locais com as credenciais recém criadas:
+
 
 ### Clone o repositório para o seu ambiente local:
 
@@ -171,8 +176,8 @@ server.error.include-message=never
 spring.servlet.multipart.max-file-size=3MB
 spring.servlet.multipart.max-request-size=3MB
 
-aws.access.key.id=sua_chave_key
-aws.access.key.secret=seu_acesso_key
+aws.access.key.id=${AWS_KEY}
+aws.access.key.secret=${AWS_SECRET}
 aws.region=sa-east-1
 aws.s3.bucket=orangeportfolio-bucket
 ```
