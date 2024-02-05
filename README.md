@@ -128,6 +128,10 @@ Inicie o servidor:
 	<td>2023-12</td>
 </tr>
 <tr>
+	<td>PostgreSQL</td>
+	<td>16.1</td>
+</tr>
+<tr>
 	<td>Git</td>
 	<td>2.**</td>
 </tr>
@@ -146,6 +150,8 @@ Inicie o servidor:
 👉🏽 [Gerando as credenciais](https://www.youtube.com/watch?v=SteXxricweA&pp=ygUZZ2VyYXIgY3JlZGVuY2lhaXMgZG8gYXdzIA%3D%3D)
 
 👉🏽 [Baixando Java + Eclipse](https://www.youtube.com/watch?v=Kn7IyPidePY)
+
+👉🏽 [Baixando PostgreSQL + Eclipse](https://www.youtube.com/watch?v=UbX-2Xud1JA)
 
 **Lembrando que os videos do AWS são necessários, uma vez que o banco de imagens está sendo utilizados lá.**
 
