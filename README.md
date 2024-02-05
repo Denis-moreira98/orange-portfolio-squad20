@@ -213,6 +213,10 @@ aws.s3.bucket=orangeportfolio-bucket
 
 #
 
+### Lembretes: 
+🚨 Todos videos, em especial os do AWS são necessários, uma vez que o banco de imagens está sendo utilizados lá.
+🚨 Se for utilizar o postman, assim que for criado o usuário, e for realizar o login dele pela primeira vez, guarde o token. Ele deverá ser utilizado no cabeçaljo da Authorization nas demais requisições;
+
  ## 👨🏻‍💻 Colaboradores 👩🏻‍💻
 
 <div>
