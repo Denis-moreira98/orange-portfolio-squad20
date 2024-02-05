@@ -179,6 +179,9 @@ Nomes de Variaveis: <br>
 	<li>
 		Lembrando que são duas variáveis com dois valores direntes: uma chamada AWS_KEY e outra chamada AWS_SECRET;
 	</li>
+	<li>
+		Reinicie sua maquina para que as variáveis de ambiente sejam lidas pelo sistema;
+	</li>
 </ol>
 
 ### Clone o repositório para o seu ambiente local:
