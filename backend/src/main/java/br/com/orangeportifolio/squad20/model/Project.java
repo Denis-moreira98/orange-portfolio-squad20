@@ -24,7 +24,7 @@ public class Project {
 	@Column(name = "id_project")
 	private Integer idProject;
 	
-	@NotBlank
+	@NotBlank(message = "O campo Titulo do Projeto nao pode ter espaço em branco")
 	@NotNull(message = "O campo Titulo nao pode ser nulo")
 	@Length(min = 3, max = 45)
 	@Column(name = "title", length = 45, nullable = false)
@@ -33,7 +33,7 @@ public class Project {
 	@Column(name = "tags", length = 50)
 	private String tags;
 	
-	@NotBlank
+	@NotBlank(message = "O campo Link do Projeto nao pode ter espaço em branco")
 	@NotNull(message = "O campo Link do Projeto nao pode ser nulo")
 	@Column(name = "link_project", length = 255)
 	private String linkProject;
