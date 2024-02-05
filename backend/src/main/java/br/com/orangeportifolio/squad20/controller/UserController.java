@@ -38,23 +38,7 @@ public class UserController {
 	})
 	@PostMapping("/new")
 	public ResponseEntity<?> create(@RequestBody @Valid @NotNull User user, HttpServletRequest request) {
-		
-		System.err.println("Recebi no AuthController: " + user.toString());
-		
-		 // Imprimir todos os cabeçalhos da requisição
-//	    Enumeration<String> headerNames = request.getHeaderNames();
-//	    while (headerNames.hasMoreElements()) {
-//	        String headerName = headerNames.nextElement();
-//	        System.out.println("Header Name - " + headerName + ", Value - " + request.getHeader(headerName));
-//	    }
-//	    
-//	 // Imprimir todos os parâmetros da requisição
-//	    Enumeration<String> params = request.getParameterNames(); 
-//	    while(params.hasMoreElements()){
-//	        String paramName = params.nextElement();
-//	        System.out.println("Parameter Name - "+paramName+", Value - "+request.getParameter(paramName));
-//	    }
-//		
+	
 		if(service.create(user) != null) {
 			return ResponseEntity.ok().body("Usuário criado com sucesso!");
 		}
