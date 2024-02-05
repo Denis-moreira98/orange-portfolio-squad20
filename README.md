@@ -163,7 +163,7 @@ Inicie o servidor:
 ### Crie as variáveis de ambiente locais com as credenciais recém criadas da AWS:
 
 Nomes de Variaveis: 
-**AWS_KEY
+**AWS_KEY <br>
 **AWS_SECRET
 
 <ol>
