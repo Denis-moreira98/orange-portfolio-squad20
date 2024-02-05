@@ -15,6 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -26,6 +27,7 @@ public class User {
 	@Column(name = "id_user")
 	private Integer idUser;
 	
+	@NotBlank
 	@NotNull(message = "O campo nome não pode ser nulo")
 	@Length(min = 3, max = 75)
 	@Column(name = "name", length = 75)
@@ -40,7 +42,7 @@ public class User {
 	@Column(name = "email", length = 45, nullable = false)
 	private String email;
 	
-	
+	@NotBlank
 	@NotNull(message = "O campo senha não pode ser nulo")
 	@Length(min = 5, max = 75)
 	@Column(name = "password", length = 45, nullable = false)
