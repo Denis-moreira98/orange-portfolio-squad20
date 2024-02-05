@@ -46,7 +46,10 @@ A Orange Portfólio é uma plataforma interativa projetada para facilitar o comp
  - Exibição de título, nome do cadastrador, tags, imagem, descrição e link de acesso no modal.
  - Pesquisa por tags na barra de pesquisa.
 
+### Confira o [Deploy](https://orangeportfolio20.vercel.app/) 🚀
+
 #
+
 
 ## 🛠️ Tecnologias
 
