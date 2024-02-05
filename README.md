@@ -129,7 +129,7 @@ Inicie o servidor:
 	<td>2023-12</td>
 </tr>
 <tr>
-	<td>PostmanE</td>
+	<td>Postman</td>
 	<td>10.22.10</td>
 </tr>
 <tr>
@@ -162,7 +162,7 @@ Inicie o servidor:
 
 ### Crie as variáveis de ambiente locais com as credenciais recém criadas da AWS:
 
-Nomes de Variaveis: 
+Nomes de Variaveis: <br>
 **AWS_KEY <br>
 **AWS_SECRET
 
