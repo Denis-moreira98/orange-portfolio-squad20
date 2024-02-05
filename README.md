@@ -149,8 +149,26 @@ Inicie o servidor:
 
 **Lembrando que os videos do AWS são necessários, uma vez que o banco de imagens está sendo utilizados lá.**
 
-### Crie as variaveis locais com as credenciais recém criadas:
+### Crie as variáveis de ambiente locais com as credenciais recém criadas da AWS:
 
+Nomes de Variaveis: 
+**AWS_KEY
+**AWS_SECRET
+
+<ol>
+	<li>
+		Na barra de pesquisar do Windows digite: variaveis de ambiente > Clique em 'Editar Variáveis de Ambiente';
+	</li>
+	<li>
+		Na aba avançado, localize o botão 'Variáveis de Ambiente...';
+	</li>
+	<li>
+		Na guia variáveis do sistema, clique em 'Novo' > No popup aberto, em 'Nome de variável' digite o nome e em 'Valor da variável' o que você copiou na AWS;
+	</li>
+	<li>
+		Lembrando que são duas variáveis com dois valores direntes: uma chamada AWS_KEY e outra chamada AWS_SECRET;
+	</li>
+</ol>
 
 ### Clone o repositório para o seu ambiente local:
 
@@ -182,7 +200,7 @@ aws.region=sa-east-1
 aws.s3.bucket=orangeportfolio-bucket
 ```
 
-## Inciando servidor
+### Inciando servidor
 
  Basta clicar na classe principal OrangePortifolioApplication > Botão Direito > Run as Java Application;
 
