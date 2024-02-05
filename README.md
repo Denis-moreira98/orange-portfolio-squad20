@@ -129,6 +129,10 @@ Inicie o servidor:
 	<td>2023-12</td>
 </tr>
 <tr>
+	<td>PostmanE</td>
+	<td>10.22.10</td>
+</tr>
+<tr>
 	<td>PostgreSQL</td>
 	<td>16.1</td>
 </tr>
