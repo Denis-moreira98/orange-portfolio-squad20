@@ -26,11 +26,10 @@ export function Dashboard() {
    const [modalVisible, setModalVisible] = useState(false);
    const [projects, setProjects] = useState<ProjectsUserProps[]>([]);
    const [loading, setLoading] = useState(true);
-   const [originalProjects, setOriginalProjects] = useState<ProjectsUserProps[]>(
-      []
-   );
+   const [originalProjects, setOriginalProjects] = useState<
+      ProjectsUserProps[]
+   >([]);
    const [search, setSearch] = useState("");
-   console.log(search);
    const searchUpperCase = search.toUpperCase();
 
    function handleOpenModal() {

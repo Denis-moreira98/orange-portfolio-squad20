@@ -56,7 +56,6 @@ export function Register() {
 
       const result = await signUp(dataUser);
       result != undefined ? navigate("/login") : null;
-      console.log(dataUser);
    }
 
    return (
@@ -115,7 +114,9 @@ export function Register() {
                   >
                      CADASTRAR
                   </Button>
-                  <p className={styles.textReturn}>Já tem uma conta? <Link to={"/login"}>Acessar</Link></p>
+                  <p className={styles.textReturn}>
+                     Já tem uma conta? <Link to={"/login"}>Acessar</Link>
+                  </p>
                </form>
             </div>
          </div>

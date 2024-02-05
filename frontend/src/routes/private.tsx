@@ -1,7 +1,6 @@
 import { ReactNode, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { Navigate } from "react-router-dom";
-// import { Layout } from "../components/layout";
 
 interface PrivateProps {
    children: ReactNode;

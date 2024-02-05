@@ -55,7 +55,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
    useEffect(() => {
       try {
-         // Tentar pegar algo do token no cookies
          const { "@Squad20.token": token } = parseCookies();
          if (token) {
             const decoded: JwtPayload = jwtDecode(token);
@@ -87,7 +86,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
          const { id, name, token } = response.data;
 
          setCookie(undefined, "@Squad20.token", token, {
-            maxAgr: 60 * 60 * 24 * 5, // expira em 5 dias
+            maxAgr: 60 * 60 * 24 * 5,
             path: "/",
          });
 
@@ -97,7 +96,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
             email,
          });
 
-         //Passar para proximas requisições o token
          api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
          toast.success("Logado com sucesso!", {
