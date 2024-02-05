@@ -54,6 +54,7 @@ A Orange Portfólio é uma plataforma interativa projetada para facilitar o comp
   <img src="https://skillicons.dev/icons?i=typescript,react,css,vite,vercel,"/></a></p>
 - React com TypeScript: Aproveitar os benefícios do sistema de tipos estáticos do TypeScript ao desenvolver componentes React, fornecendo uma camada adicional de segurança e facilitando a manutenção do código.
 - CSS3: linguagem de estilo para estilizar a interface do usuário.
+- Axios: Axios é um cliente HTTP baseado em Promises para fazer requisições. Pode ser utilizado tanto no navegador quanto no Node. js ou qualquer serviço de API.
 - Vite: Ferramenta de construção de aplicações web rápida e eficiente, especialmente otimizada para o desenvolvimento moderno.
 - Vercel: Ferramenta utilizada para fazer o deploy da aplicação web.
 #
