@@ -2,7 +2,6 @@ import styles from "./styles.module.css";
 import orangeLogo from "../../assets/logo-orange.png";
 import imgPerfil from "../../assets/avatarDefault.jpg";
 import { IoMenuSharp } from "react-icons/io5";
-// import { IoIosNotifications } from "react-icons/io";
 import { FaSignOutAlt } from "react-icons/fa";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -27,7 +26,6 @@ export function Header() {
    };
 
    const closeMenuOnResize = () => {
-      // fechar o menu se > 800 px
       if (window.innerWidth > 800) {
          setMenuOpen(false);
       }
@@ -94,7 +92,6 @@ export function Header() {
                         className={styles.img__perfil}
                      />
                   </Link>
-                  {/* <IoIosNotifications className={styles.img__notifications} title="Notificações" /> */}
                   <button
                      onClick={handleSignOut}
                      type="button"

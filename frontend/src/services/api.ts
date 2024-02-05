@@ -13,10 +13,8 @@ export function setupAPIClient(ctx = undefined) {
    api.interceptors.request.use((config) => {
       const cookies = parseCookies(ctx);
 
-      // Lista de rotas que não requerem token de autenticação
       const routesWithoutAuthorization = ["/login", "/user/new"];
 
-      // Verifica se a rota não requer token de autenticação
       if (!routesWithoutAuthorization.includes(config.url)) {
          config.headers.Authorization = `Bearer ${cookies["@Squad20.token"]}`;
       }

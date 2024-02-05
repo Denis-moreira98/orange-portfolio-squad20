@@ -6,7 +6,7 @@ import { setupAPIClient } from "../../services/api";
 import { ModalPreview } from "../../components/modalPreview";
 import { Loading } from "../../components/loading";
 
-export interface ProjectsProps {
+interface ProjectsProps {
    idProject: string;
    title: string;
    tags: string;

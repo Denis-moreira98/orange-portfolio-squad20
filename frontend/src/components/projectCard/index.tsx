@@ -18,29 +18,32 @@ export function ProjectCard({
    userName,
 }: ProjectProps) {
    return (
-      // <label onClick={onClick} className={styles.container}>
-         <figure className={styles.item}>
-            <img src={midia} alt={title} className={styles.capa} onClick={onClick} />
+      <figure className={styles.item}>
+         <img
+            src={midia}
+            alt={title}
+            className={styles.capa}
+            onClick={onClick}
+         />
 
-            <figcaption className={styles.details}>
-               <div className={styles.info}>
-                  <img
-                     src={avatarDefault}
-                     alt="Imagem do usuário"
-                     className={styles.imgPerfil}
-                  />
-                  <div>
-                     <span>{userName}</span>
-                     <span>02/24</span>
-                  </div>
+         <figcaption className={styles.details}>
+            <div className={styles.info}>
+               <img
+                  src={avatarDefault}
+                  alt="Imagem do usuário"
+                  className={styles.imgPerfil}
+               />
+               <div>
+                  <span>{userName}</span>
+                  <span>02/24</span>
                </div>
-               <div className={styles.tags}>
-                  {tags.map((tag) => (
-                     <Label key={tag}>{tag.toUpperCase()}</Label>
-                  ))}
-               </div>
-            </figcaption>
-         </figure>
-      // </label>
+            </div>
+            <div className={styles.tags}>
+               {tags.map((tag) => (
+                  <Label key={tag}>{tag.toUpperCase()}</Label>
+               ))}
+            </div>
+         </figcaption>
+      </figure>
    );
 }

@@ -12,7 +12,7 @@ import { CardLapis } from "../../components/cardLapis";
 import { setupAPIClient } from "../../services/api";
 import { Loading } from "../../components/loading";
 
-export interface ProjectsUserProps {
+interface ProjectsUserProps {
    idProject: string;
    title: string;
    tags: string;
