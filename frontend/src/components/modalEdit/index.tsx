@@ -2,7 +2,7 @@ import Modal from "react-modal";
 import styles from "./styles.module.css";
 import { Button } from "../button";
 import InputModal, { TextArea } from "../modal/input/index";
-import { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import { FaImages } from "react-icons/fa";
 import { ModalEditSuccess } from "../modalEditSuccess";
 import { validateEspecialChars } from "../../utils/validations";
@@ -10,6 +10,7 @@ import { ModalPreview } from "../modalPreview";
 import { AuthContext } from "../../contexts/AuthContext";
 import { setupAPIClient } from "../../services/api";
 import toast from "react-hot-toast";
+import { LoadingButton } from "../loadingButton";
 
 interface ModalProps {
    isOpen: boolean;
@@ -33,6 +34,39 @@ export function ModalEditProject({
    const [errorChars, SetErrorChars] = useState(false);
    const [link, setLink] = useState("");
    const [description, setDescription] = useState("");
+   const [loading, setLoading] = useState(false);
+
+   useEffect(() => {
+      async function getProject() {
+         try {
+            const apiClient = setupAPIClient();
+            const response = await apiClient.get(`/user/${user.id}`);
+
+            const projects = response.data.projects;
+
+            // Buscando projeto por ID (utilizando o ID fornecido como prop)
+            const projectToFind = projects.find(
+               (p) => p.idProject === idProject
+            );
+
+            if (projectToFind) {
+               // Atualizando os estados iniciais com os valores do projeto encontrado
+               setTitle(projectToFind.title);
+               setTags(projectToFind.tags);
+               setLink(projectToFind.linkProject);
+               setDescription(projectToFind.description);
+               // setAvatarUrl(projectToFind.midia);
+               // setImageAvatar(projectToFind.midia);
+            } else {
+               console.log("Projeto não encontrado");
+            }
+         } catch (err) {
+            console.log(err);
+         }
+      }
+
+      getProject();
+   }, [user.id, idProject]);
 
    //Modal Success
    function handleOpenModalSuccess() {
@@ -90,6 +124,8 @@ export function ModalEditProject({
             return;
          }
 
+         setLoading(true);
+
          const { id } = user;
          const projectData = {
             title,
@@ -120,6 +156,7 @@ export function ModalEditProject({
             }
          );
 
+         setLoading(false);
          handleClearStates();
          handleOpenModalSuccess();
       } catch (err) {
@@ -139,6 +176,7 @@ export function ModalEditProject({
                },
             }
          );
+         setLoading(false);
          console.log(err);
       }
    }
@@ -169,8 +207,6 @@ export function ModalEditProject({
          backgroundColor: "#FEFEFE",
       },
    };
-
-   Modal.setAppElement("#root");
 
    return (
       <>
@@ -257,8 +293,17 @@ export function ModalEditProject({
                         Visualizar publicação
                      </button>
                      <div className={styles.div_buttons}>
-                        <Button type="submit" variant="orange">
-                           SALVAR
+                        <Button
+                           type="submit"
+                           disabled={loading}
+                           style={{
+                              backgroundColor: "#ff5522",
+                              cursor: loading ? "not-allowed" : "pointer",
+                              position: "relative",
+                           }}
+                        >
+                           {loading && <LoadingButton />}
+                           {loading ? "" : `SALVAR`}
                         </Button>
                         <Button
                            type="button"

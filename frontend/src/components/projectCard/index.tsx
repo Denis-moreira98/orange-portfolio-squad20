@@ -34,7 +34,7 @@ export function ProjectCard({
                   className={styles.imgPerfil}
                />
                <div>
-                  <span>{userName}</span>
+                  <span>{userName} •</span>
                   <span>02/24</span>
                </div>
             </div>
