@@ -1,12 +1,10 @@
-
 .containerdashboard {
-   
-      padding: 0px 32px;
-  
+   padding: 0px 32px;
+   margin: auto;
 }
 
 .perfil {
-   margin: 112px auto 72px;
+   margin: 112px auto 50px;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -80,10 +78,6 @@
    outline: none;
 }
 
-.div__input {
-   position: relative;
-}
-
 .containerproj {
    display: grid;
    grid-template-columns: repeat(3, 1fr);
@@ -92,8 +86,8 @@
 
 .adicionar {
    width: 100%;
-   max-width: 602px;
-   height: 258px;
+   max-width: 599px;
+   height: 338px;
    background: var(--neutral-70);
    display: flex;
    align-items: center;
@@ -117,7 +111,7 @@
    border-radius: 4px;
    transition: all 0.3s ease-in;
 }
-.informacoes button{
+.informacoes button {
    margin-top: 10%;
 }
 
@@ -144,6 +138,13 @@
    border-radius: var(--borderRadius, 4px);
 }
 
+@media screen and (max-width: 1666px) {
+   .adicionar {
+      width: 518px;
+      height: 291px;
+   }
+}
+
 @media screen and (max-width: 1120px) {
    .containerproj {
       grid-template-columns: repeat(2, 1fr);
@@ -151,10 +152,21 @@
 }
 
 @media screen and (max-width: 800px) {
-   .containerdashboard{
-     
-         width: 350px;
-         margin: auto;
+   .pesquisa {
+      width: 518px;
+   }
+}
+
+@media screen and (max-width: 600px) {
+   .containerdashboard {
+      width: 350px;
+      margin: auto;
+   }
+
+   .adicionar {
+      width: 350px;
+      height: 200px;
+      margin-left: -32px;
    }
 
    .perfil {
@@ -175,11 +187,12 @@
       background: rgba(0, 0, 0, 0.12);
       color: rgba(0, 0, 0, 0.38);
    }
-
+   .div_input {
+      margin-left: -32px;
+   }
    .pesquisa {
-      /* align-items: center; */
-      /* width: 312px; */
-      max-width: 100%;
+      align-items: center;
+      width: 350px;
       height: 56px;
       padding: 12px;
       outline: none;
@@ -202,4 +215,7 @@
       width: 350px;
       text-align: center;
    }
+}
+
+@media screen and (max-width: 768px) {
 }
