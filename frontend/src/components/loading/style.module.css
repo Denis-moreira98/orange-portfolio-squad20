@@ -1,8 +1,12 @@
-.div_spinner {
+.div_container {
    height: 50vh;
    display: flex;
    align-items: center;
    justify-content: center;
+}
+
+.spinner {
+   height: 28px;
    animation: spin 1s linear infinite;
 }
 

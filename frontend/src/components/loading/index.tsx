@@ -1,11 +1,13 @@
-import { ImSpinner3 } from "react-icons/im";
-import style from "./style.module.css";
+import { ImSpinner2 } from "react-icons/im";
+import styles from "./style.module.css";
 
 export function Loading() {
    return (
       <>
-         <div className={style.div_spinner}>
-            <ImSpinner3 size={28} />
+         <div className={styles.div_container}>
+            <div className={styles.spinner}>
+               <ImSpinner2 size={28} />
+            </div>
          </div>
       </>
    );
