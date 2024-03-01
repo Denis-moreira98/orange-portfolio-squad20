@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 import orangeLogo from "../../assets/logo-orange.png";
 import imgPerfil from "../../assets/avatarDefault.jpg";
 import { IoMenuSharp } from "react-icons/io5";
-import { FaSignOutAlt } from "react-icons/fa";
+import { MdLogout } from "react-icons/md";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef, useContext } from "react";
@@ -58,7 +58,7 @@ export function Header() {
             <header className={styles.header__container}>
                <div className={styles.div__left}>
                   <div className={styles.container__menu}>
-                     <Link to="/dashboard">
+                     <Link to="/discover">
                         <img
                            src={orangeLogo}
                            title="Página inicial do Orange Portifólio"
@@ -82,7 +82,7 @@ export function Header() {
                <div className={styles.div__rigth}>
                   <div className={styles.data}>
                      <p>
-                        Olá, <span>{user?.name}</span>
+                        Olá, <span>{user?.name.split(" ")[0]}</span>
                      </p>
                   </div>
                   <Link to="#">
@@ -97,10 +97,11 @@ export function Header() {
                      type="button"
                      className={styles.btn__out}
                   >
-                     <FaSignOutAlt
+                     Sair
+                     <MdLogout
                         className={styles.icon__out}
                         title="Sair"
-                        size={27}
+                        size={22}
                      />
                   </button>
                </div>
@@ -123,22 +124,6 @@ export function Header() {
                   </li>
                   <li className={styles.linha__menu}>
                      <Link to="#">Configurações</Link>
-                  </li>
-                  <li>
-                     <div className={styles.sair}>
-                        <Link
-                           to={"/login"}
-                           onClick={handleSignOut}
-                           className={styles.btn__outDrop}
-                        >
-                           Sair
-                           <FaSignOutAlt
-                              className={styles.icon__outDrop}
-                              title="Sair"
-                              size={22}
-                           />
-                        </Link>
-                     </div>
                   </li>
                </ul>
             </nav>

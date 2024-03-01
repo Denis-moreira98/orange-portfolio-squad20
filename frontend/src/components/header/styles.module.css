@@ -49,7 +49,7 @@ nav.menu ul li a:hover {
 .div__rigth {
    display: flex;
    align-items: center;
-   gap: 24px;
+   gap: 0.5rem;
    margin: 0;
    padding: 0;
 }
@@ -59,12 +59,12 @@ nav.menu ul li a:hover {
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   font-size: 14px;
+   font-size: 17px;
 }
 
 .img__perfil {
    border-radius: 300px;
-   width: 40px;
+   width: 35px;
 }
 
 .img__notifications {
@@ -80,18 +80,23 @@ nav.menu ul li a:hover {
 }
 
 .btn__out {
-   width: 40px;
-   height: 40px;
-   border: none;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 5px;
+   border: 1px solid #fff;
+   padding: 3px;
+   border-radius: 6px;
+   margin-left: 8px;
    color: var(--neutral-60);
    cursor: pointer;
-   font-size: 20px;
+   font-size: 17px;
    background: transparent;
    transition: all 0.3s ease-in;
 }
 
 .btn__out:hover {
-   transform: scale(1.2);
+   transform: scale(1.1);
 }
 
 /* MOBILE */
@@ -107,7 +112,7 @@ nav.menu ul li a:hover {
    position: absolute;
    background-color: var(--white);
    width: 180px;
-   height: 240px;
+   height: 185px;
    border-radius: 4px;
    visibility: hidden;
    opacity: 0;
