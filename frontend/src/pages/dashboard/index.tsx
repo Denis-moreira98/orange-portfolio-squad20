@@ -39,8 +39,6 @@ export function Dashboard() {
       setModalVisible(false);
    }
 
-   Modal.setAppElement("#root");
-
    useEffect(() => {
       async function getProject() {
          try {
@@ -70,6 +68,8 @@ export function Dashboard() {
       }
    }, [search, originalProjects, searchUpperCase]);
 
+   Modal.setAppElement("#root");
+
    return (
       <>
          {loading ? (
@@ -95,16 +95,18 @@ export function Dashboard() {
                      </Button>
                   </div>
                </div>
-               <p className={styles.projetos}>Meus projetos</p>
-               <InputModal
-                  autoComplete="off"
-                  className={styles.pesquisa}
-                  type="search"
-                  name="campoInput"
-                  id="campoInput"
-                  placeholder="Buscar tags "
-                  onChange={(e) => setSearch(e.target.value)}
-               />
+               <div className={styles.div_input}>
+                  <p className={styles.projetos}>Meus projetos</p>
+                  <InputModal
+                     autoComplete="off"
+                     className={styles.pesquisa}
+                     type="search"
+                     name="campoInput"
+                     id="campoInput"
+                     placeholder="Buscar tags "
+                     onChange={(e) => setSearch(e.target.value)}
+                  />
+               </div>
                {projects.length > 0 ? (
                   <div className={styles.containerproj}>
                      {projects.map((project) => (

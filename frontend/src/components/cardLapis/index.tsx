@@ -2,7 +2,6 @@ import { useState } from "react";
 import styles from "./styles.module.css";
 import { BiSolidPencil } from "react-icons/bi";
 import { ModalDelete } from "../modalDelete";
-import { ModalAddProject } from "../modal";
 import { ModalEditProject } from "../../components/modalEdit";
 import { Label } from "../modalPreview/label";
 import imagePerfil from "../../assets/avatarDefault.jpg";
@@ -15,7 +14,6 @@ interface ProjectProps {
 }
 
 export function CardLapis({ userName, midia, tags, idProject }: ProjectProps) {
-   const [modalVisible, setModalVisible] = useState(false);
    const [menuAberto, setMenuAberto] = useState(false);
    const [modalDelete, setModalDelete] = useState(false);
    const [modalEdit, setModalEdit] = useState(false);
@@ -46,9 +44,7 @@ export function CardLapis({ userName, midia, tags, idProject }: ProjectProps) {
    function handleCloseModalEdit() {
       setModalEdit(false);
    }
-   function handleCloseModal() {
-      setModalVisible(false);
-   }
+
    return (
       <>
          <div className={styles.lapisdashboard} onClick={handleIconClick}>
@@ -89,12 +85,7 @@ export function CardLapis({ userName, midia, tags, idProject }: ProjectProps) {
                </div>
             </figcaption>
          </figure>
-         {modalVisible && (
-            <ModalAddProject
-               isOpen={modalVisible}
-               onRequestClose={() => setModalVisible(false)}
-            />
-         )}
+
          {modalEdit && (
             <ModalEditProject
                idProject={idProject}
@@ -107,12 +98,6 @@ export function CardLapis({ userName, midia, tags, idProject }: ProjectProps) {
                idProject={idProject}
                isOpen={modalDelete}
                onRequestClose={handleCloseModalDelete}
-            />
-         )}
-         {modalVisible && (
-            <ModalAddProject
-               isOpen={modalVisible}
-               onRequestClose={handleCloseModal}
             />
          )}
       </>
