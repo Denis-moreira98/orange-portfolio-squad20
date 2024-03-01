@@ -38,8 +38,6 @@ export function ModalPreview({
       },
    };
 
-   Modal.setAppElement("#root");
-
    return (
       <>
          <Modal

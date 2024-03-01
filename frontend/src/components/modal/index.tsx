@@ -10,6 +10,7 @@ import { setupAPIClient } from "../../services/api";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ModalSuccess } from "../modalSuccess";
 import toast from "react-hot-toast";
+import { LoadingButton } from "../loadingButton";
 
 interface ModalProps {
    isOpen: boolean;
@@ -28,6 +29,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
    const [errorChars, SetErrorChars] = useState(false);
    const [link, setLink] = useState("");
    const [description, setDescription] = useState("");
+   const [loading, setLoading] = useState(false);
 
    // Modal Success
    function handleOpenModalSuccess() {
@@ -84,7 +86,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          if (!validateForm()) {
             return;
          }
-
+         setLoading(true);
          const { id } = user;
          const projectData = {
             title,
@@ -110,7 +112,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          const response = await apiClient.post("/project/", data, {
             headers: { "Content-Type": "multipart/form-data" },
          });
-
+         setLoading(false);
          handleClearStates();
          handleOpenModalSuccess();
       } catch (err) {
@@ -130,6 +132,7 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                },
             }
          );
+         setLoading(false);
          console.error(err);
       }
    }
@@ -160,7 +163,9 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
          backgroundColor: "#FEFEFE",
       },
    };
+
    Modal.setAppElement("#root");
+
    return (
       <>
          <Modal
@@ -246,8 +251,17 @@ export function ModalAddProject({ isOpen, onRequestClose }: ModalProps) {
                         Visualizar publicação
                      </button>
                      <div className={styles.div_buttons}>
-                        <Button type="submit" variant="orange">
-                           SALVAR
+                        <Button
+                           type="submit"
+                           disabled={loading}
+                           style={{
+                              backgroundColor: "#ff5522",
+                              cursor: loading ? "not-allowed" : "pointer",
+                              position: "relative",
+                           }}
+                        >
+                           {loading && <LoadingButton />}
+                           {loading ? "" : `SALVAR`}
                         </Button>
                         <Button
                            type="button"
