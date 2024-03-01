@@ -71,6 +71,7 @@ li:last-child .buttonhome,
    transition: 0.3s all ease-out;
    border: none;
 }
+
 .divhome h3 {
    color: var(--primary-90);
    font-weight: 500;
@@ -83,7 +84,6 @@ li:last-child .buttonhome:hover,
    transition: 0.3s all ease-out;
    box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.48);
 }
-
 .sectionhome {
    display: flex;
    justify-content: space-between;
@@ -111,18 +111,14 @@ li:last-child .buttonhome:hover,
    width: 450px;
 }
 
-.sectionhome .divhome button {
+.buttonhome {
    border: none;
    width: 20%;
    height: 50px;
    font-size: 15px;
    border-radius: 3px;
    cursor: pointer;
-
-   margin: 1rem 0 0 0;
-}
-.div_btn a {
-   text-decoration: none;
+   margin: 1rem 0 1rem 0;
 }
 
 footer {
@@ -210,8 +206,8 @@ footer div p {
    .lihome {
       display: none;
    }
-   .sectionhome .divhome button {
-      width: 80%;
+   .buttonhome {
+      width: 100%;
       height: 50px;
    }
    ul .balaofala {

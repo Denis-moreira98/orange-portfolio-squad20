@@ -58,7 +58,7 @@ export function Home() {
                            delaySpeed={1200}
                         />
                      </h3>
-                     <p>
+                     <p className={styles.div_p}>
                         Crie, exiba e compartilhe seu portfólio de projetos de
                         maneira intuitiva, conectando-se a uma comunidade de
                         mentes criativas e mantendo-se informado sobre as
@@ -72,7 +72,7 @@ export function Home() {
                      </Link>
                   </div>
 
-                  <div className={styles.divhome}>
+                  <div className={styles.divImg}>
                      <img src={imgBanner} alt="banner" />
                   </div>
                </section>
