@@ -36,7 +36,11 @@ export function Discover() {
             const apiClient = setupAPIClient();
             const response = await apiClient.get("/project/all");
 
-            setProjects(response.data);
+            const sortedProjects = response.data.sort((a, b) => {
+               return parseInt(b.idProject) - parseInt(a.idProject);
+            });
+
+            setProjects(sortedProjects);
             setOriginalProjects(response.data);
             setLoading(false);
          } catch (err) {
@@ -68,6 +72,7 @@ export function Discover() {
       setSelectedProject(null);
       setOpenModalPreview(false);
    }
+
    return (
       <>
          {loading ? (
@@ -96,7 +101,7 @@ export function Discover() {
                            htmlFor="campoInput"
                            className={styles.placeholder_label}
                         >
-                           Buscar tags{" "}
+                           Buscar tags
                         </label>
                      </div>
                   </div>

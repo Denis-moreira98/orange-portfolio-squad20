@@ -1,142 +1,174 @@
 /* DESKTOP */
 .container {
-    padding: 0px 32px;
+   padding: 0px 32px;
 }
 
 main {
-    max-width: 100%;
-    margin: 0 auto 40px;
+   max-width: 100%;
+   margin: 0 auto 40px;
 }
 
 .description {
-    width: 744px;
-    height: 120px;
-    letter-spacing: 0.25px;
-    font-size: 2.1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 34px;
-    text-align: center;
-    color: var(--primary-90);
-    margin: 112px auto 0;
+   width: 744px;
+   height: 120px;
+   letter-spacing: 0.25px;
+   font-size: 2.1rem;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 34px;
+   text-align: center;
+   color: var(--primary-90);
+   margin: 112px auto 0;
 }
 
 .div__input {
-    position: relative;
-    margin-top: 120px;
+   position: relative;
+   margin-top: 120px;
 }
 
 .input__field {
-    width: 723px;
-    padding: 10px;
-    height: 56px;
-    padding: 16px;
-    outline: none;
-    border-radius: 4px;
-    border: 2px solid #0000003b;
+   font-size: 16px;
+   width: 723px;
+   padding: 10px;
+   height: 56px;
+   padding: 16px;
+   outline: none;
+   border-radius: 4px;
+   border: 2px solid #0000003b;
 }
 
-.input__field:hover{
-    border-color: 2px solid var(--neutral-110);
+.input__field:hover {
+   border-color: 2px solid var(--neutral-110);
 }
 .input__field:focus {
-    border: 2px solid var(--info-100);;
+   border: 2px solid var(--info-100);
 }
 
-
 .placeholder_label {
-    color: var(--neutral-100);
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
+   color: var(--neutral-100);
+   position: absolute;
+   top: 50%;
+   left: 10px;
+   transform: translateY(-50%);
 }
 
 .input__field::placeholder {
-    color: rgba(0, 0, 0, 0);
+   color: rgba(0, 0, 0, 0);
 }
 
-.input__field:focus+.placeholder_label,
-.input__field:not(:placeholder-shown)+.placeholder_label {
-    font-size: 12px;
-    top: 0;
-    color: var(--neutral-110);
-    background: var(--white);
-    color: var(--neutral-100);
-    transition: all 0.3s ease-out;
+.input__field:focus + .placeholder_label,
+.input__field:not(:placeholder-shown) + .placeholder_label {
+   font-size: 12px;
+   top: 0;
+   color: var(--neutral-110);
+   background: var(--white);
+   color: var(--neutral-100);
+   transition: all 0.3s ease-out;
 }
 
 /* GRID PROJETOS */
 .gallery {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 24px;
+   width: 100%;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-column-gap: 24px;
 }
 
 /* RESPONSIVO */
 @media screen and (max-width: 1120px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
+   .gallery {
+      grid-template-columns: repeat(2, 1fr);
+   }
 }
 
 @media screen and (max-width: 800px) {
-    .container {
-        padding: 64px 24px;
-    }
+   .container {
+      padding: 64px 24px;
+   }
 
-    main {
-        width: 312px;
-        margin: 0 auto;
-    }
+   main {
+      width: 612px;
+      margin: 0 auto;
+   }
 
-    .description {
-        width: 312px;
-        font-size: 1.5rem;
-        line-height: 24px;
-    }
+   .description {
+      width: 500px;
+      font-size: 1.5rem;
+      line-height: 24px;
+      margin-top: 0;
+   }
 
-    .div__input {
-        position: relative;
-        margin-top: 40px;
-    }
+   .div__input {
+      position: relative;
+      margin-top: 40px;
+   }
 
-    .input__box label {
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        visibility: hidden;
-    }
+   .input__box label {
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      visibility: hidden;
+   }
 
-    .input__field {
-        max-width: 312px;
-        height: 56px;
-        padding: 12px;
-        outline: none;
-        border-radius: 4px;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
-        letter-spacing: 0.15px;
-    }
+   .input__field {
+      max-width: 380px;
+      height: 56px;
+      padding: 12px;
+      outline: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0.15px;
+   }
 
-    .input__field:hover {
-        border: 1px solid var(--neutral-120);
-    }
+   .input__field:hover {
+      border: 1px solid var(--neutral-120);
+   }
 
-    .input__field:focus {
-        border: 2px solid var(--info-100);
-    }
+   .input__field:focus {
+      border: 2px solid var(--info-100);
+   }
 
-    .input__field::placeholder {
-        color: var(--neutral-100);
-    }
+   .input__field::placeholder {
+      color: var(--neutral-100);
+   }
 
-    /* GRID PROJETOS */
-    .gallery {
-        grid-template-columns: repeat(1, 1fr);
-        grid-column-gap: 24px;
-    }
+   /* GRID PROJETOS */
+   .gallery {
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 24px;
+   }
+}
+
+@media screen and (max-width: 600px) {
+   main {
+      width: 350px;
+      margin: 0 auto;
+   }
+   .description {
+      width: 380px;
+   }
+
+   .input__field {
+      width: 100%;
+   }
+
+   /* GRID PROJETOS */
+   .gallery {
+      grid-template-columns: repeat(1, 1fr);
+   }
+}
+
+@media screen and (max-width: 390px) {
+   .description {
+      width: 350px;
+   }
+}
+
+@media screen and (max-width: 375px) {
+   .description {
+      width: 310px;
+   }
 }
