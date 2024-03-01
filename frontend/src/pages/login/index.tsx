@@ -17,9 +17,9 @@ import { useNavigate } from "react-router-dom";
 const scheme = z.object({
    email: z
       .string()
-      .email("Insira um email válido")
-      .nonempty("O campo email é obrigatório"),
-   password: z.string().nonempty("O campo senha é obrigatório"),
+      .email("Insira um email válido.")
+      .min(1, "O campo email é obrigatório."),
+   password: z.string().min(1, "O campo senha é obrigatório."),
 });
 
 type FormData = z.infer<typeof scheme>;

@@ -11,16 +11,16 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
 const scheme = z.object({
-   name: z.string().nonempty("O campo nome é obrigatório"),
-   surname: z.string().nonempty("O campo sobrenome é obrigatório"),
+   name: z.string().min(1, "O campo nome é obrigatório."),
+   surname: z.string().min(1, "O campo sobrenome é obrigatório."),
    email: z
       .string()
-      .email("Insira um email válido")
-      .nonempty("O campo email é obrigatório"),
+      .email("Insira um email válido.")
+      .min(1, "O campo email é obrigatório."),
    password: z
       .string()
-      .min(6, "A senha deve conter no mínimo 6 caracteres")
-      .nonempty("O campo de senha é obrigatório"),
+      .min(6, "A senha deve conter no mínimo 6 caracteres.")
+      .min(1, "O campo de senha é obrigatório."),
 });
 
 type FormData = z.infer<typeof scheme>;
