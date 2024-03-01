@@ -1,9 +1,6 @@
-
-<h1 align="center">🍊 Squad 20 | Orange Portifólio 🍊</h1>
+<h1 align="center">🍊 Squad 20 | Orange Portfólio 🍊</h1>
 
 Esta é uma solução para o desafio da **5ª** edição do [Programa de Formação](https://tech.orangejuice.com.br/programadeformacao) da FCamara.
-
-
 
 ## Sobre o projeto
 
@@ -18,57 +15,68 @@ A Orange Portfólio é uma plataforma interativa projetada para facilitar o comp
 #
 
 ## Funcionalidades da Aplicação Web:
- ### Página Home:
- - Interface intuitiva e agradável visualmente.
- - Informações necessárias para o usuário acessar a plataforma.
- - Botões "Começar Agora" e "Cadastrar" para navegar para a página de cadastro.
+
+### Página Home:
+
+-  Interface intuitiva e agradável visualmente.
+-  Informações necessárias para o usuário acessar a plataforma.
+-  Botões "Começar Agora" e "Cadastrar" para navegar para a página de cadastro.
 
 ### Página de Cadastro:
- - Formulário de cadastro com validação de campos.
- - Formulário de login com validação de campos.
- - Garantia de preenchimento correto dos campos através de validação.
+
+-  Formulário de cadastro com validação de campos.
+-  Formulário de login com validação de campos.
+-  Garantia de preenchimento correto dos campos através de validação.
 
 ### Rotas Privadas:
- - Acesso restrito a rotas privadas para usuários logados.
+
+-  Acesso restrito a rotas privadas para usuários logados.
 
 ### Dashboard (Meus Projetos):
- - Cadastro de projetos com preenchimento obrigatório de todos os campos.
- - Validar e exibir mensagem de erro se campos não estiverem preenchidos corretamente.
- - Campo de tags seguindo regras específicas (separar tags apenas com espaço).
- - Edição e exclusão de projetos.
-   
+
+-  Cadastro de projetos com preenchimento obrigatório de todos os campos.
+-  Validar e exibir mensagem de erro se campos não estiverem preenchidos corretamente.
+-  Campo de tags seguindo regras específicas (separar tags apenas com espaço).
+-  Edição e exclusão de projetos.
+
 ### Barra de Pesquisa:
-- Pesquisa de projetos por tags na barra de pesquisa.
+
+-  Pesquisa de projetos por tags na barra de pesquisa.
 
 ### Página Descobrir:
- - Visualização de todos os projetos cadastrados na plataforma.
- - Modal com informações detalhadas do projeto ao clicar em um projeto específico.
- - Exibição de título, nome do cadastrador, tags, imagem, descrição e link de acesso no modal.
- - Pesquisa por tags na barra de pesquisa.
+
+-  Visualização de todos os projetos cadastrados na plataforma.
+-  Modal com informações detalhadas do projeto ao clicar em um projeto específico.
+-  Exibição de título, nome do cadastrador, tags, imagem, descrição e link de acesso no modal.
+-  Pesquisa por tags na barra de pesquisa.
 
 ### Confira o [Deploy](https://orangeportfolio20.vercel.app/) 🚀
 
 #
 
-
 ## 🛠️ Tecnologias
 
 ### Frontend:
-  <img src="https://skillicons.dev/icons?i=typescript,react,css,vite,vercel,"/></a></p>
-- React com TypeScript: Aproveitar os benefícios do sistema de tipos estáticos do TypeScript ao desenvolver componentes React, fornecendo uma camada adicional de segurança e facilitando a manutenção do código.
-- CSS3: linguagem de estilo para estilizar a interface do usuário.
-- Axios: Axios é um cliente HTTP baseado em Promises para fazer requisições. Pode ser utilizado tanto no navegador quanto no Node. js ou qualquer serviço de API.
-- Vite: Ferramenta de construção de aplicações web rápida e eficiente, especialmente otimizada para o desenvolvimento moderno.
-- Vercel: Ferramenta utilizada para fazer o deploy da aplicação web.
+
+<img src="https://skillicons.dev/icons?i=typescript,react,css,vite,vercel,"/></a></p>
+
+-  React com TypeScript: Aproveitar os benefícios do sistema de tipos estáticos do TypeScript ao desenvolver componentes React, fornecendo uma camada adicional de segurança e facilitando a manutenção do código.
+-  CSS3: linguagem de estilo para estilizar a interface do usuário.
+-  Axios: Axios é um cliente HTTP baseado em Promises para fazer requisições. Pode ser utilizado tanto no navegador quanto no Node. js ou qualquer serviço de API.
+-  Vite: Ferramenta de construção de aplicações web rápida e eficiente, especialmente otimizada para o desenvolvimento moderno.
+-  Vercel: Ferramenta utilizada para fazer o deploy da aplicação web.
+
 #
+
 ### Backend:
+
 <img src="https://skillicons.dev/icons?i=java,spring,postgres,aws,docker"/>
 
-- Java Spring:  Java com o Spring Boot oferece desenvolvimento eficiente, simplificando a configuração, facilitando a criação de aplicativos robustos e escaláveis, além de integração perfeita com o ecossistema Spring e qualque outro Framework frontend, no caso deste projeto, o React.
-- PostgreSQL: Sistema gerenciador de banco de dados relacional de software livre e multiplataforma, usado em variados tipos de aplicações.
-- AWS S3: O Amazon Simple Storage Service é um serviço de armazenamento de objetos que oferece escalabilidade, disponibilidade de dados, segurança e perfomance.
-- Docker: Projeto de software livre para automatizar a implantação de aplicativos como contêineres autossuficientes portáteis que podem ser executado na nuvem ou localmente.
-  
+-  Java Spring: Java com o Spring Boot oferece desenvolvimento eficiente, simplificando a configuração, facilitando a criação de aplicativos robustos e escaláveis, além de integração perfeita com o ecossistema Spring e qualque outro Framework frontend, no caso deste projeto, o React.
+-  PostgreSQL: Sistema gerenciador de banco de dados relacional de software livre e multiplataforma, usado em variados tipos de aplicações.
+-  AWS S3: O Amazon Simple Storage Service é um serviço de armazenamento de objetos que oferece escalabilidade, disponibilidade de dados, segurança e perfomance.
+-  Docker: Projeto de software livre para automatizar a implantação de aplicativos como contêineres autossuficientes portáteis que podem ser executado na nuvem ou localmente.
+
 O Backend segue o padrão MVC (Model-View-Controller), onde os controladores gerenciam as requisições, os serviços manipulam a lógica de negócios, e os modelos representam os dados. Além disso, estamos implementando o padrão DAO para acesso a dados.
 
 Você pode visualizar a documentação da API deste projeto através deste link 👉🏻 [Swagger](https://op-app-jrdxq.ondigitalocean.app/swagger-ui/index.html#/)
@@ -77,9 +85,10 @@ Você pode visualizar a documentação da API deste projeto através deste link 
 
 ## Para Rodar localmente o frontend sua máquina:
 
-### É necessário ter o [Nodejs](https://nodejs.org/en/download) instalado na maquina. 
+### É necessário ter o [Nodejs](https://nodejs.org/en/download) instalado na maquina.
 
 Para começar, clone o repositório para o seu ambiente local:
+
 ```bash
 git clone https://github.com/Denis-moreira98/orange-portfolio-squad20
 ```
@@ -91,13 +100,15 @@ Acesse o diretório do projeto e instale as dependências utilizando o npm:
 ```bash
   cd frontend
 ```
+
 ```bash
   npm install
 ```
 
 ## Inciando servidor
 
- Adicione arquivo .env na pasta raiz do frontend, passando a url da api:
+Adicione arquivo .env na pasta raiz do frontend, passando a url da api:
+
 ```bash
   VITE_API_URL="http://localhost:3000/exemplo"
 ```
@@ -110,10 +121,10 @@ Inicie o servidor:
 
 #
 
+## Demostração da Aplicação
 
-## Demostração da Aplicação 
- Antes de começar, você precisará ter instalado em sua máquina as seguintes ferramentas:
- 
+Antes de começar, você precisará ter instalado em sua máquina as seguintes ferramentas:
+
 <table>
 <tr>
 	<th>Ferramenta</th>
@@ -193,7 +204,7 @@ Nomes de Variaveis: <br>
 git clone https://github.com/Denis-moreira98/orange-portfolio-squad20
 ```
 
-No Eclipse, importe o projeto: Vá em File > Import > Paste General > "Existing projects Maven". 
+No Eclipse, importe o projeto: Vá em File > Import > Paste General > "Existing projects Maven".
 
 No arquivo application.properties
 
@@ -219,15 +230,16 @@ aws.s3.bucket=orangeportfolio-bucket
 
 ### Inciando servidor
 
- Basta clicar na classe principal OrangePortifolioApplication > Botão Direito > Run as Java Application;
+Basta clicar na classe principal OrangePortifolioApplication > Botão Direito > Run as Java Application;
 
 #
 
-### Lembretes: 
+### Lembretes:
+
 🚨 Todos videos, em especial os do AWS são necessários, uma vez que o banco de imagens está sendo utilizados lá.
 🚨 Se for utilizar o postman, assim que for criado o usuário, e for realizar o login dele pela primeira vez, guarde o token. Ele deverá ser utilizado no cabeçaljo da Authorization nas demais requisições;
 
- ## 👨🏻‍💻 Colaboradores 👩🏻‍💻
+## 👨🏻‍💻 Colaboradores 👩🏻‍💻
 
 <div>
 
@@ -255,4 +267,3 @@ aws.s3.bucket=orangeportfolio-bucket
 
 <img src="https://avatars.githubusercontent.com/u/43455642?v=4" heigth="50px" width="50px" style="border-radius: 50%;" />
 </a>
-
