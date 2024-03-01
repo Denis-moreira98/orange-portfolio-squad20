@@ -1,0 +1,14 @@
+.div_spinner {
+   position: absolute;
+   max-height: 22px;
+   max-width: 22px;
+   right: 39%;
+   top: 30%;
+   animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+   to {
+      transform: rotate(360deg);
+   }
+}
