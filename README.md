@@ -6,7 +6,10 @@ Esta é uma solução para o desafio da **5ª** edição do [Programa de Formaç
 
 A Orange Portfólio é uma plataforma interativa projetada para facilitar o compartilhamento detalhado de projetos desenvolvidos por seus usuários. Essa abordagem única permite que membros da comunidade compartilhem suas experiências, habilidades e conquistas, proporcionando aos demais usuários a oportunidade de explorar e descobrir uma ampla variedade de projetos registrados na plataforma.
 
-#
+
+### Video [Pitch ](https://youtu.be/gFgVYj84EGo)
+### Video [Funcionalidades](https://youtu.be/NK9qvf3QJ8w)
+
 
 <p align="center">
   <img alt="Projeto" src="https://i.imgur.com/5kgvIUJ.png" width="800px">
